@@ -1415,7 +1415,7 @@ define('base/Win', ['widget/zwin', 'base/Contextmenu'], function(module){
         return win(option);
     };
     
-    zwin.imgpath = '/css/imgs/'
+    zwin.imgpath = location.href.replace(/[^/]*$/, '') + 'css/imgs/'
     
     var win = zwin.extend({
         
