@@ -1,17 +1,17 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>jsʵ�ֵ���ʱ</title>
+<title>js实现倒计时</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>jsʵ�ֵ���ʱ</h1>
-    <div class=content><p>�Ź�����ɱ��վ��Ҫ����ʱ������ʵ�ַ����кü��֣����﷢һ��ʱ�������������汾��</p><h3>����</h3><textarea class="code-html">
+    <h1>js实现倒计时</h1>
+    <div class=content><p>团购，秒杀网站需要倒计时，不过实现方法有好几种，这里发一个时间零误差的完美版本。</p><h3>代码</h3><textarea class="code-html">
 <!doctype>
 <body>
 <script>
-//�����ǵ���ʱ������ʱ��
+//参数是倒计时结束的时间
 showTime(+new Date(2016,11,29,23,10,35));
 function showTime(t){
     var tr = setInterval(interval, 1000);
@@ -24,12 +24,12 @@ function showTime(t){
             return;
         }
         document.body.innerHTML = [
-            format(time.year)+'��',
-            format(time.month)+'��',
-            format(time.date)+'��',
-            format(time.hours)+'Сʱ',
-            format(time.minute)+'����',
-            format(time.second)+'��'
+            format(time.year)+'年',
+            format(time.month)+'月',
+            format(time.date)+'天',
+            format(time.hours)+'小时',
+            format(time.minute)+'分钟',
+            format(time.second)+'秒'
         ].join(' ');
         function format(t){
             return t < 10 ? '0' + t : t;
@@ -98,29 +98,29 @@ function showTime(t){
 }
 </script>
 </body>
-</textarea><h2>����ԭ��</h2><p>ͨ����ǰʱ��ͽ���ʱ����м��������꣬�£��յ�ʱ�����ݡ�</p><p>��Ϊʱ��������ֲ��ǵ�һ��10���ƣ����Ա���ֿ����㡣</p><ul><li>��60����</li><li>��60����</li><li>Сʱ24����</li><li>����28 - 31 ���ƣ���Ϊ��ͬ�·ݵ������ǲ�һ���ģ�</li><li>��12����</li><li>��10����</li></ul><p>��������λ������ʱ�򣬾���Ҫ�Ӹ�λȡ1 * ���Ʋ������㣬���磺</p><textarea class="code-js" edit=off >
+</textarea><h2>代码原理</h2><p>通过当前时间和结束时间进行计算生成年，月，日等时间数据。</p><p>因为时间各个部分不是单一的10进制，所以必须分开计算。</p><ul><li>秒60进制</li><li>分60进制</li><li>小时24进制</li><li>天数28 - 31 进制（因为不同月份的天数是不一样的）</li><li>月12进制</li><li>年10进制</li></ul><p>当遇到低位不够的时候，就需要从高位取1 * 进制参与运算，比如：</p><textarea class="code-js" edit=off >
 var second = second2 - second1;
-if(second < 0){ //���λ��������Ӹ�λ���֣�ȡ1��������
+if(second < 0){ //秒的位不够，则从高位（分）取1参与运算
     second += 60;
     minute2--;
 }
 
 var date = date2 - date1;
 if(date < 0){
-    date += (new Date(year2, month2, 0)).getDate(); //��ȡ��ǰ�·ݵ�����
+    date += (new Date(year2, month2, 0)).getDate(); //获取当前月份的天数
     month2--;
 }
-</textarea><h2>����汾α����</h2><textarea class="code-js" edit=off >
+</textarea><h2>另外版本伪代码</h2><textarea class="code-js" edit=off >
 nowTime = +new Date,
 endTime = +new Date(2016, 12, 12);    
 ptime = endTime - nowTime;
-if(ptime > 0){ //����ʱ�仹δ����
-    year = Math.floor(ptime / (60 * 60 * 24 * 30 * 12)); //һ������30���㣬12����
+if(ptime > 0){ //倒计时间还未结束
+    year = Math.floor(ptime / (60 * 60 * 24 * 30 * 12)); //一个月以30天算，12个月
     month = Math.floor(ptime / (60 * 60 * 24 * 30)) % 12;
     date = Math.floor(ptime / (60 * 60 * 24)) % 30;
     hours = Math.floor(ptime / (60 * 60 )) % 24;
     minute = Math.floor(ptime / (60)) % 60;
 }
-//���ְ汾�򵥣������������µ���������30�̶�ֵ�ģ����Ի����һ������
+//这种版本简单，但是他对于月的天数是以30固定值的，所以会存在一定的误差。
 </textarea></div>
 </div>

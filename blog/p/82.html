@@ -1,13 +1,13 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>½Å±¾Òì²½¼ÓÔØË³ĞòÖ´ĞĞµÄÊµÏÖ</title>
+<title>è„šæœ¬å¼‚æ­¥åŠ è½½é¡ºåºæ‰§è¡Œçš„å®ç°</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>½Å±¾Òì²½¼ÓÔØË³ĞòÖ´ĞĞµÄÊµÏÖ</h1>
-    <div class=content><h2>Ç°ÑÔ</h2><p>ÔÚjs¿ª·¢ÖĞ£¬Òì²½¼ÓÔØÊÇ¾­³£³öÏÖµÄÎÊÌâ£¬±ÈÈç°´Ğè¼ÓÔØÄ£¿éµÈ£¬µ«ÊÇÒì²½¼ÓÔØµÄ½Å±¾Ö´ĞĞË³ĞòĞèÒªÈËÎª¿ØÖÆ¡£</p><h2>ÊµÏÖ</h2><h3>Ê¾Àı1</h3><textarea class="code-js" edit=off >
+    <h1>è„šæœ¬å¼‚æ­¥åŠ è½½é¡ºåºæ‰§è¡Œçš„å®ç°</h1>
+    <div class=content><h2>å‰è¨€</h2><p>åœ¨jså¼€å‘ä¸­ï¼Œå¼‚æ­¥åŠ è½½æ˜¯ç»å¸¸å‡ºç°çš„é—®é¢˜ï¼Œæ¯”å¦‚æŒ‰éœ€åŠ è½½æ¨¡å—ç­‰ï¼Œä½†æ˜¯å¼‚æ­¥åŠ è½½çš„è„šæœ¬æ‰§è¡Œé¡ºåºéœ€è¦äººä¸ºæ§åˆ¶ã€‚</p><h2>å®ç°</h2><h3>ç¤ºä¾‹1</h3><textarea class="code-js" edit=off >
 loadjs('a.js', function(){
     loadjs('b.js', function(){
         loadjs('c.js', function(){
@@ -15,18 +15,18 @@ loadjs('a.js', function(){
         })
     })
 })    
-</textarea><p class="info">ÔÚÍê³ÉÒ»¸ö½Å±¾µÄÊ±ºò¼ÓÔØÏÂÒ»¸ö½Å±¾£¬²¢ÇÒ¶¼Íê³ÉµÄÊ±ºòÖ´ĞĞ×îºóµÄ²Ù×÷</p><h3>ÊµÏÖloadjs</h3><textarea class="code-js" edit=off >
+</textarea><p class="info">åœ¨å®Œæˆä¸€ä¸ªè„šæœ¬çš„æ—¶å€™åŠ è½½ä¸‹ä¸€ä¸ªè„šæœ¬ï¼Œå¹¶ä¸”éƒ½å®Œæˆçš„æ—¶å€™æ‰§è¡Œæœ€åçš„æ“ä½œ</p><h3>å®ç°loadjs</h3><textarea class="code-js" edit=off >
 function loadjs(src, callback){
     var script = document.createElement('script')
     script.src = src
     script.onload = callback
     document.documentElement.appendChild(script)
 }
-</textarea><h3>¼æÈİIE6-10£¿</h3><textarea class="code-js" edit=off >
+</textarea><h3>å…¼å®¹IE6-10ï¼Ÿ</h3><textarea class="code-js" edit=off >
 function loadjsForIE(src, callback){
     var script = document.createElement('script')
     script.src = src
-    if(!('onload' in script)){ //¾İËµIE11¿ªÊ¼Ö§³Öonload
+    if(!('onload' in script)){ //æ®è¯´IE11å¼€å§‹æ”¯æŒonload
         script.onreadystatechange = function(){
             if(/loaded|complete/.test(script.readyState)){
                 callback()
@@ -35,13 +35,13 @@ function loadjsForIE(src, callback){
     }
     document.documentElement.appendChild(script)
 }
-</textarea><p><a class="olink" href="https://msdn.microsoft.com/zh-cn/library/windows/apps/hh780200.aspx" target="_blank">readyStateÎÄµµ</a></p><p class="info">¾­¹ı¶à³ö¹Û²ì£¬·¢ÏÖ·¢ÆğÇëÇó¡º°üÀ¨304¡»µÄjs¶¼»á¾­ÀúloadingºÍloaded×´Ì¬£¬¶øÖ±½Ó´Ó»º´æÖĞ¶ÁÈ¡µÄÖ»»á´¥·¢complete</p><p>ÖÁ´ËÒ»¸öÒì²½¼ÓÔØ²¢´øÓĞ»Øµ÷¹¦ÄÜµÄº¯Êı¾ÍÍê³ÉÁË£¬ÓĞÁËÕâ¸ö¾Í¿ÉÒÔÏñÊ¾Àı1µÄ·½Ê½°´Ë³ĞòÖ´ĞĞjsÁË</p><p class="info">¹ØÓÚ script.charset = ... Õâ¸ö£¿±àÂë²»ÊÇÎÊÌâ£¬´ó¶àÊıjs·¢²¼µÄÊ±ºò¶¼»áÑ¹Ëõ²¢ÇÒ¶Ô·Çasc2Âë½øĞĞ±àÂë</p><h2>¸ÄÔì</h2><p>ËäÈ»¹¦ÄÜÉÏÒÑ¾­Âú×ãÁËÒªÇó£¬µ«ÊÇÈËÊÇÌ°À·µÄ£¬ÎªÁËÈÃ´úÂëÊéĞ´µÄ¸ü¼ÓÁ÷³©£¬ÎÒÃÇ»áÏ£ÍûÈçÏÂµÄ·½Ê½À´Ê¹ÓÃ¡£</p><h3>¼õÉÙº¯ÊıÇ¶Ì×</h3><textarea class="code-js" edit=off >
+</textarea><p><a class="olink" href="https://msdn.microsoft.com/zh-cn/library/windows/apps/hh780200.aspx" target="_blank">readyStateæ–‡æ¡£</a></p><p class="info">ç»è¿‡å¤šå‡ºè§‚å¯Ÿï¼Œå‘ç°å‘èµ·è¯·æ±‚ã€åŒ…æ‹¬304ã€çš„jséƒ½ä¼šç»å†loadingå’ŒloadedçŠ¶æ€ï¼Œè€Œç›´æ¥ä»ç¼“å­˜ä¸­è¯»å–çš„åªä¼šè§¦å‘complete</p><p>è‡³æ­¤ä¸€ä¸ªå¼‚æ­¥åŠ è½½å¹¶å¸¦æœ‰å›è°ƒåŠŸèƒ½çš„å‡½æ•°å°±å®Œæˆäº†ï¼Œæœ‰äº†è¿™ä¸ªå°±å¯ä»¥åƒç¤ºä¾‹1çš„æ–¹å¼æŒ‰é¡ºåºæ‰§è¡Œjsäº†</p><p class="info">å…³äº script.charset = ... è¿™ä¸ªï¼Ÿç¼–ç ä¸æ˜¯é—®é¢˜ï¼Œå¤§å¤šæ•°jså‘å¸ƒçš„æ—¶å€™éƒ½ä¼šå‹ç¼©å¹¶ä¸”å¯¹éasc2ç è¿›è¡Œç¼–ç </p><h2>æ”¹é€ </h2><p>è™½ç„¶åŠŸèƒ½ä¸Šå·²ç»æ»¡è¶³äº†è¦æ±‚ï¼Œä½†æ˜¯äººæ˜¯è´ªå©ªçš„ï¼Œä¸ºäº†è®©ä»£ç ä¹¦å†™çš„æ›´åŠ æµç•…ï¼Œæˆ‘ä»¬ä¼šå¸Œæœ›å¦‚ä¸‹çš„æ–¹å¼æ¥ä½¿ç”¨ã€‚</p><h3>å‡å°‘å‡½æ•°åµŒå¥—</h3><textarea class="code-js" edit=off >
 Js
 .load('a.js')
 .load('b.js')
 .load('c.js')
 .done(dosomethine)
-</textarea><p class="info">Õâ¸öÒªÇóºÜºÏÀí£¬ÄÇÃ´ÎÒÃÇĞèÒª×öµÄÊÇÔö¼ÓÒ»¸ö¶ÓÁĞÈİÆ÷</p><h4>ÊµÏÖÊ¾Àı</h4><textarea class="code-js">
+</textarea><p class="info">è¿™ä¸ªè¦æ±‚å¾ˆåˆç†ï¼Œé‚£ä¹ˆæˆ‘ä»¬éœ€è¦åšçš„æ˜¯å¢åŠ ä¸€ä¸ªé˜Ÿåˆ—å®¹å™¨</p><h4>å®ç°ç¤ºä¾‹</h4><textarea class="code-js">
 Js = function(){
     var queue = []
     return{
@@ -65,7 +65,7 @@ Js = function(){
         }
     }
 
-    function loadjs(src, callback){ //Ä£ÄâÒì²½¼ÓÔØjs
+    function loadjs(src, callback){ //æ¨¡æ‹Ÿå¼‚æ­¥åŠ è½½js
         setTimeout(function(){
             alert(src)
             callback()
@@ -80,13 +80,13 @@ Js
 .done(function(){
     alert('yee')
 })
-</textarea><h3>µÃ´ç½ø³ß</h3><p>¼ÈÈ»ÒÑ¾­Âú×ãÁ÷³©ÊéĞ´´úÂëµÄÒªÇó£¬ÄÇÃ´ÄÜ·ñÎªÓÃ»§ÌåÑé×öµãÊ²Ã´ÄØ£¬ÎÒĞèÒª²¢ĞĞ¼ÓÔØÀ´Ìá¸ß³ÌĞòµÄĞÔÄÜ¡£</p><textarea class="code-js" edit=off >
+</textarea><h3>å¾—å¯¸è¿›å°º</h3><p>æ—¢ç„¶å·²ç»æ»¡è¶³æµç•…ä¹¦å†™ä»£ç çš„è¦æ±‚ï¼Œé‚£ä¹ˆèƒ½å¦ä¸ºç”¨æˆ·ä½“éªŒåšç‚¹ä»€ä¹ˆå‘¢ï¼Œæˆ‘éœ€è¦å¹¶è¡ŒåŠ è½½æ¥æé«˜ç¨‹åºçš„æ€§èƒ½ã€‚</p><textarea class="code-js" edit=off >
 Js
 .load(['a.js', 'b.js'])
 .load('c.js')
 .load('d.js,e.js')
 .done(dosomethine)
-</textarea><p class="info">ÆäÊµÒ»°ã¼ÓÔØ±¾À´¾ÍÊÇ²¢·¢ÇëÇóµÄ£¬ÎÒÃÇĞèÒª×öµÄ»¹ÊÇ¶ÓÁĞºÍ»Øµ÷µÄ¹ÜÀí</p><h4>ÊµÏÖÊ¾Àı</h4><textarea class="code-js">
+</textarea><p class="info">å…¶å®ä¸€èˆ¬åŠ è½½æœ¬æ¥å°±æ˜¯å¹¶å‘è¯·æ±‚çš„ï¼Œæˆ‘ä»¬éœ€è¦åšçš„è¿˜æ˜¯é˜Ÿåˆ—å’Œå›è°ƒçš„ç®¡ç†</p><h4>å®ç°ç¤ºä¾‹</h4><textarea class="code-js">
 Js = function(){
     var queue = []
     return{
@@ -94,7 +94,7 @@ Js = function(){
         done: done
     }
     function load(src){
-        if(typeof src == 'string' &amp;&amp; /,/.test(src)){ //Ö§³Ö×Ö·û´®ĞÎÊ½µÄ¶à¸ö²¢ĞĞjs
+        if(typeof src == 'string' &amp;&amp; /,/.test(src)){ //æ”¯æŒå­—ç¬¦ä¸²å½¢å¼çš„å¤šä¸ªå¹¶è¡Œjs
             src = src.split(',')
         }
         queue.push(src)
@@ -110,7 +110,7 @@ Js = function(){
                     for(var i = 0; i < srcs.length; i++){
                         loadjs(srcs[i], function(){
                             waitLen--
-                            if(waitLen == 0){ //¼ÆÊıÆ÷Í³¼Æ»¹Î´Íê³ÉµÄÈÎÎñ
+                            if(waitLen == 0){ //è®¡æ•°å™¨ç»Ÿè®¡è¿˜æœªå®Œæˆçš„ä»»åŠ¡
                                 loadNext()
                             }
                         });
@@ -125,7 +125,7 @@ Js = function(){
         }
     }
 
-    function loadjs(src, callback){ //Ä£ÄâÒì²½¼ÓÔØjs
+    function loadjs(src, callback){ //æ¨¡æ‹Ÿå¼‚æ­¥åŠ è½½js
         setTimeout(function(){
             alert(src)
             callback()
@@ -138,7 +138,7 @@ Js
 .load('c.js')
 .load('d.js,e.js')
 .done(function(){
-    alert('yee ÓÖÂú×ãÄãÁË£¡')
+    alert('yee åˆæ»¡è¶³ä½ äº†ï¼')
 })
-</textarea><h2>½áÓï</h2><p>ÖÁ´Ë£¬Ò»¸öÂú×ã´ó¶àÊıĞèÇóÖ§³Ö²¢·¢ÇëÇóµÄÒì²½½Å±¾¼ÓÔØÆ÷ÒÑ¾­Íê³É¡£</p></div>
+</textarea><h2>ç»“è¯­</h2><p>è‡³æ­¤ï¼Œä¸€ä¸ªæ»¡è¶³å¤§å¤šæ•°éœ€æ±‚æ”¯æŒå¹¶å‘è¯·æ±‚çš„å¼‚æ­¥è„šæœ¬åŠ è½½å™¨å·²ç»å®Œæˆã€‚</p></div>
 </div>

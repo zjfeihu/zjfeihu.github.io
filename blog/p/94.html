@@ -1,20 +1,20 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>ä¯ÀÀÆ÷ÖĞ¸÷ÖÖÈİÆ÷´óĞ¡ÊôĞÔ</title>
+<title>æµè§ˆå™¨ä¸­å„ç§å®¹å™¨å¤§å°å±æ€§</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>ä¯ÀÀÆ÷ÖĞ¸÷ÖÖÈİÆ÷´óĞ¡ÊôĞÔ</h1>
-    <div class=content><h2>Ç°ÑÔ</h2><p>ÔÚºÜ¶à³¡¾°ÖĞĞèÒª»ñÈ¡ä¯ÀÀÆ÷ÖĞÈİÆ÷µÄ³ß´ç£¬µ«ÊÇÉæ¼°³ß´çµÄÊôĞÔºÜ¶à£¬ÍùÍù»áÈÃÈËºÜÃÔºı</p><h2>Àí½âoffsetHeight,clientHeight,scrollHeight</h2><p><a class="olink" href="../demo/p94/" target="_blank">¸÷ÖÖheightµÄ»»ËãÑİÊ¾</a></p><h3>×Ü½áµÃ³öµÄ»»Ëã¹«Ê½</h3><pre class="xcode">
+    <h1>æµè§ˆå™¨ä¸­å„ç§å®¹å™¨å¤§å°å±æ€§</h1>
+    <div class=content><h2>å‰è¨€</h2><p>åœ¨å¾ˆå¤šåœºæ™¯ä¸­éœ€è¦è·å–æµè§ˆå™¨ä¸­å®¹å™¨çš„å°ºå¯¸ï¼Œä½†æ˜¯æ¶‰åŠå°ºå¯¸çš„å±æ€§å¾ˆå¤šï¼Œå¾€å¾€ä¼šè®©äººå¾ˆè¿·ç³Š</p><h2>ç†è§£offsetHeight,clientHeight,scrollHeight</h2><p><a class="olink" href="../demo/p94/" target="_blank">å„ç§heightçš„æ¢ç®—æ¼”ç¤º</a></p><h3>æ€»ç»“å¾—å‡ºçš„æ¢ç®—å…¬å¼</h3><pre class="xcode">
 offsetHeight = height + padding + border
-clientHeight = height + padding - bottomScroll£¨µ×²¿¹ö¶¯ÌõËùÕ¼¿Õ¼ä£©
+clientHeight = height + padding - bottomScrollï¼ˆåº•éƒ¨æ»šåŠ¨æ¡æ‰€å ç©ºé—´ï¼‰
 scrollHeight = Math.max( height + padding, inner.offsetHeight )
-</pre><p class="info">ÔÚÊ¹ÓÃouter.scrollHeightµÄ³¡¾°ÖĞ£¬¹æ±ÜÊ¹ÓÃinner.marginºÍouter.padding</p><h2>Ò³Ãæ¿ÉÊÓ¸ß¶ÈºÍÊµ¼Ê¸ß¶È</h2><p><a class="olink" href="../demo/p94/page.html" target="_blank">Ò³Ãæ¸ß¶ÈÑİÊ¾</a></p><h3>×Ü½áµÃ³ö»»Ëã¹«Ê½</h3><textarea class="code-js" edit=off >
-pageHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight) //Ò³ÃæÊµ¼Ê¸ß¶È
-viewportHeight = window.innerHeight || document.documentElement.clientHeight //¿ÉÊÓÇøÓò¸ß¶È
-</textarea><p class="info">ieÏÂ²»Ö§³Öwindow.innerHeight£¬webkitÏµÏÂÊ¹ÓÃbody.scrollHeight»ñÈ¡Êµ¼Ê¸ß¶È</p><h2>»ñÈ¡scrollSize</h2><textarea class="code-html">
+</pre><p class="info">åœ¨ä½¿ç”¨outer.scrollHeightçš„åœºæ™¯ä¸­ï¼Œè§„é¿ä½¿ç”¨inner.marginå’Œouter.padding</p><h2>é¡µé¢å¯è§†é«˜åº¦å’Œå®é™…é«˜åº¦</h2><p><a class="olink" href="../demo/p94/page.html" target="_blank">é¡µé¢é«˜åº¦æ¼”ç¤º</a></p><h3>æ€»ç»“å¾—å‡ºæ¢ç®—å…¬å¼</h3><textarea class="code-js" edit=off >
+pageHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight) //é¡µé¢å®é™…é«˜åº¦
+viewportHeight = window.innerHeight || document.documentElement.clientHeight //å¯è§†åŒºåŸŸé«˜åº¦
+</textarea><p class="info">ieä¸‹ä¸æ”¯æŒwindow.innerHeightï¼Œwebkitç³»ä¸‹ä½¿ç”¨body.scrollHeightè·å–å®é™…é«˜åº¦</p><h2>è·å–scrollSize</h2><textarea class="code-html">
 <body>
 <script>
 alert(getScrollSize());

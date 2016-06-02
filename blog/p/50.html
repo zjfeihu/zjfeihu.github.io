@@ -1,16 +1,16 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>Òì²½²Ù×÷ËøÄ£ĞÍ</title>
+<title>å¼‚æ­¥æ“ä½œé”æ¨¡å‹</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>Òì²½²Ù×÷ËøÄ£ĞÍ</h1>
-    <div class=content><h2>Ç°ÑÔ</h2><p>Ä³Ğ©Òì²½½»»¥£¬±ÈÈçµã»÷Ò»¸ö°´Å¥£¬·şÎñÆ÷Î´ÏìÓ¦Ç°£¬ÓÃ»§¿ÉÄÜ²»¶ÏµÄµã»÷°´Å¥£¬ÄÇÃ´ÎÒÃÇ¾Í±ØĞë¶ÔÕâĞ©²Ù×÷½øĞĞËø¶¨£¬µ±·µ»Ø½á¹ûºó£¬¸ù¾İ½á¹ûÖ´ĞĞ½âËø²Ù×÷¡£</p><h2>´úÂë</h2><textarea class="code-html">
+    <h1>å¼‚æ­¥æ“ä½œé”æ¨¡å‹</h1>
+    <div class=content><h2>å‰è¨€</h2><p>æŸäº›å¼‚æ­¥äº¤äº’ï¼Œæ¯”å¦‚ç‚¹å‡»ä¸€ä¸ªæŒ‰é’®ï¼ŒæœåŠ¡å™¨æœªå“åº”å‰ï¼Œç”¨æˆ·å¯èƒ½ä¸æ–­çš„ç‚¹å‡»æŒ‰é’®ï¼Œé‚£ä¹ˆæˆ‘ä»¬å°±å¿…é¡»å¯¹è¿™äº›æ“ä½œè¿›è¡Œé”å®šï¼Œå½“è¿”å›ç»“æœåï¼Œæ ¹æ®ç»“æœæ‰§è¡Œè§£é”æ“ä½œã€‚</p><h2>ä»£ç </h2><textarea class="code-html">
 <ol id="info"></ol>
-<button onclick="clickFn1()">¿ñµãÎÒÊÔÊÔ</button>
-<button onclick="clickFn2()">µãËÀÎÒÒ²Ã»ÓÃ</button>
+<button onclick="clickFn1()">ç‹‚ç‚¹æˆ‘è¯•è¯•</button>
+<button onclick="clickFn2()">ç‚¹æ­»æˆ‘ä¹Ÿæ²¡ç”¨</button>
 <script>
 var info = document.getElementById('info');
 var clickFn1 = doClick;
@@ -18,18 +18,18 @@ var clickFn2 = asyncFn(doClick);
 
 function doClick(state){
     ajax(function(resp){
-        if(state &amp;&amp; state.lock){ //Íê³ÉÏìÓ¦Ê±½âËøº¯Êı
+        if(state &amp;&amp; state.lock){ //å®Œæˆå“åº”æ—¶è§£é”å‡½æ•°
             state.lock = false;
         }
         info.innerHTML += '<li>'+resp+'</li>';
     });
 }
 
-function asyncFn(callback){ //ºËĞÄ
+function asyncFn(callback){ //æ ¸å¿ƒ
     var state = {lock: false};
     return function(){
         if(!state.lock){
-            state.lock = true; //Ëø¶¨º¯Êı
+            state.lock = true; //é”å®šå‡½æ•°
             var args = [].slice.call(arguments, 0);
             args.unshift(state);
             callback.apply(null, args);
@@ -37,9 +37,9 @@ function asyncFn(callback){ //ºËĞÄ
     };
 }
 
-function ajax(callback){ //Ä£ÄâÒì²½ÇëÇó
+function ajax(callback){ //æ¨¡æ‹Ÿå¼‚æ­¥è¯·æ±‚
     setTimeout(function(){
-        callback('ÄãºÃÅóÓÑ£¬ÔÙ¼û£¡');
+        callback('ä½ å¥½æœ‹å‹ï¼Œå†è§ï¼');
     }, 1000);
 }
 </script>

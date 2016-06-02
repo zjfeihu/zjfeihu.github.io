@@ -5,11 +5,11 @@ Zwhl = function(Z){
     reg_js,
     reg_html,
     reg_css,
-    config_skin, //Æ¤·ôÃû³Æ
-    config_edit, //ÊÇ·ñ¿É±à¼­
-    isready, //ÊÇ·ñ³õÊ¼»¯
+    config_skin, //çš®è‚¤åç§°
+    config_edit, //æ˜¯å¦å¯ç¼–è¾‘
+    isready, //æ˜¯å¦åˆå§‹åŒ–
     contextmenu, 
-    execute; //ÔËĞĞ´úÂë
+    execute; //è¿è¡Œä»£ç 
     
     Z.ready(init);
     
@@ -65,8 +65,8 @@ Zwhl = function(Z){
         
         function initContextmenu(){
             var
-            menubox, //²Ëµ¥½ÚµãÒıÓÃ 
-            whichbox, //ÄÄ¸ö´úÂë´¥·¢µÄ²Ëµ¥
+            menubox, //èœå•èŠ‚ç‚¹å¼•ç”¨ 
+            whichbox, //å“ªä¸ªä»£ç è§¦å‘çš„èœå•
             end;
             
             Z(document).on('contextmenu', function(e){
@@ -82,9 +82,9 @@ Zwhl = function(Z){
             
             Z('body').append(menubox = Z.E(
                 '<div class="hl-menu">\
-                    <a href="#" jbtn="edit">±à¼­´úÂë</a>\
-                    <a href="#" jbtn="run">ÔËĞĞ´úÂë</a>\
-                    <a href="javascript:alert(\'¡¶highlight2.0¡·\\r\\nEmail£ºzjfeihu#126.com\');void 0">¹ØÓÚ²å¼ş</a>\
+                    <a href="#" jbtn="edit">ç¼–è¾‘ä»£ç </a>\
+                    <a href="#" jbtn="run">è¿è¡Œä»£ç </a>\
+                    <a href="javascript:alert(\'ã€Šhighlight2.0ã€‹\\r\\nEmailï¼šzjfeihu#126.com\');void 0">å…³äºæ’ä»¶</a>\
                 </div>'
             ));
             
@@ -115,7 +115,7 @@ Zwhl = function(Z){
             });
             
             Z(document).click(function(e){
-                if(!menubox.contains(e.target)){//µã»÷µÄ²»ÊÇ²Ëµ¥
+                if(!menubox.contains(e.target)){//ç‚¹å‡»çš„ä¸æ˜¯èœå•
                     menubox.left(-200);
                 }
             });
@@ -131,7 +131,7 @@ Zwhl = function(Z){
             isshow = 0,
             de = document.documentElement;
         
-            Z('body').append(winbox = Z.E('<div class="hl-exec"><div class="close">µã»÷¹Ø±Õ</div></div>'));
+            Z('body').append(winbox = Z.E('<div class="hl-exec"><div class="close">ç‚¹å‡»å…³é—­</div></div>'));
         
             Z.isie6 && winbox.css('position:absolute');
             
@@ -155,7 +155,7 @@ Zwhl = function(Z){
                 
                 var doc = window.open('', 'hl_exec');
                 
-                if(lang == 'html' && Z.browser.ie < 9 && importjs()){ //ĞŞÕıdocument.writeÖ´ĞĞË³ĞòÎÊÌâ
+                if(lang == 'html' && Z.browser.ie < 9 && importjs()){ //ä¿®æ­£document.writeæ‰§è¡Œé¡ºåºé—®é¢˜
                     var scripts = [];
                     code = code.replace(/<textarea[^>]*>[\w\W]*?<\/textarea>|(<script([^>]*)>([\w\W]*?)<\/script>)/g, function(match, jstag, attr, text){
                         
@@ -207,7 +207,7 @@ Zwhl = function(Z){
                 
                 doc.document.close();
                 
-                function importjs(){ //ÅĞ¶Ï´úÂëÖĞÊÇ·ñ°üº¬ÍâÁ´µÄjs
+                function importjs(){ //åˆ¤æ–­ä»£ç ä¸­æ˜¯å¦åŒ…å«å¤–é“¾çš„js
                     var has = 0;
                     code.replace(/<textarea[^>]*>[\w\W]*?<\/textarea>|(<script([^>]*)>([\w\W]*?)<\/script>)/g, function(match, jstag, attr){
                         if(attr && /src\s*=\s*/.test(attr)){
@@ -253,7 +253,7 @@ Zwhl = function(Z){
             skin = this.attr('skin') || config_skin,
             edit = this.attr('edit') || config_edit,
             option = {edit: edit, skin: skin},
-            value = function(code){ //Çå³ı´úÂëÇ°ÖÃ¿Õ°×
+            value = function(code){ //æ¸…é™¤ä»£ç å‰ç½®ç©ºç™½
             
                 var sChar = Array(8).join('    ');
                 
@@ -286,29 +286,29 @@ Zwhl = function(Z){
                 
                 var 
                 rootElem = Z.E(output(lang, value, option))
-                    .attr('title', 'µã»÷ÓÒ¼üÔËĞĞ´úÂë')
+                    .attr('title', 'ç‚¹å‡»å³é”®è¿è¡Œä»£ç ')
                     .attr('lang', lang)
                     .append(
                         Z.rstr(
                             '<div class="code">\
                                 <textarea>{%0}</textarea>\
                                 <div>\
-                                    <button>¼ÓÁÁ´úÂë</button>\
-                                    <button>Ö´ĞĞ´úÂë</button>\
-                                    <span> ÌáÊ¾£ºÄã¿ÉÒÔÏÈĞŞ¸Ä´úÂëÔÙÖ´ĞĞ²Ù×÷£¡</span>\
+                                    <button>åŠ äº®ä»£ç </button>\
+                                    <button>æ‰§è¡Œä»£ç </button>\
+                                    <span> æç¤ºï¼šä½ å¯ä»¥å…ˆä¿®æ”¹ä»£ç å†æ‰§è¡Œæ“ä½œï¼</span>\
                                 </div>\
                             </div>',
                             value.replace(/&/g, '&amp;').replace(/</g, '&lt;')
                         )
-                    ); //Ìí¼ÓÔ´´úÂë±à¼­ÓòºÍ²Ù×÷°´Å¥
+                    ); //æ·»åŠ æºä»£ç ç¼–è¾‘åŸŸå’Œæ“ä½œæŒ‰é’®
 
                 this.replace(rootElem);
                 
                 rootElem.find('button').click(function(){
                     
-                    if(this.html() == 'Ö´ĞĞ´úÂë'){
+                    if(this.html() == 'æ‰§è¡Œä»£ç '){
                         execute(lang, rootElem.find('textarea').val());
-                    }else if(this.html() == '¼ÓÁÁ´úÂë'){
+                    }else if(this.html() == 'åŠ äº®ä»£ç '){
                         rootElem.cls('=hl-view').find('ol').replace(
                             (lang == 'js' ? parseJs : parseHtml)(
                                 rootElem.find('textarea').val()
@@ -334,7 +334,7 @@ Zwhl = function(Z){
             option.edit || config_edit,
             option.skin || config_skin,
             (lang == 'js' ? parseJs : lang == 'html' ? parseHtml : parseCss)(code)
-                .replace(/<li><\/li>/g, '<li>&nbsp;</li>') //ĞŞÕıÎŞĞĞ±êµÄÇé¿öÏÂ²»ÏÔÊ¾¿Õ°×ĞĞ
+                .replace(/<li><\/li>/g, '<li>&nbsp;</li>') //ä¿®æ­£æ— è¡Œæ ‡çš„æƒ…å†µä¸‹ä¸æ˜¾ç¤ºç©ºç™½è¡Œ
         );
         
     }
@@ -559,7 +559,7 @@ Zwhl = function(Z){
             element.removeAttribute(name);
         }else if(value != undefined){
     		
-            if(typeof name == 'object'){ //ÅúÁ¿ÉèÖÃÊôĞÔ
+            if(typeof name == 'object'){ //æ‰¹é‡è®¾ç½®å±æ€§
                 for(var attr in name){
                     $attr(element, attr, name[attr]);
                 }
@@ -567,7 +567,7 @@ Zwhl = function(Z){
                 if(name == 'style'){
                     element.style.cssText = value;
                 }else{
-                    if(element[name] != undefined){//ÓÅÏÈÉèÖÃjsÊôĞÔ
+                    if(element[name] != undefined){//ä¼˜å…ˆè®¾ç½®jså±æ€§
                         element[name] = value;
                     }else{
                         element.setAttribute(name, value, 2);
@@ -583,7 +583,7 @@ Zwhl = function(Z){
                 if(name == 'href' && element.nodeName == 'A'){
                     return element.getAttribute(name, 2);
                 }else{
-                    if(element[name] != undefined){//ÓÅÏÈ»ñÈ¡jsÊôĞÔ
+                    if(element[name] != undefined){//ä¼˜å…ˆè·å–jså±æ€§
                         return element[name];
                     }else{
                         var val = element.getAttribute(name);
@@ -602,12 +602,12 @@ Zwhl = function(Z){
         var callbacks = [];
         callbacks.push(callback);
      
-        //ÏÂÃæÕâ¸öÅĞ¶ÏÊÇÎªÁË½â¾öDOMContentLoadedÖ®ºóÔÙµ÷ÓÃDOMReadyÎŞ·¨´¥·¢doneº¯ÊıµÄÎÊÌâ
+        //ä¸‹é¢è¿™ä¸ªåˆ¤æ–­æ˜¯ä¸ºäº†è§£å†³DOMContentLoadedä¹‹åå†è°ƒç”¨DOMReadyæ— æ³•è§¦å‘doneå‡½æ•°çš„é—®é¢˜
         if($doc.addEventListener && $doc.readyState == 'interactive' || $doc.readyState == 'complete'){
             return done();
         }
        
-        /*if(/complete|interactive/.test(document.readyState)){ //¼ûblog/p/84.html
+        /*if(/complete|interactive/.test(document.readyState)){ //è§blog/p/84.html
             return done();
         }*/
      
@@ -672,7 +672,7 @@ Zwhl = function(Z){
 
     function $bind(element, type, fn, context){
     	
-        if(!element.__EVENTID__){ //²»´æÔÚµ±Ç°ÔªËØµÄÊÂ¼ş¶ÓÁĞ
+        if(!element.__EVENTID__){ //ä¸å­˜åœ¨å½“å‰å…ƒç´ çš„äº‹ä»¶é˜Ÿåˆ—
             $eventhook[element.__EVENTID__ = ++$guid] = [];
         }
     	
@@ -893,7 +893,7 @@ Zwhl = function(Z){
             sWord,
             elems;
     		
-            if(sItems = rQuickExpr.exec(selector)){ //µ¥¼¶Ñ¡ÔñÆ÷£¬¿ìËÙÄ£Ê½
+            if(sItems = rQuickExpr.exec(selector)){ //å•çº§é€‰æ‹©å™¨ï¼Œå¿«é€Ÿæ¨¡å¼
     		
                 sType = sItems[1];
                 sWord = sItems[2];
@@ -941,10 +941,10 @@ Zwhl = function(Z){
                         es.length ? elems = elems.concat(es) : elems.push(es);
                     });
                 }else{
-                    sItems = rAllExpr.exec(selector); //¶ş¼¶Ñ¡ÔñÆ÷
+                    sItems = rAllExpr.exec(selector); //äºŒçº§é€‰æ‹©å™¨
                     if(sItems){
                         var 
-                        contexts = query(sItems[1], context), //ÏÈÈ¡Ç°ÃæµÄ±í´ïÊ½×÷ÎªÏŞ¶¨
+                        contexts = query(sItems[1], context), //å…ˆå–å‰é¢çš„è¡¨è¾¾å¼ä½œä¸ºé™å®š
                         sChild = sItems[2];
                         if(contexts){
                             elems = [];
@@ -956,7 +956,7 @@ Zwhl = function(Z){
                             return null;
                         }
                     }else{
-                        sItems = rChildExpr.exec(selector); //µ¥¼¶Ñ¡ÔñÆ÷£¬¸½´øÊôĞÔµÈ¶à×Ö¶Î
+                        sItems = rChildExpr.exec(selector); //å•çº§é€‰æ‹©å™¨ï¼Œé™„å¸¦å±æ€§ç­‰å¤šå­—æ®µ
                         if(sItems){
                             var 
                             tag = sItems[1] || '*',
@@ -1059,7 +1059,7 @@ Zwhl = function(Z){
             if(element.className){
                 element.className = (' ' + element.className + ' ')
                     .replace(RegExp('\\s+(' + cls2 + ')(?=\\s+)'), cls)
-                    .replace(/^\s+|\s+$/g, '');//Çå³ıÍ·Î²¿Õ¸ñ;
+                    .replace(/^\s+|\s+$/g, '');//æ¸…é™¤å¤´å°¾ç©ºæ ¼;
             }
         }else if(cls){
             var _exp = cls.charAt(0),
@@ -1070,7 +1070,7 @@ Zwhl = function(Z){
                 _cls = _cls.split(',');
                 switch(_exp){
                     case '+':
-                        if(ncls){//¼ÙÈç²»Îª¿Õ£¬ĞèÒªÅĞ¶ÏÊÇ·ñÒÑ¾­´æÔÚ
+                        if(ncls){//å‡å¦‚ä¸ä¸ºç©ºï¼Œéœ€è¦åˆ¤æ–­æ˜¯å¦å·²ç»å­˜åœ¨
                         
                             $each(_cls, function(val, i){
                                 if(!$hasclass(element, val)){
@@ -1084,8 +1084,8 @@ Zwhl = function(Z){
                     case '-':
                         if(ncls){
                             element.className = (' ' + ncls + ' ')
-                                .replace(RegExp('\\s+(' + _cls.join('|') + ')(?=\\s+)', 'g'), '')//Ìæ»»´æÔÚµÄclassName
-                                .replace(/^\s+|\s+$/g, '');//Çå³ıÍ·Î²¿Õ¸ñ
+                                .replace(RegExp('\\s+(' + _cls.join('|') + ')(?=\\s+)', 'g'), '')//æ›¿æ¢å­˜åœ¨çš„className
+                                .replace(/^\s+|\s+$/g, '');//æ¸…é™¤å¤´å°¾ç©ºæ ¼
                         }
                         break;
                     case '~':
@@ -1212,10 +1212,10 @@ Zwhl = function(Z){
             }
             
             if(opacity >= 1 || opacity == null){
-                // IE6-8ÉèÖÃalpha(opacity=100)»áÔì³ÉÎÄ×ÖÄ£ºı
+                // IE6-8è®¾ç½®alpha(opacity=100)ä¼šé€ æˆæ–‡å­—æ¨¡ç³Š
                 filterStr = filter.replace(/alpha[^\)]+\)/i, '');
             }else{
-                opacity = Math.round(opacity * 100);//±ØĞë×ª³ÉÕûÊı
+                opacity = Math.round(opacity * 100);//å¿…é¡»è½¬æˆæ•´æ•°
                 if(hasAlpha){
                     filterStr = filter.replace(/(opacity\D+)\d+/i, 'opacity='+ opacity);
                 }else{
@@ -1252,9 +1252,9 @@ Zwhl = function(Z){
                 ? $opacity(element, value)
                 : (element.style[name = $fixStyleName(name)] = 
                     value < 0 && /width|height|padding|border/.test(name) 
-                        ? 0 //ĞŞÕı¸ºÖµ
+                        ? 0 //ä¿®æ­£è´Ÿå€¼
                         : value + (/width|height|left|top|right|bottom|margin|padding/.test(name) && /^[\-\d.]+$/.test(value) 
-                            ? 'px'  //Ôö¼ÓÊ¡ÂÔµÄpx
+                            ? 'px'  //å¢åŠ çœç•¥çš„px
                             : '')
                 );        
         }else if(typeof name == 'object'){
@@ -1262,7 +1262,7 @@ Zwhl = function(Z){
                 $css(element, key, name[key]);
             }
         }else{
-            if(~name.indexOf(':')){ //´æÔÚ:,±ÈÈç'background:red'
+            if(~name.indexOf(':')){ //å­˜åœ¨:,æ¯”å¦‚'background:red'
                 $each(name.replace(/;$/, '').split(';'), function(cssText){      
                     cssText = cssText.split(':');
                     $css(element, cssText.shift(), cssText.join(':'));
@@ -1428,7 +1428,7 @@ Zwhl = function(Z){
     			
             case 'string':
     		
-                if(expression.indexOf('<') == 0){ //´´½¨DOM½Úµã
+                if(expression.indexOf('<') == 0){ //åˆ›å»ºDOMèŠ‚ç‚¹
                     return $z($element(expression));
                 }
     			
@@ -1475,7 +1475,7 @@ Zwhl = function(Z){
     	
         if($iszelement(input))return input.e;
         
-        if(~input.indexOf('<')){ //¸ù¾İ<±êÊ¶·ûÅĞ¶Ï
+        if(~input.indexOf('<')){ //æ ¹æ®<æ ‡è¯†ç¬¦åˆ¤æ–­
     	
             var div = $doc.createElement('div');
             div.innerHTML = $tirm(input);
@@ -1487,7 +1487,7 @@ Zwhl = function(Z){
     	
     }
 
-    function $eachcall(which, method){ //ÅúÁ¿µ÷ÓÃ
+    function $eachcall(which, method){ //æ‰¹é‡è°ƒç”¨
     
         var args = [].slice.call(arguments, 2);
     	

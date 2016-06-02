@@ -1,15 +1,15 @@
 /*
-Á÷³Ì¿ØÖÆ×é¼ş
+æµç¨‹æ§åˆ¶ç»„ä»¶
 #exports
-    calls()                         ´´½¨Á÷³Ì
-    calls.wait(fn1, fn2, fn..)      ´´½¨Òì²½²¢ĞĞÁ÷³Ì
-    calls.then(fn1, fn2, fn..)      ´´½¨Í¬²½´®ĞĞÁ÷³Ì
-    calls.error(fn)                 ²¶»ñ´íÎó´¦Àí
+    calls()                         åˆ›å»ºæµç¨‹
+    calls.wait(fn1, fn2, fn..)      åˆ›å»ºå¼‚æ­¥å¹¶è¡Œæµç¨‹
+    calls.then(fn1, fn2, fn..)      åˆ›å»ºåŒæ­¥ä¸²è¡Œæµç¨‹
+    calls.error(fn)                 æ•è·é”™è¯¯å¤„ç†
 #info
     wait(function(resolve, reject, recive, go){})
     then(function(reject, go){})
-    calls.debug = true; Ä¬ÈÏ¹Ø±Õµ÷ÊÔ
-    ?callsdebug=1 Í¨¹ıurl²ÎÊı¿ªÆôµ÷ÊÔÄ£Ê½
+    calls.debug = true; é»˜è®¤å…³é—­è°ƒè¯•
+    ?callsdebug=1 é€šè¿‡urlå‚æ•°å¼€å¯è°ƒè¯•æ¨¡å¼
 */
 
 
@@ -36,7 +36,7 @@ function calls(id){
     lines;
     
     if(calls.debug && calls.timeline){
-        lines = calls.timeline(id); //ÓÃÓÚÊ±¼äÖáµÄµ÷ÊÔ
+        lines = calls.timeline(id); //ç”¨äºæ—¶é—´è½´çš„è°ƒè¯•
         fire = debugfire;
     }
     
@@ -65,7 +65,7 @@ function calls(id){
         
         if(onerror)return;
         
-        var name; //Á÷³ÌÃû£¬ÔÚgoÖĞÊ¹ÓÃ
+        var name; //æµç¨‹åï¼Œåœ¨goä¸­ä½¿ç”¨
         var fns = {}.toString.call(args[0]) == '[object Array]' ? args[0] : [].slice.call(args, 0);
 
         if(async){
@@ -118,7 +118,7 @@ function calls(id){
             
             current = queue[index++];
             
-            if(!current){ //¶ÓÁĞÖĞÒÑ¾­Ã»ÓĞÔªËØ£¬½áÊø¶ÓÁĞµ÷ÓÃ
+            if(!current){ //é˜Ÿåˆ—ä¸­å·²ç»æ²¡æœ‰å…ƒç´ ï¼Œç»“æŸé˜Ÿåˆ—è°ƒç”¨
                 return;
             }
             
@@ -150,7 +150,7 @@ function calls(id){
                 fn(reject, go);
             }
         }catch(e){
-            if(!/²»ÄÜÖ´ĞĞÒÑÊÍ·Å/.test(e.message)){
+            if(!/ä¸èƒ½æ‰§è¡Œå·²é‡Šæ”¾/.test(e.message)){
                 //reject(e.message);
                 throw e;
             }
@@ -159,7 +159,7 @@ function calls(id){
     
     function debugfire(fn, async){
         
-        //Òì²½Á÷³Ì£º³õÊ¼»¯,½øÈëµÈ´ı,½øÈëÏìÓ¦,Íê³É²Ù×÷
+        //å¼‚æ­¥æµç¨‹ï¼šåˆå§‹åŒ–,è¿›å…¥ç­‰å¾…,è¿›å…¥å“åº”,å®Œæˆæ“ä½œ
         
         var line = lines(fn.original || fn);
         
@@ -200,7 +200,7 @@ function calls(id){
             }
             
         }catch(e){
-            if(!/²»ÄÜÖ´ĞĞÒÑÊÍ·Å/.test(e.message)){
+            if(!/ä¸èƒ½æ‰§è¡Œå·²é‡Šæ”¾/.test(e.message)){
                 //reject(e.message);
                 throw e;
             }

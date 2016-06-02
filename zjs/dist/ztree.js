@@ -1,9 +1,9 @@
 /*
-Ä¿Â¼Ê÷×é¼ş
+ç›®å½•æ ‘ç»„ä»¶
 #imports
     Z
 #exports
-    ztree(option)  ´´½¨Ä¿Â¼Ê÷
+    ztree(option)  åˆ›å»ºç›®å½•æ ‘
 */
 
 !function(){
@@ -49,7 +49,7 @@ var zTree = Z.Class({
             Z.forEach(items, function(item, i){
                 if(item.items){
 					
-                    if(i == items.length - 1){//×îºóÒ»¸ö½Úµã
+                    if(i == items.length - 1){//æœ€åä¸€ä¸ªèŠ‚ç‚¹
 						var cls1 = 'plus2';
 						var cls2 = 'last';
 					}else{
@@ -69,9 +69,9 @@ var zTree = Z.Class({
                         subitems: renderItems(item.items)
                     }));
                     
-				}else{//¶¥²ãÒ¶×Ó	
+				}else{//é¡¶å±‚å¶å­	
                 
-					if(i == items.length - 1){//×îºóÒ»¸ö½Úµã
+					if(i == items.length - 1){//æœ€åä¸€ä¸ªèŠ‚ç‚¹
 						var cls1 = 'elbow2';
 					}else{
 						var cls1 = 'elbow3';

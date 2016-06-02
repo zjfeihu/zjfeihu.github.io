@@ -1,4 +1,4 @@
-//gbk±àÂë×é¼ş
+//gbkç¼–ç ç»„ä»¶
 gbk = function(){
     
     var U2Ghash = {};

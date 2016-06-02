@@ -1,55 +1,55 @@
 <!DOCTYPE html>
-<meta charset=gbk>
-<title>Á÷³Ì¿ØÖÆ×é¼ş</title>
+<meta charset=utf-8>
+<title>æµç¨‹æ§åˆ¶ç»„ä»¶</title>
 <script src=../dist/z.js></script>
 <script src=../dist/hl.js></script>
-<div style="font-family: Î¢ÈíÑÅºÚ; margin: 0 16px">
-    <h1>Á÷³Ì¿ØÖÆ×é¼ş</h1>
+<div style="font-family: å¾®è½¯é›…é»‘; margin: 0 16px">
+    <h1>æµç¨‹æ§åˆ¶ç»„ä»¶</h1>
     
-    <h3>¹¦ÄÜ</h3>
-    <p>¹ÜÀíÒì²½´úÂëµÄÖ´ĞĞ</p>
+    <h3>åŠŸèƒ½</h3>
+    <p>ç®¡ç†å¼‚æ­¥ä»£ç çš„æ‰§è¡Œ</p>
     
-    <h3>ÌØµã</h3>
-    <p>Óï·¨¼ò½à£¬¿ØÖÆÁé»î£¬¹¦ÄÜÇ¿´ó¡£</p>
+    <h3>ç‰¹ç‚¹</h3>
+    <p>è¯­æ³•ç®€æ´ï¼Œæ§åˆ¶çµæ´»ï¼ŒåŠŸèƒ½å¼ºå¤§ã€‚</p>
     
-    <h3>Ê¹ÓÃ·½·¨</h3>
-    <p>1. ÔÚÒ³ÃæÖĞÒıÈëcalls.js <a href="../dist/calls.js" target="_blank">µã»÷ÏÂÔØ</a></p>
-    <p>2. Ê¹ÓÃÒÔÏÂAPI</p>
+    <h3>ä½¿ç”¨æ–¹æ³•</h3>
+    <p>1. åœ¨é¡µé¢ä¸­å¼•å…¥calls.js <a href="../dist/calls.js" target="_blank">ç‚¹å‡»ä¸‹è½½</a></p>
+    <p>2. ä½¿ç”¨ä»¥ä¸‹API</p>
     <textarea class=code-js edit=off>
-    calls.debug = 1; //¿ªÆôµ÷ÊÔÆÙ²¼Í¼£¬Ò²¿ÉÒÔÍ¨¹ıurlÌí¼Ó²ÎÊıdebug=1¿ªÆô
+    calls.debug = 1; //å¼€å¯è°ƒè¯•ç€‘å¸ƒå›¾ï¼Œä¹Ÿå¯ä»¥é€šè¿‡urlæ·»åŠ å‚æ•°debug=1å¼€å¯
     calls
-    .wait( //Òì²½²¢ĞĞ
+    .wait( //å¼‚æ­¥å¹¶è¡Œ
         function(resolve, reject, recive, go){
             setTimeout(function(){
-                recive();//recive±íÊ¾Òì²½Á÷³Ì¿ªÊ¼ÏìÓ¦
-                sleep(1000);//¼ÙÉè´úÂëÖ´ĞĞÁË1000ms
-                resolve();//resolve±íÊ¾Òì²½Á÷³ÌÍê³ÉÏìÓ¦
+                recive();//reciveè¡¨ç¤ºå¼‚æ­¥æµç¨‹å¼€å§‹å“åº”
+                sleep(1000);//å‡è®¾ä»£ç æ‰§è¡Œäº†1000ms
+                resolve();//resolveè¡¨ç¤ºå¼‚æ­¥æµç¨‹å®Œæˆå“åº”
             }, 1000);
         },
         function(resolve, reject, recive, go){
             resolve();
         }
     )
-    .then(//Í¬²½
+    .then(//åŒæ­¥
         function(reject, go){
         
         }
     )
-    .wait(//Òì²½
+    .wait(//å¼‚æ­¥
         function(resolve, reject, recive, go){
-            go('label'); //Ö±½ÓÌøµ½lable´¦
+            go('label'); //ç›´æ¥è·³åˆ°lableå¤„
         }
     )
     .wait(function(){
     
     })
-    .then(function label(resolve, reject){ //ÉÏ·½goÌøµ½´Ë´¦
-        reject('error'); //Ö±½ÓÌøÍùerrorÁ÷³Ì
+    .then(function label(resolve, reject){ //ä¸Šæ–¹goè·³åˆ°æ­¤å¤„
+        reject('error'); //ç›´æ¥è·³å¾€erroræµç¨‹
     })
     .then(function(){
     
     })
-    .error(function(err){ //´¦Àíreject´«À´µÄÖµ
+    .error(function(err){ //å¤„ç†rejectä¼ æ¥çš„å€¼
         
     });
 
@@ -57,26 +57,26 @@
     
     <h3>API</h3>
     <ul>
-        <li>wait(callback1, callback2, ...) Ìí¼ÓÒì²½²¢ĞĞÁ÷³Ì</li>
-        <li>then(callback1, callback2, ...) Ìí¼ÓÍ¬²½´®ĞĞÁ÷³Ì</li>
-        <li>error(callback) ´¦Àíreject´«µİµÄ´íÎóĞÅÏ¢</li>
+        <li>wait(callback1, callback2, ...) æ·»åŠ å¼‚æ­¥å¹¶è¡Œæµç¨‹</li>
+        <li>then(callback1, callback2, ...) æ·»åŠ åŒæ­¥ä¸²è¡Œæµç¨‹</li>
+        <li>error(callback) å¤„ç†rejectä¼ é€’çš„é”™è¯¯ä¿¡æ¯</li>
     </ul>
     
-    <p>callbackËµÃ÷</p>
+    <p>callbackè¯´æ˜</p>
     <ul>
-        <li>Òì²½»Øµ÷callback(resolve, reject, recive, go)</li>
-        <li>Í¬²½»Øµ÷callback(reject, go)</li>
-        <li>µ±callbackÊÇ¾ßÃûº¯ÊıÊ±£¬¿ÉÒÔÊ¹ÓÃgo('º¯ÊıÃû')Ìø×ª</li>
-        <li>²ÎÊıresolve Òì²½Á÷³ÌÍê³ÉÊ±µ÷ÓÃ</li>
-        <li>²ÎÊıreject Ö±½ÓÌøµ½errorÁ÷³Ì´¦Àí´íÎó</li>
-        <li>²ÎÊırecive Òì²½Á÷³Ì´ÓµÈ´ı½øÈëÏìÓ¦µ÷ÓÃ£¬Ö÷ÒªÓÃÓÚµ÷ÊÔÆÙ²¼Í¼Ä£Ê½¹Û²ì´úÂëĞÔÄÜ</li>
-        <li>²ÎÊıgo Á÷³ÌÌø×ª£¬Ö±½ÓÌø¹ıÖĞ¼äÁ÷³Ìµ½Ä¿±êÁ÷³Ì</li>
+        <li>å¼‚æ­¥å›è°ƒcallback(resolve, reject, recive, go)</li>
+        <li>åŒæ­¥å›è°ƒcallback(reject, go)</li>
+        <li>å½“callbackæ˜¯å…·åå‡½æ•°æ—¶ï¼Œå¯ä»¥ä½¿ç”¨go('å‡½æ•°å')è·³è½¬</li>
+        <li>å‚æ•°resolve å¼‚æ­¥æµç¨‹å®Œæˆæ—¶è°ƒç”¨</li>
+        <li>å‚æ•°reject ç›´æ¥è·³åˆ°erroræµç¨‹å¤„ç†é”™è¯¯</li>
+        <li>å‚æ•°recive å¼‚æ­¥æµç¨‹ä»ç­‰å¾…è¿›å…¥å“åº”è°ƒç”¨ï¼Œä¸»è¦ç”¨äºè°ƒè¯•ç€‘å¸ƒå›¾æ¨¡å¼è§‚å¯Ÿä»£ç æ€§èƒ½</li>
+        <li>å‚æ•°go æµç¨‹è·³è½¬ï¼Œç›´æ¥è·³è¿‡ä¸­é—´æµç¨‹åˆ°ç›®æ ‡æµç¨‹</li>
     </ul>
     
-    <h3>ÁªÏµÎÒ</h3>
+    <h3>è”ç³»æˆ‘</h3>
     <p>zjfeihu#126.com</p>
     
-    <h3>²âÊÔÓÃÀı</h3>
+    <h3>æµ‹è¯•ç”¨ä¾‹</h3>
     
     <textarea class=code-html>
     <!doctype html>
@@ -158,7 +158,7 @@
     </script>
     </textarea>
     
-    <h3>¸üĞÂËµÃ÷</h3>
-    <p>2012.8 ÕıÊ½·¢²¼Á÷³Ì¿ØÖÆ×é¼ş</p>
-    <p>2016.2 ÖØ¹¹´úÂë£¬ĞŞÕı²¿·Öbug</p>
+    <h3>æ›´æ–°è¯´æ˜</h3>
+    <p>2012.8 æ­£å¼å‘å¸ƒæµç¨‹æ§åˆ¶ç»„ä»¶</p>
+    <p>2016.2 é‡æ„ä»£ç ï¼Œä¿®æ­£éƒ¨åˆ†bug</p>
 </div>

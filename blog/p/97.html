@@ -1,13 +1,13 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>WEB++¿ª·¢Ö®Íø¸ñÎ»ÖÃËã·¨</title>
+<title>WEB++å¼€å‘ä¹‹ç½‘æ ¼ä½ç½®ç®—æ³•</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>WEB++¿ª·¢Ö®Íø¸ñÎ»ÖÃËã·¨</h1>
-    <div class=content><h2>Ç°ÑÔ</h2><p>WEB++×ÀÃæÏµÍ³ÖĞ£¬ÓĞºÜ¶àµØ·½ÓÃµ½ÁËÍø¸ñÎ»ÖÃËã·¨£¬±ÈÈç×ÀÃæÍ¼±êµÄÍÏ·Å²Ù×÷£¬¼´°ÑÒ»¸öÈİÆ÷·Ö³ÉÈô¸É´óĞ¡ÏàµÈµÄÍø¸ñ£¬È»ºó»ñÈ¡Ò»¸ö×ø±êÔÚÍø¸ñÖĞµÄÎ»ÖÃ¡£</p><h2>Ëã·¨ÑİÊ¾</h2><p><style> #gridbox{position:relative;width:300px;height:300px;background:#666;overflow:hidden;} #gridbox span{float:left;border:1px solid #fff;border-width:0 1px 1px 0;color:#eee}</style></p><script src=../style/z.js></script><button onclick=changegrid()>¸Ä±äÍø¸ñ</button><p>µã»÷ºÚÉ«Íø¸ñÏÔÊ¾µ±Ç°Î»ÖÃ£¬Î»ÖÃ´Ó0¿ªÊ¼£¬×İÏòµİÔö</p><div id=gridbox></div><script>
+    <h1>WEB++å¼€å‘ä¹‹ç½‘æ ¼ä½ç½®ç®—æ³•</h1>
+    <div class=content><h2>å‰è¨€</h2><p>WEB++æ¡Œé¢ç³»ç»Ÿä¸­ï¼Œæœ‰å¾ˆå¤šåœ°æ–¹ç”¨åˆ°äº†ç½‘æ ¼ä½ç½®ç®—æ³•ï¼Œæ¯”å¦‚æ¡Œé¢å›¾æ ‡çš„æ‹–æ”¾æ“ä½œï¼Œå³æŠŠä¸€ä¸ªå®¹å™¨åˆ†æˆè‹¥å¹²å¤§å°ç›¸ç­‰çš„ç½‘æ ¼ï¼Œç„¶åè·å–ä¸€ä¸ªåæ ‡åœ¨ç½‘æ ¼ä¸­çš„ä½ç½®ã€‚</p><h2>ç®—æ³•æ¼”ç¤º</h2><p><style> #gridbox{position:relative;width:300px;height:300px;background:#666;overflow:hidden;} #gridbox span{float:left;border:1px solid #fff;border-width:0 1px 1px 0;color:#eee}</style></p><script src=../style/z.js></script><button onclick=changegrid()>æ”¹å˜ç½‘æ ¼</button><p>ç‚¹å‡»é»‘è‰²ç½‘æ ¼æ˜¾ç¤ºå½“å‰ä½ç½®ï¼Œä½ç½®ä»0å¼€å§‹ï¼Œçºµå‘é€’å¢</p><div id=gridbox></div><script>
 var gridbox = Z('#gridbox');
 var width = gridbox.width();
 var height = gridbox.height();
@@ -60,7 +60,7 @@ function getGridindex(box, gridsize, point){
     var x = point[0];
     var y = point[1];
     var left, top, width, height;
-    var rows, cols; //Íø¸ñĞĞÁĞ
+    var rows, cols; //ç½‘æ ¼è¡Œåˆ—
 
     if(
         x < (left = box.offsetLeft()) || 
@@ -85,26 +85,26 @@ function getGridindex(box, gridsize, point){
         ry = Math.min(rows, ry);
     }
 
-    if( (+!!gridwidth) ^ (+!!gridheight) ){ //Ö»´æÔÚÒ»¸öÖµ
+    if( (+!!gridwidth) ^ (+!!gridheight) ){ //åªå­˜åœ¨ä¸€ä¸ªå€¼
         return (rx || ry)|0;
     }
 
-    return rows * rx  + ry; //2¸öÖµ¶¼´æÔÚ£¬Ôò×İÏò¶ÁÈ¡Éú³ÉÎ»ÖÃ
+    return rows * rx  + ry; //2ä¸ªå€¼éƒ½å­˜åœ¨ï¼Œåˆ™çºµå‘è¯»å–ç”Ÿæˆä½ç½®
 
 }
 
-</script><h2>Íø¸ñÎ»ÖÃËã·¨</h2><textarea class="code-js" edit=off >
+</script><h2>ç½‘æ ¼ä½ç½®ç®—æ³•</h2><textarea class="code-js" edit=off >
 
-//getGridindex(box, [30, 0], [100, 100]) µ±gridsizeÓĞÒ»¸öÖµÎªÁã£¬ÄÇÃ´¼ÆËãµ¥ĞĞ»òÕßµ¥ÁĞÍø¸ñ
+//getGridindex(box, [30, 0], [100, 100]) å½“gridsizeæœ‰ä¸€ä¸ªå€¼ä¸ºé›¶ï¼Œé‚£ä¹ˆè®¡ç®—å•è¡Œæˆ–è€…å•åˆ—ç½‘æ ¼
 
-function getGridindex(box, gridsize, point){ //boxÎªÈİÆ÷£¬gridsizeÎªÍø¸ñ´óĞ¡£¬pointÎª×ø±êÎ»ÖÃ
+function getGridindex(box, gridsize, point){ //boxä¸ºå®¹å™¨ï¼Œgridsizeä¸ºç½‘æ ¼å¤§å°ï¼Œpointä¸ºåæ ‡ä½ç½®
 
     var gridwidth = gridsize[0];
     var gridheight = gridsize[1];
     var x = point[0];
     var y = point[1];
     var left, top, width, height;
-    var rows, cols; //Íø¸ñĞĞÁĞ
+    var rows, cols; //ç½‘æ ¼è¡Œåˆ—
 
     if(
         x < (left = box.offsetLeft()) || 
@@ -115,25 +115,25 @@ function getGridindex(box, gridsize, point){ //boxÎªÈİÆ÷£¬gridsizeÎªÍø¸ñ´óĞ¡£¬po
         return -1;
     }
 
-    var rx, ry; //¶şÎ¬×ø±ê
+    var rx, ry; //äºŒç»´åæ ‡
 
-    if(gridwidth){ //ÁĞ×ø±ê
+    if(gridwidth){ //åˆ—åæ ‡
         cols = Math.max(1, (width/gridwidth)|0);
         rx = Math.floor( (x - left) / gridwidth );
         rx = Math.min(cols, rx);
     }
 
-    if(gridheight){ //ĞĞ×ø±ê
+    if(gridheight){ //è¡Œåæ ‡
         rows = Math.max(1, (height/gridheight)|0)
         ry = Math.floor( (y - top) / gridheight );
         ry = Math.min(rows, ry);
     }
 
-    if( (+!!gridwidth) ^ (+!!gridheight) ){ //Ö»´æÔÚÒ»¸öÖµ
+    if( (+!!gridwidth) ^ (+!!gridheight) ){ //åªå­˜åœ¨ä¸€ä¸ªå€¼
         return (rx || ry)|0;
     }
 
-    return rows * rx  + ry; //2¸öÖµ¶¼´æÔÚ£¬Ôò×İÏò¶ÁÈ¡Éú³ÉÎ»ÖÃ
+    return rows * rx  + ry; //2ä¸ªå€¼éƒ½å­˜åœ¨ï¼Œåˆ™çºµå‘è¯»å–ç”Ÿæˆä½ç½®
 
 }
 

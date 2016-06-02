@@ -1,16 +1,16 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>xp�´򿪷�ʽ�޷����ĵ�bug</title>
+<title>xp下打开方式无法更改的bug</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>xp�´򿪷�ʽ�޷����ĵ�bug</h1>
-    <div class=content><h2>ǰ��</h2><p>��xpϵͳ�£���������ĳ�����͵��ļ�ʹ��ĳ������򿪣�����������ֱ��ƶ����µ�λ�ã���ôԭ���Ĵ򿪷�ʽ��ʧЧ�������������ô򿪷�ʽ���µ�λ��Ҳ���С�</p><h2>���������2��</h2><ol><li>�ı����Ϊ�µ�����</li><li>��ע��������ص���Ϣ</li></ol><h3>���ע����е���Ϣ</h3><h4>�����·��Ĵ���Ϊ.reg�ļ���Ȼ���뼴�������Ȼ���������ô򿪷�ʽ��</h4><pre class="xcode">
+    <h1>xp下打开方式无法更改的bug</h1>
+    <div class=content><h2>前言</h2><p>在xp系统下，假如设置某个类型的文件使用某个程序打开，而这个程序又被移动到新的位置，那么原来的打开方式会失效，并且重新设置打开方式到新的位置也不行。</p><h2>解决方法有2种</h2><ol><li>改变程序为新的名称</li><li>在注册表清除相关的信息</li></ol><h3>清除注册表中的信息</h3><h4>保存下方的代码为.reg文件，然后导入即可清除，然后重新设置打开方式。</h4><pre class="xcode">
 Windows Registry Editor Version 5.00
 [-HKEY_CURRENT_USER\Software\Classes\Applications\netbox.exe]
-</pre><h4>ʹ�����µĴ��뱣��Ϊ.reg�ļ����޸��µ��뼴��</h4><pre class="xcode">
+</pre><h4>使用以下的代码保存为.reg文件，修改下导入即可</h4><pre class="xcode">
 Windows Registry Editor Version 5.00
 [HKEY_CURRENT_USER\Software\Classes\Applications]
 [HKEY_CURRENT_USER\Software\Classes\Applications\netbox.exe]

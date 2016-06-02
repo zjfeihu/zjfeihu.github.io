@@ -1,26 +1,26 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>DOMReady̽��֮��</title>
+<title>DOMReady探索之旅</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>DOMReady̽��֮��</h1>
-    <div class=content><h2>ǰ��</h2><p>���������±�����������ǰ�˿������ǣ���ִ�и��ֲ����ͱ�����DOM����֮�󣬶�onload��ûʲô���á�</p><h2>һ���ʱִ�д���</h2><ol><li>window.onload = ...</li><li>&lt;script>������&lt;/body>ǰ����</li><li>jQuery(function(){ ... })</li><li>�Լ�дDOMReady</li></ol><p class="info">��������ǰ�漸�ֱ�Ӵ��Լ�дDOMReady˵��</p><h2>�Լ�дDOMReady</h2><p>��ο�ʼ�������onload��ʼ��</p><h3>���onload</h3><textarea class="code-js" edit=off >
+    <h1>DOMReady探索之旅</h1>
+    <div class=content><h2>前言</h2><p>工欲善其事必先利其器，前端开发亦是，想执行各种操作就必须在DOM就绪之后，而onload并没什么鸟用。</p><h2>一般何时执行代码</h2><ol><li>window.onload = ...</li><li>&lt;script>紧靠着&lt;/body>前插入</li><li>jQuery(function(){ ... })</li><li>自己写DOMReady</li></ol><p class="info">我们跳过前面几项，直接从自己写DOMReady说起</p><h2>自己写DOMReady</h2><p>如何开始？从替代onload开始。</p><h3>替代onload</h3><textarea class="code-js" edit=off >
 document.addEventListener('DOMContentLoaded', function(){
-    //�˴����԰�ȫ��дDOM�����Ĵ�����
+    //此处可以安全的写DOM操作的代码了
 }, false)
-</textarea><p class="info">����IE6��7��8��֧�ֱ�׼��ʽ����ôֻ����Ѱ����</p><h3>����IE</h3><textarea class="code-js" edit=off >
-ms = 16 //?���ٺ���
+</textarea><p class="info">由于IE6，7，8不支持标准方式，那么只能另寻他法</p><h3>兼容IE</h3><textarea class="code-js" edit=off >
+ms = 16 //?多少合适
 tr = setInterval(function(){
     try{
         document.documentElement.doScroll()
         clearInterval(tr)
-        //������DOMContentLoaded����Ϊ��ͨ����ʱ����ѯʵ�ֵ�
+        //稍晚于DOMContentLoaded，因为是通过定时器轮询实现的
     }catch(e){}
 }, ms)
-</textarea><p class="info">ͨ�����onScroll()�����Ƿ���Ե������ж�DOM�Ƿ����</p><p class="info">����������ʵ�����ϸ񡻣������ֿ���ͨ����ѯ���document.body�Ƿ�������ж�DOM�Ƿ����</p><p><a class="olink" href="http://javascript.nwbox.com/IEContentLoaded/" target="_blank">���onScroll����ƪ����</a></p><h2>��װ</h2><p>�������ǰ�DOMReady�����Ū����ˣ�������ֱ��ʹ�û��жξ��룬������Ҫͨ����װ�γɹ��ܺ���</p><h3>��װ</h3><textarea class="code-js" edit=off >
+</textarea><p class="info">通过检测onScroll()方法是否可以调用来判断DOM是否就绪</p><p class="info">经过初步测实『不严格』，还发现可以通过轮询检测document.body是否存在来判断DOM是否就绪</p><p><a class="olink" href="http://javascript.nwbox.com/IEContentLoaded/" target="_blank">相关onScroll看这篇文字</a></p><h2>封装</h2><p>上面我们把DOMReady的情况弄清楚了，但是离直接使用还有段距离，我们需要通过封装形成功能函数</p><h3>封装</h3><textarea class="code-js" edit=off >
 DOMReady(function(){
     //dosomething...
 });
@@ -29,12 +29,12 @@ function DOMReady(callback){
     var callbacks = [];
     callbacks.push(callback);
 
-    //��������ж���Ϊ�˽��DOMContentLoaded֮���ٵ���DOMReady�޷�����done����������
+    //下面这个判断是为了解决DOMContentLoaded之后再调用DOMReady无法触发done函数的问题
     if(document.addEventListener &amp;&amp; document.readyState == 'interactive' || document.readyState == 'complete'){
         return done();
     }
 
-    /*if(/complete|interactive/.test(document.readyState)){ //Ϊ�����IE���������ֻ�ܲ��������д���ˣ�IE��interactive״̬�Ҵ����ģ�����û����
+    /*if(/complete|interactive/.test(document.readyState)){ //为了挽救IE这个蠢货，只能采用上面的写法了，IE中interactive状态乱触发的，根本没规律
         return done();
     }*/
 
@@ -60,5 +60,5 @@ function DOMReady(callback){
         };
     } 
 }
-</textarea><h3>����document.readyState</h3><p><a class="xlink" href="../../demo/p84/readystate.html">�۲�readyState״̬��demo</a><br/></p><p class="info">�����۲죬��IE������������н���&lt;/body>ǰ���script���״̬��Ϊloading����֮������interactive��complete���ɴ��ж���interactive��complete״̬�ض�������&lt;/body>ǰ���scriptִ����Ϻ󴥷�</p><p class="info">IE�»��ǲ�רҵ��interactive״̬��������һ��Ц��������һ��д����߼�����λ����Ա</p><h2>����</h2><p>����DOMReadyʵ�ֵķ����ܶ࣬ʲôjQuery��YUI��Ext�������ƣ�ת�ĺܶ࣬�Լ����ֹ۲�ĺ��٣����ż����ĸ��棬�ܶ�ת�������Ѿ�û��ʲô��ֵ�ˣ���Щ�����������á�</p></div>
+</textarea><h3>关于document.readyState</h3><p><a class="xlink" href="../../demo/p84/readystate.html">观察readyState状态的demo</a><br/></p><p class="info">经过观察，除IE外所有浏览器中紧邻&lt;/body>前面的script输出状态都为loading，而之后会输出interactive和complete，由此判定，interactive和complete状态必定是晚于&lt;/body>前面的script执行完毕后触发</p><p class="info">IE下还是不专业，interactive状态根本就是一个笑话，鄙视一下写这段逻辑的那位程序员</p><h2>结语</h2><p>网上DOMReady实现的方法很多，什么jQuery，YUI，Ext各种云云，转的很多，自己动手观察的很少，随着技术的更替，很多转的文章已经没有什么价值了，有些还存在误导作用。</p></div>
 </div>

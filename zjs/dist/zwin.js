@@ -1,4 +1,4 @@
-//zwin.js v0.11 ´°¿ÚÀà
+//zwin.js v0.11 çª—å£ç±»
 
 zwin = function(){
     
@@ -13,18 +13,18 @@ zwin = function(){
         top: 10,
         width: 800,
         height: 400,
-        resizable: true, //ÊÇ·ñ¿É¸Ä±ä´óĞ¡
-        minimizeable: true, //ÊÇ·ñ¿É×îĞ¡»¯
-        dragable: true, //ÊÇ·ñ¿É¸ÄÍÏ¶¯
-        container: null, //´°¿ÚµÄ¸¸ÈİÆ÷
-        onClose: null, //¹Ø±Õ»Øµ÷
-        onMaximize: null, //×î´ó»¯»Øµ÷
-        onMinimize: null, //×îĞ¡»¯»Øµ÷
-        onFocus: null, //´°¿Ú»ñµÃ½¹µã»Øµ÷
+        resizable: true, //æ˜¯å¦å¯æ”¹å˜å¤§å°
+        minimizeable: true, //æ˜¯å¦å¯æœ€å°åŒ–
+        dragable: true, //æ˜¯å¦å¯æ”¹æ‹–åŠ¨
+        container: null, //çª—å£çš„çˆ¶å®¹å™¨
+        onClose: null, //å…³é—­å›è°ƒ
+        onMaximize: null, //æœ€å¤§åŒ–å›è°ƒ
+        onMinimize: null, //æœ€å°åŒ–å›è°ƒ
+        onFocus: null, //çª—å£è·å¾—ç„¦ç‚¹å›è°ƒ
         end: null
     },
     zIndex = 9999,
-    activeWin, //»î¶¯µÄ´°¿Ú
+    activeWin, //æ´»åŠ¨çš„çª—å£
     end;
     
     var hasstyle;
@@ -193,7 +193,7 @@ zwin = function(){
                 
                 rElem.on('mousedown', function(evt){
                     
-                    evt.preventDefault(); //chromeÏÂ½ûÖ¹ÎÄ±¾Ñ¡Ôñ
+                    evt.preventDefault(); //chromeä¸‹ç¦æ­¢æ–‡æœ¬é€‰æ‹©
                     that.focus();
                     
                     clientX = evt.clientX;
@@ -293,7 +293,7 @@ zwin = function(){
                         
                         if(offsetTop < 0 || offsetTop > docHeight - 26){
                             top = rootElem.top() - offsetTop;
-                            if(offsetTop > 0){ //³¬³ö½çÃæµ×²¿
+                            if(offsetTop > 0){ //è¶…å‡ºç•Œé¢åº•éƒ¨
                                 top += docHeight - 26;
                             }
                             rootElem.top(top);

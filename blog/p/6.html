@@ -1,13 +1,13 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>jsÊµÏÖ×Ô¶¨ÒåÊýÑ§ÔËËã</title>
+<title>jså®žçŽ°è‡ªå®šä¹‰æ•°å­¦è¿ç®—</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>jsÊµÏÖ×Ô¶¨ÒåÊýÑ§ÔËËã</h1>
-    <div class=content><h2>Ç°ÑÔ</h2><p>±¾´ÎÒÔÊýÑ§ÔËËãÎªÀý×Ó£¬ÓÃJSÐ´Ò»¸ö¼¯´Ê·¨·ÖÎö£¬Óï·¨·ÖÎö£¬´úÂë½âÊÍÕâÑùÒ»¸öÑÝÊ¾È«¹ý³ÌµÄÀý×Ó¡£</p><h2>Ô¼¶¨</h2><h3>ÔËËã·û</h3><ol><li>¼Ó£¬¼õ¡º+£¬-¡»</li><li>³Ë£¬³ý¡º*£¬/¡»</li><li>³Ë·½¡º^¡»</li></ol><h3>ÔËËãÔª</h3><ol><li>ÕûÊý</li></ol><h2>ÑÝÊ¾</h2><p>´ýÖ´ÐÐµÄÊýÑ§±í´ïÊ½£º<input id="mathcode" value="1+2^3*4+51^5*6*5^6+71-7-8" style="width:300px;padding:3px;"/><button id="runbtn">Ö´ÐÐ·ÖÎö</button></p><p>Ö´ÐÐ½á¹û£º<span id="result" style="color:red">...</span></p><h3>ÊýÑ§±í´ïÊ½</h3><div style="border:1px dashed #ccc;" id="mathresult"></div><div class="olbox"><h4>´Ê·¨µ¥Ôª</h4><ul id="cfdy" style="border:1px dashed #ccc;"></ul></div><h3>Óï·¨Ê÷</h3><p class="info">Óï·¨Ê÷ÖÐ£¬aºÍbÎªÔËËãÔª£¬oÎªÔËËã·û£¬{}ÖÐµÄÄÚÈÝÎªÓÅÏÈÔËËã¡£</p><div style="border:1px dashed #ccc;" id="syntaxtree"></div><script>
+    <h1>jså®žçŽ°è‡ªå®šä¹‰æ•°å­¦è¿ç®—</h1>
+    <div class=content><h2>å‰è¨€</h2><p>æœ¬æ¬¡ä»¥æ•°å­¦è¿ç®—ä¸ºä¾‹å­ï¼Œç”¨JSå†™ä¸€ä¸ªé›†è¯æ³•åˆ†æžï¼Œè¯­æ³•åˆ†æžï¼Œä»£ç è§£é‡Šè¿™æ ·ä¸€ä¸ªæ¼”ç¤ºå…¨è¿‡ç¨‹çš„ä¾‹å­ã€‚</p><h2>çº¦å®š</h2><h3>è¿ç®—ç¬¦</h3><ol><li>åŠ ï¼Œå‡ã€Ž+ï¼Œ-ã€</li><li>ä¹˜ï¼Œé™¤ã€Ž*ï¼Œ/ã€</li><li>ä¹˜æ–¹ã€Ž^ã€</li></ol><h3>è¿ç®—å…ƒ</h3><ol><li>æ•´æ•°</li></ol><h2>æ¼”ç¤º</h2><p>å¾…æ‰§è¡Œçš„æ•°å­¦è¡¨è¾¾å¼ï¼š<input id="mathcode" value="1+2^3*4+51^5*6*5^6+71-7-8" style="width:300px;padding:3px;"/><button id="runbtn">æ‰§è¡Œåˆ†æž</button></p><p>æ‰§è¡Œç»“æžœï¼š<span id="result" style="color:red">...</span></p><h3>æ•°å­¦è¡¨è¾¾å¼</h3><div style="border:1px dashed #ccc;" id="mathresult"></div><div class="olbox"><h4>è¯æ³•å•å…ƒ</h4><ul id="cfdy" style="border:1px dashed #ccc;"></ul></div><h3>è¯­æ³•æ ‘</h3><p class="info">è¯­æ³•æ ‘ä¸­ï¼Œaå’Œbä¸ºè¿ç®—å…ƒï¼Œoä¸ºè¿ç®—ç¬¦ï¼Œ{}ä¸­çš„å†…å®¹ä¸ºä¼˜å…ˆè¿ç®—ã€‚</p><div style="border:1px dashed #ccc;" id="syntaxtree"></div><script>
 
 !function(J){
 
@@ -22,9 +22,9 @@ J('#runbtn').click(function(){
 
     J.forEach(tm, function(data){
         if(data.py){
-            li.push('<li>ÔËËã·û£º<span style="color:red">'+ data.val +'</span></li>');
+            li.push('<li>è¿ç®—ç¬¦ï¼š<span style="color:red">'+ data.val +'</span></li>');
         }else{
-            li.push('<li>ÔËËãÔª£º'+ data.val +'</li>');
+            li.push('<li>è¿ç®—å…ƒï¼š'+ data.val +'</li>');
         }
     });
 
@@ -36,7 +36,7 @@ J('#runbtn').click(function(){
 
 }(Z);
 
-function parse(code){//´Ê·¨·ÖÎö
+function parse(code){//è¯æ³•åˆ†æž
     var tm = [];
     code.replace(/(\^)|(\*|\/)|(\+|-)|(\d+)/g, function(all, o3, o1, o2, vart){
         switch(!1){
@@ -73,38 +73,38 @@ function parse(code){//´Ê·¨·ÖÎö
     return tm;
 
 }
-function syntax(tm){//Óï·¨·ÖÎö
-    var p,//±í´ïÊ½
-        c=[],//»º´æ
-        op,//µ±Ç°ÔËËã·û
-        py2,//ºó¼¶ÔËËã·ûÓÅÏÈ¼¶
-        i=0,//´Ê·¨¶ÓÁÐÖ¸Õë
+function syntax(tm){//è¯­æ³•åˆ†æž
+    var p,//è¡¨è¾¾å¼
+        c=[],//ç¼“å­˜
+        op,//å½“å‰è¿ç®—ç¬¦
+        py2,//åŽçº§è¿ç®—ç¬¦ä¼˜å…ˆçº§
+        i=0,//è¯æ³•é˜Ÿåˆ—æŒ‡é’ˆ
         end;
     while(op=tm[i]){
         if(op.py){
-            py2=tm[i+2]?tm[i+2].py:1;//µ±¶ÁÈ¡µ½×îºó£¬ÉèÖÃºó¼¶ÔËËãÓÅÏÈ¼¶Îª1
-            if(op.py==py2){//Æ½¼¶×ó½áºÏ
+            py2=tm[i+2]?tm[i+2].py:1;//å½“è¯»å–åˆ°æœ€åŽï¼Œè®¾ç½®åŽçº§è¿ç®—ä¼˜å…ˆçº§ä¸º1
+            if(op.py==py2){//å¹³çº§å·¦ç»“åˆ
                 p={a:p?p:tm[i-1].val,o:op.val,b:tm[i+1].val};
-            }else if(op.py>py2){//ÊÕÎ²×ó½áºÏ£¬¼´½«»º´æflush³öÀ´
+            }else if(op.py>py2){//æ”¶å°¾å·¦ç»“åˆï¼Œå³å°†ç¼“å­˜flushå‡ºæ¥
                 p={a:p?p:tm[i-1].val,o:op.val,b:tm[i+1].val};
-                for(var k=c.length-1;k>py2-1;k--){//´Ó×î¸ßÓÅÏÈ¼¶±ðµÄ¿ªÊ¼flush
+                for(var k=c.length-1;k>py2-1;k--){//ä»Žæœ€é«˜ä¼˜å…ˆçº§åˆ«çš„å¼€å§‹flush
                     c[k].push(p);
                     c[k][0].b=c[k][1];
                     p=c[k][0];
                     c.splice(k,1);          
                 }
-            }else{//ÓÒ½áºÏ
+            }else{//å³ç»“åˆ
                 c[op.py]=[{a:p?p:tm[i-1].val,o:op.val}];
                 p=null;
             }
-            i+=2;//ºóÒÆÖ¸ÕëÁ½Î»
+            i+=2;//åŽç§»æŒ‡é’ˆä¸¤ä½
         }else{
             i++;
         }
     }
     return p;
 }
-function explan(x){//½âÊÍÆ÷
+function explan(x){//è§£é‡Šå™¨
     if(typeof x=='object'){
         switch(x.o){
             case '+':return explan(x.a)+explan(x.b);

@@ -1,13 +1,13 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>web.xmlÎÄ¼şÏê½â£¨×ª£©</title>
+<title>web.xmlæ–‡ä»¶è¯¦è§£ï¼ˆè½¬ï¼‰</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>web.xmlÎÄ¼şÏê½â£¨×ª£©</h1>
-    <div class=content><h2>Ç°ÑÔ</h2><p class="info">ÓÉÓÚÒªÓÃµ½Google Appengine µÄjava°æ£¬ĞèÒªÁË½âweb.xmlµÄÅäÖÃ·½·¨£¬ÔÚ´Ë×ª·¢Ò»Æª½éÉÜµÄ±È½ÏÇå³şµÄÎÄÕÂ¡£</p><p>Ò»°ãµÄweb¹¤³ÌÖĞ¶¼»áÓÃµ½web.xml£¬web.xmlÖ÷ÒªÓÃÀ´ÅäÖÃ£¬¿ÉÒÔ·½±ãµÄ¿ª·¢web¹¤³Ì¡£web.xmlÖ÷ÒªÓÃÀ´ÅäÖÃFilter¡¢Listener¡¢ServletµÈ¡£µ«ÊÇÒªËµÃ÷µÄÊÇweb.xml²¢²»ÊÇ±ØĞëµÄ£¬Ò»¸öweb¹¤³Ì¿ÉÒÔÃ»ÓĞweb.xmlÎÄ¼ş¡£</p><h2>WEB¹¤³Ì¼ÓÔØweb.xml¹ı³Ì</h2><p>¾­¹ı¸öÈË²âÊÔ£¬WEB¹¤³Ì¼ÓÔØË³ĞòÓëÔªËØ½ÚµãÔÚÎÄ¼şÖĞµÄÅäÖÃË³ĞòÎŞ¹Ø¡£¼´²»»áÒòÎª filter Ğ´ÔÚ listener µÄÇ°Ãæ¶ø»áÏÈ¼ÓÔØ filter¡£WEBÈİÆ÷µÄ¼ÓÔØË³ĞòÊÇ£ºServletContext -> context-param -> listener -> filter -> servlet¡£²¢ÇÒÕâĞ©ÔªËØ¿ÉÒÔÅäÖÃÔÚÎÄ¼şÖĞµÄÈÎÒâÎ»ÖÃ¡£</p><p>¼ÓÔØ¹ı³ÌË³ĞòÈçÏÂ£º</p><ol><li>Æô¶¯Ò»¸öWEBÏîÄ¿µÄÊ±ºò£¬WEBÈİÆ÷»áÈ¥¶ÁÈ¡ËüµÄÅäÖÃÎÄ¼şweb.xml£¬¶ÁÈ¡<listener>ºÍ<context-param>Á½¸ö½áµã¡£ </li><li>½ô¼±×Å£¬Èİ´´½¨Ò»¸öServletContext£¨servletÉÏÏÂÎÄ£©£¬Õâ¸öwebÏîÄ¿µÄËùÓĞ²¿·Ö¶¼½«¹²ÏíÕâ¸öÉÏÏÂÎÄ¡£ </li><li>ÈİÆ÷½«<context-param>×ª»»Îª¼üÖµ¶Ô£¬²¢½»¸øservletContext¡£ </li><li>ÈİÆ÷´´½¨<listener>ÖĞµÄÀàÊµÀı£¬´´½¨¼àÌıÆ÷¡£ </li></ol><h2>web.xmlÎÄ¼şÔªËØÏê½â</h2><h3>1¡¢schema</h3><p>web.xmlµÄÄ£Ê½ÎÄ¼şÊÇÓÉSun¹«Ë¾¶¨ÒåµÄ£¬Ã¿¸öweb.xmlÎÄ¼şµÄ¸ùÔªËØ<web-app>ÖĞ£¬¶¼±ØĞë±êÃ÷Õâ¸ö web.xmlÊ¹ÓÃµÄÊÇÄÄ¸öÄ£Ê½ÎÄ¼ş¡£ÆäËüµÄÔªËØ¶¼·ÅÔÚ<web-app></web-app>Ö®ÖĞ¡£</p><pre class="xcode">
+    <h1>web.xmlæ–‡ä»¶è¯¦è§£ï¼ˆè½¬ï¼‰</h1>
+    <div class=content><h2>å‰è¨€</h2><p class="info">ç”±äºè¦ç”¨åˆ°Google Appengine çš„javaç‰ˆï¼Œéœ€è¦äº†è§£web.xmlçš„é…ç½®æ–¹æ³•ï¼Œåœ¨æ­¤è½¬å‘ä¸€ç¯‡ä»‹ç»çš„æ¯”è¾ƒæ¸…æ¥šçš„æ–‡ç« ã€‚</p><p>ä¸€èˆ¬çš„webå·¥ç¨‹ä¸­éƒ½ä¼šç”¨åˆ°web.xmlï¼Œweb.xmlä¸»è¦ç”¨æ¥é…ç½®ï¼Œå¯ä»¥æ–¹ä¾¿çš„å¼€å‘webå·¥ç¨‹ã€‚web.xmlä¸»è¦ç”¨æ¥é…ç½®Filterã€Listenerã€Servletç­‰ã€‚ä½†æ˜¯è¦è¯´æ˜çš„æ˜¯web.xmlå¹¶ä¸æ˜¯å¿…é¡»çš„ï¼Œä¸€ä¸ªwebå·¥ç¨‹å¯ä»¥æ²¡æœ‰web.xmlæ–‡ä»¶ã€‚</p><h2>WEBå·¥ç¨‹åŠ è½½web.xmlè¿‡ç¨‹</h2><p>ç»è¿‡ä¸ªäººæµ‹è¯•ï¼ŒWEBå·¥ç¨‹åŠ è½½é¡ºåºä¸å…ƒç´ èŠ‚ç‚¹åœ¨æ–‡ä»¶ä¸­çš„é…ç½®é¡ºåºæ— å…³ã€‚å³ä¸ä¼šå› ä¸º filter å†™åœ¨ listener çš„å‰é¢è€Œä¼šå…ˆåŠ è½½ filterã€‚WEBå®¹å™¨çš„åŠ è½½é¡ºåºæ˜¯ï¼šServletContext -> context-param -> listener -> filter -> servletã€‚å¹¶ä¸”è¿™äº›å…ƒç´ å¯ä»¥é…ç½®åœ¨æ–‡ä»¶ä¸­çš„ä»»æ„ä½ç½®ã€‚</p><p>åŠ è½½è¿‡ç¨‹é¡ºåºå¦‚ä¸‹ï¼š</p><ol><li>å¯åŠ¨ä¸€ä¸ªWEBé¡¹ç›®çš„æ—¶å€™ï¼ŒWEBå®¹å™¨ä¼šå»è¯»å–å®ƒçš„é…ç½®æ–‡ä»¶web.xmlï¼Œè¯»å–<listener>å’Œ<context-param>ä¸¤ä¸ªç»“ç‚¹ã€‚ </li><li>ç´§æ€¥ç€ï¼Œå®¹åˆ›å»ºä¸€ä¸ªServletContextï¼ˆservletä¸Šä¸‹æ–‡ï¼‰ï¼Œè¿™ä¸ªwebé¡¹ç›®çš„æ‰€æœ‰éƒ¨åˆ†éƒ½å°†å…±äº«è¿™ä¸ªä¸Šä¸‹æ–‡ã€‚ </li><li>å®¹å™¨å°†<context-param>è½¬æ¢ä¸ºé”®å€¼å¯¹ï¼Œå¹¶äº¤ç»™servletContextã€‚ </li><li>å®¹å™¨åˆ›å»º<listener>ä¸­çš„ç±»å®ä¾‹ï¼Œåˆ›å»ºç›‘å¬å™¨ã€‚ </li></ol><h2>web.xmlæ–‡ä»¶å…ƒç´ è¯¦è§£</h2><h3>1ã€schema</h3><p>web.xmlçš„æ¨¡å¼æ–‡ä»¶æ˜¯ç”±Sunå…¬å¸å®šä¹‰çš„ï¼Œæ¯ä¸ªweb.xmlæ–‡ä»¶çš„æ ¹å…ƒç´ <web-app>ä¸­ï¼Œéƒ½å¿…é¡»æ ‡æ˜è¿™ä¸ª web.xmlä½¿ç”¨çš„æ˜¯å“ªä¸ªæ¨¡å¼æ–‡ä»¶ã€‚å…¶å®ƒçš„å…ƒç´ éƒ½æ”¾åœ¨<web-app></web-app>ä¹‹ä¸­ã€‚</p><pre class="xcode">
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;web-app version=&quot;2.4&quot; 
     xmlns=&quot;http://java.sun.com/xml/ns/j2ee&quot; 
@@ -15,22 +15,22 @@
     xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/j2ee 
         http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd&quot;&gt;
 &lt;/web-app&gt;
-</pre><h3>2¡¢&lt;icon&gt;WebÓ¦ÓÃÍ¼±ê</h3><p>Ö¸³öIDEºÍGUI¹¤¾ßÓÃÀ´±íÊ¾WebÓ¦ÓÃµÄ´óÍ¼±êºÍĞ¡Í¼±ê¡£</p><pre class="xcode">
+</pre><h3>2ã€&lt;icon&gt;Webåº”ç”¨å›¾æ ‡</h3><p>æŒ‡å‡ºIDEå’ŒGUIå·¥å…·ç”¨æ¥è¡¨ç¤ºWebåº”ç”¨çš„å¤§å›¾æ ‡å’Œå°å›¾æ ‡ã€‚</p><pre class="xcode">
 &lt;icon&gt;
     &lt;small-icon&gt;/images/app_small.gif&lt;/small-icon&gt;
     &lt;large-icon&gt;/images/app_large.gif&lt;/large-icon&gt;
 &lt;/icon&gt;
-</pre><h3>3¡¢&lt;display-name&gt;WebÓ¦ÓÃÃû³Æ</h3><p>Ìá¹©GUI¹¤¾ß¿ÉÄÜ»áÓÃÀ´±ê¼ÇÕâ¸öÌØ¶¨µÄWebÓ¦ÓÃµÄÒ»¸öÃû³Æ</p><pre class="xcode">
+</pre><h3>3ã€&lt;display-name&gt;Webåº”ç”¨åç§°</h3><p>æä¾›GUIå·¥å…·å¯èƒ½ä¼šç”¨æ¥æ ‡è®°è¿™ä¸ªç‰¹å®šçš„Webåº”ç”¨çš„ä¸€ä¸ªåç§°</p><pre class="xcode">
 &lt;display-name&gt;Tomcat Example&lt;/display-name&gt;
-</pre><h3>4¡¢&lt;disciption&gt;WebÓ¦ÓÃÃèÊö</h3><p>¸ø³öÓÚ´ËÏà¹ØµÄËµÃ÷ĞÔÎÄ±¾</p><pre class="xcode">
+</pre><h3>4ã€&lt;disciption&gt;Webåº”ç”¨æè¿°</h3><p>ç»™å‡ºäºæ­¤ç›¸å…³çš„è¯´æ˜æ€§æ–‡æœ¬</p><pre class="xcode">
 &lt;disciption&gt;Tomcat Example servlets and JSP pages.&lt;/disciption&gt;
-</pre><h3>5¡¢&lt;context-param&gt;ÉÏÏÂÎÄ²ÎÊı</h3><p>ÉùÃ÷Ó¦ÓÃ·¶Î§ÄÚµÄ³õÊ¼»¯²ÎÊı¡£ËüÓÃÓÚÏò ServletContextÌá¹©¼üÖµ¶Ô£¬¼´Ó¦ÓÃ³ÌĞòÉÏÏÂÎÄĞÅÏ¢¡£ÎÒÃÇµÄlistener, filterµÈÔÚ³õÊ¼»¯Ê±»áÓÃµ½ÕâĞ©ÉÏÏÂÎÄÖĞµÄĞÅÏ¢¡£ÔÚservletÀïÃæ¿ÉÒÔÍ¨¹ıgetServletContext().getInitParameter(&quot;context/param&quot;)µÃµ½¡£</p><pre class="xcode">
+</pre><h3>5ã€&lt;context-param&gt;ä¸Šä¸‹æ–‡å‚æ•°</h3><p>å£°æ˜åº”ç”¨èŒƒå›´å†…çš„åˆå§‹åŒ–å‚æ•°ã€‚å®ƒç”¨äºå‘ ServletContextæä¾›é”®å€¼å¯¹ï¼Œå³åº”ç”¨ç¨‹åºä¸Šä¸‹æ–‡ä¿¡æ¯ã€‚æˆ‘ä»¬çš„listener, filterç­‰åœ¨åˆå§‹åŒ–æ—¶ä¼šç”¨åˆ°è¿™äº›ä¸Šä¸‹æ–‡ä¸­çš„ä¿¡æ¯ã€‚åœ¨servleté‡Œé¢å¯ä»¥é€šè¿‡getServletContext().getInitParameter(&quot;context/param&quot;)å¾—åˆ°ã€‚</p><pre class="xcode">
 &lt;context-param&gt;
     &lt;param-name&gt;ContextParameter&lt;/para-name&gt;
     &lt;param-value&gt;test&lt;/param-value&gt;
     &lt;description&gt;It is a test parameter.&lt;/description&gt;
 &lt;/context-param&gt;
-</pre><h3>6¡¢&lt;filter&gt;¹ıÂËÆ÷</h3><p>½«Ò»¸öÃû×ÖÓëÒ»¸öÊµÏÖjavaxs.servlet.Filter½Ó¿ÚµÄÀàÏà¹ØÁª¡£</p><pre class="xcode">
+</pre><h3>6ã€&lt;filter&gt;è¿‡æ»¤å™¨</h3><p>å°†ä¸€ä¸ªåå­—ä¸ä¸€ä¸ªå®ç°javaxs.servlet.Filteræ¥å£çš„ç±»ç›¸å…³è”ã€‚</p><pre class="xcode">
 &lt;filter&gt;
     &lt;filter-name&gt;setCharacterEncoding&lt;/filter-name&gt;
     &lt;filter-class&gt;com.myTest.setCharacterEncodingFilter&lt;/filter-class&gt;
@@ -43,12 +43,12 @@
     &lt;filter-name&gt;setCharacterEncoding&lt;/filter-name&gt;
     &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
 &lt;/filter-mapping&gt;
-</pre><h3>7¡¢&lt;listener&gt;¼àÌıÆ÷</h3><pre class="xcode">
+</pre><h3>7ã€&lt;listener&gt;ç›‘å¬å™¨</h3><pre class="xcode">
 &lt;listener&gt; 
     &lt;listerner-class&gt;com.listener.SessionListener&lt;/listener-class&gt; 
 &lt;/listener&gt;
-</pre><h3>8¡¢&lt;servlet&gt;</h3><p>&lt;servlet&gt;&lt;/servlet&gt; ÓÃÀ´ÉùÃ÷Ò»¸öservletµÄÊı¾İ£¬Ö÷ÒªÓĞÒÔÏÂ×ÓÔªËØ£º</p><ul><li>&lt;servlet-name&gt;&lt;/servlet-name&gt; Ö¸¶¨servletµÄÃû³Æ</li><li>&lt;servlet-class&gt;&lt;/servlet-class&gt; Ö¸¶¨servletµÄÀàÃû³Æ</li><li>&lt;jsp-file&gt;&lt;/jsp-file&gt; Ö¸¶¨webÕ¾Ì¨ÖĞµÄÄ³¸öJSPÍøÒ³µÄÍêÕûÂ·¾¶</li><li>&lt;init-param&gt;&lt;/init-param&gt; ÓÃÀ´¶¨Òå²ÎÊı£¬¿ÉÓĞ¶à¸öinit-param¡£ÔÚservletÀàÖĞÍ¨¹ıgetInitParamenter(String name)·½·¨·ÃÎÊ³õÊ¼»¯²ÎÊı</li><li>&lt;load-on-startup&gt;&lt;/load-on-startup&gt;Ö¸¶¨µ±WebÓ¦ÓÃÆô¶¯Ê±£¬×°ÔØServletµÄ´ÎĞò¡£µ±ÖµÎªÕıÊı»òÁãÊ±£ºServletÈİÆ÷ÏÈ¼ÓÔØÊıÖµĞ¡µÄservlet£¬ÔÙÒÀ´Î¼ÓÔØÆäËûÊıÖµ´óµÄservlet¡£µ±ÖµÎª¸º»òÎ´¶¨Òå£ºServletÈİÆ÷½«ÔÚWeb¿Í»§Ê×´Î·ÃÎÊÕâ¸öservletÊ±¼ÓÔØËü¡£</li><li>&lt;servlet-mapping&gt;&lt;/servlet-mapping&gt; ÓÃÀ´¶¨ÒåservletËù¶ÔÓ¦µÄURL£¬°üº¬Á½¸ö×ÓÔªËØ</li><li>&lt;servlet-name&gt;&lt;/servlet-name&gt; Ö¸¶¨servletµÄÃû³Æ</li><li>&lt;url-pattern&gt;&lt;/url-pattern&gt; Ö¸¶¨servletËù¶ÔÓ¦µÄURL</li></ul><pre class="xcode">
-&lt;!-- »ù±¾ÅäÖÃ --&gt;
+</pre><h3>8ã€&lt;servlet&gt;</h3><p>&lt;servlet&gt;&lt;/servlet&gt; ç”¨æ¥å£°æ˜ä¸€ä¸ªservletçš„æ•°æ®ï¼Œä¸»è¦æœ‰ä»¥ä¸‹å­å…ƒç´ ï¼š</p><ul><li>&lt;servlet-name&gt;&lt;/servlet-name&gt; æŒ‡å®šservletçš„åç§°</li><li>&lt;servlet-class&gt;&lt;/servlet-class&gt; æŒ‡å®šservletçš„ç±»åç§°</li><li>&lt;jsp-file&gt;&lt;/jsp-file&gt; æŒ‡å®šwebç«™å°ä¸­çš„æŸä¸ªJSPç½‘é¡µçš„å®Œæ•´è·¯å¾„</li><li>&lt;init-param&gt;&lt;/init-param&gt; ç”¨æ¥å®šä¹‰å‚æ•°ï¼Œå¯æœ‰å¤šä¸ªinit-paramã€‚åœ¨servletç±»ä¸­é€šè¿‡getInitParamenter(String name)æ–¹æ³•è®¿é—®åˆå§‹åŒ–å‚æ•°</li><li>&lt;load-on-startup&gt;&lt;/load-on-startup&gt;æŒ‡å®šå½“Webåº”ç”¨å¯åŠ¨æ—¶ï¼Œè£…è½½Servletçš„æ¬¡åºã€‚å½“å€¼ä¸ºæ­£æ•°æˆ–é›¶æ—¶ï¼šServletå®¹å™¨å…ˆåŠ è½½æ•°å€¼å°çš„servletï¼Œå†ä¾æ¬¡åŠ è½½å…¶ä»–æ•°å€¼å¤§çš„servletã€‚å½“å€¼ä¸ºè´Ÿæˆ–æœªå®šä¹‰ï¼šServletå®¹å™¨å°†åœ¨Webå®¢æˆ·é¦–æ¬¡è®¿é—®è¿™ä¸ªservletæ—¶åŠ è½½å®ƒã€‚</li><li>&lt;servlet-mapping&gt;&lt;/servlet-mapping&gt; ç”¨æ¥å®šä¹‰servletæ‰€å¯¹åº”çš„URLï¼ŒåŒ…å«ä¸¤ä¸ªå­å…ƒç´ </li><li>&lt;servlet-name&gt;&lt;/servlet-name&gt; æŒ‡å®šservletçš„åç§°</li><li>&lt;url-pattern&gt;&lt;/url-pattern&gt; æŒ‡å®šservletæ‰€å¯¹åº”çš„URL</li></ul><pre class="xcode">
+&lt;!-- åŸºæœ¬é…ç½® --&gt;
 &lt;servlet&gt;
     &lt;servlet-name&gt;snoop&lt;/servlet-name&gt;
     &lt;servlet-class&gt;SnoopServlet&lt;/servlet-class&gt;
@@ -57,7 +57,7 @@
     &lt;servlet-name&gt;snoop&lt;/servlet-name&gt;
     &lt;url-pattern&gt;/snoop&lt;/url-pattern&gt;
 &lt;/servlet-mapping&gt;
-&lt;!-- ¸ß¼¶ÅäÖÃ --&gt;
+&lt;!-- é«˜çº§é…ç½® --&gt;
 &lt;servlet&gt;
     &lt;servlet-name&gt;snoop&lt;/servlet-name&gt;
     &lt;servlet-class&gt;SnoopServlet&lt;/servlet-class&gt;
@@ -74,34 +74,34 @@
     &lt;servlet-name&gt;snoop&lt;/servlet-name&gt;
     &lt;url-pattern&gt;/snoop&lt;/url-pattern&gt;
 &lt;/servlet-mapping&gt;
-</pre><h3>9¡¢&lt;session-config&gt;»á»°³¬Ê±ÅäÖÃ</h3><p>µ¥Î»Îª·ÖÖÓ¡£</p><pre class="xcode">
+</pre><h3>9ã€&lt;session-config&gt;ä¼šè¯è¶…æ—¶é…ç½®</h3><p>å•ä½ä¸ºåˆ†é’Ÿã€‚</p><pre class="xcode">
 &lt;session-config&gt;
     &lt;session-timeout&gt;120&lt;/session-timeout&gt;
 &lt;/session-config&gt;
-</pre><h3>10¡¢&lt;mime-mapping&gt;</h3><pre class="xcode">
+</pre><h3>10ã€&lt;mime-mapping&gt;</h3><pre class="xcode">
 &lt;mime-mapping&gt;
     &lt;extension&gt;htm&lt;/extension&gt;
     &lt;mime-type&gt;text/html&lt;/mime-type&gt;
 &lt;/mime-mapping&gt;
-</pre><h3>11¡¢&lt;welcome-file-list&gt;»¶Ó­ÎÄ¼şÒ³</h3><pre class="xcode">
+</pre><h3>11ã€&lt;welcome-file-list&gt;æ¬¢è¿æ–‡ä»¶é¡µ</h3><pre class="xcode">
 &lt;welcome-file-list&gt;
     &lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;
     &lt;welcome-file&gt;index.html&lt;/welcome-file&gt;
     &lt;welcome-file&gt;index.htm&lt;/welcome-file&gt;
 &lt;/welcome-file-list&gt;
-</pre><h3>12¡¢&lt;error-page&gt;´íÎóÒ³Ãæ</h3><pre class="xcode">
-&lt;!-- 1¡¢Í¨¹ı´íÎóÂëÀ´ÅäÖÃerror-page¡£µ±ÏµÍ³·¢Éú¡Á¡Á¡Á´íÎóÊ±£¬Ìø×ªµ½´íÎó´¦ÀíÒ³Ãæ¡£ --&gt;
+</pre><h3>12ã€&lt;error-page&gt;é”™è¯¯é¡µé¢</h3><pre class="xcode">
+&lt;!-- 1ã€é€šè¿‡é”™è¯¯ç æ¥é…ç½®error-pageã€‚å½“ç³»ç»Ÿå‘ç”ŸÃ—Ã—Ã—é”™è¯¯æ—¶ï¼Œè·³è½¬åˆ°é”™è¯¯å¤„ç†é¡µé¢ã€‚ --&gt;
 &lt;error-page&gt;
     &lt;error-code&gt;404&lt;/error-code&gt;
     &lt;location&gt;/NotFound.jsp&lt;/location&gt;
 &lt;/error-page&gt;
 </pre><pre class="xcode">
-&lt;!-- 2¡¢Í¨¹ıÒì³£µÄÀàĞÍÅäÖÃerror-page¡£µ±ÏµÍ³·¢Éújava.lang.NullException£¨¼´¿ÕÖ¸ÕëÒì³££©Ê±£¬Ìø×ªµ½´íÎó´¦ÀíÒ³Ãæ¡£ --&gt;
+&lt;!-- 2ã€é€šè¿‡å¼‚å¸¸çš„ç±»å‹é…ç½®error-pageã€‚å½“ç³»ç»Ÿå‘ç”Ÿjava.lang.NullExceptionï¼ˆå³ç©ºæŒ‡é’ˆå¼‚å¸¸ï¼‰æ—¶ï¼Œè·³è½¬åˆ°é”™è¯¯å¤„ç†é¡µé¢ã€‚ --&gt;
 &lt;error-page&gt;
     &lt;exception-type&gt;java.lang.NullException&lt;/exception-type&gt;
     &lt;location&gt;/error.jsp&lt;/location&gt;
 &lt;/error-page&gt;
-</pre><h3>13¡¢&lt;jsp-config&gt;ÉèÖÃjsp</h3><p>&lt;jsp-config&gt; °üÀ¨ &lt;taglib&gt; ºÍ &lt;jsp-property-group&gt; Á½¸ö×ÓÔªËØ¡£ÆäÖĞ&lt;taglib&gt; ÔªËØÔÚJSP 1.2 Ê±¾ÍÒÑ¾­´æÔÚ£»¶ø&lt;jsp-property-group&gt; ÊÇJSP 2.0 ĞÂÔöµÄÔªËØ¡£</p><p>&lt;jsp-property-group&gt; ÔªËØÖ÷ÒªÓĞ°Ë¸ö×ÓÔªËØ£¬ËüÃÇ·Ö±ğÎª£º</p><ul><li>&lt;description&gt;£ºÉè¶¨µÄËµÃ÷ </li><li>&lt;display-name&gt;£ºÉè¶¨Ãû³Æ </li><li>&lt;url-pattern&gt;£ºÉè¶¨ÖµËùÓ°ÏìµÄ·¶Î§£¬Èç£º /CH2 »ò /*.jsp</li><li>&lt;el-ignored&gt;£ºÈôÎª true£¬±íÊ¾²»Ö§³Ö EL Óï·¨ </li><li>&lt;scripting-invalid&gt;£ºÈôÎª true£¬±íÊ¾²»Ö§³Ö &lt;% scripting %&gt;Óï·¨ </li><li>&lt;page-encoding&gt;£ºÉè¶¨ JSP ÍøÒ³µÄ±àÂë </li><li>&lt;include-prelude&gt;£ºÉèÖÃ JSP ÍøÒ³µÄÌ§Í·£¬À©Õ¹ÃûÎª .jspf</li><li>&lt;include-coda&gt;£ºÉèÖÃ JSP ÍøÒ³µÄ½áÎ²£¬À©Õ¹ÃûÎª .jspf</li></ul><pre class="xcode">
+</pre><h3>13ã€&lt;jsp-config&gt;è®¾ç½®jsp</h3><p>&lt;jsp-config&gt; åŒ…æ‹¬ &lt;taglib&gt; å’Œ &lt;jsp-property-group&gt; ä¸¤ä¸ªå­å…ƒç´ ã€‚å…¶ä¸­&lt;taglib&gt; å…ƒç´ åœ¨JSP 1.2 æ—¶å°±å·²ç»å­˜åœ¨ï¼›è€Œ&lt;jsp-property-group&gt; æ˜¯JSP 2.0 æ–°å¢çš„å…ƒç´ ã€‚</p><p>&lt;jsp-property-group&gt; å…ƒç´ ä¸»è¦æœ‰å…«ä¸ªå­å…ƒç´ ï¼Œå®ƒä»¬åˆ†åˆ«ä¸ºï¼š</p><ul><li>&lt;description&gt;ï¼šè®¾å®šçš„è¯´æ˜ </li><li>&lt;display-name&gt;ï¼šè®¾å®šåç§° </li><li>&lt;url-pattern&gt;ï¼šè®¾å®šå€¼æ‰€å½±å“çš„èŒƒå›´ï¼Œå¦‚ï¼š /CH2 æˆ– /*.jsp</li><li>&lt;el-ignored&gt;ï¼šè‹¥ä¸º trueï¼Œè¡¨ç¤ºä¸æ”¯æŒ EL è¯­æ³• </li><li>&lt;scripting-invalid&gt;ï¼šè‹¥ä¸º trueï¼Œè¡¨ç¤ºä¸æ”¯æŒ &lt;% scripting %&gt;è¯­æ³• </li><li>&lt;page-encoding&gt;ï¼šè®¾å®š JSP ç½‘é¡µçš„ç¼–ç  </li><li>&lt;include-prelude&gt;ï¼šè®¾ç½® JSP ç½‘é¡µçš„æŠ¬å¤´ï¼Œæ‰©å±•åä¸º .jspf</li><li>&lt;include-coda&gt;ï¼šè®¾ç½® JSP ç½‘é¡µçš„ç»“å°¾ï¼Œæ‰©å±•åä¸º .jspf</li></ul><pre class="xcode">
 &lt;jsp-config&gt;
     &lt;taglib&gt;
         &lt;taglib-uri&gt;Taglib&lt;/taglib-uri&gt;
@@ -118,5 +118,5 @@
         &lt;include-coda&gt;/include/coda.jspf&lt;/include-coda&gt;
     &lt;/jsp-property-group&gt;
 &lt;/jsp-config&gt;
-</pre><p>¶ÔÓÚWeb Ó¦ÓÃ³ÌÊ½À´Ëµ£¬Scriptlet ÊÇ¸ö²»ÀÖÒâ±»¼ûµ½µÄ¶«Î÷£¬ÒòÎªËü»áÊ¹µÃHTML ÓëJava ³ÌÊ½Âë½»Ïà»ìÔÓ£¬¶ÔÓÚ³ÌÊ½µÄÎ¬»¤À´ËµÏàµ±µÄÂé·³£¬±ØÒªµÄÊ±ºò£¬¿ÉÒÔÔÚweb.xml ÖĞ¼ÓÉÏ&lt;script-invalid&gt; ±êÇ©£¬Éè¶¨ËùÓĞµÄJSP ÍøÒ³¶¼²»¿ÉÒÔÊ¹ÓÃScriptlet¡£</p><h2>Mapping¹æÔò</h2><p>µ±Ò»¸öÇëÇó·¢ËÍµ½servletÈİÆ÷µÄÊ±ºò£¬ÈİÆ÷ÏÈ»á½«ÇëÇóµÄurl¼õÈ¥µ±Ç°Ó¦ÓÃÉÏÏÂÎÄµÄÂ·¾¶×÷ÎªservletµÄÓ³Éäurl£¬±ÈÈçÎÒ·ÃÎÊµÄÊÇhttp://localhost/test/aaa.html£¬ÎÒµÄÓ¦ÓÃÉÏÏÂÎÄÊÇtest£¬ÈİÆ÷»á½«http://localhost/testÈ¥µô£¬Ê£ÏÂµÄ/aaa.html²¿·ÖÄÃÀ´×öservletµÄÓ³ÉäÆ¥Åä¡£Õâ¸öÓ³ÉäÆ¥Åä¹ı³ÌÊÇÓĞË³ĞòµÄ£¬¶øÇÒµ±ÓĞÒ»¸öservletÆ¥Åä³É¹¦ÒÔºó£¬¾Í²»»áÈ¥Àí»áÊ£ÏÂµÄservletÁË¡£</p><p>ÆäÆ¥Åä¹æÔòºÍË³ĞòÈçÏÂ£º</p><ol><li>¾«È·Â·¾¶Æ¥Åä¡£Àı×Ó£º±ÈÈçservletA µÄurl-patternÎª /test£¬servletBµÄurl-patternÎª /* £¬Õâ¸öÊ±ºò£¬Èç¹ûÎÒ·ÃÎÊµÄurlÎªhttp://localhost/test £¬Õâ¸öÊ±ºòÈİÆ÷¾Í»áÏÈ ½øĞĞ¾«È·Â·¾¶Æ¥Åä£¬·¢ÏÖ/testÕıºÃ±»servletA¾«È·Æ¥Åä£¬ÄÇÃ´¾ÍÈ¥µ÷ÓÃservletA£¬Ò²²»»áÈ¥Àí»áÆäËûµÄservletÁË¡£</li><li>×î³¤Â·¾¶Æ¥Åä¡£Àı×Ó£ºservletAµÄurl-patternÎª/test/<em>£¬¶øservletBµÄurl-patternÎª/test/a/</em>£¬´ËÊ±·ÃÎÊhttp://localhost/test/aÊ±£¬ÈİÆ÷»áÑ¡ÔñÂ·¾¶×î³¤µÄservletÀ´Æ¥Åä£¬Ò²¾ÍÊÇÕâÀïµÄservletB¡£</li><li>À©Õ¹Æ¥Åä£¬Èç¹ûurl×îºóÒ»¶Î°üº¬À©Õ¹£¬ÈİÆ÷½«»á¸ù¾İÀ©Õ¹Ñ¡ÔñºÏÊÊµÄservlet¡£Àı×Ó£ºservletAµÄurl-pattern£º*.action</li></ol><p>ÒÔ¡±/¡¯¿ªÍ·ºÍÒÔ¡±/*¡±½áÎ²µÄÊÇÓÃÀ´×öÂ·¾¶Ó³ÉäµÄ¡£ÒÔÇ°×º¡±*.¡±¿ªÍ·µÄÊÇÓÃÀ´×öÀ©Õ¹Ó³ÉäµÄ¡£ËùÒÔ£¬ÎªÊ²Ã´¶¨Òå¡±/*.action¡±ÕâÑùÒ»¸ö¿´ÆğÀ´ºÜÕı³£µÄÆ¥Åä»á´í£¿ÒòÎªÕâ¸öÆ¥Åä¼´ÊôÓÚÂ·¾¶Ó³Éä£¬Ò²ÊôÓÚÀ©Õ¹Ó³Éä£¬µ¼ÖÂÈİÆ÷ÎŞ·¨ÅĞ¶Ï¡£</p><h2>½áÓï</h2><p>ÎÄÕÂÀ´Ô´<a class="rlink" href="http://www.cnblogs.com/hellojava/archive/2012/12/28/2835730.html" target="_blank">web.xmlÎÄ¼şÏê½â</a><br/></p></div>
+</pre><p>å¯¹äºWeb åº”ç”¨ç¨‹å¼æ¥è¯´ï¼ŒScriptlet æ˜¯ä¸ªä¸ä¹æ„è¢«è§åˆ°çš„ä¸œè¥¿ï¼Œå› ä¸ºå®ƒä¼šä½¿å¾—HTML ä¸Java ç¨‹å¼ç äº¤ç›¸æ··æ‚ï¼Œå¯¹äºç¨‹å¼çš„ç»´æŠ¤æ¥è¯´ç›¸å½“çš„éº»çƒ¦ï¼Œå¿…è¦çš„æ—¶å€™ï¼Œå¯ä»¥åœ¨web.xml ä¸­åŠ ä¸Š&lt;script-invalid&gt; æ ‡ç­¾ï¼Œè®¾å®šæ‰€æœ‰çš„JSP ç½‘é¡µéƒ½ä¸å¯ä»¥ä½¿ç”¨Scriptletã€‚</p><h2>Mappingè§„åˆ™</h2><p>å½“ä¸€ä¸ªè¯·æ±‚å‘é€åˆ°servletå®¹å™¨çš„æ—¶å€™ï¼Œå®¹å™¨å…ˆä¼šå°†è¯·æ±‚çš„urlå‡å»å½“å‰åº”ç”¨ä¸Šä¸‹æ–‡çš„è·¯å¾„ä½œä¸ºservletçš„æ˜ å°„urlï¼Œæ¯”å¦‚æˆ‘è®¿é—®çš„æ˜¯http://localhost/test/aaa.htmlï¼Œæˆ‘çš„åº”ç”¨ä¸Šä¸‹æ–‡æ˜¯testï¼Œå®¹å™¨ä¼šå°†http://localhost/testå»æ‰ï¼Œå‰©ä¸‹çš„/aaa.htmléƒ¨åˆ†æ‹¿æ¥åšservletçš„æ˜ å°„åŒ¹é…ã€‚è¿™ä¸ªæ˜ å°„åŒ¹é…è¿‡ç¨‹æ˜¯æœ‰é¡ºåºçš„ï¼Œè€Œä¸”å½“æœ‰ä¸€ä¸ªservletåŒ¹é…æˆåŠŸä»¥åï¼Œå°±ä¸ä¼šå»ç†ä¼šå‰©ä¸‹çš„servletäº†ã€‚</p><p>å…¶åŒ¹é…è§„åˆ™å’Œé¡ºåºå¦‚ä¸‹ï¼š</p><ol><li>ç²¾ç¡®è·¯å¾„åŒ¹é…ã€‚ä¾‹å­ï¼šæ¯”å¦‚servletA çš„url-patternä¸º /testï¼ŒservletBçš„url-patternä¸º /* ï¼Œè¿™ä¸ªæ—¶å€™ï¼Œå¦‚æœæˆ‘è®¿é—®çš„urlä¸ºhttp://localhost/test ï¼Œè¿™ä¸ªæ—¶å€™å®¹å™¨å°±ä¼šå…ˆ è¿›è¡Œç²¾ç¡®è·¯å¾„åŒ¹é…ï¼Œå‘ç°/testæ­£å¥½è¢«servletAç²¾ç¡®åŒ¹é…ï¼Œé‚£ä¹ˆå°±å»è°ƒç”¨servletAï¼Œä¹Ÿä¸ä¼šå»ç†ä¼šå…¶ä»–çš„servletäº†ã€‚</li><li>æœ€é•¿è·¯å¾„åŒ¹é…ã€‚ä¾‹å­ï¼šservletAçš„url-patternä¸º/test/<em>ï¼Œè€ŒservletBçš„url-patternä¸º/test/a/</em>ï¼Œæ­¤æ—¶è®¿é—®http://localhost/test/aæ—¶ï¼Œå®¹å™¨ä¼šé€‰æ‹©è·¯å¾„æœ€é•¿çš„servletæ¥åŒ¹é…ï¼Œä¹Ÿå°±æ˜¯è¿™é‡Œçš„servletBã€‚</li><li>æ‰©å±•åŒ¹é…ï¼Œå¦‚æœurlæœ€åä¸€æ®µåŒ…å«æ‰©å±•ï¼Œå®¹å™¨å°†ä¼šæ ¹æ®æ‰©å±•é€‰æ‹©åˆé€‚çš„servletã€‚ä¾‹å­ï¼šservletAçš„url-patternï¼š*.action</li></ol><p>ä»¥â€/â€™å¼€å¤´å’Œä»¥â€/*â€ç»“å°¾çš„æ˜¯ç”¨æ¥åšè·¯å¾„æ˜ å°„çš„ã€‚ä»¥å‰ç¼€â€*.â€å¼€å¤´çš„æ˜¯ç”¨æ¥åšæ‰©å±•æ˜ å°„çš„ã€‚æ‰€ä»¥ï¼Œä¸ºä»€ä¹ˆå®šä¹‰â€/*.actionâ€è¿™æ ·ä¸€ä¸ªçœ‹èµ·æ¥å¾ˆæ­£å¸¸çš„åŒ¹é…ä¼šé”™ï¼Ÿå› ä¸ºè¿™ä¸ªåŒ¹é…å³å±äºè·¯å¾„æ˜ å°„ï¼Œä¹Ÿå±äºæ‰©å±•æ˜ å°„ï¼Œå¯¼è‡´å®¹å™¨æ— æ³•åˆ¤æ–­ã€‚</p><h2>ç»“è¯­</h2><p>æ–‡ç« æ¥æº<a class="rlink" href="http://www.cnblogs.com/hellojava/archive/2012/12/28/2835730.html" target="_blank">web.xmlæ–‡ä»¶è¯¦è§£</a><br/></p></div>
 </div>

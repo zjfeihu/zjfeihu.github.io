@@ -1,16 +1,16 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>²å¿ÕÇî¾ÙÅÅÐòËã·¨</title>
+<title>æ’ç©ºç©·ä¸¾æŽ’åºç®—æ³•</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>²å¿ÕÇî¾ÙÅÅÐòËã·¨</h1>
-    <div class=content><h2>Ç°ÑÔ</h2><p>¸ù¾Ý¸ø¶¨µÄÔªËØÉú³ÉÔªËØµÄËùÓÐÅÅÐò¿ÉÄÜ£¬markÏÂ¡£</p><h2>´úÂëÑÝÊ¾</h2><p class="info">¿ÉÒÔ½«Êý×Ö¸Ä³ÉÆäËû×ÖÄ¸½øÐÐÑÝÊ¾¡£</p><textarea class="code-html">
+    <h1>æ’ç©ºç©·ä¸¾æŽ’åºç®—æ³•</h1>
+    <div class=content><h2>å‰è¨€</h2><p>æ ¹æ®ç»™å®šçš„å…ƒç´ ç”Ÿæˆå…ƒç´ çš„æ‰€æœ‰æŽ’åºå¯èƒ½ï¼Œmarkä¸‹ã€‚</p><h2>ä»£ç æ¼”ç¤º</h2><p class="info">å¯ä»¥å°†æ•°å­—æ”¹æˆå…¶ä»–å­—æ¯è¿›è¡Œæ¼”ç¤ºã€‚</p><textarea class="code-html">
 <script>
 items = [1, 2, 3, 4, 5];
-//items = ['Àî', 'ÕÅ', '·ç'];
+//items = ['æŽ', 'å¼ ', 'é£Ž'];
 document.write('<ol><li>'+getArrs(items).join('</li><li>')+'</li></ol>');
 function getArrs(items){
     var
@@ -19,20 +19,20 @@ function getArrs(items){
     tempResults,
     results = [[items[0]]];
     for(var i = 1; i < items.length; i++){
-        curItem = items[i];  //È¡Ò»¸öÔªËØ
+        curItem = items[i];  //å–ä¸€ä¸ªå…ƒç´ 
         tempResults = [];
         for(var j = 0; j < results.length; j++){
-            curResult = results[j];  //µ±Ç°²Ù×÷µÄÁÙÊ±½á¹û
-            for(var k = 0; k <= curResult.length; k++){  //±éÀú»ñÈ¡ËùÓÐ¿Õ´¦µÄÎ»ÖÃ
+            curResult = results[j];  //å½“å‰æ“ä½œçš„ä¸´æ—¶ç»“æžœ
+            for(var k = 0; k <= curResult.length; k++){  //éåŽ†èŽ·å–æ‰€æœ‰ç©ºå¤„çš„ä½ç½®
                 var copyCur = curResult.slice(0); 
-                copyCur.splice(k, 0, curItem);  //ÔÚÖ¸¶¨¿Õ´¦²åÈëÔªËØ
+                copyCur.splice(k, 0, curItem);  //åœ¨æŒ‡å®šç©ºå¤„æ’å…¥å…ƒç´ 
                 tempResults.push(copyCur);
             }
         }
-        results = tempResults;  //¸üÐÂ½á¹û
+        results = tempResults;  //æ›´æ–°ç»“æžœ
     }
     return results;
 }
 </script>
-</textarea><h2>Ëã·¨Ô­Àí</h2><p>ÎªÁËÊµÏÖÉú³ÉËùÓÐÔªËØµÄÅÅÐò£¬ÕâÀï¾Í±ØÐëÍ¨¹ýÇî¾ÙÀ´ÊµÏÖÉú³É£¬Ê×ÏÈÎÒÃÇ·ÖÎöÏÂ£º</p><ul><li>¼ÙÉèÒ»¸öÔªËØ£¬ÄÇÃ´Ö»ÄÜÓÐÒ»ÖÖÅÅÐò¿ÉÄÜ</li><li>¼ÙÉèÊÇ[A,B]£¬ÄÇÃ´¿ÉÄÜÊÇ[A,B]»òÕß[B,A]</li><li>¼ÙÉèÊÇ[A,B,C]£¬ÄÇÃ´¿ÉÒÔÊÇ[A,B,C],[A,C,B],[B,A,C],[B,C,A],...</li></ul><p>ÓÉÉÏÃæ¿ÉÒÔ·ÖÎöµÃµ½n¸öÔªËØµÄÅÅÐò¿ÉÒÔ³öÏÖÊýÁ¿ÊÇnµÄ½×²ã£¬¼´1*2*3*...*n</p><p>¸ù¾ÝÉÏÃæµÄ¹æÂÉÎÒÃÇ¿ÉÒÔ¿´³ö£¬Ã¿Ôö¼ÓÒ»¸öÔªËØ£¬ÅÅÐò¾Í»á¶à³önÖÖ£¬Ò²¾ÍÊÇÕâ¸önÊÇÒ»¸öµÝÔöµÄ±äÁ¿£¬¶øÕâ¸önµÄÖµ¸ÕºÃÎªµÚn¸öÔªËØ¡£</p><p>ÏÖÔÚÒÔ[A,B,C]ÔªËØ×éÎªÊµÀý·ÖÎöÕâ¸öËã·¨µÄ¹ý³Ì¡£</p><ol><li>ÎªÁËÉú³É½á¹û£¬ÎÒÃÇÊ×ÏÈ´Ó[A,B,C]ÖÐÈ¡Ò»¸öÔªËØ£¬ÎÒÃÇÏÈ´Ó¿ªÊ¼´¦È¡µÃA£¬Éú³ÉÁÙÊ±½á¹û[A]</li><li>ÔÚ´ÓÔªËØ×éÖÐÈ¡B£¬½«BºÍÁÙÊ±½á¹û[A]½øÐÐÇî¾ÙÉú³ÉÐÂµÄÁÙÊ±½á¹û£¬¶øÕâ¸öÉú³ÉµÄ¹æÔò¾ÍÊÇ£º[A]ÁÙÊ±½á¹ûÓÐ2¸ö¿ÕÎ»£¬B¿ÉÒÔ²åÈëµ½AµÄÇ°Ãæ»òÔòºóÃæµÄ¿Õ´¦Éú³É[B,A]»òÔò[A,B]</li><li>È¡³öÔªËØC£¬ÁÙÊ±[A,B]ºÍ[B,A]ÓÐ3¸ö¿Õ´¦£¬C¿ÉÒÔ²åÈë[A,B]µÄ¿Õ´¦Éú³É[C,A,B],[A,C,B],[A,B,C]</li><li>Ö±µ½ËùÓÐµÄÔªËØ¶¼±»È¡³ö£¬ÄÇÃ´×îºóµÄÁÙÊ±½á¹û¾ÍÊÇ×îÖÕµÄ½á¹ûÁË</li></ol></div>
+</textarea><h2>ç®—æ³•åŽŸç†</h2><p>ä¸ºäº†å®žçŽ°ç”Ÿæˆæ‰€æœ‰å…ƒç´ çš„æŽ’åºï¼Œè¿™é‡Œå°±å¿…é¡»é€šè¿‡ç©·ä¸¾æ¥å®žçŽ°ç”Ÿæˆï¼Œé¦–å…ˆæˆ‘ä»¬åˆ†æžä¸‹ï¼š</p><ul><li>å‡è®¾ä¸€ä¸ªå…ƒç´ ï¼Œé‚£ä¹ˆåªèƒ½æœ‰ä¸€ç§æŽ’åºå¯èƒ½</li><li>å‡è®¾æ˜¯[A,B]ï¼Œé‚£ä¹ˆå¯èƒ½æ˜¯[A,B]æˆ–è€…[B,A]</li><li>å‡è®¾æ˜¯[A,B,C]ï¼Œé‚£ä¹ˆå¯ä»¥æ˜¯[A,B,C],[A,C,B],[B,A,C],[B,C,A],...</li></ul><p>ç”±ä¸Šé¢å¯ä»¥åˆ†æžå¾—åˆ°nä¸ªå…ƒç´ çš„æŽ’åºå¯ä»¥å‡ºçŽ°æ•°é‡æ˜¯nçš„é˜¶å±‚ï¼Œå³1*2*3*...*n</p><p>æ ¹æ®ä¸Šé¢çš„è§„å¾‹æˆ‘ä»¬å¯ä»¥çœ‹å‡ºï¼Œæ¯å¢žåŠ ä¸€ä¸ªå…ƒç´ ï¼ŒæŽ’åºå°±ä¼šå¤šå‡ºnç§ï¼Œä¹Ÿå°±æ˜¯è¿™ä¸ªnæ˜¯ä¸€ä¸ªé€’å¢žçš„å˜é‡ï¼Œè€Œè¿™ä¸ªnçš„å€¼åˆšå¥½ä¸ºç¬¬nä¸ªå…ƒç´ ã€‚</p><p>çŽ°åœ¨ä»¥[A,B,C]å…ƒç´ ç»„ä¸ºå®žä¾‹åˆ†æžè¿™ä¸ªç®—æ³•çš„è¿‡ç¨‹ã€‚</p><ol><li>ä¸ºäº†ç”Ÿæˆç»“æžœï¼Œæˆ‘ä»¬é¦–å…ˆä»Ž[A,B,C]ä¸­å–ä¸€ä¸ªå…ƒç´ ï¼Œæˆ‘ä»¬å…ˆä»Žå¼€å§‹å¤„å–å¾—Aï¼Œç”Ÿæˆä¸´æ—¶ç»“æžœ[A]</li><li>åœ¨ä»Žå…ƒç´ ç»„ä¸­å–Bï¼Œå°†Bå’Œä¸´æ—¶ç»“æžœ[A]è¿›è¡Œç©·ä¸¾ç”Ÿæˆæ–°çš„ä¸´æ—¶ç»“æžœï¼Œè€Œè¿™ä¸ªç”Ÿæˆçš„è§„åˆ™å°±æ˜¯ï¼š[A]ä¸´æ—¶ç»“æžœæœ‰2ä¸ªç©ºä½ï¼ŒBå¯ä»¥æ’å…¥åˆ°Açš„å‰é¢æˆ–åˆ™åŽé¢çš„ç©ºå¤„ç”Ÿæˆ[B,A]æˆ–åˆ™[A,B]</li><li>å–å‡ºå…ƒç´ Cï¼Œä¸´æ—¶[A,B]å’Œ[B,A]æœ‰3ä¸ªç©ºå¤„ï¼ŒCå¯ä»¥æ’å…¥[A,B]çš„ç©ºå¤„ç”Ÿæˆ[C,A,B],[A,C,B],[A,B,C]</li><li>ç›´åˆ°æ‰€æœ‰çš„å…ƒç´ éƒ½è¢«å–å‡ºï¼Œé‚£ä¹ˆæœ€åŽçš„ä¸´æ—¶ç»“æžœå°±æ˜¯æœ€ç»ˆçš„ç»“æžœäº†</li></ol></div>
 </div>

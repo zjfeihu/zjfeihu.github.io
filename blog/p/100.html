@@ -1,11 +1,11 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>WEB++����֮ģ�����</title>
+<title>WEB++开发之模块设计</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>WEB++����֮ģ�����</h1>
-    <div class=content><h2>ǰ��</h2><p>WEB++����ϵͳ�У�ʹ��ģ�黯��ʽ������ģ�鼴ͨ���ӿڵķ�ʽ�����ṩ�ص㹦�ܵĴ�����ϣ������֯ģ�齫Ӱ�����Ŀɶ��Ժͳ�������ܡ�</p><h2>�Ѻõ�����</h2><ul><li>����ʹ�ô���д��ʹ���»��߷ָ�����</li><li>������ʽ�ı������ô�Сд</li><li>�ж���ʽ�ı��������շ�</li><li>��������ʽ�ı��������շ�</li><li>ģ����ʹ������ĸ��д</li></ul><h2>�����Ľṹ</h2><ul><li>��������ģ����ͷ������</li><li>ģ���ڶ�������</li><li>���г����ͱ�����ͷ������</li><li>�ڲ������ڵײ�����</li><li>�������������</li><li>�����ܵļ���Ƕ�ײ��</li></ul><h2>�����ķ�װ</h2><ul><li>�������߼������ɲ���˽�з�ʽ��װ�ӿڣ�������˽�б����ڱհ���������ʹ��</li><li>��ģ��ʹ��ԭ�ͷ�ʽ���⿪�Žӿ�</li></ul></div>
+    <h1>WEB++开发之模块设计</h1>
+    <div class=content><h2>前言</h2><p>WEB++桌面系统中，使用模块化方式开发，模块即通过接口的方式向外提供特点功能的代码组合，如何组织模块将影响代码的可读性和程序的性能。</p><h2>友好的命名</h2><ul><li>常量使用纯大写，使用下划线分隔单词</li><li>名词形式的变量采用纯小写</li><li>判断形式的变量采用驼峰</li><li>表示状态的变量采用纯小写</li><li>动名词形式的变量采用驼峰</li><li>模块名使用首字母大写</li></ul><h2>清晰的结构</h2><ul><li>所有依赖模块在头部声明</li><li>模块在顶部导出</li><li>所有常量和变量在头部声明</li><li>内部函数在底部声明</li><li>尽早的跳出函数</li><li>尽可能的减少嵌套层次</li></ul><h2>合理的封装</h2><ul><li>单例或者极少例可采用私有方式封装接口，即各种私有变量在闭包中声明和使用</li><li>类模块使用原型方式向外开放接口</li></ul></div>
 </div>

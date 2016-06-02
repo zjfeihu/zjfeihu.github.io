@@ -1,20 +1,20 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>β�ݹ�</title>
+<title>尾递归</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>β�ݹ�</h1>
-    <div class=content><h2>����</h2><p>���������еݹ���ʽ�ĵ��ö������ں�����ĩβ�����ҵݹ���ò����ڱ���ʽ��һ���֡�</p><h2>ʾ��</h2><textarea class="code-js">
+    <h1>尾递归</h1>
+    <div class=content><h2>定义</h2><p>函数中所有递归形式的调用都出现在函数的末尾，并且递归调用不属于表达式的一部分。</p><h2>示例</h2><textarea class="code-js">
 alert(f1(15) == f2(15, 1))
 function f1(n){
     return n < 2 ? 1 : f1(n - 1) * n;
 }
 
-function f2(n, result){ //β�ݹ�
+function f2(n, result){ //尾递归
     return n < 2 ? result : f2(n - 1, result * n);
 }
-</textarea><h2>����</h2><ol><li>�ݹ����Ϊ��һ�ĺ������ã�����������</li><li>�м���������Ϊ���������´εݹ����</li><li>������������Ϊ�ݹ�����ķ���ֵ</li></ol><p class="info">����ͳ�ĵݹ飬����һ���м������ݵĹ��̣�ʹ�û����������������м��������Ĺ��̡�</p></div>
+</textarea><h2>特征</h2><ol><li>递归调用为单一的函数调用，不参与运算</li><li>中间运算结果作为参数传入下次递归调用</li><li>最终运算结果作为递归结束的返回值</li></ol><p class="info">比起传统的递归，多了一个中间结果传递的过程，使得环境可以跳过保存中间运算结果的过程。</p></div>
 </div>

@@ -1,16 +1,16 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>½Å±¾¹¤¾ßÖ®±éÀúÎÄ¼ş¼Ğ</title>
+<title>è„šæœ¬å·¥å…·ä¹‹éå†æ–‡ä»¶å¤¹</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>½Å±¾¹¤¾ßÖ®±éÀúÎÄ¼ş¼Ğ</h1>
-    <div class=content><h2>Ç°ÑÔ</h2><p>ÓĞÊ±ºòÎÒÃÇĞèÒª¶ÔÎÄ¼ş¼ĞÏÂµÄÎÄ¼ş½øĞĞÅúÁ¿²Ù×÷£¬±ÈÈçÖØÃüÃû£¬Ìæ»»Ö¸¶¨ÄÚÈİ£¬²éÕÒÖ¸¶¨ÄÚÈİµÈ£¬ÊÖ¶¯Ò»¸ö¸ö¸Ä¹ÌÈ»ºÜÂé·³£¬ÄÇÃ´ÎÒÃÇÍ¨¹ıÒ»Ğ©Ğ¡½Å±¾À´¼ò»¯¹¤×÷¡£</p><h2>½Å±¾</h2><textarea class="code-js" edit=off >
+    <h1>è„šæœ¬å·¥å…·ä¹‹éå†æ–‡ä»¶å¤¹</h1>
+    <div class=content><h2>å‰è¨€</h2><p>æœ‰æ—¶å€™æˆ‘ä»¬éœ€è¦å¯¹æ–‡ä»¶å¤¹ä¸‹çš„æ–‡ä»¶è¿›è¡Œæ‰¹é‡æ“ä½œï¼Œæ¯”å¦‚é‡å‘½åï¼Œæ›¿æ¢æŒ‡å®šå†…å®¹ï¼ŒæŸ¥æ‰¾æŒ‡å®šå†…å®¹ç­‰ï¼Œæ‰‹åŠ¨ä¸€ä¸ªä¸ªæ”¹å›ºç„¶å¾ˆéº»çƒ¦ï¼Œé‚£ä¹ˆæˆ‘ä»¬é€šè¿‡ä¸€äº›å°è„šæœ¬æ¥ç®€åŒ–å·¥ä½œã€‚</p><h2>è„šæœ¬</h2><textarea class="code-js" edit=off >
 function eachFiles(callback, path){
     var fso = new ActiveXObject('Scripting.FileSystemObject');
-    var fi = fso.GetFolder(path || '.'); //µ±Ç°Ä¿Â¼
+    var fi = fso.GetFolder(path || '.'); //å½“å‰ç›®å½•
     var fenum = new Enumerator(fi.files);
     while(!fenum.atEnd()){
         callback(fenum.item());
@@ -24,5 +24,5 @@ eachFiles(function(file){
 });
 WScript.stdout.writeline('press c to close!');
 while(WScript.stdin.readline() != 'c');
-</textarea><h2>API</h2><p>Ïê¼û<a href="http://pan.baidu.com/s/1qWKamFq" target="_blank">Script56.chm</a></p></div>
+</textarea><h2>API</h2><p>è¯¦è§<a href="http://pan.baidu.com/s/1qWKamFq" target="_blank">Script56.chm</a></p></div>
 </div>

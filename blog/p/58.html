@@ -1,13 +1,13 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>cssα���αԪ�ص�����</title>
+<title>css伪类和伪元素的区别</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>cssα���αԪ�ص�����</h1>
-    <div class=content><p>����cssֻ��α�࣬���Ǽ������ľ��� :hover��:link����������������:before��:after��������˳�ư���Ҳ��α�࣬��ʵ���Ǵ���ġ�</p><h3>α���αԪ��</h3><p class="img"><img src="../imgs/58.1.jpg"/><em>ͼ1 α���αԪ��</em></p><p>α���αԪ�صĳ��֣���ʵ����Ϊ��͵�������ڵģ���Ϊ����͵������һ�������Բ��в�ͬ��������</p><p>����˼�飬α����͵�������αԪ����͵�ڵ�Ԫ�ص�������ô˵��̫������ô���Ǿٵ�����˵����</p><h3>α��ʵ�ֲ���дclassName</h3><textarea class="code-html">
+    <h1>css伪类和伪元素的区别</h1>
+    <div class=content><p>早期css只有伪类，我们见得最多的就是 :hover，:link，后来出现了类似:before，:after，当初就顺势把这也叫伪类，其实这是错误的。</p><h3>伪类和伪元素</h3><p class="img"><img src="../imgs/58.1.jpg"/><em>图1 伪类和伪元素</em></p><p>伪类和伪元素的出现，其实就是为了偷懒而存在的，因为他们偷的懒不一样，所以才有不同的命名。</p><p>故名思议，伪类是偷类的懒，伪元素是偷节点元素的懒，这么说不太形象，那么我们举点例子说明。</p><h3>伪类实现不用写className</h3><textarea class="code-html">
 <style>
 #d1 :first-child{color:red}
 #d2 .first-child{color:red}
@@ -18,7 +18,7 @@
 <div id="d2">
     <span class="first-child">span</span>
 </div>
-</textarea><h3>αԪ��ʵ�ֲ������Ӷ���ڵ�Ԫ��</h3><textarea class="code-html">
+</textarea><h3>伪元素实现不用增加额外节点元素</h3><textarea class="code-html">
 <style>
 #d1:first-letter{color:red}
 #d2 :first-child{color:red}
@@ -29,17 +29,17 @@
 <div id="d2">
     <span>s</span>pan
 </div>
-</textarea><p class="info">αԪ����Ȼʵ��������ڵ�Ĺ��ܣ�������ȴ��������dom����</p><h3>αԪ�صĸ߼�͵��</h3><textarea class="code-html">
+</textarea><p class="info">伪元素虽然实现了虚拟节点的功能，但是它却不包括在dom树中</p><h3>伪元素的高级偷懒</h3><textarea class="code-html">
 <style>
 #d2 p:before{content:'# ';color:red}
 </style>
 <div id="d2">
-    <p>��ã�</p>
-    <p>�Һܺã�</p>
-    <p>��Ҳ����</p>
-    <p>�ҵ�ȻҲ�ܺã�</p>
+    <p>你好！</p>
+    <p>我很好！</p>
+    <p>你也好吗！</p>
+    <p>我当然也很好！</p>
 </div>
-</textarea><p>������pԪ��ǰ���鹹һ��������#�Ľڵ�Ԫ�أ��������������&lt;span style="color:red">#&lt;/span>�ڵ�Ҫ�úܶ�</p><h2>�²�</h2><p>���½��۶������ڲ²�Ļ����ϡ�</p><p>α��ð�����˼������α��������ʵ������αʲô������Ϊ��ʡ���滻�Ķ��������ͳɱ���������ά���Ѷȣ���</p><p>����:link��:hover��Ӧ�ý�α��Ϊ�ȽϺ��ʣ���Ϊ������͵��Ϊ���������Ǽ�¼�û���ͬ��Ϊ�µ���ʽ��</p><h3>α��Ϊʵ�ֲ�дjs�¼�ʵ����Ϊ</h3><textarea class="code-html">
+</textarea><p>在所有p元素前面虚构一个内容是#的节点元素，比你插入无数个&lt;span style="color:red">#&lt;/span>节点要好很多</p><h2>猜测</h2><p>以下结论都建立在猜测的基础上。</p><p>伪，冒充的意思，就像“伪军”，其实不管是伪什么，都是为节省被替换的东西，降低成本（开发和维护难度）。</p><p>关于:link，:hover，应该叫伪行为比较合适，因为他们是偷行为的懒，他们记录用户不同行为下的样式。</p><h3>伪行为实现不写js事件实现行为</h3><textarea class="code-html">
 <style>
 #d1:hover{color:red}
 </style>
@@ -53,5 +53,5 @@ document.getElementById('d2').onmouseout = function(){
     this.style.color = '';
 }
 </script>
-</textarea><h2>����</h2><p>ͨ�������ƵĽ��ܣ����������Ѿ��˽������ǵ��ô������ҿ�����ȷ��ʹ�����ǣ���͹��ˡ�</p></div>
+</textarea><h2>结语</h2><p>通过对名称的介绍，我们现在已经了解了他们的用处，并且可以正确的使用他们，这就够了。</p></div>
 </div>

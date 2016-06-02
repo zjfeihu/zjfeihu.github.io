@@ -1,13 +1,13 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>jsÊµÏÖ¼òµ¥µÄÍÏ·ÅÔ­ĞÍ</title>
+<title>jså®ç°ç®€å•çš„æ‹–æ”¾åŸå‹</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>jsÊµÏÖ¼òµ¥µÄÍÏ·ÅÔ­ĞÍ</h1>
-    <div class=content><h2>Ç°ÑÔ</h2><p>²ãÍÏ·Å³¡¾°¾­³£Óöµ½£¬ÒÔÏÂ½éÉÜÔ­Éú´úÂëÊµÏÖÍÏ·ÅĞ§¹û£¡</p><h2>´úÂëÊµÏÖ</h2><h3>Ò»¸ö¼òµ¥µÄÔ­ĞÍ´úÂë</h3><textarea class="code-html">
+    <h1>jså®ç°ç®€å•çš„æ‹–æ”¾åŸå‹</h1>
+    <div class=content><h2>å‰è¨€</h2><p>å±‚æ‹–æ”¾åœºæ™¯ç»å¸¸é‡åˆ°ï¼Œä»¥ä¸‹ä»‹ç»åŸç”Ÿä»£ç å®ç°æ‹–æ”¾æ•ˆæœï¼</p><h2>ä»£ç å®ç°</h2><h3>ä¸€ä¸ªç®€å•çš„åŸå‹ä»£ç </h3><textarea class="code-html">
 <!doctype html>
 <style>
 #drag{position:absolute;left:100px;top:100px;width:100px;height:100px;background:#ccc;}
@@ -22,7 +22,7 @@
             evt = window.event;
             evt.srcElement.setCapture(false);
         }
-        var offsetX = evt.clientX - this.offsetLeft; //Êó±ê×ø±êÀë¿ª²ã×ó²àµÄÎ»ÖÃ
+        var offsetX = evt.clientX - this.offsetLeft; //é¼ æ ‡åæ ‡ç¦»å¼€å±‚å·¦ä¾§çš„ä½ç½®
         var offsetY = evt.clientY - this.offsetTop;
         document.onmousemove = function(evt){
             evt = evt || window.event;
@@ -38,30 +38,30 @@
         window.event &amp;&amp; window.event.srcElement.releaseCapture();
     };
 </script>
-</textarea><p>»ù±¾Ô­Àí£¬¸ødocument°ó¶¨mousemoveÊÂ¼ş£¬Í¨¹ı¼ÆËãÊó±êÎ»ÖÃ¸üĞÂ²ãstyleÊôĞÔµÄleftºÍtopÖµ¡£</p><h2>ÍêÉÆÍÏ·ÅÄ£ĞÍ</h2><h3>±ê×¼°ó¶¨Êó±êÊÂ¼ş</h3><p>Í¨¹ıonÖ±½Ó°ó¶¨ÊÂ¼şÓĞºÜ´ó¾ÖÏŞĞÔ£¬²»Ò×À©Õ¹¡£</p><textarea class="code-js" edit=off >
-    dom.attachEvent('on' + eventType, callback); //ieÌí¼ÓÊÂ¼ş
-    dom.addEventListener(eventType, callback, false); //±ê×¼Ìí¼ÓÊÂ¼ş
-    dom.detachEvent('on' + eventType, callback);//ieÉ¾³ıÊó±êÊÂ¼ş
-    dom.removeEventListener(eventType, callback, false);//ieÉ¾³ıÊó±êÊÂ¼ş
-    //eventTypeÎªÊÂ¼şÀàĞÍ£¬callbackÎªÊÂ¼şÏìÓ¦º¯Êı£¬ÓÉÓÚ±ê×¼ÊÂ¼şÖ§³Ö²¶»ñ£¬ËùÒÔ´øÓĞµÚÈı¸ö²ÎÊı£¬ÎªÊ¹ÊÂ¼şÍ³Ò»Ê¹ÓÃÃ°Åİ´¦Àí£¬ÕâÀïÉèÖÃÎªfalse
-</textarea><p>°Ù¶ÈËÑË÷<a class="glink" href="http://www.baidu.com/s?wd=attachEvent" target="_blank">attachEvent</a><br/></p><h3>´¦ÀíÄ¬ÈÏÊÂ¼ş</h3><p>ÇëÊÔ×ÅÑ¡ÖĞdrag²ãÖĞµÄÎÄ±¾ÔÚÍÏ¶¯£¬Äã»á·¢ÏÖÊó±êÖ¸Õë»á±ä³ÉÒ»¸öÍ£Ö¹µÄĞÎ×´£¬²¢ÇÒonmouseupÒ²ÎŞ·¨´¥·¢ÁË£¬´ËÊ±²ã»áÎŞ·¨Í£Ö¹ÍÏ¶¯¡£</p><p>²úÉúÕâÖÖÇé¿öµÄÔ­ÒòÊÇä¯ÀÀÆ÷µÄÄ¬ÈÏÊÂ¼şÖĞ¶ÏÁËÎÒÃÇ°ó¶¨ÔÚdocumentÉÏµÄonmouseupÊÂ¼ş£¬ÕâÀïµÄä¯ÀÀÆ÷Ä¬ÈÏÊÂ¼şÊÇÖ¸documentµÄonmousedown£¬±ÈÈçµã»÷ÔÚÍ¼Æ¬ÉÏ£¬»òÕßÎÄ±¾ÉÏ</p><textarea class="code-js" edit=off >
+</textarea><p>åŸºæœ¬åŸç†ï¼Œç»™documentç»‘å®šmousemoveäº‹ä»¶ï¼Œé€šè¿‡è®¡ç®—é¼ æ ‡ä½ç½®æ›´æ–°å±‚styleå±æ€§çš„leftå’Œtopå€¼ã€‚</p><h2>å®Œå–„æ‹–æ”¾æ¨¡å‹</h2><h3>æ ‡å‡†ç»‘å®šé¼ æ ‡äº‹ä»¶</h3><p>é€šè¿‡onç›´æ¥ç»‘å®šäº‹ä»¶æœ‰å¾ˆå¤§å±€é™æ€§ï¼Œä¸æ˜“æ‰©å±•ã€‚</p><textarea class="code-js" edit=off >
+    dom.attachEvent('on' + eventType, callback); //ieæ·»åŠ äº‹ä»¶
+    dom.addEventListener(eventType, callback, false); //æ ‡å‡†æ·»åŠ äº‹ä»¶
+    dom.detachEvent('on' + eventType, callback);//ieåˆ é™¤é¼ æ ‡äº‹ä»¶
+    dom.removeEventListener(eventType, callback, false);//ieåˆ é™¤é¼ æ ‡äº‹ä»¶
+    //eventTypeä¸ºäº‹ä»¶ç±»å‹ï¼Œcallbackä¸ºäº‹ä»¶å“åº”å‡½æ•°ï¼Œç”±äºæ ‡å‡†äº‹ä»¶æ”¯æŒæ•è·ï¼Œæ‰€ä»¥å¸¦æœ‰ç¬¬ä¸‰ä¸ªå‚æ•°ï¼Œä¸ºä½¿äº‹ä»¶ç»Ÿä¸€ä½¿ç”¨å†’æ³¡å¤„ç†ï¼Œè¿™é‡Œè®¾ç½®ä¸ºfalse
+</textarea><p>ç™¾åº¦æœç´¢<a class="glink" href="http://www.baidu.com/s?wd=attachEvent" target="_blank">attachEvent</a><br/></p><h3>å¤„ç†é»˜è®¤äº‹ä»¶</h3><p>è¯·è¯•ç€é€‰ä¸­dragå±‚ä¸­çš„æ–‡æœ¬åœ¨æ‹–åŠ¨ï¼Œä½ ä¼šå‘ç°é¼ æ ‡æŒ‡é’ˆä¼šå˜æˆä¸€ä¸ªåœæ­¢çš„å½¢çŠ¶ï¼Œå¹¶ä¸”onmouseupä¹Ÿæ— æ³•è§¦å‘äº†ï¼Œæ­¤æ—¶å±‚ä¼šæ— æ³•åœæ­¢æ‹–åŠ¨ã€‚</p><p>äº§ç”Ÿè¿™ç§æƒ…å†µçš„åŸå› æ˜¯æµè§ˆå™¨çš„é»˜è®¤äº‹ä»¶ä¸­æ–­äº†æˆ‘ä»¬ç»‘å®šåœ¨documentä¸Šçš„onmouseupäº‹ä»¶ï¼Œè¿™é‡Œçš„æµè§ˆå™¨é»˜è®¤äº‹ä»¶æ˜¯æŒ‡documentçš„onmousedownï¼Œæ¯”å¦‚ç‚¹å‡»åœ¨å›¾ç‰‡ä¸Šï¼Œæˆ–è€…æ–‡æœ¬ä¸Š</p><textarea class="code-js" edit=off >
 drag.onmousedown = function(evt){
     if(evt){
-        evt.preventDefault(); //×èÖ¹Êó±êµÄonmousedownµÄÄ¬ÈÏÊÂ¼şµÄ´¥·¢
+        evt.preventDefault(); //é˜»æ­¢é¼ æ ‡çš„onmousedownçš„é»˜è®¤äº‹ä»¶çš„è§¦å‘
     }else{
-        //window.event.returnValue = false; //ÈÃieÒ²×èÖ¹Êó±êÊÂ¼ş£¬¿ÉÏ§»¹ÊÇÃ»ÓĞ´ïµ½ÎÒÃÇĞèÒªµÄĞ§¹û£¬
-        window.event.srcElement.setCapture(false); //²éÔÄ×ÊÁÏ·¢ÏÖ£¬ÕâÀïĞèÒªÊ¹ÓÃÒ»¸ö·½·¨setCaptureÀ´´ïµ½Ğ§¹û
+        //window.event.returnValue = false; //è®©ieä¹Ÿé˜»æ­¢é¼ æ ‡äº‹ä»¶ï¼Œå¯æƒœè¿˜æ˜¯æ²¡æœ‰è¾¾åˆ°æˆ‘ä»¬éœ€è¦çš„æ•ˆæœï¼Œ
+        window.event.srcElement.setCapture(false); //æŸ¥é˜…èµ„æ–™å‘ç°ï¼Œè¿™é‡Œéœ€è¦ä½¿ç”¨ä¸€ä¸ªæ–¹æ³•setCaptureæ¥è¾¾åˆ°æ•ˆæœ
     }
 };
-</textarea><p>À©Õ¹ÔÄ¶Á<a class="mlink" href="http://msdn.microsoft.com/en-us/library/ie/ms536742(v=vs.85).aspx" target="_blank">setCapture</a><br/>°Ù¶ÈËÑË÷<a class="glink" href="http://www.baidu.com/s?wd=setCapture" target="_blank">setCapture</a><br/></p><h3>´¦ÀíÊ§È¥½¹µã</h3><p>µ±ÍÏ¶¯²ãµÄÊ±ºò£¬¼ÙÈçÒ»¸öµÄÍ»·¢µÄÊÂ¼şµ¼ÖÂ²ãÊ§È¥ÁË½¹µã£¨¿ÉÒÔ°´Alt+Tab¼ü²âÊÔ¸Ã³¡¾°£©£¬±ÈÈçµ¯³öÒ»¸öalert£¬É±¶¾Èí¼şµ¯³öµÄÒ»¸ö¾¯±¨µÈµÈ£¬ÔÚ»Øµ½Ò³Ãæ¾Í»á·¢ÏÖÍÏ¶¯³öÏÖÁËÒì³££¬ÕâÖÖÇé¿öĞèÒª×öÏàÓ¦µÄ´¦Àí¡£</p><textarea class="code-js" edit=off >
-    window.event.srcElement.onlosecapture = function(){ //ieÏÂ´¦ÀíÊ§È¥½¹µã
+</textarea><p>æ‰©å±•é˜…è¯»<a class="mlink" href="http://msdn.microsoft.com/en-us/library/ie/ms536742(v=vs.85).aspx" target="_blank">setCapture</a><br/>ç™¾åº¦æœç´¢<a class="glink" href="http://www.baidu.com/s?wd=setCapture" target="_blank">setCapture</a><br/></p><h3>å¤„ç†å¤±å»ç„¦ç‚¹</h3><p>å½“æ‹–åŠ¨å±‚çš„æ—¶å€™ï¼Œå‡å¦‚ä¸€ä¸ªçš„çªå‘çš„äº‹ä»¶å¯¼è‡´å±‚å¤±å»äº†ç„¦ç‚¹ï¼ˆå¯ä»¥æŒ‰Alt+Tabé”®æµ‹è¯•è¯¥åœºæ™¯ï¼‰ï¼Œæ¯”å¦‚å¼¹å‡ºä¸€ä¸ªalertï¼Œæ€æ¯’è½¯ä»¶å¼¹å‡ºçš„ä¸€ä¸ªè­¦æŠ¥ç­‰ç­‰ï¼Œåœ¨å›åˆ°é¡µé¢å°±ä¼šå‘ç°æ‹–åŠ¨å‡ºç°äº†å¼‚å¸¸ï¼Œè¿™ç§æƒ…å†µéœ€è¦åšç›¸åº”çš„å¤„ç†ã€‚</p><textarea class="code-js" edit=off >
+    window.event.srcElement.onlosecapture = function(){ //ieä¸‹å¤„ç†å¤±å»ç„¦ç‚¹
         //drop
     };
-    window.onblur = function(){ //·ÇieÏÂ´¦ÀíÊ§È¥½¹µã
+    window.onblur = function(){ //éieä¸‹å¤„ç†å¤±å»ç„¦ç‚¹
         //drop
     };
-</textarea><h3>´úÂëµÄ·â×°</h3><p>ÉÏÃæµÄ´úÂëÊÇÃ»ÓĞÈÎºÎ×éÖ¯µÄËÉÉ¢´úÂë£¬²»ÀûÓÚÖØÓÃ£¬ËùÒÔ±ØĞë½øĞĞÊÊµ±µÄ·â×°¡£</p><textarea class="code-js" edit=off >
-function Drag(dom){ //²ÉÓÃ¹¹Ôìº¯Êı·½Ê½´´½¨Àà
+</textarea><h3>ä»£ç çš„å°è£…</h3><p>ä¸Šé¢çš„ä»£ç æ˜¯æ²¡æœ‰ä»»ä½•ç»„ç»‡çš„æ¾æ•£ä»£ç ï¼Œä¸åˆ©äºé‡ç”¨ï¼Œæ‰€ä»¥å¿…é¡»è¿›è¡Œé€‚å½“çš„å°è£…ã€‚</p><textarea class="code-js" edit=off >
+function Drag(dom){ //é‡‡ç”¨æ„é€ å‡½æ•°æ–¹å¼åˆ›å»ºç±»
     this.init = function(){
 
     };
@@ -75,16 +75,16 @@ function Drag(dom){ //²ÉÓÃ¹¹Ôìº¯Êı·½Ê½´´½¨Àà
 
     };
 }
-</textarea><p class="info">ÉÏÃæ²ÉÓÃ¹¹Ôìº¯Êı·½Ê½½øĞĞ·â×°£¬Ïà¶ÔÓÚÔ­ĞÍ·â×°µÄÓÅµãÊÇÊı¾İ±£»¤ºÃ£¬Ö´ĞĞĞ§ÂÊ¸ß£¬È±µãÊÇÕ¼ÓÃÄÚ´æ¶à£¬ÒòÎªËùÓĞµÄ·½·¨¶¼ÊÇË½ÓĞµÄ£¬ĞèÒª¶À×ÔÕ¼ÓÃÄÚ´æ¡£</p><h3>¹¦ÄÜµÄÀ©³ä</h3><ul><li>¿ÉÑ¡µÄÍÏ¶¯¾ä±ú</li><li>ÍÏ¶¯·¶Î§¿ØÖÆ</li><li>¶Ô¾­¹ıiframeÈİÆ÷ÍÏ¶¯ĞŞÕı</li><li>ÍÏ¶¯¸÷½×¶ÎµÄÊÂ¼ş½»»¥£¨±ÈÈç¿ªÊ¼ÍÏ¶¯Ê±£¬ÍÏ¶¯ÖĞ£¬ÍÏ¶¯½áÊøÊ±¿É·ñÊµÏÖÒ»Ğ©½»»¥Âß¼­£©</li><li>ÍÏ¶¯Åö×²</li><li>ÍÏ·ÅÀ©Õ¹</li></ul><h2>Ò»¸ö¼òµ¥µÄÍÏ·ÅÑİÊ¾</h2><p>ËµÁËÕâÃ´¶à×îºó·îÉÏÒ»¸ö¼òµ¥µÄÍÏ·ÅÑİÊ¾£¬ÖÁÓÚ·â×°°æµÄ´úÂëÇëÒÆ²½<a href="http://www.1kjs.com/lib/" target="_blank">1kjs</a>Ñ¡ÖĞdragÄ£¿é²é¿´´úÂë¼´¿É¡£ </p><h3>ÍÏ¶¯Ğ¡Öíµ½ÏÂÃæÊÔÊÔ£¡</h3><div><style>#drag{border:1px solid #999;-moz-user-select: none;}.dbox{border:1px solid #999;margin:6px;min-height:40px;_height:40px;}</style><img id="drag" Jwdrag="drag" src="/imgs/featured-moi.png"/><img id="drag" Jwdrag="drag" src="/imgs/featured-origami.png"/><div class="dbox"></div><div class="dbox"></div></div><script>
+</textarea><p class="info">ä¸Šé¢é‡‡ç”¨æ„é€ å‡½æ•°æ–¹å¼è¿›è¡Œå°è£…ï¼Œç›¸å¯¹äºåŸå‹å°è£…çš„ä¼˜ç‚¹æ˜¯æ•°æ®ä¿æŠ¤å¥½ï¼Œæ‰§è¡Œæ•ˆç‡é«˜ï¼Œç¼ºç‚¹æ˜¯å ç”¨å†…å­˜å¤šï¼Œå› ä¸ºæ‰€æœ‰çš„æ–¹æ³•éƒ½æ˜¯ç§æœ‰çš„ï¼Œéœ€è¦ç‹¬è‡ªå ç”¨å†…å­˜ã€‚</p><h3>åŠŸèƒ½çš„æ‰©å……</h3><ul><li>å¯é€‰çš„æ‹–åŠ¨å¥æŸ„</li><li>æ‹–åŠ¨èŒƒå›´æ§åˆ¶</li><li>å¯¹ç»è¿‡iframeå®¹å™¨æ‹–åŠ¨ä¿®æ­£</li><li>æ‹–åŠ¨å„é˜¶æ®µçš„äº‹ä»¶äº¤äº’ï¼ˆæ¯”å¦‚å¼€å§‹æ‹–åŠ¨æ—¶ï¼Œæ‹–åŠ¨ä¸­ï¼Œæ‹–åŠ¨ç»“æŸæ—¶å¯å¦å®ç°ä¸€äº›äº¤äº’é€»è¾‘ï¼‰</li><li>æ‹–åŠ¨ç¢°æ’</li><li>æ‹–æ”¾æ‰©å±•</li></ul><h2>ä¸€ä¸ªç®€å•çš„æ‹–æ”¾æ¼”ç¤º</h2><p>è¯´äº†è¿™ä¹ˆå¤šæœ€åå¥‰ä¸Šä¸€ä¸ªç®€å•çš„æ‹–æ”¾æ¼”ç¤ºï¼Œè‡³äºå°è£…ç‰ˆçš„ä»£ç è¯·ç§»æ­¥<a href="http://www.1kjs.com/lib/" target="_blank">1kjs</a>é€‰ä¸­dragæ¨¡å—æŸ¥çœ‹ä»£ç å³å¯ã€‚ </p><h3>æ‹–åŠ¨å°çŒªåˆ°ä¸‹é¢è¯•è¯•ï¼</h3><div><style>#drag{border:1px solid #999;-moz-user-select: none;}.dbox{border:1px solid #999;margin:6px;min-height:40px;_height:40px;}</style><img id="drag" Jwdrag="drag" src="/imgs/featured-moi.png"/><img id="drag" Jwdrag="drag" src="/imgs/featured-origami.png"/><div class="dbox"></div><div class="dbox"></div></div><script>
 (function(J){
     var 
-    dropBox, //¿ÉÒÔ·ÅÖÃÍ¼Æ¬µÄÈİÆ÷
-    point = [], //»º´æÈİÆ÷×ø±êĞÅÏ¢
-    focusIdx = -1, //µ±Ç°¼¤»îµÄÈİÆ÷
-    clone, //µ±Ç°±»²Ù×÷µÄÍÏ¶¯µÄ¿ËÂ¡½Úµã
-    offx, //»º´æxÆ«Ô¶
+    dropBox, //å¯ä»¥æ”¾ç½®å›¾ç‰‡çš„å®¹å™¨
+    point = [], //ç¼“å­˜å®¹å™¨åæ ‡ä¿¡æ¯
+    focusIdx = -1, //å½“å‰æ¿€æ´»çš„å®¹å™¨
+    clone, //å½“å‰è¢«æ“ä½œçš„æ‹–åŠ¨çš„å…‹éš†èŠ‚ç‚¹
+    offx, //ç¼“å­˜xåè¿œ
     offy, //...
-    target; //Ô­Ê¼½Úµã
+    target; //åŸå§‹èŠ‚ç‚¹
 
     function scrollTop(){
         return document.documentElement.scrollTop + document.body.scrollTop;
@@ -93,7 +93,7 @@ function Drag(dom){ //²ÉÓÃ¹¹Ôìº¯Êı·½Ê½´´½¨Àà
     J(document).on('mousedown', function(evt){
         target = J(evt.target);
 
-        if(target.attr('Jwdrag') != null){ //ÔÚ¶ÓÁĞÀï
+        if(target.attr('Jwdrag') != null){ //åœ¨é˜Ÿåˆ—é‡Œ
             offx = evt.clientX - target.offsetLeft();
             offy = evt.clientY - target.offsetTop();
 
@@ -233,5 +233,5 @@ function Drag(dom){ //²ÉÓÃ¹¹Ôìº¯Êı·½Ê½´´½¨Àà
     }
 
 }(Z));
-</script><h2>½áÓï</h2><p>À©Õ¹ÔÄ¶Á<a class="mlink" href="http://www.cnblogs.com/cloudgamer/archive/2008/11/17/Drag.html" target="_blank">JavaScript ÍÏ·ÅĞ§¹û</a><br/></p></div>
+</script><h2>ç»“è¯­</h2><p>æ‰©å±•é˜…è¯»<a class="mlink" href="http://www.cnblogs.com/cloudgamer/archive/2008/11/17/Drag.html" target="_blank">JavaScript æ‹–æ”¾æ•ˆæœ</a><br/></p></div>
 </div>

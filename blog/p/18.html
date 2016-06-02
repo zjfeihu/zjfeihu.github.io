@@ -1,27 +1,27 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>jsÖ®ajax</title>
+<title>jsä¹‹ajax</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>jsÖ®ajax</h1>
-    <div class=content><h2>´ÓAPI¿ªÊ¼</h2><h3>´´½¨AJAX¶ÔÏó</h3><textarea class="code-js" edit=off >
-new XMLHttpRequest(); //±ê×¼µÄ´´½¨·½Ê½
-new ActiveXObject("Microsoft.XMLHTTP"); //IE6Ê¹ÓÃ¸Ã·½Ê½´´½¨
-</textarea><h3>AJAX¶ÔÏóµÄ·½·¨</h3><ul><li>open(method, url, async) <em>´ò¿ªÒ»¸öAJAXÇëÇó</em></li><li>send(string) <em>·¢ËÍAJAXÇëÇóºÍÊı¾İ</em></li><li>setRequestHeader(headerKey,value) <em>ÉèÖÃAJAXÇëÇóÍ·</em></li><li>getResponseHeader(headerKey) <em>»ñÈ¡AJAXÏìÓ¦Í·</em></li><li>getAllResponseHeaders() <em>»ñÈ¡ÏìÓ¦µÄËùÓĞhttpÍ·</em></li><li>abort() <em>·ÅÆúµ±Ç°ÇëÇó</em></li></ul><p class="info">async=trueÊ±ÎªÒì²½£¬abort()·½·¨ieÖĞXMLHTTP±ØĞëÒª´óÓÚ3.0²ÅÄÜÊ¹ÓÃ</p><p>À©Õ¹ÔÄ¶Á<a class="mlink" href="http://msdn.microsoft.com/en-us/library/ie/ms535920(v=vs.85).aspx" target="_blank">IEµÄabort</a><br/></p><h3>AJAX¶ÔÏóµÄÊôĞÔ</h3><ul><li>responseText <em>×Ö·û´®ĞÎÊ½µÄÏìÓ¦Êı¾İ</em></li><li>responseXML <em>XMLĞÎÊ½µÄÏìÓ¦Êı¾İ£¨·µ»ØµÄÊÇDOM¶ÔÏó£¬¿ÉÒÔÊ¹ÓÃ±ê×¼DOM½Ó¿Ú²Ù×÷Êı¾İ£©</em></li><li>readyState <em>AJAXµÄ×´Ì¬</em></li><li>status <em>ÏìÓ¦×´Ì¬Âë</em></li></ul><pre class="xcode">
-readyStateÈ¡ÖµËµÃ÷£º
-    0: ÇëÇóÎ´³õÊ¼»¯
-    1: ·şÎñÆ÷Á¬½ÓÒÑ½¨Á¢
-    2: ÇëÇóÒÑ½ÓÊÕ
-    3: ÇëÇó´¦ÀíÖĞ
-    4: ÇëÇóÒÑÍê³É£¬ÇÒÏìÓ¦ÒÑ¾ÍĞ÷
-statusÈ¡ÖµËµÃ÷£º
-    0±¾µØÇëÇó£¬200Õı³£ÏìÓ¦Êı¾İ£¬404Ò³Ãæ²»´æÔÚ
-</pre><h3>AJAX¶ÔÏóµÄÊÂ¼ş</h3><ul>undefined</ul><h2>·â×°µÄ´úÂëÊµÏÖ</h2><textarea class="code-js" edit=off >
+    <h1>jsä¹‹ajax</h1>
+    <div class=content><h2>ä»APIå¼€å§‹</h2><h3>åˆ›å»ºAJAXå¯¹è±¡</h3><textarea class="code-js" edit=off >
+new XMLHttpRequest(); //æ ‡å‡†çš„åˆ›å»ºæ–¹å¼
+new ActiveXObject("Microsoft.XMLHTTP"); //IE6ä½¿ç”¨è¯¥æ–¹å¼åˆ›å»º
+</textarea><h3>AJAXå¯¹è±¡çš„æ–¹æ³•</h3><ul><li>open(method, url, async) <em>æ‰“å¼€ä¸€ä¸ªAJAXè¯·æ±‚</em></li><li>send(string) <em>å‘é€AJAXè¯·æ±‚å’Œæ•°æ®</em></li><li>setRequestHeader(headerKey,value) <em>è®¾ç½®AJAXè¯·æ±‚å¤´</em></li><li>getResponseHeader(headerKey) <em>è·å–AJAXå“åº”å¤´</em></li><li>getAllResponseHeaders() <em>è·å–å“åº”çš„æ‰€æœ‰httpå¤´</em></li><li>abort() <em>æ”¾å¼ƒå½“å‰è¯·æ±‚</em></li></ul><p class="info">async=trueæ—¶ä¸ºå¼‚æ­¥ï¼Œabort()æ–¹æ³•ieä¸­XMLHTTPå¿…é¡»è¦å¤§äº3.0æ‰èƒ½ä½¿ç”¨</p><p>æ‰©å±•é˜…è¯»<a class="mlink" href="http://msdn.microsoft.com/en-us/library/ie/ms535920(v=vs.85).aspx" target="_blank">IEçš„abort</a><br/></p><h3>AJAXå¯¹è±¡çš„å±æ€§</h3><ul><li>responseText <em>å­—ç¬¦ä¸²å½¢å¼çš„å“åº”æ•°æ®</em></li><li>responseXML <em>XMLå½¢å¼çš„å“åº”æ•°æ®ï¼ˆè¿”å›çš„æ˜¯DOMå¯¹è±¡ï¼Œå¯ä»¥ä½¿ç”¨æ ‡å‡†DOMæ¥å£æ“ä½œæ•°æ®ï¼‰</em></li><li>readyState <em>AJAXçš„çŠ¶æ€</em></li><li>status <em>å“åº”çŠ¶æ€ç </em></li></ul><pre class="xcode">
+readyStateå–å€¼è¯´æ˜ï¼š
+    0: è¯·æ±‚æœªåˆå§‹åŒ–
+    1: æœåŠ¡å™¨è¿æ¥å·²å»ºç«‹
+    2: è¯·æ±‚å·²æ¥æ”¶
+    3: è¯·æ±‚å¤„ç†ä¸­
+    4: è¯·æ±‚å·²å®Œæˆï¼Œä¸”å“åº”å·²å°±ç»ª
+statuså–å€¼è¯´æ˜ï¼š
+    0æœ¬åœ°è¯·æ±‚ï¼Œ200æ­£å¸¸å“åº”æ•°æ®ï¼Œ404é¡µé¢ä¸å­˜åœ¨
+</pre><h3>AJAXå¯¹è±¡çš„äº‹ä»¶</h3><ul><li>onreadystatechange <em>readyStateå±æ€§æ”¹å˜æ—¶ï¼Œå°±ä¼šè§¦å‘äº‹ä»¶</em></li></ul><h2>å°è£…çš„ä»£ç å®ç°</h2><textarea class="code-js" edit=off >
 function ajax(options){
-    var XHR = window.XMLHttpRequest || function(){ //ie6ÏÂÊ¹ÓÃ±éÀúÀ´»ñµÃ×î¸ß°æ±¾µÄxmlhttp
+    var XHR = window.XMLHttpRequest || function(){ //ie6ä¸‹ä½¿ç”¨éå†æ¥è·å¾—æœ€é«˜ç‰ˆæœ¬çš„xmlhttp
         var xhrProgid = [0, 'Microsoft.XMLHTTP', 'Msxml2.XMLHTTP', 'Msxml2.XMLHTTP.6.0'],
             i = 4,
             xhr;
@@ -32,11 +32,11 @@ function ajax(options){
             }catch(e){}
         }
     }();
-    (ajax = function(options){ //¶èĞÔ¼ÓÔØajaxº¯Êı
+    (ajax = function(options){ //æƒ°æ€§åŠ è½½ajaxå‡½æ•°
         var xhr = new XHR(),
             callback = options.callback;
         xhr.open(options.type || 'get', options.url, options.async || true);
-        for (var key in options.headers) { //ÉèÖÃ·¢ËÍµÄÍ·
+        for (var key in options.headers) { //è®¾ç½®å‘é€çš„å¤´
             xhr.setRequestHeader(key, options.headers[key]);
         }
         xhr.onreadystatechange = function(){
@@ -52,19 +52,19 @@ function ajax(options){
     })(options);
 
 }
-function post(url, callback, data){ //post¾­µä°æ·â×°
+function post(url, callback, data){ //postç»å…¸ç‰ˆå°è£…
     ajax({
         url: url,
         type: 'post',
         data: data,
         callback: callback,
         responseType: 'responseText',
-        headers: { //post±ØĞë¸øhttpÍ·ÉèÖÃContent-Type
+        headers: { //postå¿…é¡»ç»™httpå¤´è®¾ç½®Content-Type
             'Content-Type': 'application/x-www-form-urlencoded'
         }
     });
 }
-function get(url, callback, data){ //get¾­µä°æ·â×°
+function get(url, callback, data){ //getç»å…¸ç‰ˆå°è£…
     ajax({
         url: url + (data? '?'+data : ''),
         type: 'get',
@@ -72,18 +72,18 @@ function get(url, callback, data){ //get¾­µä°æ·â×°
         responseType: 'responseText'
     });
 }
-</textarea>À©Õ¹ÔÄ¶Á<a class="mlink" href="http://msdn.microsoft.com/en-us/library/ms757837(v=vs.85).aspx" target="_blank">MSXML.XMLHTTP</a><br/><h2>·â×°ÍêÉÆ</h2><ul><li>³¬Ê±´íÎó´¦Àí</li><li>Êı¾İ×Ô¶¯×ª»¯´¦Àí</li><li>ÆäËû...</li></ul><p class="info">¸ù¾İ²»Í¬µÄĞèÇó£¬¿ÉÄÜ»á´æÔÚºÜ¶à²»Í¬µÄ·â×°ºÍÂß¼­ÊµÏÖ¡£</p><h2>Ê¹ÓÃÊ¾Àı</h2><h3>ajaxÊı¾İ¶ÁÈ¡ºÍ½Å±¾×¢Èë</h3><textarea class="code-html">
+</textarea><p>æ‰©å±•é˜…è¯»<a class="mlink" href="http://msdn.microsoft.com/en-us/library/ms757837(v=vs.85).aspx" target="_blank">MSXML.XMLHTTP</a><br/></p><h2>å°è£…å®Œå–„</h2><ul><li>è¶…æ—¶é”™è¯¯å¤„ç†</li><li>æ•°æ®è‡ªåŠ¨è½¬åŒ–å¤„ç†</li><li>å…¶ä»–...</li></ul><p class="info">æ ¹æ®ä¸åŒçš„éœ€æ±‚ï¼Œå¯èƒ½ä¼šå­˜åœ¨å¾ˆå¤šä¸åŒçš„å°è£…å’Œé€»è¾‘å®ç°ã€‚</p><h2>ä½¿ç”¨ç¤ºä¾‹</h2><h3>ajaxæ•°æ®è¯»å–å’Œè„šæœ¬æ³¨å…¥</h3><textarea class="code-html">
 <!doctype html>
 <script src="../style/z.js"></script>
 <ol id="data">
-    <li>Êı¾İ...</li>
+    <li>æ•°æ®...</li>
 </ol>
-<button id="getJson1">GET·½Ê½»ñÈ¡Êı¾İ</button>
-<button id="getJson2">POST·½Ê½»ñÈ¡Êı¾İ</button>
-<button id="evalScript">½Å±¾×¢Èë</button>
+<button id="getJson1">GETæ–¹å¼è·å–æ•°æ®</button>
+<button id="getJson2">POSTæ–¹å¼è·å–æ•°æ®</button>
+<button id="evalScript">è„šæœ¬æ³¨å…¥</button>
 <script>
 var J = Z;
-J('#getJson1').click(function (){//GETÊı¾İ»ñÈ¡£¬´æÔÚ»º´æ
+J('#getJson1').click(function (){//GETæ•°æ®è·å–ï¼Œå­˜åœ¨ç¼“å­˜
     J.get('../demo/ajaxtest/json.js', function(resp){
         if(resp){
             J('#data').append('<li>'+ J.parseJson(resp).data +'</li>');
@@ -103,12 +103,12 @@ J('#evalScript').click(function(){
             var 
             head = document.getElementsByTagName('head')[0],
             script = document.createElement('script');
-            script.text = resp; //ÕâÀï²»ÄÜÓÃinnerHTML£¬ÒòÎªie²»Ö§³Ö
+            script.text = resp; //è¿™é‡Œä¸èƒ½ç”¨innerHTMLï¼Œå› ä¸ºieä¸æ”¯æŒ
             head.appendChild(script);
             //head.removeChild(script);
         }
     });
 });
 </script>
-</textarea><p>ajaxÖ÷ÒªÓ¦ÓÃ³¡¾°ÎŞË¢µÄÇé¿öÏÂÊµÏÖÓë·şÎñÆ÷Êı¾İ½»»¥£¬µ±È»ajax»¹ÄÜ×öºÜ¶àÊÂÇé¡£</p><h2>Ğ´ÔÚ×îºó</h2><ul><li>ajax»º´æµÄÀûÓÃºÍ´æÔÚµÄÎÊÌâ</li><li>ajax´æÔÚ¿çÔ½ÏŞÖÆ£¨Ìæ´ú·½°¸JSONP£¬Ò³Ãæ´úÀí£¬ĞÂ°æ±¾Ö§³Ö¿çÓò·½°¸£©</li><li>×¢ÒâajaxµÄÊ¹ÓÃ³¡¾°£¨²»ÒªÀÄÓÃajax£¬·ñÔò»á´øÀ´ĞÔÄÜµÈÎÊÌâ£©</li><li>Î´À´ajax¶Ô¶ş½øÖÆÊı¾İµÄ´«ÊäÖ§³Ö</li></ul><p class="info">·¢ÏÖÔÚie6-8ÖĞ£¬¼ÙÈçÊ¹ÓÃAJAXµÄgetºóÔÚ»»postÀ´ÇëÇóÍ¬Ò»urlµÄ»°£¬ÇëÇó½«²»»á·¢Æğ¶øÖ±½Ó´Ó»º´æÖĞ¶ÁÈ¡¡£</p><p>Õë¶ÔÉÏÃæÌáµ½µÄÒ»Ğ©ÎÊÌâ£¬ÕâÀï¾Í²»Õ¹¿ªÌÖÂÛÁË£¬ÓĞĞËÈ¤µÄÅóÓÑ¿ÉÒÔÈ¥ÍøÉÏ²éÒ»²é¡£</p><p>°Ù¶ÈËÑË÷<a class="glink" href="http://www.baidu.com/s?wd=ajax»º´æ" target="_blank">ajax»º´æ</a><br/>°Ù¶ÈËÑË÷<a class="glink" href="http://www.baidu.com/s?wd=ajaxĞÔÄÜ" target="_blank">ajaxĞÔÄÜ</a><br/>°Ù¶ÈËÑË÷<a class="glink" href="http://www.baidu.com/s?wd=ajax¿çÓò" target="_blank">ajax¿çÓò</a><br/>°Ù¶ÈËÑË÷<a class="glink" href="http://www.baidu.com/s?wd=ajax¶ş½øÖÆ" target="_blank">ajax¶ş½øÖÆ</a><br/></p></div>
+</textarea><p>ajaxä¸»è¦åº”ç”¨åœºæ™¯æ— åˆ·çš„æƒ…å†µä¸‹å®ç°ä¸æœåŠ¡å™¨æ•°æ®äº¤äº’ï¼Œå½“ç„¶ajaxè¿˜èƒ½åšå¾ˆå¤šäº‹æƒ…ã€‚</p><h2>å†™åœ¨æœ€å</h2><ul><li>ajaxç¼“å­˜çš„åˆ©ç”¨å’Œå­˜åœ¨çš„é—®é¢˜</li><li>ajaxå­˜åœ¨è·¨è¶Šé™åˆ¶ï¼ˆæ›¿ä»£æ–¹æ¡ˆJSONPï¼Œé¡µé¢ä»£ç†ï¼Œæ–°ç‰ˆæœ¬æ”¯æŒè·¨åŸŸæ–¹æ¡ˆï¼‰</li><li>æ³¨æ„ajaxçš„ä½¿ç”¨åœºæ™¯ï¼ˆä¸è¦æ»¥ç”¨ajaxï¼Œå¦åˆ™ä¼šå¸¦æ¥æ€§èƒ½ç­‰é—®é¢˜ï¼‰</li><li>æœªæ¥ajaxå¯¹äºŒè¿›åˆ¶æ•°æ®çš„ä¼ è¾“æ”¯æŒ</li></ul><p class="info">å‘ç°åœ¨ie6-8ä¸­ï¼Œå‡å¦‚ä½¿ç”¨AJAXçš„getååœ¨æ¢postæ¥è¯·æ±‚åŒä¸€urlçš„è¯ï¼Œè¯·æ±‚å°†ä¸ä¼šå‘èµ·è€Œç›´æ¥ä»ç¼“å­˜ä¸­è¯»å–ã€‚</p><p>é’ˆå¯¹ä¸Šé¢æåˆ°çš„ä¸€äº›é—®é¢˜ï¼Œè¿™é‡Œå°±ä¸å±•å¼€è®¨è®ºäº†ï¼Œæœ‰å…´è¶£çš„æœ‹å‹å¯ä»¥å»ç½‘ä¸ŠæŸ¥ä¸€æŸ¥ã€‚</p><p>ç™¾åº¦æœç´¢<a class="glink" href="http://www.baidu.com/s?wd=ajaxç¼“å­˜" target="_blank">ajaxç¼“å­˜</a><br/>ç™¾åº¦æœç´¢<a class="glink" href="http://www.baidu.com/s?wd=ajaxæ€§èƒ½" target="_blank">ajaxæ€§èƒ½</a><br/>undefinedç™¾åº¦æœç´¢<a class="glink" href="http://www.baidu.com/s?wd=ajaxäºŒè¿›åˆ¶" target="_blank">ajaxäºŒè¿›åˆ¶</a><br/></p></div>
 </div>

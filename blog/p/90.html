@@ -1,119 +1,119 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>�ַ���ʵ��ģ�������</title>
+<title>分分钟实现模块加载器</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>�ַ���ʵ��ģ�������</h1>
-    <div class=content><h2>ǰ��</h2><p>ģ�黯�����ô��Բ���˵������ʵ��ģ�黯�����Ĺ�����requirejs��seajs��Ҳ���Ƚϳ��죬���������������ʵ�����Ƶ�ģ���������</p><p class="info">������һƪ���ֶ��ֲ�ʧ��ֵ������</p><h2>һ���й�ģ�黯�����Ĺ���</h2><h3>ԭʼ��ģ�黯����</h3><p>��һ�죬�ϰ�ע����һ����Ϊ���ֱ�̵Ļ�������˾��Ȼ����Ƹ��һλ����������ǰ�˹���ʦ</p><p>��һ�죬������ʼдjs�����ˣ��������ˡ�����.js����Ȼ������ž���Ϳ�ʼ�ô�����</p><textarea class="code-js" edit=off >
-//����������ģ�黯����Ŀǰ���У�������Ҫ����
-modules = {} //������ģ������
-modules.m1 = function(){ //����һ��ģ��
+    <h1>分分钟实现模块加载器</h1>
+    <div class=content><h2>前言</h2><p>模块化开发好处自不必说，帮助实现模块化开发的工具如requirejs，seajs等也都比较成熟，今天我们来讲如何实现类似的模块加载器。</p><p class="info">下面是一篇娱乐而又不失价值的文章</p><h2>一个有关模块化开发的故事</h2><h3>原始的模块化开发</h3><p>有一天，老板注册了一家名为快乐编程的互联网公司，然后招聘了一位名叫张三的前端工程师</p><p>有一天，张三开始写js代码了，他创建了『张三.js』，然后噼里啪啦就开始敲代码了</p><textarea class="code-js" edit=off >
+//张三他心想模块化开发目前流行，他必须要跟风
+modules = {} //先来个模块容器
+modules.m1 = function(){ //先来一个模块
     return {
-        //���ֽӿ�ѽ
+        //各种接口呀
     }
 };
-modules.m2 = function(){ //����һ��ģ��
+modules.m2 = function(){ //再来一个模块
     return {}
 };
-//����ģ��ѽ
-</textarea><p>������ʵͦhappy�ģ���ôдģ��ͦ�����ѽ</p><textarea class="code-js" edit=off >
+//各种模块呀
+</textarea><p>张三其实挺happy的，这么写模块挺舒服的呀</p><textarea class="code-js" edit=off >
 m1 = modules.m1()
 m2 = modules.m2()
-//���ֵ���ģ��ĸ��ֽӿ�
-</textarea><p>��һ�죬��˾ҵ��չ�ˣ�Ȼ������Ƹ��һ��ǰ�˹���ʦ����</p><p>��һ�죬���Ĵ����ˡ�����.js����Ȼ������ž���Ŀ�ʼд��ҵ��Ĵ���</p><textarea class="code-js" edit=off >
-modules.m2 = function(){ //����һ����Ҳ���ȴ���һ��ģ�飬��Ϊ�ⷽ�㿪����
+//各种调用模块的各种接口
+</textarea><p>有一天，公司业务发展了，然后又招聘了一名前端工程师李四</p><p>有一天，李四创建了『李四.js』，然后噼里啪啦的开始写新业务的代码</p><textarea class="code-js" edit=off >
+modules.m2 = function(){ //李四一上来也是先创建一个模块，因为这方便开发啊
     return {}
 }
 modules.m3 = function(){
     return {}
 }
-//�˴�ʡ��100��
-</textarea><p>Ȼ�����ķ��֣��Լ��Ĵ��붼�Ե�ѽ����ô�����ܲ�ͨ�أ�������������������Ĵ�����������ģ�Ȼ��js�Ͳ��ܼ���ִ����</p><p>������������������һ������ѽ������ô���ҵĴ���ɵ��ˣ�ԭ��������ģ�鱻���ĸ�����</p><p>Ϊ�˱�����������ٴη������������������˰��죬�������Լ��������ģ��ǰ�������ж�</p><textarea class="code-js" edit=off >
-if(modules.m5){ //Ϊ���⸲�ǣ������������
+//此处省略100行
+</textarea><p>然后李四发现，自己的代码都对的呀，怎么程序跑不通呢，经过检查他发现张三的代码是有问题的，然后js就不能继续执行了</p><p>他找来了张三，张三一看，哎呀，你怎么把我的代码干掉了！原来张三的模块被李四覆盖了</p><p>为了避免此类事情再次发生，张三李四讨论了半天，最后他们约定，添加模块前先做下判断</p><textarea class="code-js" edit=off >
+if(modules.m5){ //为避免覆盖，就先来个检测
     modules.m5 = ...
 }
-</textarea><p>��һ�죬��˾������һλ�������壬��Ҳ��ʼ�ô�����</p><textarea class="code-js" edit=off >
+</textarea><p>有一天，公司又来了一位新人王五，他也开始敲代码了</p><textarea class="code-js" edit=off >
 modules.mxx = ...
 modules.mxxx = ...
 ...
-</textarea><p>Ȼ�������Ĵ����ֱ�����ɵ��ˣ�������������ģ��д�Ķ�Ҳ������</p><p>�����ҵ����壬xxxx˵��һ��ѣ�����ģ��ǰҪ���ж���...</p><p>�º������룬��Ҳ���ǰ취ѽ��ÿ���������˶��Æ��°��죬�˼Ҳ��ӷ��Լ�Ҳ����</p><p>�����ټ������ģ�����һ��������ν��������⣬�������ҵ����ۣ��������ڰ���������</p><textarea class="code-js" edit=off >
+</textarea><p>然后张三的代码又被王五干掉了，可怜的张三，模块写的多也有罪吗！</p><p>张三找到王五，xxxx说了一大堆，添加模块前要先判断啦...</p><p>事后张三想，这也不是办法呀，每次来个新人都得啰嗦半天，人家不嫌烦自己也烦了</p><p>张三召集了李四，王五一起讨论如何解决这个问题，经过激烈的讨论，他们终于把问题解决了</p><textarea class="code-js" edit=off >
 !function(){
-    var modules = {} //��װ��˽�б���
-    this.define = define; //���⿪�Žӿ�
+    var modules = {} //封装成私有变量
+    this.define = define; //对外开放接口
     this.require = require;
-    function define(id, factory){ //����ģ��
-        if(modules[id]){ //��ͻ���
-            throw 'ģ��'+id+'������ͻ';
+    function define(id, factory){ //定义模块
+        if(modules[id]){ //冲突检测
+            throw '模块'+id+'命名冲突';
         }
         modules[id] = factory();
     }
-    function require(id){ //����ģ��
+    function require(id){ //调用模块
         return modules[id];
     }
 }()
 </textarea><textarea class="code-js" edit=off >
 define('m1', function(){})
 define('m2', function(){})
-//����ģ����Ҳ���±��ɵ���
+//各种模块在也不怕被干掉了
 m1 = require('m1')
 m2= require('m2')
-//���ֵ���ģ��
-</textarea><h3>���ģ�黯��������</h3><p>��һ�죬����Ҫдһ�����������֪����д��һ���ܰ���ģ�飬�����ã��������ĵĽű�������������صģ����޷�ȡ�����ĵ�ģ��</p><textarea class="code-js" edit=off >
+//各种调用模块
+</textarea><h3>解决模块化开发依赖</h3><p>有一天，张三要写一个组件，他得知李四写了一个很棒的模块，他想用，可是李四的脚本是在他后面加载的，他无法取得李四的模块</p><textarea class="code-js" edit=off >
 define('w1', function(){
-    var m3 = require('m3') //���ĵ�ģ�飬���ʲ�����
+    var m3 = require('m3') //李四的模块，访问不到啊
     var somedata = m3.format({
         //....
     })
     return {
     }
 })
-</textarea><p>Ϊ�������ҵ����ģ����ܷ������ģ���ᵽǰ������������Ҳ�����ˣ�����˵�����ģ���һ��õ��˺ü�������ģ���أ�������ǰ��ѽ��</p><p>�����������ۣ��������յó���Ӧ�ÿ���ͨ��ʲô������������������������Ϊ�Ŀ���ģ���˳��</p><textarea class="code-js" edit=off >
-var moduleOnFinish = {}; //ģ�����ʱ�������¼��б�
-var moduleDeps = {}; //ģ�������б�
+</textarea><p>为此张三找到李四，问能否把他的模块提到前面来，这样我也能用了，李四说，这个模块我还用到了好几个其他模块呢，不能往前提呀。</p><p>经过各种讨论，他们最终得出了应该可以通过什么机制来管理依赖，而不是人为的控制模块的顺序。</p><textarea class="code-js" edit=off >
+var moduleOnFinish = {}; //模块就绪时触发的事件列表
+var moduleDeps = {}; //模块依赖列表
 
-function define(id, deps, factory){ //����ģ��
-    if(modules[id]){ //��ͻ���
-        throw 'ģ��'+id+'������ͻ';
+function define(id, deps, factory){ //定义模块
+    if(modules[id]){ //冲突检测
+        throw '模块'+id+'命名冲突';
     }
-    if(deps.length){ //��������
-        moduleDeps[id] = []; //��ʼ����ǰģ�������б�
-        deps.forEach(function(depsId){ //������������ģ��
-            if(!moduleOnFinish[depsId]){ //��ʼ���¼��б�
+    if(deps.length){ //存在依赖
+        moduleDeps[id] = []; //初始化当前模块依赖列表
+        deps.forEach(function(depsId){ //遍历处理依赖模块
+            if(!moduleOnFinish[depsId]){ //初始化事件列表
                 moduleOnFinish[depsId] = []; 
             }
-            if(!modules[depsId]){ //������ģ��δ����
+            if(!modules[depsId]){ //依赖的模块未就绪
 
                 var finishFn = function(){ 
-                    moduleDeps[id] = moduleDeps[id].filter(function(curId){ //�Ƴ�����
+                    moduleDeps[id] = moduleDeps[id].filter(function(curId){ //移除依赖
                         return curId != depsId;
                         /*
-                        if(curId == depsId){ //�Ƴ��Ѿ�����ģ�������
+                        if(curId == depsId){ //移除已经就绪模块的依赖
                             return false;
                         }else{
                             return true;
                         }*/
                     });
-                    moduleOnFinish[depsId] = moduleOnFinish[depsId].filter(function(curFn){ //�Ƴ��¼�
+                    moduleOnFinish[depsId] = moduleOnFinish[depsId].filter(function(curFn){ //移除事件
                         return curFn != finishFn;
                     });
-                    if(moduleDeps[id].length == 0){ //��������ģ�鶼����
+                    if(moduleDeps[id].length == 0){ //所有依赖模块都就绪
                         callFactory();
                     }
                 };
-                moduleDeps[id].push(depsId); //��������
-                moduleOnFinish[depsId].push(finishFn); //���ӹ۲��¼�
+                moduleDeps[id].push(depsId); //添加依赖
+                moduleOnFinish[depsId].push(finishFn); //添加观察事件
             }
         });
     }else{
         callFactory();
     }
 
-    function callFactory(){ //ִ��ģ��ĳ�ʼ��
+    function callFactory(){ //执行模块的初始化
         modules[id] = factory();
-        if(moduleOnFinish[id]){ //������ģ�������������۲��¼�
+        if(moduleOnFinish[id]){ //被其他模块依赖，触发观察事件
             moduleOnFinish[id].forEach(function(fn){
                 fn();
             });
@@ -123,7 +123,7 @@ function define(id, deps, factory){ //����ģ��
 }
 </textarea><textarea class="code-js" edit=off >
 define('w1', ['m3'], function(){
-    var m3 = require('m3') //���ĵ�ģ�����ڿ��Է����ˣ���Ц����������
+    var m3 = require('m3') //李四的模块终于可以访问了，大笑三声哈哈哈
     var somedata = m3.format({
         //....
     })
@@ -131,10 +131,10 @@ define('w1', ['m3'], function(){
 
     }
 })
-</textarea><p class="info">���ˣ�һ��ģ�鿪�����߻�����ɣ���������define��require����ȫ��API</p><h3>ģ��Ĺ���</h3><p>�����˼����µĿ��������������ģ��������ӵ�ģ��ҲԽ��Խ�࣬�ļ�������.js��,������.js��,������.js�������˼�ǧ�еĴ��룬����ҳ�涼��������Щ��js�����ܿ��ǰ�</p><p>��һ�죬��������ˣ��и�����ת�������忪������������ɵ���ˣ���ǧ�д�����ô��ѽ��ô�ң���绰��ѯ����Ҳ˵�������</p><p>�����������ּ�����һ��������ν��ģ�����ҵ����⣬ĳ��˵���ļ���ͷдע�ͣ�������ģ���API��д�ϣ�����˵д�ĵ�����֮���ָ����뷨��</p><p>���۵���󣬴�Ҷ����ˣ���ʱ����ͻȻ�и��뷨���Ǹ�ɶJava����һ����һ���ļ���Ϊɶ���ǲ���һ��ģ��һ���ļ��أ��ðɣ��������Ĳ���������ô��</p><textarea class="code-js" edit=off >
+</textarea><p class="info">至此，一款模块开发工具基本完成，它开放了define和require两个全局API</p><h3>模块的管理</h3><p>经过了几个月的开发，张三，李四，王五添加的模块也越来越多，文件『张三.js』,『李四.js』,『王五.js』都有了几千行的代码，各种页面都得引入这些个js，性能堪忧啊</p><p>有一天，李四请假了，有个需求转给了王五开发，这下王五傻眼了，几千行代码怎么找呀怎么找，打电话咨询李四也说不清楚啊</p><p>后来，他们又集合在一起，讨论如何解决模块难找的问题，某人说在文件开头写注释，把所有模块的API都写上，有人说写文档，总之各种各种想法啦</p><p>讨论到最后，大家都累了，这时张三突然有个想法，那个啥Java不是一个类一个文件吗，为啥我们不能一个模块一个文件呢，好吧，这样真心不错，就这么干</p><textarea class="code-js" edit=off >
 var moduleHasLoad = {};
 function define(id, deps, factory){
-    //�˴�ʡ��n��
+    //此处省略n行
     if(!modules[depsId]){
         //...
         loadModule(id);
@@ -144,9 +144,9 @@ function define(id, deps, factory){
     function loadModule(id){
         var path = id+'.js';
         if(!moduleHasLoad[path]){
-            loadJs(path) //��̬����js�ļ�
+            loadJs(path) //动态加载js文件
         }
     }
 }
-</textarea><p>���� <a class="xlink" href="82.html">loadJs</a><br/></p><p class="info">д���������Ҳ�ӽ�β���������ԵĶ����������Ѿ������</p><p>ģ������� <a class="olink" href="../demo/p90/loader.js" target="_blank">loader.js</a></p><p><a class="olink" href="../demo/p90/index.html" target="_blank">ģ�������ʾ��</a></p><h2>����</h2><p>��һ�죬����������Ȼ�����ģ�������ҳ��ӷ�׵����⣬���Ƿ������������˺ö࣬������ѹ������</p><p>��һ�죬���ķ���ÿ�ΰ�define��дdeps��ĺܲ�ˬ</p><p>��һ�죬���巢������ģ���໥�����ˣ�����ô��</p><h3>���ʵ��ģ��ϲ�</h3><h3>���ʵ��ʹ��Node���͵�ģ��</h3><p>���������ģ������ֿ�ʼ�����ˣ��������۽���������</p><p><a class="xlink" href="91.html">ģ�黯��������zbox</a><br/></p></div>
+</textarea><p>函数 <a class="xlink" href="82.html">loadJs</a><br/></p><p class="info">写到这里，此文也接近尾声，概念性的东西基本上已经讲清楚</p><p>模块加载器 <a class="olink" href="../demo/p90/loader.js" target="_blank">loader.js</a></p><p><a class="olink" href="../demo/p90/index.html" target="_blank">模块加载器示例</a></p><h2>更多</h2><p>有一天，张三发现虽然解决了模块管理和页面臃肿的问题，但是发现请求数多了好多，服务器压力大了</p><p>有一天，李四发现每次包define，写deps真的很不爽</p><p>有一天，王五发现两个模块相互引用了，这怎么办</p><h3>如何实现模块合并</h3><h3>如何实现使用Node类型的模块</h3><p>张三，李四，王五又开始讨论了，具体讨论结果详见下文</p><p><a class="xlink" href="91.html">模块化开发利器zbox</a><br/></p></div>
 </div>

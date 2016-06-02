@@ -1,13 +1,13 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>IEÏÂµÄConsole</title>
+<title>IEä¸‹çš„Console</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>IEÏÂµÄConsole</h1>
-    <div class=content><h2>Ç°ÑÔ</h2><p>×î½ü±»IEµÄ¸÷ÖÖbugËù·³£¬µ÷ÊÔ´úÂëÓÃalert»áÓĞºÜ¶à²»±ã£¬ÄÇÃ´¾Í×Ô¶¯¶¯ÊÖĞ´ÁËÒ»¸öÊµÏÖ£¬Í¬Ê±ÔÚÄ³Ğ©³¡ºÏÏÂÌæ´úFirefoxµÈä¯ÀÀÆ÷µÄconsole.info</p><h2>´úÂë</h2><textarea class="code-html">
+    <h1>IEä¸‹çš„Console</h1>
+    <div class=content><h2>å‰è¨€</h2><p>æœ€è¿‘è¢«IEçš„å„ç§bugæ‰€çƒ¦ï¼Œè°ƒè¯•ä»£ç ç”¨alertä¼šæœ‰å¾ˆå¤šä¸ä¾¿ï¼Œé‚£ä¹ˆå°±è‡ªåŠ¨åŠ¨æ‰‹å†™äº†ä¸€ä¸ªå®ç°ï¼ŒåŒæ—¶åœ¨æŸäº›åœºåˆä¸‹æ›¿ä»£Firefoxç­‰æµè§ˆå™¨çš„console.info</p><h2>ä»£ç </h2><textarea class="code-html">
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +17,7 @@ function Console(text){
         if(text){
             Console.box.innerHTML += '=> '+text.replace(/&amp;/g, '&amp;amp;').replace(/</g, '&amp;lt;')+'<br>';
         }
-    }else if(document.body){ //³õÊ¼»¯consoleÈİÆ÷£¬²¢Êä³öÒÑ¾­´æÔÚµÄÊı¾İ
+    }else if(document.body){ //åˆå§‹åŒ–consoleå®¹å™¨ï¼Œå¹¶è¾“å‡ºå·²ç»å­˜åœ¨çš„æ•°æ®
         clearInterval(Console.timer);
         Console.box = document.createElement('div');
         Console.box.style.cssText='position: fixed; top:8px; width: 600px; border: 1px solid #ccc; background: #eee; padding: 8px';
@@ -33,7 +33,7 @@ function Console(text){
             Console.data = [];
         }
         Console.data.push(text);
-        Console.timer = setInterval(function(){ //¼ÙÈçÔÚbody¾ÍĞ÷ºóÃ»µ÷ÓÃConsole£¬ÄÇÃ´¾ÍÈÃ¶¨Ê±Æ÷Ö÷¶¯´¥·¢
+        Console.timer = setInterval(function(){ //å‡å¦‚åœ¨bodyå°±ç»ªåæ²¡è°ƒç”¨Consoleï¼Œé‚£ä¹ˆå°±è®©å®šæ—¶å™¨ä¸»åŠ¨è§¦å‘
             if(document.body){
                 clearInterval(Console.timer);
                 Console();
@@ -50,5 +50,5 @@ Console('in head');
 <script>Console('after div');</script>
 </body>
 </html>
-</textarea><p class="info">×î¼ò±ãµÄÊ¹ÓÃConsole·½·¨£¬´úÌæalert£¬Ö±½ÓÔÚÒ³Ãæ¶¥²¿Êä³öĞÅÏ¢</p><p><a class="xlink" href="../demo/Console.js">Console.js</a><br/></p></div>
+</textarea><p class="info">æœ€ç®€ä¾¿çš„ä½¿ç”¨Consoleæ–¹æ³•ï¼Œä»£æ›¿alertï¼Œç›´æ¥åœ¨é¡µé¢é¡¶éƒ¨è¾“å‡ºä¿¡æ¯</p><p><a class="xlink" href="../demo/Console.js">Console.js</a><br/></p></div>
 </div>

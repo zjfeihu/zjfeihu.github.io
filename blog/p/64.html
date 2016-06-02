@@ -1,16 +1,16 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>jsÖĞÎÄUnicode±àÂë</title>
+<title>jsä¸­æ–‡Unicodeç¼–ç </title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>jsÖĞÎÄUnicode±àÂë</h1>
-    <div class=content><h2>Ç°ÑÔ</h2><p>±àÂëÖĞÎÄ¿ÉÒÔ½â¾öÂÒÂëµÈÎÊÌâ¡£</p><h2>´úÂë</h2><textarea class="code-js">
-str = encode('Ó¢ÎÄABC');
+    <h1>jsä¸­æ–‡Unicodeç¼–ç </h1>
+    <div class=content><h2>å‰è¨€</h2><p>ç¼–ç ä¸­æ–‡å¯ä»¥è§£å†³ä¹±ç ç­‰é—®é¢˜ã€‚</p><h2>ä»£ç </h2><textarea class="code-js">
+str = encode('è‹±æ–‡ABC');
 alert(str)
-alert(encode2('Ó¢ÎÄABC'))
+alert(encode2('è‹±æ–‡ABC'))
 alert(Function('return "'+str+'"')())
 function encode(text){
     var charCodeArr = [];
@@ -24,15 +24,15 @@ function encode(text){
     return charCodeArr.join('');
 }
 
-function encode2(text){ //ÕıÔò·½Ê½
+function encode2(text){ //æ­£åˆ™æ–¹å¼
     return text.replace(/[^\x00-\x7e]/g, function(str){
         return '\\u' + str.charCodeAt(0).toString(16);
     })
 }
-</textarea><h2>Ô­Àí</h2><pre class="xcode">
- .charCodeAt(i) »ñÈ¡×Ö·û´®Î»ÖÃi´¦µÄunicode10½øÖÆ±íÊ¾
- .toString(16) ×ª³É16½øÖÆ×Ö·û´®±íÊ¾
- /[^\x00-\x7e]/ ºÍ charCodeAt(i) &gt; 127 Ğ§¹ûÒ»Ñù£¬¹ıÂËascii×Ö·û
- '\\u'+... jsÖĞUnicode±àÂëµÄ×Ö·û
-</pre><p class="info">ÆäÊµascii×Ö·ûÒ²¿ÉÒÔÓÃ\\u...±íÊ¾£¬±ÈÈç\u0031=>1£¬\u0041=>A</p><h2>Ïà·´API</h2><p>String.fromCharCode(code) unicode×ª³ÉÖĞÎÄ</p></div>
+</textarea><h2>åŸç†</h2><pre class="xcode">
+ .charCodeAt(i) è·å–å­—ç¬¦ä¸²ä½ç½®iå¤„çš„unicode10è¿›åˆ¶è¡¨ç¤º
+ .toString(16) è½¬æˆ16è¿›åˆ¶å­—ç¬¦ä¸²è¡¨ç¤º
+ /[^\x00-\x7e]/ å’Œ charCodeAt(i) &gt; 127 æ•ˆæœä¸€æ ·ï¼Œè¿‡æ»¤asciiå­—ç¬¦
+ '\\u'+... jsä¸­Unicodeç¼–ç çš„å­—ç¬¦
+</pre><p class="info">å…¶å®asciiå­—ç¬¦ä¹Ÿå¯ä»¥ç”¨\\u...è¡¨ç¤ºï¼Œæ¯”å¦‚\u0031=>1ï¼Œ\u0041=>A</p><h2>ç›¸åAPI</h2><p>String.fromCharCode(code) unicodeè½¬æˆä¸­æ–‡</p></div>
 </div>

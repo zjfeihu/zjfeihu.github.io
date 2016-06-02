@@ -5,11 +5,11 @@ Zwhl = function(){
     reg_js,
     reg_html,
     reg_css,
-    config_skin, //Æ¤·ôÃû³Æ
-    config_edit, //ÊÇ·ñ¿É±à¼­
-    isready, //ÊÇ·ñ³õÊ¼»¯
+    config_skin, //çš®è‚¤åç§°
+    config_edit, //æ˜¯å¦å¯ç¼–è¾‘
+    isready, //æ˜¯å¦åˆå§‹åŒ–
     contextmenu, 
-    execute; //ÔËĞĞ´úÂë
+    execute; //è¿è¡Œä»£ç 
     
     Z.ready(init);
     
@@ -65,8 +65,8 @@ Zwhl = function(){
         
         function initContextmenu(){
             var
-            menubox, //²Ëµ¥½ÚµãÒıÓÃ 
-            whichbox, //ÄÄ¸ö´úÂë´¥·¢µÄ²Ëµ¥
+            menubox, //èœå•èŠ‚ç‚¹å¼•ç”¨ 
+            whichbox, //å“ªä¸ªä»£ç è§¦å‘çš„èœå•
             end;
             
             Z(document).on('contextmenu', function(e){
@@ -82,9 +82,9 @@ Zwhl = function(){
             
             Z('body').append(menubox = Z.E(
                 '<div class="hl-menu">\
-                    <a href="#" jbtn="edit">±à¼­´úÂë</a>\
-                    <a href="#" jbtn="run">ÔËĞĞ´úÂë</a>\
-                    <a href="javascript:alert(\'¡¶highlight2.0¡·\\r\\nEmail£ºzjfeihu#126.com\');void 0">¹ØÓÚ²å¼ş</a>\
+                    <a href="#" jbtn="edit">ç¼–è¾‘ä»£ç </a>\
+                    <a href="#" jbtn="run">è¿è¡Œä»£ç </a>\
+                    <a href="javascript:alert(\'ã€Šhighlight2.0ã€‹\\r\\nEmailï¼šzjfeihu#126.com\');void 0">å…³äºæ’ä»¶</a>\
                 </div>'
             ));
             
@@ -115,7 +115,7 @@ Zwhl = function(){
             });
             
             Z(document).click(function(e){
-                if(!menubox.contains(e.target)){//µã»÷µÄ²»ÊÇ²Ëµ¥
+                if(!menubox.contains(e.target)){//ç‚¹å‡»çš„ä¸æ˜¯èœå•
                     menubox.left(-200);
                 }
             });
@@ -131,7 +131,7 @@ Zwhl = function(){
             isshow = 0,
             de = document.documentElement;
         
-            Z('body').append(winbox = Z.E('<div class="hl-exec"><div class="close">µã»÷¹Ø±Õ</div></div>'));
+            Z('body').append(winbox = Z.E('<div class="hl-exec"><div class="close">ç‚¹å‡»å…³é—­</div></div>'));
         
             Z.isie6 && winbox.css('position:absolute');
             
@@ -155,7 +155,7 @@ Zwhl = function(){
                 
                 var doc = window.open('', 'hl_exec');
                 
-                if(lang == 'html' && Z.browser.ie < 9 && importjs()){ //ĞŞÕıdocument.writeÖ´ĞĞË³ĞòÎÊÌâ
+                if(lang == 'html' && Z.browser.ie < 9 && importjs()){ //ä¿®æ­£document.writeæ‰§è¡Œé¡ºåºé—®é¢˜
                     var scripts = [];
                     code = code.replace(/<textarea[^>]*>[\w\W]*?<\/textarea>|(<script([^>]*)>([\w\W]*?)<\/script>)/g, function(match, jstag, attr, text){
                         
@@ -207,7 +207,7 @@ Zwhl = function(){
                 
                 doc.document.close();
                 
-                function importjs(){ //ÅĞ¶Ï´úÂëÖĞÊÇ·ñ°üº¬ÍâÁ´µÄjs
+                function importjs(){ //åˆ¤æ–­ä»£ç ä¸­æ˜¯å¦åŒ…å«å¤–é“¾çš„js
                     var has = 0;
                     code.replace(/<textarea[^>]*>[\w\W]*?<\/textarea>|(<script([^>]*)>([\w\W]*?)<\/script>)/g, function(match, jstag, attr){
                         if(attr && /src\s*=\s*/.test(attr)){
@@ -253,7 +253,7 @@ Zwhl = function(){
             skin = this.attr('skin') || config_skin,
             edit = this.attr('edit') || config_edit,
             option = {edit: edit, skin: skin},
-            value = function(code){ //Çå³ı´úÂëÇ°ÖÃ¿Õ°×
+            value = function(code){ //æ¸…é™¤ä»£ç å‰ç½®ç©ºç™½
             
                 var sChar = Array(8).join('    ');
                 
@@ -286,29 +286,29 @@ Zwhl = function(){
                 
                 var 
                 rootElem = Z.E(output(lang, value, option))
-                    .attr('title', 'µã»÷ÓÒ¼üÔËĞĞ´úÂë')
+                    .attr('title', 'ç‚¹å‡»å³é”®è¿è¡Œä»£ç ')
                     .attr('lang', lang)
                     .append(
                         Z.rstr(
                             '<div class="code">\
                                 <textarea>{%0}</textarea>\
                                 <div>\
-                                    <button>¼ÓÁÁ´úÂë</button>\
-                                    <button>Ö´ĞĞ´úÂë</button>\
-                                    <span> ÌáÊ¾£ºÄã¿ÉÒÔÏÈĞŞ¸Ä´úÂëÔÙÖ´ĞĞ²Ù×÷£¡</span>\
+                                    <button>åŠ äº®ä»£ç </button>\
+                                    <button>æ‰§è¡Œä»£ç </button>\
+                                    <span> æç¤ºï¼šä½ å¯ä»¥å…ˆä¿®æ”¹ä»£ç å†æ‰§è¡Œæ“ä½œï¼</span>\
                                 </div>\
                             </div>',
                             value.replace(/&/g, '&amp;').replace(/</g, '&lt;')
                         )
-                    ); //Ìí¼ÓÔ´´úÂë±à¼­ÓòºÍ²Ù×÷°´Å¥
+                    ); //æ·»åŠ æºä»£ç ç¼–è¾‘åŸŸå’Œæ“ä½œæŒ‰é’®
 
                 this.replace(rootElem);
                 
                 rootElem.find('button').click(function(){
                     
-                    if(this.html() == 'Ö´ĞĞ´úÂë'){
+                    if(this.html() == 'æ‰§è¡Œä»£ç '){
                         execute(lang, rootElem.find('textarea').val());
-                    }else if(this.html() == '¼ÓÁÁ´úÂë'){
+                    }else if(this.html() == 'åŠ äº®ä»£ç '){
                         rootElem.cls('=hl-view').find('ol').replace(
                             (lang == 'js' ? parseJs : parseHtml)(
                                 rootElem.find('textarea').val()
@@ -334,7 +334,7 @@ Zwhl = function(){
             option.edit || config_edit,
             option.skin || config_skin,
             (lang == 'js' ? parseJs : lang == 'html' ? parseHtml : parseCss)(code)
-                .replace(/<li><\/li>/g, '<li>&nbsp;</li>') //ĞŞÕıÎŞĞĞ±êµÄÇé¿öÏÂ²»ÏÔÊ¾¿Õ°×ĞĞ
+                .replace(/<li><\/li>/g, '<li>&nbsp;</li>') //ä¿®æ­£æ— è¡Œæ ‡çš„æƒ…å†µä¸‹ä¸æ˜¾ç¤ºç©ºç™½è¡Œ
         );
         
     }

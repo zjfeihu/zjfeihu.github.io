@@ -1,11 +1,11 @@
 /**
-** À©Õ¹markdownÓï·¨
+** æ‰©å±•markdownè¯­æ³•
 **
 **
 **
 **/
 /*
-code.js //´úÂë
+code.js //ä»£ç 
 
 .
 
@@ -18,54 +18,54 @@ code.html
 code.text
 
 .
-ÀıÈç
+ä¾‹å¦‚
 code.html[edit=off]
     <div>
         <span>test</span>
     </div>
 .
-    ×ª³É
+    è½¬æˆ
 <textarea class="lang-html" edit=off>
     <div>
         <span>test</span>
     </div>
 </textarea>
     
-glink[keyword] //GoogleËÑË÷
-rlink[keyword]href //×ªÔØµØÖ·
-mlink[keyword]href //ÍÆ¼öÔÄ¶Á
-xlink[keyword]href //Õ¾ÄÚ
-olink[keyword]href //ÍâÁ´
+glink[keyword] //Googleæœç´¢
+rlink[keyword]href //è½¬è½½åœ°å€
+mlink[keyword]href //æ¨èé˜…è¯»
+xlink[keyword]href //ç«™å†…
+olink[keyword]href //å¤–é“¾
 
-ÀıÈç£º
-    mlink[Ò»¸öie6µÄbug]href
+ä¾‹å¦‚ï¼š
+    mlink[ä¸€ä¸ªie6çš„bug]href
     
-    ×ª³É
-    <a class="mlink" href="href" target="_blank">Ò»¸öie6µÄbug</a>
+    è½¬æˆ
+    <a class="mlink" href="href" target="_blank">ä¸€ä¸ªie6çš„bug</a>
 
-rimg[title]href //classÃûÎªrimg
-zimg[title]href //classÃûÎªzimg
-ximg[title]href //classÃûÎªximg
+rimg[title]href //classåä¸ºrimg
+zimg[title]href //classåä¸ºzimg
+ximg[title]href //classåä¸ºximg
 img[title]href alt
 
-ÀıÈç£º
-    zimg[Ò»ÕÅö¦Í¼]11234.jpg
+ä¾‹å¦‚ï¼š
+    zimg[ä¸€å¼ é“å›¾]11234.jpg
     
-    ×ª³É
+    è½¬æˆ
     <p class="zimg">
         <img src="11234.jpg"/>
-        <em>Ò»ÕÅö¦Í¼</em>
+        <em>ä¸€å¼ é“å›¾</em>
     </p>
 
-xinfo //³£¹æÌáĞÑ£¬ÖĞ¼ä¿ÕÒ»¸ñÖ»ÄÜĞ´Ò»ĞĞ
-rinfo //ÖØÒªÌáĞÑ
+xinfo //å¸¸è§„æé†’ï¼Œä¸­é—´ç©ºä¸€æ ¼åªèƒ½å†™ä¸€è¡Œ
+rinfo //é‡è¦æé†’
 
-ÀıÈç£º
-    xinfo ×Ö·û´®½âËµµÄºÃ°¡
+ä¾‹å¦‚ï¼š
+    xinfo å­—ç¬¦ä¸²è§£è¯´çš„å¥½å•Š
     
-    ×ª³É
+    è½¬æˆ
     <p class="xinfo">
-    ×Ö·û´®½âËµµÄºÃ°¡
+    å­—ç¬¦ä¸²è§£è¯´çš„å¥½å•Š
     </p>
 */
 
@@ -94,10 +94,10 @@ module.exports = function(){
     //console.info(reg.source);
     var linkText = {
         
-        glink: '¹È¸èËÑË÷',
-        glink: '°Ù¶ÈËÑË÷',
-        rlink: 'ÎÄÕÂÀ´Ô´',
-        mlink: 'À©Õ¹ÔÄ¶Á',
+        glink: 'è°·æ­Œæœç´¢',
+        glink: 'ç™¾åº¦æœç´¢',
+        rlink: 'æ–‡ç« æ¥æº',
+        mlink: 'æ‰©å±•é˜…è¯»',
         xlink: '',
 		olink: ''
     }; 
@@ -108,10 +108,10 @@ module.exports = function(){
                     if(code_lang == 'text'){
                         return '<pre class="xcode">'+ code_content.replace(/</g, '&lt;').replace(/>/g, '&gt;') +'</pre>';
                     }else{
-						if(code_attr == 'off'){ //ËõĞ´Ä£Ê½
+						if(code_attr == 'off'){ //ç¼©å†™æ¨¡å¼
 							code_attr = 'edit=off';
 						}
-						if(code_lang == 'html2' || code_lang == 'js2'){ //ÕâÖÖÄ£Ê½ÏÂÎª·Ç±à¼­Ä£Ê½
+						if(code_lang == 'html2' || code_lang == 'js2'){ //è¿™ç§æ¨¡å¼ä¸‹ä¸ºéç¼–è¾‘æ¨¡å¼
 							code_lang = code_lang.slice(0, -1);
 							code_attr = 'edit=off';
 						}

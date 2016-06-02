@@ -1,36 +1,36 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>½Å±¾Ö®¹ıÂËÍ¬²½ÎÄ¼ş¼Ğ</title>
+<title>è„šæœ¬ä¹‹è¿‡æ»¤åŒæ­¥æ–‡ä»¶å¤¹</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>½Å±¾Ö®¹ıÂËÍ¬²½ÎÄ¼ş¼Ğ</h1>
-    <div class=content><h2>¹¦ÄÜÃèÊö</h2><p>¸ù¾İ¹ıÂËÌõ¼ş¸´ÖÆÒ»¸öÎÄ¼ş¼ĞÖĞµÄÎÄ¼ş¡£</p><h2>Ê¹ÓÃ·½·¨</h2><p>¿½±´ÏÂÁĞ´úÂë£¬±£´æÎªjs£¬Ê¹ÓÃcscript.exe´ò¿ª£¨ÔÚsystem32Ä¿Â¼ÏÂ£©</p><h2>½Å±¾</h2><textarea class="code-js" edit=off >
+    <h1>è„šæœ¬ä¹‹è¿‡æ»¤åŒæ­¥æ–‡ä»¶å¤¹</h1>
+    <div class=content><h2>åŠŸèƒ½æè¿°</h2><p>æ ¹æ®è¿‡æ»¤æ¡ä»¶å¤åˆ¶ä¸€ä¸ªæ–‡ä»¶å¤¹ä¸­çš„æ–‡ä»¶ã€‚</p><h2>ä½¿ç”¨æ–¹æ³•</h2><p>æ‹·è´ä¸‹åˆ—ä»£ç ï¼Œä¿å­˜ä¸ºjsï¼Œä½¿ç”¨cscript.exeæ‰“å¼€ï¼ˆåœ¨system32ç›®å½•ä¸‹ï¼‰</p><h2>è„šæœ¬</h2><textarea class="code-js" edit=off >
 /**
 **======================================
-** ÎÄ¼ş£ºcopy.js v1.01
-** ¹¦ÄÜ£ºÍ¬²½ÎÄ¼ş¼ĞÊı¾İ
-** ×÷Õß£ºzjfeihu@126.com
-** ÃèÊö£º
-**      ½«Ô´ÎÄ¼ş¼ĞÖĞµÄÎÄ¼şÍ¬²½¡º¿½±´¡»µ½Ä¿±êÎÄ¼ş¼Ğ£¬¿ÉÒÔÉè¶¨Í¬²½µÄ¹ıÂËÌõ¼ş¡£
-**      ±ÈÈç½«svnÄ¿Â¼ÀïÃæµÄÊı¾İÍ¬²½µ½ÆäËûÄ¿Â¼£¬²¢ÇÒ×Ô¶¯¹ıÂË.svnÄ¿Â¼
-**      sourceFolder; //Ô´Ä¿Â¼
-**      targetFolder; //Ä¿±êÄ¿Â¼
+** æ–‡ä»¶ï¼šcopy.js v1.01
+** åŠŸèƒ½ï¼šåŒæ­¥æ–‡ä»¶å¤¹æ•°æ®
+** ä½œè€…ï¼šzjfeihu@126.com
+** æè¿°ï¼š
+**      å°†æºæ–‡ä»¶å¤¹ä¸­çš„æ–‡ä»¶åŒæ­¥ã€æ‹·è´ã€åˆ°ç›®æ ‡æ–‡ä»¶å¤¹ï¼Œå¯ä»¥è®¾å®šåŒæ­¥çš„è¿‡æ»¤æ¡ä»¶ã€‚
+**      æ¯”å¦‚å°†svnç›®å½•é‡Œé¢çš„æ•°æ®åŒæ­¥åˆ°å…¶ä»–ç›®å½•ï¼Œå¹¶ä¸”è‡ªåŠ¨è¿‡æ»¤.svnç›®å½•
+**      sourceFolder; //æºç›®å½•
+**      targetFolder; //ç›®æ ‡ç›®å½•
 **      copyFiles(sourceFolder, targetFolder, {
-**          matchFolderRegExp: matchFolder, //¿½±´µÄÎÄ¼ş¼Ğ¹æÔò£¬Ä¬ÈÏÆ¥ÅäÈ«²¿
-**          skipFolderRegExp: skipFolder, //Ìø¹ıµÄÎÄ¼ş¼Ğ¹æÔò
-**          matchFileRegExp: matchFile, //¿½±´µÄÎÄ¼ş¹æÔò£¬Ä¬ÈÏÆ¥ÅäÈ«²¿
-**          skipFileRegExp: skipFile //Ìø¹ıµÄÎÄ¼ş¹æÔò 
+**          matchFolderRegExp: matchFolder, //æ‹·è´çš„æ–‡ä»¶å¤¹è§„åˆ™ï¼Œé»˜è®¤åŒ¹é…å…¨éƒ¨
+**          skipFolderRegExp: skipFolder, //è·³è¿‡çš„æ–‡ä»¶å¤¹è§„åˆ™
+**          matchFileRegExp: matchFile, //æ‹·è´çš„æ–‡ä»¶è§„åˆ™ï¼Œé»˜è®¤åŒ¹é…å…¨éƒ¨
+**          skipFileRegExp: skipFile //è·³è¿‡çš„æ–‡ä»¶è§„åˆ™ 
 **      });
 **======================================
 **/
 
 copyFiles('test', 'D:/test', {
-    skipFolderRegExp: /\.res$/, //Ìø¹ıËùÓĞ½áÎ²ÊÇ.resµÄÎÄ¼ş¼Ğ
-    matchFileRegExp: /\.(html|js|css|gif|jpg|png)$/, //¸´ÖÆËùÓĞÀ©Õ¹ÃûÊÇÉÏÊöµÄÎÄ¼ş
-    skipFileRegExp: /\.res\.\w+$/ //Ìø¹ıËùÓĞµ¹ÊıµÚ¶ş¸öµãºóÃæÊÇ¸ú.resµÄÎÄ¼ş£¬¼´¡º.res.À©Õ¹Ãû¡»
+    skipFolderRegExp: /\.res$/, //è·³è¿‡æ‰€æœ‰ç»“å°¾æ˜¯.resçš„æ–‡ä»¶å¤¹
+    matchFileRegExp: /\.(html|js|css|gif|jpg|png)$/, //å¤åˆ¶æ‰€æœ‰æ‰©å±•åæ˜¯ä¸Šè¿°çš„æ–‡ä»¶
+    skipFileRegExp: /\.res\.\w+$/ //è·³è¿‡æ‰€æœ‰å€’æ•°ç¬¬äºŒä¸ªç‚¹åé¢æ˜¯è·Ÿ.resçš„æ–‡ä»¶ï¼Œå³ã€.res.æ‰©å±•åã€
 });
 /*
 copyFiles(sourceFolder, targetFolder, {
@@ -59,32 +59,32 @@ try{
 
     function copyEach(folder, target){
 
-        if( //²ÉÓÃÏÈÆ¥ÅäÔÚ¹ıÂËµÄÂß¼­£¬¼´ÏÈÆ¥Åä³öÂú×ãÌõ¼şµÄ£¬ÔÚ½á¹ûÖĞ½øĞĞ¹ıÂË 
-            (!matchFolder || matchFolder.test(folder)) //Ã»ÓĞÆ¥ÅäÌõ¼ş»òÕßÂú×ãÆ¥ÅäÌõ¼ş
-            &amp;&amp; (!skipFolder || !skipFolder.test(folder)) //Ã»ÓĞÌø¹ıÌõ¼ş»òÕß²»Âú×ãÌø¹ıÌõ¼ş
+        if( //é‡‡ç”¨å…ˆåŒ¹é…åœ¨è¿‡æ»¤çš„é€»è¾‘ï¼Œå³å…ˆåŒ¹é…å‡ºæ»¡è¶³æ¡ä»¶çš„ï¼Œåœ¨ç»“æœä¸­è¿›è¡Œè¿‡æ»¤ 
+            (!matchFolder || matchFolder.test(folder)) //æ²¡æœ‰åŒ¹é…æ¡ä»¶æˆ–è€…æ»¡è¶³åŒ¹é…æ¡ä»¶
+            &amp;&amp; (!skipFolder || !skipFolder.test(folder)) //æ²¡æœ‰è·³è¿‡æ¡ä»¶æˆ–è€…ä¸æ»¡è¶³è·³è¿‡æ¡ä»¶
         ){
 
-            if(!fso.FolderExists(target)){ //Ä¿±êÎÄ¼ş¼Ğ²»´æÔÚ
-                fso.CreateFolder(target); //´´½¨Ö®
+            if(!fso.FolderExists(target)){ //ç›®æ ‡æ–‡ä»¶å¤¹ä¸å­˜åœ¨
+                fso.CreateFolder(target); //åˆ›å»ºä¹‹
             }
             var files = new Enumerator(folder.Files);
             var file;
-            while(!files.atEnd()){ //±éÀú´¦Àíµ±Ç°ÎÄ¼ş¼ĞÏÂµÄËùÓĞÎÄ¼ş
+            while(!files.atEnd()){ //éå†å¤„ç†å½“å‰æ–‡ä»¶å¤¹ä¸‹çš„æ‰€æœ‰æ–‡ä»¶
                 file = files.item();
 
-                if( //Æ¥ÅäºÍ¹ıÂËÌõ¼ş
+                if( //åŒ¹é…å’Œè¿‡æ»¤æ¡ä»¶
                     (!matchFile || matchFile.test(file))
                     &amp;&amp; (!skipFile || !skipFile.test(file))
                 ){
                     var targetPath = target +'/'+ file.Name;
-                    if(fso.FileExists(targetPath)){ //ÅĞ¶ÏÎÄ¼şÊÇ·ñ´æÔÚ
+                    if(fso.FileExists(targetPath)){ //åˆ¤æ–­æ–‡ä»¶æ˜¯å¦å­˜åœ¨
                         var oldFile = fso.GetFile(targetPath);
 
-                        if(+file.DateLastModified != +oldFile.DateLastModified){ //¶Ô±ÈÎÄ¼şĞŞ¸ÄÊ±¼ä
+                        if(+file.DateLastModified != +oldFile.DateLastModified){ //å¯¹æ¯”æ–‡ä»¶ä¿®æ”¹æ—¶é—´
 
-                            if(file.size != oldFile.size){ //¶Ô±ÈÎÄ¼ş´óĞ¡
+                            if(file.size != oldFile.size){ //å¯¹æ¯”æ–‡ä»¶å¤§å°
                                 copyFile();
-                            }else if(file.OpenAsTextStream().ReadAll() != oldFile.OpenAsTextStream().ReadAll()){ //¶Ô±ÈÎÄ¼şÄÚÈİ
+                            }else if(file.OpenAsTextStream().ReadAll() != oldFile.OpenAsTextStream().ReadAll()){ //å¯¹æ¯”æ–‡ä»¶å†…å®¹
                                 copyFile();
                             }
                         }
@@ -103,9 +103,9 @@ try{
 
             var subfolders = new Enumerator(folder.SubFolders);
             var subfolder;
-            while(!subfolders.atEnd()){ //±éÀú´¦Àíµ±Ç°ÎÄ¼ş¼ĞÏÂµÄÎÄ¼ş¼Ğ
+            while(!subfolders.atEnd()){ //éå†å¤„ç†å½“å‰æ–‡ä»¶å¤¹ä¸‹çš„æ–‡ä»¶å¤¹
                 subfolder = subfolders.item();
-                copyEach(subfolder, target +'/'+ subfolder.Name); //¼ÌĞø´¦Àí×ÓÎÄ¼ş¼ĞÀïÃæµÄÊı¾İ
+                copyEach(subfolder, target +'/'+ subfolder.Name); //ç»§ç»­å¤„ç†å­æ–‡ä»¶å¤¹é‡Œé¢çš„æ•°æ®
                 subfolders.moveNext();
             }
         }

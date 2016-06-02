@@ -1,20 +1,20 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>µİ¹é·¨ÊµÏÖ×ÓÓò½âÎö</title>
+<title>é€’å½’æ³•å®ç°å­åŸŸè§£æ</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>µİ¹é·¨ÊµÏÖ×ÓÓò½âÎö</h1>
-    <div class=content><p>ÔÚ²Ù×÷cookiesµÄÊ±ºò£¬×ÓÓòµÄcookies»á¸²¸Ç¸¸Óò£¬¼ÙÈçÊÇ¶à¼¶×ÓÓòµÄ»°£¬cookiesµÄÖµ½«´Ó¶¥²ã¸¸ÓòÒ»²ã²ãµÄ¶ÁÈ¡£¬ÕâÀïĞ´ÁËÒ»¸öÊµÏÖ²ã²ã¸¸Óò½âÎöµÄËã·¨¡£</p><h2>Öğ²ã½âÎö¸¸ÓòËã·¨</h2><textarea class="code-js">
+    <h1>é€’å½’æ³•å®ç°å­åŸŸè§£æ</h1>
+    <div class=content><p>åœ¨æ“ä½œcookiesçš„æ—¶å€™ï¼Œå­åŸŸçš„cookiesä¼šè¦†ç›–çˆ¶åŸŸï¼Œå‡å¦‚æ˜¯å¤šçº§å­åŸŸçš„è¯ï¼Œcookiesçš„å€¼å°†ä»é¡¶å±‚çˆ¶åŸŸä¸€å±‚å±‚çš„è¯»å–ï¼Œè¿™é‡Œå†™äº†ä¸€ä¸ªå®ç°å±‚å±‚çˆ¶åŸŸè§£æçš„ç®—æ³•ã€‚</p><h2>é€å±‚è§£æçˆ¶åŸŸç®—æ³•</h2><textarea class="code-js">
 
-function parseDomain(childDomain, parentDomain){ //¸¸Óò½âÎöº¯Êı,´Ó¶¥²ãÒ»²ã²ã¶ÁÈ¡cookies
+function parseDomain(childDomain, parentDomain){ //çˆ¶åŸŸè§£æå‡½æ•°,ä»é¡¶å±‚ä¸€å±‚å±‚è¯»å–cookies
     if(childDomain){
         parseDomain(childDomain.replace(/(^|\.)[^.]+$/, function(match){
             var nowDomain = match + parentDomain;
             if(parentDomain){
-                if(nowDomain.indexOf('.') != 0){ //±¾Óò¶îÍâ¶ÁÈ¡ÒÔµã¿ªÍ·ÔÚ¼Ó±¾ÓòµÄcookie
+                if(nowDomain.indexOf('.') != 0){ //æœ¬åŸŸé¢å¤–è¯»å–ä»¥ç‚¹å¼€å¤´åœ¨åŠ æœ¬åŸŸçš„cookie
                     alert('.'+nowDomain);
                 }
                 alert(nowDomain);

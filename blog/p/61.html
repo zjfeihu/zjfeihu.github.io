@@ -1,27 +1,27 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>github¶àÕÊºÅµÄSSH keyÇĞ»»£¨×ª£©</title>
+<title>githubå¤šå¸å·çš„SSH keyåˆ‡æ¢ï¼ˆè½¬ï¼‰</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>github¶àÕÊºÅµÄSSH keyÇĞ»»£¨×ª£©</h1>
-    <div class=content><p>ÎÒÓĞÁ½¸ögithubÕÊºÅ£¬Ò»¸öÊÇ¸öÈËËùÓÃ£¬Ò»¸öÊÇÎª¹«Ë¾ÏîÄ¿ËùÓÃ¡£Èç¹ûÊÇµ¥ÓÃ»§(single-user)£¬ºÜ·½±ã£¬Ä¬ÈÏÄÃid_rsaÓëÄãµÄgithub·şÎñÆ÷µÄ¹«Ô¿¶Ô±È£»Èç¹ûÊÇ¶àÓÃ»§£¨multi-user£©Èçuser1,user2,ÄÇÃ´¾Í²»ÄÜÓÃÔÚuser2µÄÉíÉÏÁË£¬Õâ¸öÊ±ºò¾ÍÒªÅäÖÃÒ»ÏÂÁË£º</p><h2>1¡¢ĞÂ½¨user2µÄSSH Key</h2><pre class="xcode">
-#ĞÂ½¨SSH key£º
-$ cd ~/.ssh     # ÇĞ»»µ½C:\Users\Administrator\.ssh
-ssh-keygen -t rsa -C "mywork@email.com"  # ĞÂ½¨¹¤×÷µÄSSH key
-# ÉèÖÃÃû³ÆÎªid_rsa_work
+    <h1>githubå¤šå¸å·çš„SSH keyåˆ‡æ¢ï¼ˆè½¬ï¼‰</h1>
+    <div class=content><p>æˆ‘æœ‰ä¸¤ä¸ªgithubå¸å·ï¼Œä¸€ä¸ªæ˜¯ä¸ªäººæ‰€ç”¨ï¼Œä¸€ä¸ªæ˜¯ä¸ºå…¬å¸é¡¹ç›®æ‰€ç”¨ã€‚å¦‚æœæ˜¯å•ç”¨æˆ·(single-user)ï¼Œå¾ˆæ–¹ä¾¿ï¼Œé»˜è®¤æ‹¿id_rsaä¸ä½ çš„githubæœåŠ¡å™¨çš„å…¬é’¥å¯¹æ¯”ï¼›å¦‚æœæ˜¯å¤šç”¨æˆ·ï¼ˆmulti-userï¼‰å¦‚user1,user2,é‚£ä¹ˆå°±ä¸èƒ½ç”¨åœ¨user2çš„èº«ä¸Šäº†ï¼Œè¿™ä¸ªæ—¶å€™å°±è¦é…ç½®ä¸€ä¸‹äº†ï¼š</p><h2>1ã€æ–°å»ºuser2çš„SSH Key</h2><pre class="xcode">
+#æ–°å»ºSSH keyï¼š
+$ cd ~/.ssh     # åˆ‡æ¢åˆ°C:\Users\Administrator\.ssh
+ssh-keygen -t rsa -C "mywork@email.com"  # æ–°å»ºå·¥ä½œçš„SSH key
+# è®¾ç½®åç§°ä¸ºid_rsa_work
 Enter file in which to save the key (/c/Users/Administrator/.ssh/id_rsa): id_rsa_work
-</pre><h2>2¡¢ĞÂÃÜÔ¿Ìí¼Óµ½SSH agentÖĞ</h2><p>ÒòÎªÄ¬ÈÏÖ»¶ÁÈ¡id_rsa£¬ÎªÁËÈÃSSHÊ¶±ğĞÂµÄË½Ô¿£¬Ğè½«ÆäÌí¼Óµ½SSH agentÖĞ£º</p><pre class="xcode">
+</pre><h2>2ã€æ–°å¯†é’¥æ·»åŠ åˆ°SSH agentä¸­</h2><p>å› ä¸ºé»˜è®¤åªè¯»å–id_rsaï¼Œä¸ºäº†è®©SSHè¯†åˆ«æ–°çš„ç§é’¥ï¼Œéœ€å°†å…¶æ·»åŠ åˆ°SSH agentä¸­ï¼š</p><pre class="xcode">
 ssh-add ~/.ssh/id_rsa_work
-</pre><p>Èç¹û³öÏÖCould not open a connection to your authentication agentµÄ´íÎó£¬¾ÍÊÔ×ÅÓÃÒÔÏÂÃüÁî£º</p><pre class="xcode">
+</pre><p>å¦‚æœå‡ºç°Could not open a connection to your authentication agentçš„é”™è¯¯ï¼Œå°±è¯•ç€ç”¨ä»¥ä¸‹å‘½ä»¤ï¼š</p><pre class="xcode">
 ssh-agent bash
 ssh-add ~/.ssh/id_rsa_work
-</pre><h2>3¡¢ĞŞ¸ÄconfigÎÄ¼ş</h2><p>ÔÚ~/.sshÄ¿Â¼ÏÂÕÒµ½configÎÄ¼ş£¬Èç¹ûÃ»ÓĞ¾Í´´½¨£º</p><pre class="xcode">
-touch config        # ´´½¨config
-</pre><p>È»ºóĞŞ¸ÄÈçÏÂ£ºÎÒµÄconfigÅäÖÃÈçÏÂ£º</p><pre class="xcode">
-# ¸ÃÎÄ¼şÓÃÓÚÅäÖÃË½Ô¿¶ÔÓ¦µÄ·şÎñÆ÷
+</pre><h2>3ã€ä¿®æ”¹configæ–‡ä»¶</h2><p>åœ¨~/.sshç›®å½•ä¸‹æ‰¾åˆ°configæ–‡ä»¶ï¼Œå¦‚æœæ²¡æœ‰å°±åˆ›å»ºï¼š</p><pre class="xcode">
+touch config        # åˆ›å»ºconfig
+</pre><p>ç„¶åä¿®æ”¹å¦‚ä¸‹ï¼šæˆ‘çš„configé…ç½®å¦‚ä¸‹ï¼š</p><pre class="xcode">
+# è¯¥æ–‡ä»¶ç”¨äºé…ç½®ç§é’¥å¯¹åº”çš„æœåŠ¡å™¨
 # Default github user(first@mail.com)
 Host github.com
  HostName github.com
@@ -29,18 +29,18 @@ Host github.com
  IdentityFile C:/Users/Administrator/.ssh/id_rsa
 
  # second user(second@mail.com)
- # ½¨Ò»¸ögithub±ğÃû£¬ĞÂ½¨µÄÕÊºÅÊ¹ÓÃÕâ¸ö±ğÃû×ö¿ËÂ¡ºÍ¸üĞÂ
+ # å»ºä¸€ä¸ªgithubåˆ«åï¼Œæ–°å»ºçš„å¸å·ä½¿ç”¨è¿™ä¸ªåˆ«ååšå…‹éš†å’Œæ›´æ–°
 Host github2
  HostName github.com
  User git
  IdentityFile C:/Users/Administrator/.ssh/id_rsa_work
-</pre><p>Èç¹û´æÔÚµÄ»°£¬ÆäÊµ¾ÍÊÇÍùÕâ¸öconfigÖĞÌí¼ÓÒ»¸öHost£º</p><pre class="xcode">
-#½¨Ò»¸ögithub±ğÃû£¬ĞÂ½¨µÄÕÊºÅÊ¹ÓÃÕâ¸ö±ğÃû×ö¿ËÂ¡ºÍ¸üĞÂ
+</pre><p>å¦‚æœå­˜åœ¨çš„è¯ï¼Œå…¶å®å°±æ˜¯å¾€è¿™ä¸ªconfigä¸­æ·»åŠ ä¸€ä¸ªHostï¼š</p><pre class="xcode">
+#å»ºä¸€ä¸ªgithubåˆ«åï¼Œæ–°å»ºçš„å¸å·ä½¿ç”¨è¿™ä¸ªåˆ«ååšå…‹éš†å’Œæ›´æ–°
 Host github2
 HostName github.com
 User git
 IdentityFile ~/.ssh/id_rsa2
-</pre><p>Æä¹æÔò¾ÍÊÇ£º´ÓÉÏÖÁÏÂ¶ÁÈ¡configµÄÄÚÈİ£¬ÔÚÃ¿¸öHostÏÂÑ°ÕÒ¶ÔÓ¦µÄË½Ô¿¡£ÕâÀï½«GitHub SSH²Ö¿âµØÖ·ÖĞµÄgit@github.comÌæ»»³ÉĞÂ½¨µÄHost±ğÃûÈç£ºgithub2£¬ÄÇÃ´Ô­µØÖ·ÊÇ£ºgit@github.com:funpeng/Mywork.git£¬Ìæ»»ºóÓ¦¸ÃÊÇ£ºgithub2:funpeng/Mywork.git.</p><h2>4¡¢´ò¿ªĞÂÉú³ÉµÄ~/.ssh/id_rsa2.pubÎÄ¼ş£¬½«ÀïÃæµÄÄÚÈİÌí¼Óµ½GitHubºóÌ¨¡£</h2><p>¿É²»ÒªÍüÁËÌí¼Óµ½ÄãµÄÁíÒ»¸ögithubÕÊºÅÏÂµÄSSH KeyÖĞ¡£</p><h2>5¡¢²âÊÔ£º</h2><pre class="xcode">
+</pre><p>å…¶è§„åˆ™å°±æ˜¯ï¼šä»ä¸Šè‡³ä¸‹è¯»å–configçš„å†…å®¹ï¼Œåœ¨æ¯ä¸ªHostä¸‹å¯»æ‰¾å¯¹åº”çš„ç§é’¥ã€‚è¿™é‡Œå°†GitHub SSHä»“åº“åœ°å€ä¸­çš„git@github.comæ›¿æ¢æˆæ–°å»ºçš„Hoståˆ«åå¦‚ï¼šgithub2ï¼Œé‚£ä¹ˆåŸåœ°å€æ˜¯ï¼šgit@github.com:funpeng/Mywork.gitï¼Œæ›¿æ¢ååº”è¯¥æ˜¯ï¼šgithub2:funpeng/Mywork.git.</p><h2>4ã€æ‰“å¼€æ–°ç”Ÿæˆçš„~/.ssh/id_rsa2.pubæ–‡ä»¶ï¼Œå°†é‡Œé¢çš„å†…å®¹æ·»åŠ åˆ°GitHubåå°ã€‚</h2><p>å¯ä¸è¦å¿˜äº†æ·»åŠ åˆ°ä½ çš„å¦ä¸€ä¸ªgithubå¸å·ä¸‹çš„SSH Keyä¸­ã€‚</p><h2>5ã€æµ‹è¯•ï¼š</h2><pre class="xcode">
 Administrator@FANGPENG /e/work
 $ ssh -T git@github.com
 Hi BeginMan! You've successfully authenticated, but GitHub does not provide shel
@@ -50,7 +50,7 @@ Administrator@FANGPENG /e/work
 $ ssh -T github2
 Hi funpeng! You've successfully authenticated, but GitHub does not provide shell
  access.
-</pre><h2>6¡¢Ó¦ÓÃ</h2><p>²âÊÔ³É¹¦£¬ÄÇÃ´ÎÒ³¢ÊÔÔÚÎÒµÄworkÄ¿Â¼ÏÂ¿ËÂ¡ÎÒ@126.comÕËºÅÏÂµÄÔ¶³Ì²Ö¿â¡£ÈçÏÂ£º</p><pre class="xcode">
+</pre><h2>6ã€åº”ç”¨</h2><p>æµ‹è¯•æˆåŠŸï¼Œé‚£ä¹ˆæˆ‘å°è¯•åœ¨æˆ‘çš„workç›®å½•ä¸‹å…‹éš†æˆ‘@126.comè´¦å·ä¸‹çš„è¿œç¨‹ä»“åº“ã€‚å¦‚ä¸‹ï¼š</p><pre class="xcode">
 Administrator@FANGPENG /e/work
 $ git clone github2:funpeng/Mywork.git
 Cloning into 'Mywork'...

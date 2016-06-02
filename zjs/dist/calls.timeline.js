@@ -1,5 +1,5 @@
 /*
-Òì²½Á÷³ÌÊ±¼äÖá×é¼ş
+å¼‚æ­¥æµç¨‹æ—¶é—´è½´ç»„ä»¶
 */
 
 !function(){
@@ -51,7 +51,7 @@ function timeline(id){
             
             pushWait: function(){
                 
-                if(times.done){ //¼ÙÈçÍ¬²½Á÷³Ì×÷ÎªÒì²½Á÷³ÌÊ¹ÓÃ£¬ÄÇÃ´loadingµÄÊ±¼äµÈÓÚinit
+                if(times.done){ //å‡å¦‚åŒæ­¥æµç¨‹ä½œä¸ºå¼‚æ­¥æµç¨‹ä½¿ç”¨ï¼Œé‚£ä¹ˆloadingçš„æ—¶é—´ç­‰äºinit
                     times.loading = times.init;
                 }else{
                     times.loading = time();
@@ -73,7 +73,7 @@ function timeline(id){
                 
                 times.done = time();
                 
-                if(times.loading && !times.loaded){ //Ã»ÓĞµ÷ÓÃrecive½Ó¿Ú£¬ÄÇÃ´doneµÄÊ±ºòÉèÖÃloaded
+                if(times.loading && !times.loaded){ //æ²¡æœ‰è°ƒç”¨reciveæ¥å£ï¼Œé‚£ä¹ˆdoneçš„æ—¶å€™è®¾ç½®loaded
                     times.loaded = times.done;
                 }
                 
@@ -166,7 +166,7 @@ function update(){
     
     lock = 1;
     
-    setTimeout(function(){ //ÑÓ³Ù²¢ºÏ²¢¸üĞÂ
+    setTimeout(function(){ //å»¶è¿Ÿå¹¶åˆå¹¶æ›´æ–°
         drawline();
         lock = 0;
     }, 300);
@@ -229,15 +229,15 @@ function drawline(){
                     
                     lineitemhtml.push('<span class=line-padding style=width:'+ time2width(begintime, times.init) +'></span>');
                     
-                    if(times.loading){ //³õÊ¼»¯ºÄÊ±
+                    if(times.loading){ //åˆå§‹åŒ–è€—æ—¶
                         lineitemhtml.push('<span class=line-run style=width:'+ time2width(times.init, times.loading) +'></span>');
                     }
                     
-                    if(times.loaded){ //Òì²½µÈ´ıºÄÊ±
+                    if(times.loaded){ //å¼‚æ­¥ç­‰å¾…è€—æ—¶
                         lineitemhtml.push('<span class=line-wait style=width:'+ time2width(times.loading, times.loaded) +'></span>');
                     }
                     
-                    if(times.done){ //ÏìÓ¦ºÄÊ±
+                    if(times.done){ //å“åº”è€—æ—¶
                         lineitemhtml.push('<span class=line-run style=width:'+ time2width(times.loaded || times.init, times.done) +'></span>');
                         lineitemhtml.push('<span class=text-takentime>'+ (times.done - times.init) +'ms</span>');
                     }
@@ -271,10 +271,10 @@ function drawline(){
         rootElement.id = 'calls_timeline';
         rootElement.innerHTML = '\
             <div class=header>\
-                <span class=name>Ä£¿éÃû³Æ</span>\
-                <span tlcmd=clear class=btn-clear>Çå³ı</span>\
-                <span tlcmd=toggle class=btn-toggle>Òş²Ø</span>\
-                <span tlcmd=close class=btn-close>¹Ø±Õ</span>\
+                <span class=name>æ¨¡å—åç§°</span>\
+                <span tlcmd=clear class=btn-clear>æ¸…é™¤</span>\
+                <span tlcmd=toggle class=btn-toggle>éšè—</span>\
+                <span tlcmd=close class=btn-close>å…³é—­</span>\
             </div>\
             <div class=body></div>\
             <div class=tips> </div>';
@@ -294,11 +294,11 @@ function drawline(){
                     break;
                     
                 case 'toggle':
-                    if(target.innerHTML == 'Òş²Ø'){
-                        target.innerHTML = 'ÏÔÊ¾';
+                    if(target.innerHTML == 'éšè—'){
+                        target.innerHTML = 'æ˜¾ç¤º';
                         linesbox.style.display = 'none';
                     }else{
-                        target.innerHTML = 'Òş²Ø';
+                        target.innerHTML = 'éšè—';
                         linesbox.style.display = 'block';
                     }
                     break; 
@@ -354,20 +354,20 @@ function drawline(){
                             
                             var html = [];
                             
-                            if(times.loading){ //½øÈëµÈ´ıÇ°ºÄ·ÑÊ±¼ä
-                                html.push('<div style=color:red>³õÊ¼»¯Ê±¼ä£º'+ (times.loading - times.init) +'ms</div>');
+                            if(times.loading){ //è¿›å…¥ç­‰å¾…å‰è€—è´¹æ—¶é—´
+                                html.push('<div style=color:red>åˆå§‹åŒ–æ—¶é—´ï¼š'+ (times.loading - times.init) +'ms</div>');
                             }
                             
-                            if(times.loaded){ //Òì²½µÈ´ıÊ±¼ä
-                                html.push('<div style=color:green>Òì²½µÈ´ıÊ±¼ä£º'+ (times.loaded - times.loading) +'ms</div>');
+                            if(times.loaded){ //å¼‚æ­¥ç­‰å¾…æ—¶é—´
+                                html.push('<div style=color:green>å¼‚æ­¥ç­‰å¾…æ—¶é—´ï¼š'+ (times.loaded - times.loading) +'ms</div>');
                             }
                             
                             if(times.done){
                                 
                                 if(times.loaded || times.loading){
-                                    html.push('<span style=color:red>ÏìÓ¦Ö´ĞĞÊ±¼ä£º'+ (times.done - (times.loaded || times.loading)) +'ms</span>');
+                                    html.push('<span style=color:red>å“åº”æ‰§è¡Œæ—¶é—´ï¼š'+ (times.done - (times.loaded || times.loading)) +'ms</span>');
                                 }else{
-                                    html.push('<span style=color:red>Í¬²½Ö´ĞĞÊ±¼ä£º'+ (times.done - times.init) +'ms</span>');
+                                    html.push('<span style=color:red>åŒæ­¥æ‰§è¡Œæ—¶é—´ï¼š'+ (times.done - times.init) +'ms</span>');
                                 }
                                 
                             }

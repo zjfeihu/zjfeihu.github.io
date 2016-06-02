@@ -1,13 +1,13 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>ie6背景图片闪烁解决方案</title>
+<title>ie6鑳屾櫙鍥剧墖闂儊瑙ｅ喅鏂规</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>ie6背景图片闪烁解决方案</h1>
-    <div class=content><h2>问题描述</h2><p>ie6下假如hover切换背景图标时会出现图片闪烁的问题，原因是图片没有缓存。</p><h2>示例</h2><p><style>.testbg{display:block;width:64px;height:64px;}.testbg:hover{background:url(/imgs/featured-origami.png) no-repeat}</style><a class=testbg href=# > 鼠标移到这里试试 </a></p><h2>修正方法</h2><textarea class="code-css">
+    <h1>ie6鑳屾櫙鍥剧墖闂儊瑙ｅ喅鏂规</h1>
+    <div class=content><h2>闂鎻忚堪</h2><p>ie6涓嬪亣濡俬over鍒囨崲鑳屾櫙鍥炬爣鏃朵細鍑虹幇鍥剧墖闂儊鐨勯棶棰橈紝鍘熷洜鏄浘鐗囨病鏈夌紦瀛樸��</p><h2>绀轰緥</h2><p><style>.testbg{display:block;width:64px;height:64px;}.testbg:hover{background:url(/imgs/featured-origami.png) no-repeat}</style><a class=testbg href=# > 榧犳爣绉诲埌杩欓噷璇曡瘯 </a></p><h2>淇鏂规硶</h2><textarea class="code-css">
 body{
     _zoom:expression(this.style.zoom=1,document.execCommand("BackgroundImageCache",false,true));
 }

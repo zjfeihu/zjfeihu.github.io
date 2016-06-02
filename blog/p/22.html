@@ -1,13 +1,13 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>APIÖ®classList</title>
+<title>APIä¹‹classList</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>APIÖ®classList</h1>
-    <div class=content><h2>Ç°ÑÔ</h2><p>classListÊÇhtml5ÖĞĞÂÔö¼ÓµÄAPI£¬À©Õ¹½ÚµãµÄclass²Ù×÷¡£</p><h2>API</h2><p>Í¨¹ıElement.classListÀ´»ñÈ¡classList¶ÔÏó</p><h3>ÊôĞÔ</h3><ul><li>length ·µ»ØclassNameµÄ¸öÊı</li></ul><h3>·½·¨</h3><ul><li>add(className) Ìí¼ÓÒ»¸öclassName</li><li>contains(className) ÅĞ¶ÏÊÇ·ñ°üº¬className</li><li>item(index) ·µ»ØÖ¸¶¨Ë÷ÒıµÄclassName£¬´Ó0¿ªÊ¼£¬ÕÒ²»µ½·µ»Ønull</li><li>remove(className) ÒÆ³ıÖ¸¶¨µÄclassName</li><li>toggle(className) ÇĞ»»Ö¸¶¨µÄclassName</li></ul><h2>ÑİÊ¾´úÂë</h2><textarea class="code-html">
+    <h1>APIä¹‹classList</h1>
+    <div class=content><h2>å‰è¨€</h2><p>classListæ˜¯html5ä¸­æ–°å¢åŠ çš„APIï¼Œæ‰©å±•èŠ‚ç‚¹çš„classæ“ä½œã€‚</p><h2>API</h2><p>é€šè¿‡Element.classListæ¥è·å–classListå¯¹è±¡</p><h3>å±æ€§</h3><ul><li>length è¿”å›classNameçš„ä¸ªæ•°</li></ul><h3>æ–¹æ³•</h3><ul><li>add(className) æ·»åŠ ä¸€ä¸ªclassName</li><li>contains(className) åˆ¤æ–­æ˜¯å¦åŒ…å«className</li><li>item(index) è¿”å›æŒ‡å®šç´¢å¼•çš„classNameï¼Œä»0å¼€å§‹ï¼Œæ‰¾ä¸åˆ°è¿”å›null</li><li>remove(className) ç§»é™¤æŒ‡å®šçš„className</li><li>toggle(className) åˆ‡æ¢æŒ‡å®šçš„className</li></ul><h2>æ¼”ç¤ºä»£ç </h2><textarea class="code-html">
 <!doctype html>
 <style>.red{color:red;}</style>
 <div id="testbox">testbox</div>
@@ -29,7 +29,7 @@ $('toggle').onclick = function(){
    classList.toggle('red');
 };
 $('contains').onclick = function(){
-   alert(classList.contains('red') ? '°üº¬red' : '²»°üº¬red');
+   alert(classList.contains('red') ? 'åŒ…å«red' : 'ä¸åŒ…å«red');
 };
 $('item').onclick= function(){
    alert('item(0) == ' + (classList.item(0) === null ? 'null' : classList.item(0)));
@@ -39,5 +39,5 @@ function $(id){
     return document.getElementById(id);
 }
 </script>
-</textarea><h2>¼æÈİĞÔ</h2><p>³ıÁËIE6-9Ö®ÍâµÄÖ÷Á÷ä¯ÀÀÆ÷¶¼ÄÜÓÃ¡£</p></div>
+</textarea><h2>å…¼å®¹æ€§</h2><p>é™¤äº†IE6-9ä¹‹å¤–çš„ä¸»æµæµè§ˆå™¨éƒ½èƒ½ç”¨ã€‚</p></div>
 </div>

@@ -1,16 +1,16 @@
-title Ç°¶Ë¿ª·¢
+title å‰ç«¯å¼€å‘
 list
-    {i:2,id:1,text:APIÎÄµµ}
-    {i:3,id:2,text:²¼¾ÖÑùÊ½}
-    {i:4,id:3,text:Ëã·¨Ë¼Â·}
-    {i:5,id:4,text:´úÂëÓÅ»¯}
-    {i:6,id:5,text:¹¤¾ßÓ¦ÓÃ}
-    {i:7,id:6,text:µçÄÔÏà¹Ø}
-    {i:8,id:7,text:HTTPÏà¹Ø}
-    {i:9,id:8,text:ä¯ÀÀÆ÷¼æÈİ}
+    {i:2,id:1,text:APIæ–‡æ¡£}
+    {i:3,id:2,text:å¸ƒå±€æ ·å¼}
+    {i:4,id:3,text:ç®—æ³•æ€è·¯}
+    {i:5,id:4,text:ä»£ç ä¼˜åŒ–}
+    {i:6,id:5,text:å·¥å…·åº”ç”¨}
+    {i:7,id:6,text:ç”µè„‘ç›¸å…³}
+    {i:8,id:7,text:HTTPç›¸å…³}
+    {i:9,id:8,text:æµè§ˆå™¨å…¼å®¹}
 page
-    {i:1,id:index,text:Ê×Ò³}
-    {i:10,id:about,text:¹ØÓÚ}
+    {i:1,id:index,text:é¦–é¡µ}
+    {i:10,id:about,text:å…³äº}
 checkout
     system/tpl.mjs       *
     system/data.mjs      *

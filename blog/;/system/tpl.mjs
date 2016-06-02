@@ -32,11 +32,11 @@ function renderlist(input){
     
     function format(data){
         /*
-            data ÊÇ°üº¬itemµÄÊı×é
-            item = { //ÈÕÖ¾ĞÅÏ¢
-                id: id±êÖ¾
-                tt: ±êÌâ
-                ct: ´´½¨Ê±¼ä
+            data æ˜¯åŒ…å«itemçš„æ•°ç»„
+            item = { //æ—¥å¿—ä¿¡æ¯
+                id: idæ ‡å¿—
+                tt: æ ‡é¢˜
+                ct: åˆ›å»ºæ—¶é—´
             };
         */
         
@@ -45,7 +45,7 @@ function renderlist(input){
             copydata.push({
                 id: el.id.match(/\d+/)[0],
                 tt: el.tt,
-                ct: formatTime(el.ct) //¸ñÊ½»¯Ê±¼äÏÔÊ¾
+                ct: formatTime(el.ct) //æ ¼å¼åŒ–æ—¶é—´æ˜¾ç¤º
             });
         });
         return copydata;
@@ -82,7 +82,7 @@ function renderdetail(input){
         }
     });
     
-    function zipHtml(text){ //Ñ¹Ëõhtml£¬È¥³ı¶àÓà¿Õ¸ñ
+    function zipHtml(text){ //å‹ç¼©htmlï¼Œå»é™¤å¤šä½™ç©ºæ ¼
         if(typeof text !='string'){
             system.console.alert(text);
         }

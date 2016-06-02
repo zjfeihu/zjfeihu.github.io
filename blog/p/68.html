@@ -1,19 +1,19 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>Ìì¿ÓargumentsÖ®±äÁ¿ÒıÓÃ£¿</title>
+<title>å¤©å‘argumentsä¹‹å˜é‡å¼•ç”¨ï¼Ÿ</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>Ìì¿ÓargumentsÖ®±äÁ¿ÒıÓÃ£¿</h1>
-    <div class=content><h2>Ç°ÑÔ</h2><p>jsÖĞ²»´æÔÚÖ¸ÕëµÄ¸ÅÄî£¬Ò²ºÜÉÙ»á³öÏÖÀàËÆµÄÌØÕ÷£¬¿ÉÍòÊÂÎŞ¾ø¶Ô£¬º¯Êı²ÎÊıÒıÓÃarguments¾Í¶ñĞÄµÄĞãÁËÒ»°Ñ¡£</p><h2>´úÂë</h2><textarea class="code-js">
-fn(0); //Êä³ö[0]
-fn(0, 1); //Êä³ö[0, {info: 'the_data'}]
-fn2(); //arguments[0] ±»¸²¸Ç
+    <h1>å¤©å‘argumentsä¹‹å˜é‡å¼•ç”¨ï¼Ÿ</h1>
+    <div class=content><h2>å‰è¨€</h2><p>jsä¸­ä¸å­˜åœ¨æŒ‡é’ˆçš„æ¦‚å¿µï¼Œä¹Ÿå¾ˆå°‘ä¼šå‡ºç°ç±»ä¼¼çš„ç‰¹å¾ï¼Œå¯ä¸‡äº‹æ— ç»å¯¹ï¼Œå‡½æ•°å‚æ•°å¼•ç”¨argumentså°±æ¶å¿ƒçš„ç§€äº†ä¸€æŠŠã€‚</p><h2>ä»£ç </h2><textarea class="code-js">
+fn(0); //è¾“å‡º[0]
+fn(0, 1); //è¾“å‡º[0, {info: 'the_data'}]
+fn2(); //arguments[0] è¢«è¦†ç›–
 
 function fn(input, data){
-    data = { info: 'the_data'}; //µ±dataÎ»ÖÃ´¦ÓĞÊµ²Î´«ÈëÊ±£¬data¾Í³ÉÁËÖ¸Ïòarguments[1]µÄÖ¸Õë£¿
+    data = { info: 'the_data'}; //å½“dataä½ç½®å¤„æœ‰å®å‚ä¼ å…¥æ—¶ï¼Œdataå°±æˆäº†æŒ‡å‘arguments[1]çš„æŒ‡é’ˆï¼Ÿ
     console.info( arguments);
 }
 
@@ -21,7 +21,7 @@ function fn2(data){
     data = 1;
     console.info(arguments);
 }
-</textarea><p class="info">±äÁ¿µÄÊ¹ÓÃ³öÏÖÁËÖ¸ÕëµÄÌØÕ÷£¬ÕæÊÇ¡°ÄæÌì¡±°ãµÄ´æÔÚ£¬Ã²ËÆ¸÷´óä¯ÀÀÆ÷¶¼ÕâÑù¡£</p><h3>Ò»¸öÑ­»·ÒıÓÃµÄÀı×Ó</h3><textarea class="code-js">
+</textarea><p class="info">å˜é‡çš„ä½¿ç”¨å‡ºç°äº†æŒ‡é’ˆçš„ç‰¹å¾ï¼ŒçœŸæ˜¯â€œé€†å¤©â€èˆ¬çš„å­˜åœ¨ï¼Œè²Œä¼¼å„å¤§æµè§ˆå™¨éƒ½è¿™æ ·ã€‚</p><h3>ä¸€ä¸ªå¾ªç¯å¼•ç”¨çš„ä¾‹å­</h3><textarea class="code-js">
 fn(0);
 function fn(data){
     data = {};
@@ -30,10 +30,10 @@ function fn(data){
     data[2] = 2;
     console.info(data);
 }
-</textarea><h3>½â¾ö·½°¸</h3><textarea class="code-js">
+</textarea><h3>è§£å†³æ–¹æ¡ˆ</h3><textarea class="code-js">
 fn(0);
 function fn(data2){
-    var data = {}; //²»Ê¹ÓÃĞÎ²Î×÷ÎªÒıÓÃĞÍ±äÁ¿ÈİÆ÷
+    var data = {}; //ä¸ä½¿ç”¨å½¢å‚ä½œä¸ºå¼•ç”¨å‹å˜é‡å®¹å™¨
     data[0] = arguments[0];
     data[1] = 1;
     data[2] = 2;

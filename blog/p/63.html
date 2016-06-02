@@ -1,5 +1,5 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
 <title>web Worker</title>
 <link href=../style/main.css rel=stylesheet>
@@ -7,23 +7,23 @@
 <body>
 <div id=detail>
     <h1>web Worker</h1>
-    <div class=content><h2>Ç°ÑÔ</h2><p>jsµ¥Ïß³Ì´æÔÚ×èÈûµ¼ÖÂÒ³Ãæ¼ÙËÀ»òÕß¿¨µÄÎÊÌâ£¬ĞÂµÄAPI web Worker³£³£¿ÉÒÔ½â¾öÕâĞ©ÎÊÌâ¡£</p><h2>API</h2><ul><li>worker = new Worker('x.js') ´´½¨</li><li>worker.postMessage('message') ·¢ËÍĞÅÏ¢</li><li>worker.onmessage = function(e){ e.data } ½ÓÊÕĞÅÏ¢</li><li>worker.terminate() ÖÕÖ¹worker</li></ul><h2>ÑİÊ¾</h2><h3>¼ÆËãì³²¨ÄÇÆõÊıÁĞ</h3><p class="info">ì³²¨ÄÉÆõÊıÁĞ¶¨Òå£ºF£¨0£©=0£¬F£¨1£©=1£¬F£¨n£©=F(n-1)+F(n-2)£¨n¡İ2£¬n¡ÊN*£©</p><textarea class="code-html">
+    <div class=content><h2>å‰è¨€</h2><p>jså•çº¿ç¨‹å­˜åœ¨é˜»å¡å¯¼è‡´é¡µé¢å‡æ­»æˆ–è€…å¡çš„é—®é¢˜ï¼Œæ–°çš„API web Workerå¸¸å¸¸å¯ä»¥è§£å†³è¿™äº›é—®é¢˜ã€‚</p><h2>API</h2><ul><li>worker = new Worker('x.js') åˆ›å»º</li><li>worker.postMessage('message') å‘é€ä¿¡æ¯</li><li>worker.onmessage = function(e){ e.data } æ¥æ”¶ä¿¡æ¯</li><li>worker.terminate() ç»ˆæ­¢worker</li></ul><h2>æ¼”ç¤º</h2><h3>è®¡ç®—æ–æ³¢é‚£å¥‘æ•°åˆ—</h3><p class="info">æ–æ³¢çº³å¥‘æ•°åˆ—å®šä¹‰ï¼šFï¼ˆ0ï¼‰=0ï¼ŒFï¼ˆ1ï¼‰=1ï¼ŒFï¼ˆnï¼‰=F(n-1)+F(n-2)ï¼ˆnâ‰¥2ï¼ŒnâˆˆN*ï¼‰</p><textarea class="code-html">
 <!doctype html>
 <img src="../imgs/loading.gif" />
-<button onclick="s1()">×èÈûÄ£Ê½</button>
-<button onclick="s2()">·Ç×èÈûÄ£Ê½</button>
+<button onclick="s1()">é˜»å¡æ¨¡å¼</button>
+<button onclick="s2()">éé˜»å¡æ¨¡å¼</button>
 <div id="text"></div>
 <script>
 n = 40;
 function s1(){
-    $id('text').innerHTML = 'ÕıÔÚ¼ÆËã...';
+    $id('text').innerHTML = 'æ­£åœ¨è®¡ç®—...';
     setTimeout(function(){
         $id('text').innerHTML = fi(n);
     }, 100)
 }
 
 function s2(){
-    $id('text').innerHTML = 'ÕıÔÚ¼ÆËã...';
+    $id('text').innerHTML = 'æ­£åœ¨è®¡ç®—...';
     var worker = new Worker('../demo/fibonacci.js')
     worker.postMessage(n);
     worker.onmessage = function(e){
@@ -42,10 +42,10 @@ function fi(n) {
 function fi(n) {
     return n < 2 ? n : fi(n - 1) + fi(n - 2);
 }
-onmessage = function(e){ //½ÓÊÕĞÅÏ¢
-    postMessage(fi(+e.data)); //·¢ËÍÏìÓ¦
+onmessage = function(e){ //æ¥æ”¶ä¿¡æ¯
+    postMessage(fi(+e.data)); //å‘é€å“åº”
 };
-</textarea><h3>ÑİÊ¾2</h3><textarea class="code-js">
+</textarea><h3>æ¼”ç¤º2</h3><textarea class="code-js">
 arr = [];
 i = 0;
 worker = new Worker('../demo/webworker.test/f1.js')
@@ -56,7 +56,7 @@ worker.onmessage = function(e){
     arr.push(e.data);
 }
 
-worker2 = new Worker('../demo/webworker.test/f1.js') //ÖØĞÂ³õÊ¼»¯f1.jsµÄÖ´ĞĞ»·¾³
+worker2 = new Worker('../demo/webworker.test/f1.js') //é‡æ–°åˆå§‹åŒ–f1.jsçš„æ‰§è¡Œç¯å¢ƒ
 worker2.postMessage({index:++i});
 worker2.onmessage = function(e){
     arr.push(e.data);
@@ -66,12 +66,12 @@ setTimeout(function(){
     alert(JSON.stringify(arr, null, 4));
 },500)
 </textarea><h3>webworker.test/f1.js</h3><textarea class="code-js" edit=off >
-i = 0; //Õâ¸ö±äÁ¿»á±£³Ö
+i = 0; //è¿™ä¸ªå˜é‡ä¼šä¿æŒ
 onmessage = function(e){
     postMessage({
         input: e.data.index,
         output: ++i
     });
 };
-</textarea><h2>×¢Òâµã</h2><ol><li>µÍ°æ±¾µÄie²»Ö§³Ö</li><li>²»ÄÜ¿çÓòµ÷ÓÃjs£¬¼´new WorkerÖĞµÄjsÎÄ¼ş±ØĞëÍ¬Óò </li><li>workerÄÚµÄ´úÂë²»ÄÜÊ¹ÓÃDOM API</li><li>Òì²½±à³Ì´øÀ´µÄÎÊÌâ</li><li>¼ÓÔØµÄjsÎÄ¼şÒ²»á´æÔÚ»º´æ</li></ol></div>
+</textarea><h2>æ³¨æ„ç‚¹</h2><ol><li>ä½ç‰ˆæœ¬çš„ieä¸æ”¯æŒ</li><li>ä¸èƒ½è·¨åŸŸè°ƒç”¨jsï¼Œå³new Workerä¸­çš„jsæ–‡ä»¶å¿…é¡»åŒåŸŸ </li><li>workerå†…çš„ä»£ç ä¸èƒ½ä½¿ç”¨DOM API</li><li>å¼‚æ­¥ç¼–ç¨‹å¸¦æ¥çš„é—®é¢˜</li><li>åŠ è½½çš„jsæ–‡ä»¶ä¹Ÿä¼šå­˜åœ¨ç¼“å­˜</li></ol></div>
 </div>

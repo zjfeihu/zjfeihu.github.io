@@ -1,24 +1,24 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>PHPÊµÏÖ¿çÓò»ñÈ¡JSONP</title>
+<title>PHPå®ç°è·¨åŸŸè·å–JSONP</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>PHPÊµÏÖ¿çÓò»ñÈ¡JSONP</h1>
-    <div class=content><p>Ã¿´ÎĞ´Ò»Ğ©²»ÔõÃ´ÊìÏ¤ÁìÓòµÄ´úÂë£¬×ÜµÃ²»¶ÏËÑË÷¸÷ÖÖAPIµÄÊ¹ÓÃ·½·¨£¬È»ºó´Õ³ö´úÂë£¬È»ºó¹ı¶ÎÊ±¼ä£¬È»ºóÍü¼Ç£¬ÕâÆäÊµ»áµ¼ÖÂÏÂ´Î»¹µÃÖØĞÂ¸ã£¬ÀË·ÑÊ±¼ä£¬markÏÂ»áºÃºÜ¶à¡£</p><h2>jsÊ¹ÓÃÀı×Ó</h2><textarea class="code-html">
+    <h1>PHPå®ç°è·¨åŸŸè·å–JSONP</h1>
+    <div class=content><p>æ¯æ¬¡å†™ä¸€äº›ä¸æ€ä¹ˆç†Ÿæ‚‰é¢†åŸŸçš„ä»£ç ï¼Œæ€»å¾—ä¸æ–­æœç´¢å„ç§APIçš„ä½¿ç”¨æ–¹æ³•ï¼Œç„¶åå‡‘å‡ºä»£ç ï¼Œç„¶åè¿‡æ®µæ—¶é—´ï¼Œç„¶åå¿˜è®°ï¼Œè¿™å…¶å®ä¼šå¯¼è‡´ä¸‹æ¬¡è¿˜å¾—é‡æ–°æï¼Œæµªè´¹æ—¶é—´ï¼Œmarkä¸‹ä¼šå¥½å¾ˆå¤šã€‚</p><h2>jsä½¿ç”¨ä¾‹å­</h2><textarea class="code-html">
 <script src="http://lib.1kjs.com/1k.js"></script>
 <body>
-<button id="btn">¼ÓÔØÖĞ...</button>
+<button id="btn">åŠ è½½ä¸­...</button>
 <input style="width:300px;" id="url" value="http://www.126.com/"/>
 <div id="output"></div>
 <script>
 onload = function(){
     Z = $1k;
-    Z('#btn').html('»ñÈ¡¿çÔ½Êı¾İ');
+    Z('#btn').html('è·å–è·¨è¶Šæ•°æ®');
     Z('#btn').click(function(){
-        Z('#output').html('ÕıÔÚ»ñÈ¡'+Z('#url').val()+'Êı¾İ');
+        Z('#output').html('æ­£åœ¨è·å–'+Z('#url').val()+'æ•°æ®');
         Z.jsonp3(Z('#url').val(), function(resp){
             Z('#output').html(Z.encodeHTML(resp));
         });
@@ -26,56 +26,56 @@ onload = function(){
 }
 </script>
 </body>
-</textarea><h3>Óï·¨</h3><textarea class="code-js" edit=off >
+</textarea><h3>è¯­æ³•</h3><textarea class="code-js" edit=off >
 Z.jsonp3(url, callback, charset, timeout);
-//url Êı¾İÔ´µØÖ·£¬
-//callback»Øµ÷º¯Êı£¨ÄÚ´«·µ»ØÊı¾İ×÷Îª²ÎÊı£©
-//charset×Ö·û±àÂë£¬utf-8»ògbk
-//timeout³¬Ê±Ê±¼ä£¬µ¥Î»ºÁÃë
-</textarea><h2>php´úÂë</h2><textarea class="code-js" edit=off >
-if(isset($_GET['charset'])){ //ÈËÎªÖ¸¶¨±àÂë
+//url æ•°æ®æºåœ°å€ï¼Œ
+//callbackå›è°ƒå‡½æ•°ï¼ˆå†…ä¼ è¿”å›æ•°æ®ä½œä¸ºå‚æ•°ï¼‰
+//charsetå­—ç¬¦ç¼–ç ï¼Œutf-8æˆ–gbk
+//timeoutè¶…æ—¶æ—¶é—´ï¼Œå•ä½æ¯«ç§’
+</textarea><h2>phpä»£ç </h2><textarea class="code-js" edit=off >
+if(isset($_GET['charset'])){ //äººä¸ºæŒ‡å®šç¼–ç 
     header('Content-Type: text/javascript;charset='.$_GET['charset']);
 }else{
     header('Content-Type: text/javascript');
 }
-if($_GET['callback']){ //ÈËÎªÖ¸¶¨callbackÃû³Æ
+if($_GET['callback']){ //äººä¸ºæŒ‡å®šcallbackåç§°
     $callback =  $_GET['callback'];
 }else{
     $callback = 'callback';
 }
 
-$output = iget($_GET['url']); //»ñÈ¡Ô¶³ÌÊı¾İ
+$output = iget($_GET['url']); //è·å–è¿œç¨‹æ•°æ®
 $output = str_replace("\n", "\\n", $output);
 $output = str_replace("\r", "\\r", $output);
 $output = str_replace("'", "\\'", $output);
 
-echo "$callback('$output')"; //°ü×°Êä³ö
+echo "$callback('$output')"; //åŒ…è£…è¾“å‡º
 
-function iget($url){ // Ä£ÄâÌá½»Êı¾İº¯Êı
-    $curl = curl_init(); // Æô¶¯Ò»¸öCURL»á»°
-    curl_setopt($curl, CURLOPT_URL, $url); // Òª·ÃÎÊµÄµØÖ·           
-    //curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0); // ¶ÔÈÏÖ¤Ö¤ÊéÀ´Ô´µÄ¼ì²é
-    //curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 1); // ´ÓÖ¤ÊéÖĞ¼ì²éSSL¼ÓÃÜËã·¨ÊÇ·ñ´æÔÚ
-    curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']); // Ä£ÄâÓÃ»§Ê¹ÓÃµÄä¯ÀÀÆ÷
-    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1); // Ê¹ÓÃ×Ô¶¯Ìø×ª
+function iget($url){ // æ¨¡æ‹Ÿæäº¤æ•°æ®å‡½æ•°
+    $curl = curl_init(); // å¯åŠ¨ä¸€ä¸ªCURLä¼šè¯
+    curl_setopt($curl, CURLOPT_URL, $url); // è¦è®¿é—®çš„åœ°å€           
+    //curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0); // å¯¹è®¤è¯è¯ä¹¦æ¥æºçš„æ£€æŸ¥
+    //curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 1); // ä»è¯ä¹¦ä¸­æ£€æŸ¥SSLåŠ å¯†ç®—æ³•æ˜¯å¦å­˜åœ¨
+    curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']); // æ¨¡æ‹Ÿç”¨æˆ·ä½¿ç”¨çš„æµè§ˆå™¨
+    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1); // ä½¿ç”¨è‡ªåŠ¨è·³è½¬
     //curl_setopt($curl, CURLOPT_REFERER, $ref);
-    //curl_setopt($curl, CURLOPT_POST, 1); // ·¢ËÍÒ»¸ö³£¹æµÄPostÇëÇó
-    //curl_setopt($curl, CURLOPT_POSTFIELDS, $data); // PostÌá½»µÄÊı¾İ°ü
-    //curl_setopt($curl, CURLOPT_COOKIEFILE,$GLOBALS ['cookie_file']); // ¶ÁÈ¡ÉÏÃæËù´¢´æµÄCookieĞÅÏ¢
-    //curl_setopt($curl, CURLOPT_COOKIEJAR, $GLOBALS['cookie_file']); // ´æ·ÅCookieĞÅÏ¢µÄÎÄ¼şÃû³Æ
+    //curl_setopt($curl, CURLOPT_POST, 1); // å‘é€ä¸€ä¸ªå¸¸è§„çš„Postè¯·æ±‚
+    //curl_setopt($curl, CURLOPT_POSTFIELDS, $data); // Postæäº¤çš„æ•°æ®åŒ…
+    //curl_setopt($curl, CURLOPT_COOKIEFILE,$GLOBALS ['cookie_file']); // è¯»å–ä¸Šé¢æ‰€å‚¨å­˜çš„Cookieä¿¡æ¯
+    //curl_setopt($curl, CURLOPT_COOKIEJAR, $GLOBALS['cookie_file']); // å­˜æ”¾Cookieä¿¡æ¯çš„æ–‡ä»¶åç§°
 
     curl_setopt($curl, CURLOPT_HTTPHEADER,array('Accept-Encoding: gzip, deflate', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'));
     //curl_setopt($curl, CURLOPT_HTTPHEADER,array('Accept-Encoding: gzip, deflate'));
-    curl_setopt($curl, CURLOPT_ENCODING, 'gzip,deflate');//Õâ¸öÊÇ½âÊÍgzipÄÚÈİ.................
-    curl_setopt($curl, CURLOPT_TIMEOUT, 30); // ÉèÖÃ³¬Ê±ÏŞÖÆ·ÀÖ¹ËÀÑ­»·
-    curl_setopt($curl, CURLOPT_HEADER, 0); // ÏÔÊ¾·µ»ØµÄHeaderÇøÓòÄÚÈİ
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); // »ñÈ¡µÄĞÅÏ¢ÒÔÎÄ¼şÁ÷µÄĞÎÊ½·µ»Ø
-    $tmpInfo = curl_exec($curl); // Ö´ĞĞ²Ù×÷
+    curl_setopt($curl, CURLOPT_ENCODING, 'gzip,deflate');//è¿™ä¸ªæ˜¯è§£é‡Šgzipå†…å®¹.................
+    curl_setopt($curl, CURLOPT_TIMEOUT, 30); // è®¾ç½®è¶…æ—¶é™åˆ¶é˜²æ­¢æ­»å¾ªç¯
+    curl_setopt($curl, CURLOPT_HEADER, 0); // æ˜¾ç¤ºè¿”å›çš„HeaderåŒºåŸŸå†…å®¹
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); // è·å–çš„ä¿¡æ¯ä»¥æ–‡ä»¶æµçš„å½¢å¼è¿”å›
+    $tmpInfo = curl_exec($curl); // æ‰§è¡Œæ“ä½œ
     if (curl_errno($curl)) {
        echo 'Errno'.curl_error($curl);
     }
-    curl_close($curl); // ¹Ø¼üCURL»á»°
-    return $tmpInfo; // ·µ»ØÊı¾İ
+    curl_close($curl); // å…³é”®CURLä¼šè¯
+    return $tmpInfo; // è¿”å›æ•°æ®
 }
-</textarea><p class="info">´úÂë¹À¼Æ²»Õ¦µÄ£¬Ëæ±ã´Õ³öÀ´µÄ</p></div>
+</textarea><p class="info">ä»£ç ä¼°è®¡ä¸å’‹çš„ï¼Œéšä¾¿å‡‘å‡ºæ¥çš„</p></div>
 </div>

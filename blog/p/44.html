@@ -1,11 +1,11 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>cookie�༶������������</title>
+<title>cookie多级域名共享问题</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>cookie�༶������������</h1>
-    <div class=content><h2>ǰ��</h2><p>cookie�ڸ��ֵ�¼����¼�û���Ϣ�����кܴ���;�����ڶ༶�����µĹ�������ͨ������domain�����ơ�</p><h2>ͼ�⹲������</h2><p class="img"><img src="../imgs/44.1.png"/><em>firefox�µ�cookieֵ</em></p><p class="img"><img src="../imgs/44.2.png"/><em>ie�µ�cookieֵ</em></p><p class="info">��ͼ1��֪��cookie������Է�Ϊǰ�����Ͳ�����ģ������Ե㿪ͷ�����µ�cookie�Ǳ������ģ����ǵ㿪ͷ��ֻ���Ǳ����cookie���ܱ���ȡ������a.b.c.d.comֻ�ܶ�ȡa.b.c.d.com�����ܶ�ȡb.c.d.com�Լ����ϼ���</p><p class="info">��ͼ2��֪����Ȼie��firefox��cookie��������һ�£����ǲ�ͬ���¹�����cookie���ȼ��ǲ�һ���ġ�</p><p class="info">������������ͬ��cookie����ôdocument.cookie�оͻ���ּ���ͬ���ֶΣ�����˳����ݲ�ͬ�������������</p><h2>���Խ���</h2><p>һ��cookie����4����Ҫ������:</p><ol><li><p>maxAge:cookie���ͻ��˱��ֵ�ʱ��,��λΪ(��),������ʾ��ָ������������ڱ��ͻ���ɾ��,0��ʾɾ����cookie(�ÿ�),�������ʾ��cookie���ᱻ�ͻ��˴洢,����������رպ����.</p></li><li><p>domain:cookie�ɱ���Ч��������,����Ϊip/hostname��,������Ҫ����:*.abc.com,.abc.com,abc.com�����ַ�ʽ��������,�ͻ��˻����򵥵�ƥ��.���������ֱ��ʹ��abc.com���Խ��ܶ༶������.ֻ����ȷƥ��domain��cookie�Żᱻ���͸�server.</p></li><li><p>secure:�Ƿ�ֻ������ȫ����url����,Ĭ��Ϊfalse,���Ϊtrue,��ôcookieֻ��https/SSL�ȼ������ӲŻᷢ�͸�server.</p></li><li><p>path:cookie��domain��·���·�����Ч,"/"��ʾdomain�¸�Ŀ¼������������Ч,"/open"��ʾֻ��domain/openĿ¼��������Ч,�����path��������,�㽫����һ�������ε�����:����������ҳ��������cookie���,���ǻ���ҳ��ȴ�����..</p></li></ol></div>
+    <h1>cookie多级域名共享问题</h1>
+    <div class=content><h2>前言</h2><p>cookie在各种登录，记录用户信息方面有很大用途，而在多级域名下的共享则是通过参数domain来控制。</p><h2>图解共享问题</h2><p class="img"><img src="../imgs/44.1.png"/><em>firefox下的cookie值</em></p><p class="img"><img src="../imgs/44.2.png"/><em>ie下的cookie值</em></p><p class="info">由图1得知，cookie的域可以分为前面带点和不带点的，其中以点开头的域下的cookie是被共享的，而非点开头的只能是本域的cookie才能被读取，比如a.b.c.d.com只能读取a.b.c.d.com而不能读取b.c.d.com以及更上级域。</p><p class="info">由图2得知，虽然ie和firefox的cookie共享规则一致，但是不同域下共享的cookie优先级是不一样的。</p><p class="info">假如多子域存在同名cookie，那么document.cookie中就会出现几次同名字段，出现顺序根据不同浏览器会有区别</p><h2>属性介绍</h2><p>一个cookie如上4个重要的属性:</p><ol><li><p>maxAge:cookie被客户端保持的时间,单位为(秒),正数表示在指定的秒数后过期被客户端删除,0表示删除此cookie(置空),负数则表示此cookie不会被客户端存储,将在浏览器关闭后清除.</p></li><li><p>domain:cookie可被有效操作的域,可以为ip/hostname等,不过需要声明:*.abc.com,.abc.com,abc.com这三种方式会有区别,客户端会做简单的匹配.多数情况下直接使用abc.com可以接受多级子域名.只有正确匹配domain的cookie才会被发送给server.</p></li><li><p>secure:是否只允许安全加密url访问,默认为false,如果为true,那么cookie只对https/SSL等加密连接才会发送给server.</p></li><li><p>path:cookie对domain何路径下访问有效,"/"表示domain下根目录中所有请求有效,"/open"表示只对domain/open目录下请求有效,如果此path忘记设置,你将遇到一个很尴尬的问题:明明在其他页面设置了cookie输出,但是换个页面却死活不行..</p></li></ol></div>
 </div>

@@ -12,7 +12,7 @@ if(Z.browser.ie < 9){//ie6-8?html5?
 	Z.style('article,aside,footer,header,nav,section,hgroup{display:block}details,dialog,output,time{display:inline;}');
 }
 
-Z(function(){ //Ôö¼ÓÔÄ¶ÁÄ£Ê½¹¤¾ßÀ¸
+Z(function(){ //å¢åŠ é˜…è¯»æ¨¡å¼å·¥å…·æ 
 
     if(!Z('#detail') || Z.browser.ie < 8){
         return;
@@ -25,11 +25,11 @@ Z(function(){ //Ôö¼ÓÔÄ¶ÁÄ£Ê½¹¤¾ßÀ¸
         readData();
         setStyle();
         
-        Z('body').append('<div id="toobar"><div title="ÔÄ¶ÁÄ£Ê½" class="read-toggle">Aa</div></div>');
+        Z('body').append('<div id="toobar"><div title="é˜…è¯»æ¨¡å¼" class="read-toggle">Aa</div></div>');
         Z('body').append('<div id="toobar-cc">\
-            <div class="font-size"><button class="a1" style="border-left:0">©ï</button><button class="a2">©¥</button></div>\
+            <div class="font-size"><button class="a1" style="border-left:0">â•‹</button><button class="a2">â”</button></div>\
 <div class="style">\
-<button class="light" style="border-left:0">ÁÁ</button><button class="dark">°µ</button><button class="sepia">ºÖ</button>\
+<button class="light" style="border-left:0">äº®</button><button class="dark">æš—</button><button class="sepia">è¤</button>\
 </div>\
 </div>');
 
@@ -128,15 +128,15 @@ Z(function(){ //Ôö¼ÓÔÄ¶ÁÄ£Ê½¹¤¾ßÀ¸
     
 });
 
-Z(function(){ //ËÑË÷ÈÕÖ¾¹¦ÄÜ
+Z(function(){ //æœç´¢æ—¥å¿—åŠŸèƒ½
     
     if(location.href.indexOf('blog.cc') == -1){
         return;
     }
     
     Z(document).on('keyup', function(e){
-        if(e.keyCode == 32 && e.original.ctrlKey){ //ctrl+¿Õ¸ñ¼üºô³öËÑË÷¿ò
-            var keyword = prompt('ËÑË÷ÈÕÖ¾');
+        if(e.keyCode == 32 && e.original.ctrlKey){ //ctrl+ç©ºæ ¼é”®å‘¼å‡ºæœç´¢æ¡†
+            var keyword = prompt('æœç´¢æ—¥å¿—');
             if(keyword){
                 dosearch(keyword);
             }
@@ -150,7 +150,7 @@ Z(function(){ //ËÑË÷ÈÕÖ¾¹¦ÄÜ
                 if(data.length){
                     showlist(data);
                 }else{
-                    alert('Ã»ÓĞÕÒµ½Ïà¹ØÈÕÖ¾£¡');
+                    alert('æ²¡æœ‰æ‰¾åˆ°ç›¸å…³æ—¥å¿—ï¼');
                 }
             }
         });
@@ -161,7 +161,7 @@ Z(function(){ //ËÑË÷ÈÕÖ¾¹¦ÄÜ
     function showlist(list){
         
         if(!listdom){
-            Z('body').append(listdom = Z.E('<div class=search-result><h2>ËÑË÷½á¹û<span class=close>¹Ø±Õ</span></h2><ul></ul></div>'));
+            Z('body').append(listdom = Z.E('<div class=search-result><h2>æœç´¢ç»“æœ<span class=close>å…³é—­</span></h2><ul></ul></div>'));
             Z.style('\
                 .search-result{position:fixed;background:#eee;border:1px solid #000;width:400px;padding:8px;}\
                 .search-result h2{overflow:hidden;font-size:16px;border-bottom:1px solid #ccc;padding-bottom:3px;}\
@@ -188,7 +188,7 @@ Z(function(){ //ËÑË÷ÈÕÖ¾¹¦ÄÜ
     
 });
 
-Z(function(){ //²à±ßµ¼º½
+Z(function(){ //ä¾§è¾¹å¯¼èˆª
     return;
 
 	if(!Z('#detail'))return;

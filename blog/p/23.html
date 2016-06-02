@@ -1,21 +1,21 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>��������ƣ�ճ���������¼����</title>
+<title>浏览器复制，粘贴，剪切事件简介</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>��������ƣ�ճ���������¼����</h1>
-    <div class=content><h2>ǰ��</h2><p>��ν�ֹ���±�������������ճ�����ܣ�</p><h2>API</h2><ul><li>oncopy Ŀ�걻����ʱ�����¼�</li><li>onpaste Ŀ�����ճ��ʱ�����¼�</li><li>oncut Ŀ�걻����ʱ����</li></ul><h2>ʹ�ó���</h2><ol><li>���ø��ƻ��߸��Ƴɹ�������ʾ</li><li>������ֹ����ճ��</li><li>�����ı����Ѿ�������ַ����������ñ����еĳ���</li></ol><h2>ʾ������</h2><textarea class="code-html">
+    <h1>浏览器复制，粘贴，剪切事件简介</h1>
+    <div class=content><h2>前言</h2><p>如何禁止文章被拷贝，输入框的粘贴功能？</p><h2>API</h2><ul><li>oncopy 目标被拷贝时触发事件</li><li>onpaste 目标接受粘贴时触发事件</li><li>oncut 目标被剪切时触发</li></ul><h2>使用场景</h2><ol><li>禁用复制或者复制成功给出提示</li><li>输入框禁止接受粘贴</li><li>监听文本域已经输入的字符个数，适用被剪切的场景</li></ol><h2>示例代码</h2><textarea class="code-html">
 <!doctype html>
 <body>
-<div id="div">�Ҹ�����������</div><br>
-�˴�����ճ����<input id="input"/> ��ǰ������<span id="tips">0</span>
+<div id="div">敢复制我试试吗！</div><br>
+此处不能粘帖：<input id="input"/> 当前字数：<span id="tips">0</span>
 </body>
 <script>
 $('div').oncopy = function(e){
-    alert('����ʧ�ܣ�');
+    alert('复制失败！');
     return false;
 };
 $('input').onpaste = function(e){
@@ -25,7 +25,7 @@ $('input').onkeyup = function(e){
     $('tips').innerHTML = this.value.length;
 };
 $('input').oncut = function(e){
-    setTimeout(function(){ //Ϊɶ���ӳ٣���Ϊoncut���ȴ����¼����ڴ������ֱ����е�Ч����ͬonkeydownһ��
+    setTimeout(function(){ //为啥做延迟，因为oncut会先触发事件，在触发文字被剪切的效果，同onkeydown一样
         $('tips').innerHTML = $('input').value.length;
     }, 0);
 };

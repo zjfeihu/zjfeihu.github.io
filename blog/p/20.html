@@ -1,14 +1,14 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>js¿çÓòµÄ¸÷ÖÖ½â¾ö·½°¸¼°ÊµÏÖ</title>
+<title>jsè·¨åŸŸçš„å„ç§è§£å†³æ–¹æ¡ˆåŠå®ç°</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>js¿çÓòµÄ¸÷ÖÖ½â¾ö·½°¸¼°ÊµÏÖ</h1>
-    <div class=content><h2>iframe×ÔÊÊÓ¦¸ß¶È</h2><h3>ÊµÏÖÔ­Àí</h3><p>iframeÄÚÈİÒ³Í¨¹ıÉèÖÃ´úÀíÒ³µÄlocation.hashÖµ´«µİ¸ß¶È£¬´úÀíÒ³µ÷ÓÃ¶¥²ãÒ³ÉèÖÃiframeµÄ¸ß¶È¡£</p><h3>´úÂë</h3><textarea class="code-html" edit=off >
-//¶¥²ãÒ³
+    <h1>jsè·¨åŸŸçš„å„ç§è§£å†³æ–¹æ¡ˆåŠå®ç°</h1>
+    <div class=content><h2>iframeè‡ªé€‚åº”é«˜åº¦</h2><h3>å®ç°åŸç†</h3><p>iframeå†…å®¹é¡µé€šè¿‡è®¾ç½®ä»£ç†é¡µçš„location.hashå€¼ä¼ é€’é«˜åº¦ï¼Œä»£ç†é¡µè°ƒç”¨é¡¶å±‚é¡µè®¾ç½®iframeçš„é«˜åº¦ã€‚</p><h3>ä»£ç </h3><textarea class="code-html" edit=off >
+//é¡¶å±‚é¡µ
 <iframe id=iframe1 ></iframe>
 <script>
 function setheight(height){
@@ -16,30 +16,30 @@ function setheight(height){
 }
 </script>
 
-//ÄÚÈİÒ³Ãæ
+//å†…å®¹é¡µé¢
 <script>
 var proxy = document.createElement('iframe');
 var height = getheight();
 proxy.style.display = 'none';
 proxy.src = 'proxy.html#' + height;
 document.body.appendChild(proxy);
-setInterval(function(){ //Ê¹ÓÃ¶¨Ê±Æ÷¼à¿ØÒ³Ãæ¸ß¶È
+setInterval(function(){ //ä½¿ç”¨å®šæ—¶å™¨ç›‘æ§é¡µé¢é«˜åº¦
     if(height != getheight()){
         height = getheight();
         proxy.src = 'proxy.html#' + height;
     }
 }, 100);
-function getheight(){ //ieÏÂºÍÆäËûä¯ÀÀÆ÷»ñÈ¡Ò³Ãæ¸ß¶ÈµÄËã·¨²»Ò»Ñù
+function getheight(){ //ieä¸‹å’Œå…¶ä»–æµè§ˆå™¨è·å–é¡µé¢é«˜åº¦çš„ç®—æ³•ä¸ä¸€æ ·
     return /MSIE\s*[\d.]+/i.test(navigator.appVersion)
         ? document.documentElement.scrollHeight + 4
         : document.documentElement.offsetHeight;
 }
 </script>
 
-//´úÀíÒ³
+//ä»£ç†é¡µ
 <script>
 var hash = location.hash;
-top.setheight(hash.substr(1)); //µ÷ÓÃ¶¥²ãÒ³Ãæ½Ó¿Ú
+top.setheight(hash.substr(1)); //è°ƒç”¨é¡¶å±‚é¡µé¢æ¥å£
 setInterval(function(){
     if(hash != location.hash){
         hash = location.hash;
@@ -47,8 +47,8 @@ setInterval(function(){
     }
 }, 100);
 </script>
-</textarea><p class="info">ÕâÀïÊ¹ÓÃÁË2¸ö¶¨Ê±Æ÷£¬Ö÷ÒªÊÇÒòÎªÃ»ÓĞÏà¹ØAPI¿ÉÓÃ£¬¼ÙÈçÒ³Ãæ¸ß¶È²»ÊÇÊµÊ±µÄ£¬ÄÚÈİÒ³ÃæµÄ¶¨Ê±Æ÷¿ÉÒÔ»»³Éwindow.onload£¬¶øproxyÖĞµÄ¶¨Ê±Æ÷Ò²ÓĞÌæ´ú·½°¸£¬¾ÍÊÇÃ¿´ÎÉèÖÃproxy.srcµÄÊ±ºò£¬¸øËûµÄurlºóÃæ¼ÓÉÏ¡º?Ê±¼ä´Á¡»£¬ÀàËÆproxy.html?1381200606719#hashvalue</p><p>°Ù¶ÈËÑË÷<a class="glink" href="http://www.baidu.com/s?wd=iframe×ÔÊÊÓ¦¸ß¶È" target="_blank">iframe×ÔÊÊÓ¦¸ß¶È</a><br/></p><h2>¿ç×ÓÓòajaxÇëÇó</h2><p>ÀàËÆwebqqÖĞµÄÒ»¸öÓ¦ÓÃÀı×Ó£¬Æä×ÀÃæÒ³ÊÇhttp://web2.qq.com/webqq.html£¬Ó¦ÓÃÊı¾İÊÇÍ¨¹ıhttp://cgi.web2.qq.com/...¸Ã½Ó¿ÚÍ¨¹ıajaxÈ¡µÃ¡£</p><h3>ÊµÏÖÔ­Àí</h3><ol><li>Ö÷Ò³Ãæweb2.qq.comÍ¨¹ıiframeÔØÈë´úÀíÒ³cgi.web2.qq.com/proxy.html</li><li>ÉèÖÃ´úÀíÒ³µÄdocument.domain='web.qq.com'</li><li>Í¨¹ı´úÀíÒ³ÃæÏòcgi½Ó¿Ú·¢ÆğajaxÇëÇó²¢·µ»ØÊı¾İ</li><li>´úÀíÒ³½«·µ»ØµÄÊı¾İ´«¸øÖ÷Ò³Ãæ</li></ol><p class="info">ºËĞÄÔ­ÀíÊÇ´úÀíÒ³ÃæÖ´ĞĞÍ¬ÓòajaxÇëÇóºÍÉèÖÃdocument.domainÍ»ÆÆ¿ç×ÓÓò´«Öµ¡£</p><p>°Ù¶ÈËÑË÷<a class="glink" href="http://www.baidu.com/s?wd=¿ç×ÓÓòajaxÇëÇó" target="_blank">¿ç×ÓÓòajaxÇëÇó</a><br/></p><h2>´«Í³¿çÓò²Ù×÷iframe</h2><h3>Í¨ÓÃ·½°¸1</h3><ol><li>Ö÷Ò³Ãæa.cc/main.html´«µİÊı¾İ¸øÒìÓòb.cc</li><li>Í¨¹ıiframe¼ÓÔØa.cc/proxy.setname.html²¢ÇÒ½«Êı¾İ¸³Öµ¸øiframe.contentWindow.name</li><li>µ±a.cc/proxy.setname.html¼ÓÔØÍê±ÏÊ±Í¨¹ılocation¶¨Ïòµ½b.cc/proxy.onmessage.html</li><li>b.cc/proxy.onmessage.html¶ÁÈ¡window.name²¢ÇÒ´«µİ¸øb.ccÓòÏÂµÄÒ³Ãæ</li></ol><p class="info">Ô­ÀíÊÇÍ¬Óò´úÀíÒ³ÉèÖÃwindow.name£¬È»ºóÖØ¶¨Ïòµ½ÒìÓò´úÀíÒ³¶ÁÈ¡window.name²¢´«µİÊı¾İ¸øÒìÓòÖ÷Ò³Ãæ</p><h3>Í¨ÓÃ·½°¸2</h3><textarea class="code-js" edit=off >
-//mainÒ³
+</textarea><p class="info">è¿™é‡Œä½¿ç”¨äº†2ä¸ªå®šæ—¶å™¨ï¼Œä¸»è¦æ˜¯å› ä¸ºæ²¡æœ‰ç›¸å…³APIå¯ç”¨ï¼Œå‡å¦‚é¡µé¢é«˜åº¦ä¸æ˜¯å®æ—¶çš„ï¼Œå†…å®¹é¡µé¢çš„å®šæ—¶å™¨å¯ä»¥æ¢æˆwindow.onloadï¼Œè€Œproxyä¸­çš„å®šæ—¶å™¨ä¹Ÿæœ‰æ›¿ä»£æ–¹æ¡ˆï¼Œå°±æ˜¯æ¯æ¬¡è®¾ç½®proxy.srcçš„æ—¶å€™ï¼Œç»™ä»–çš„urlåé¢åŠ ä¸Šã€?æ—¶é—´æˆ³ã€ï¼Œç±»ä¼¼proxy.html?1381200606719#hashvalue</p><p>ç™¾åº¦æœç´¢<a class="glink" href="http://www.baidu.com/s?wd=iframeè‡ªé€‚åº”é«˜åº¦" target="_blank">iframeè‡ªé€‚åº”é«˜åº¦</a><br/></p><h2>è·¨å­åŸŸajaxè¯·æ±‚</h2><p>ç±»ä¼¼webqqä¸­çš„ä¸€ä¸ªåº”ç”¨ä¾‹å­ï¼Œå…¶æ¡Œé¢é¡µæ˜¯http://web2.qq.com/webqq.htmlï¼Œåº”ç”¨æ•°æ®æ˜¯é€šè¿‡http://cgi.web2.qq.com/...è¯¥æ¥å£é€šè¿‡ajaxå–å¾—ã€‚</p><h3>å®ç°åŸç†</h3><ol><li>ä¸»é¡µé¢web2.qq.comé€šè¿‡iframeè½½å…¥ä»£ç†é¡µcgi.web2.qq.com/proxy.html</li><li>è®¾ç½®ä»£ç†é¡µçš„document.domain='web.qq.com'</li><li>é€šè¿‡ä»£ç†é¡µé¢å‘cgiæ¥å£å‘èµ·ajaxè¯·æ±‚å¹¶è¿”å›æ•°æ®</li><li>ä»£ç†é¡µå°†è¿”å›çš„æ•°æ®ä¼ ç»™ä¸»é¡µé¢</li></ol><p class="info">æ ¸å¿ƒåŸç†æ˜¯ä»£ç†é¡µé¢æ‰§è¡ŒåŒåŸŸajaxè¯·æ±‚å’Œè®¾ç½®document.domainçªç ´è·¨å­åŸŸä¼ å€¼ã€‚</p><p>ç™¾åº¦æœç´¢<a class="glink" href="http://www.baidu.com/s?wd=è·¨å­åŸŸajaxè¯·æ±‚" target="_blank">è·¨å­åŸŸajaxè¯·æ±‚</a><br/></p><h2>ä¼ ç»Ÿè·¨åŸŸæ“ä½œiframe</h2><h3>é€šç”¨æ–¹æ¡ˆ1</h3><ol><li>ä¸»é¡µé¢a.cc/main.htmlä¼ é€’æ•°æ®ç»™å¼‚åŸŸb.cc</li><li>é€šè¿‡iframeåŠ è½½a.cc/proxy.setname.htmlå¹¶ä¸”å°†æ•°æ®èµ‹å€¼ç»™iframe.contentWindow.name</li><li>å½“a.cc/proxy.setname.htmlåŠ è½½å®Œæ¯•æ—¶é€šè¿‡locationå®šå‘åˆ°b.cc/proxy.onmessage.html</li><li>b.cc/proxy.onmessage.htmlè¯»å–window.nameå¹¶ä¸”ä¼ é€’ç»™b.ccåŸŸä¸‹çš„é¡µé¢</li></ol><p class="info">åŸç†æ˜¯åŒåŸŸä»£ç†é¡µè®¾ç½®window.nameï¼Œç„¶åé‡å®šå‘åˆ°å¼‚åŸŸä»£ç†é¡µè¯»å–window.nameå¹¶ä¼ é€’æ•°æ®ç»™å¼‚åŸŸä¸»é¡µé¢</p><h3>é€šç”¨æ–¹æ¡ˆ2</h3><textarea class="code-js" edit=off >
+//mainé¡µ
 var isie = /msie/i.test(navigator.userAgent);
 var proxyIframe = document.createElement('iframe');
 document.documentElement.appendChild(proxyIframe);
@@ -69,17 +69,17 @@ function postmessage(data){
     }
 }
 
-//´úÀíÒ³
+//ä»£ç†é¡µ
 if(name){
-    top.frames['page'].onmessage(name);//Í¨¹ıµ÷ÓÃÄ¿±êÒ³µÄ½Ó¿Ú´«µİÊı¾İ
+    top.frames['page'].onmessage(name);//é€šè¿‡è°ƒç”¨ç›®æ ‡é¡µçš„æ¥å£ä¼ é€’æ•°æ®
     name = '';
 }
-</textarea><p class="info">´úÀíÒ³ÔÚabout:blankÓòÏÂÉèÖÃwindow.name£¬È»ºóÖØ¶¨Ïòµ½ÒìÓò´úÀíÒ³µ÷ÓÃÄ¿±êÒ³½Ó¿ÚÍê³ÉÊı¾İ´«µİ</p><h3>ie×¨ÓÃ¿çÓò·½°¸</h3><ol><li>ieÏÂiframeÖĞµÄÒ³Ãæ¿ÉÒÔÉèÖÃtop.name£¨²»ÄÜ¶ÁÈ¡top.name£©</li><li>ieÏÂÖ÷Ò³Ãæ¿ÉÒÔÍ¨¹ıframes[framename].contentWindow.nameÉèÖÃÒìÓòÒ³ÃæµÄwindow.name£¨Í¬Ñù²»ÄÜ¶ÁÈ¡£©</li></ol><p class="info">ieÏÂÀûÓÃ¿çÓòwindow.name¿ÉĞ´²»¿É¶ÁµÄÌØĞÔÊµÏÖÊı¾İ´«µİ</p><h3>postMessage·¢ËÍºÍ½ÓÊÕÊı¾İ</h3><textarea class="code-js" edit=off >
-    target.postMessage(data, '*'); //ÏòtargetÄ¿±ê´°¿Ú·¢ËÍÊı¾İ
-    window.addEventListener('message', function(e){ //Í¨¹ıwindow°ó¶¨¼àÌıÊÂ¼ş
-        //Í¨¹ıe.data»ñÈ¡·¢ËÍµÄÊı¾İ
+</textarea><p class="info">ä»£ç†é¡µåœ¨about:blankåŸŸä¸‹è®¾ç½®window.nameï¼Œç„¶åé‡å®šå‘åˆ°å¼‚åŸŸä»£ç†é¡µè°ƒç”¨ç›®æ ‡é¡µæ¥å£å®Œæˆæ•°æ®ä¼ é€’</p><h3>ieä¸“ç”¨è·¨åŸŸæ–¹æ¡ˆ</h3><ol><li>ieä¸‹iframeä¸­çš„é¡µé¢å¯ä»¥è®¾ç½®top.nameï¼ˆä¸èƒ½è¯»å–top.nameï¼‰</li><li>ieä¸‹ä¸»é¡µé¢å¯ä»¥é€šè¿‡frames[framename].contentWindow.nameè®¾ç½®å¼‚åŸŸé¡µé¢çš„window.nameï¼ˆåŒæ ·ä¸èƒ½è¯»å–ï¼‰</li></ol><p class="info">ieä¸‹åˆ©ç”¨è·¨åŸŸwindow.nameå¯å†™ä¸å¯è¯»çš„ç‰¹æ€§å®ç°æ•°æ®ä¼ é€’</p><h3>postMessageå‘é€å’Œæ¥æ”¶æ•°æ®</h3><textarea class="code-js" edit=off >
+    target.postMessage(data, '*'); //å‘targetç›®æ ‡çª—å£å‘é€æ•°æ®
+    window.addEventListener('message', function(e){ //é€šè¿‡windowç»‘å®šç›‘å¬äº‹ä»¶
+        //é€šè¿‡e.dataè·å–å‘é€çš„æ•°æ®
     });
-</textarea><p class="info">Õâ¸ö·½Ê½Î¨Ò»µÄÈ±µãÊÇie6-7²»Ö§³Ö</p><p>°Ù¶ÈËÑË÷<a class="glink" href="http://www.baidu.com/s?wd=postMessage" target="_blank">postMessage</a><br/></p><h2>JSONPÎŞÏŞÖÆ¿çÓòÊı¾İ½»»¥</h2><h3>ÊµÏÖÔ­Àí</h3><p>¶¯Ì¬Ìí¼Óscript±êÇ©µÄ·½Ê½½«Êı¾İ´«µİ¸øÒ»¸ö»Øµ÷º¯Êı£¬Ìá½»µÄÊı¾İ¼ÓÔÚscript.srcÇëÇóµØÖ·ºóÃæ</p><h3>´úÂëÊ¾Àı</h3><textarea class="code-js" edit=off >
+</textarea><p class="info">è¿™ä¸ªæ–¹å¼å”¯ä¸€çš„ç¼ºç‚¹æ˜¯ie6-7ä¸æ”¯æŒ</p><p>ç™¾åº¦æœç´¢<a class="glink" href="http://www.baidu.com/s?wd=postMessage" target="_blank">postMessage</a><br/></p><h2>JSONPæ— é™åˆ¶è·¨åŸŸæ•°æ®äº¤äº’</h2><h3>å®ç°åŸç†</h3><p>åŠ¨æ€æ·»åŠ scriptæ ‡ç­¾çš„æ–¹å¼å°†æ•°æ®ä¼ é€’ç»™ä¸€ä¸ªå›è°ƒå‡½æ•°ï¼Œæäº¤çš„æ•°æ®åŠ åœ¨script.srcè¯·æ±‚åœ°å€åé¢</p><h3>ä»£ç ç¤ºä¾‹</h3><textarea class="code-js" edit=off >
 function jsonp(apipath){
     var script = document.createElement('script');
     script.src = apipath;
@@ -98,8 +98,8 @@ function jsonp(apipath){
     }
 }
 function callback(data){
-    //Ê¹ÓÃ»Øµ÷º¯ÊıµÄ²ÎÊı´«µİÊı¾İ
+    //ä½¿ç”¨å›è°ƒå‡½æ•°çš„å‚æ•°ä¼ é€’æ•°æ®
 }
-//·µ»ØµÄjs´úÂëÓ¦¸ÃÊÇcallback(data)
-</textarea><p>°Ù¶ÈËÑË÷<a class="glink" href="http://www.baidu.com/s?wd=JSONP" target="_blank">JSONP</a><br/></p><h2>AJXAĞÂÌØĞÔ¿çÓò</h2><p class="info">ÔÚÒ»Ğ©ĞÂµÄä¯ÀÀÆ÷µ±ÖĞajaxÔ­ÉúÖ§³Ö¿çÓò£¬Ö÷ÒªµÄÖªÊ¶µãÔÚÓÚÇëÇóÍ·µÄÅäÖÃÎÊÌâ£¬ÆäËûµÄºÍÔ­À´µÄ²î²»¶à¡£</p><p>À©Õ¹ÔÄ¶Á<a class="mlink" href="http://newhtml.net/using-cors/" target="_blank">ÀûÓÃCORSÊµÏÖ¿çÓòÇëÇó</a><br/>À©Õ¹ÔÄ¶Á<a class="mlink" href="https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS" target="_blank">mozilla CORS</a><br/>°Ù¶ÈËÑË÷<a class="glink" href="http://www.baidu.com/s?wd=ajax¿çÓò html5" target="_blank">ajax¿çÓò html5</a><br/></p><h2>·şÎñÆ÷´úÀí¿çÓò</h2><p>Í¨¹ı·şÎñÆ÷×÷Îª´úÀíÀ´»ñÈ¡ÆäËûÓòµÄÊı¾İµ½±¾µØ£¬ÕâÑù¾Í¼ä½ÓÊµÏÖÁË¿çÓò¡£</p><h2>Í¨¹ıflash´úÀí¿çÓò</h2><p>...</p><h2>½áÓï</h2><p>´ÓÉÏÃæµÄÊµÏÖÉÏÀ´¿´£¬ÆäÊµ¿çÓòµÄ·½°¸»¹ÊÇÂù¶àµÄ£¬¶ø¸÷ÖÖ·½°¸¸÷ÓĞÓÅÊÆºÍÌØµã£¬Í¬Ê±¿ÉÒÔ»¥ÏàÅäºÏÊ¹ÓÃ¡£</p></div>
+//è¿”å›çš„jsä»£ç åº”è¯¥æ˜¯callback(data)
+</textarea><p>ç™¾åº¦æœç´¢<a class="glink" href="http://www.baidu.com/s?wd=JSONP" target="_blank">JSONP</a><br/></p><h2>AJXAæ–°ç‰¹æ€§è·¨åŸŸ</h2><p class="info">åœ¨ä¸€äº›æ–°çš„æµè§ˆå™¨å½“ä¸­ajaxåŸç”Ÿæ”¯æŒè·¨åŸŸï¼Œä¸»è¦çš„çŸ¥è¯†ç‚¹åœ¨äºè¯·æ±‚å¤´çš„é…ç½®é—®é¢˜ï¼Œå…¶ä»–çš„å’ŒåŸæ¥çš„å·®ä¸å¤šã€‚</p><p>æ‰©å±•é˜…è¯»<a class="mlink" href="http://newhtml.net/using-cors/" target="_blank">åˆ©ç”¨CORSå®ç°è·¨åŸŸè¯·æ±‚</a><br/>æ‰©å±•é˜…è¯»<a class="mlink" href="https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS" target="_blank">mozilla CORS</a><br/>ç™¾åº¦æœç´¢<a class="glink" href="http://www.baidu.com/s?wd=ajaxè·¨åŸŸ html5" target="_blank">ajaxè·¨åŸŸ html5</a><br/></p><h2>æœåŠ¡å™¨ä»£ç†è·¨åŸŸ</h2><p>é€šè¿‡æœåŠ¡å™¨ä½œä¸ºä»£ç†æ¥è·å–å…¶ä»–åŸŸçš„æ•°æ®åˆ°æœ¬åœ°ï¼Œè¿™æ ·å°±é—´æ¥å®ç°äº†è·¨åŸŸã€‚</p><h2>é€šè¿‡flashä»£ç†è·¨åŸŸ</h2><p>...</p><h2>ç»“è¯­</h2><p>ä»ä¸Šé¢çš„å®ç°ä¸Šæ¥çœ‹ï¼Œå…¶å®è·¨åŸŸçš„æ–¹æ¡ˆè¿˜æ˜¯è›®å¤šçš„ï¼Œè€Œå„ç§æ–¹æ¡ˆå„æœ‰ä¼˜åŠ¿å’Œç‰¹ç‚¹ï¼ŒåŒæ—¶å¯ä»¥äº’ç›¸é…åˆä½¿ç”¨ã€‚</p></div>
 </div>

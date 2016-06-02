@@ -1,13 +1,13 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>1kboxǰ�˿�������</title>
+<title>1kbox前端开发环境</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>1kboxǰ�˿�������</h1>
-    <div class=content><h2>ǰ��</h2><p>һ���Ѻ�ǿ���ǰ�˿��������ܴ����߿���Ч�ʡ�</p><h2>1kbox��</h2><p>1kbox�ǻ���NetBox������һ������JS�����HTTP���������ڲ�������Zeroģ�������JS��������һ�壬�ܹ�ʵ�ֿ���ǰ�˿������ļ�����</p><p>1kbox��������nodejs�Ļ��������ǰ�˿���ӵ�и�������ƣ�������ж������þ��ܶ�html,css,jsʵ��ģ�黯�����Ͳ���</p><h2>���ߵ�����</h2><p>��ɫ���򣬼����ã����ü򵥣������Զ����ɾ�̬��html���Զ��ϲ�js��css���ļ���</p><h2>ҳ��ģ�黯</h2><p>��ͨ����ǰ�˿����У����ǳ��������ܶ�ҳ�����ɺܶ๫��ģ����ɵģ��ڿ�������ҳ���ʱ��������Ҫ���ʵ���أ�����������Ҫ����include����import�������ܵĶ�����</p><h3>���ʹ��1kboxʵ��ҳ��ģ�黯����</h3><textarea class="code-html" edit=off >
+    <h1>1kbox前端开发环境</h1>
+    <div class=content><h2>前言</h2><p>一个友好强大的前端开发环境能大大提高开发效率。</p><h2>1kbox？</h2><p>1kbox是基于NetBox开发的一个具有JS引擎的HTTP服务器，内部集成了Zero模板引擎和JS解释器于一体，能够实现快速前端开发和文件部署。</p><p>1kbox具有类似nodejs的环境，针对前端开发拥有更多的优势，无需进行额外配置就能对html,css,js实现模块化开发和部署。</p><h2>工具的优势</h2><p>绿色程序，简单易用，配置简单，可以自动生成静态的html，自动合并js，css等文件。</p><h2>页面模块化</h2><p>在通常的前端开发中，我们常常遇到很多页面是由很多公共模块组成的，在开发这种页面的时候，我们需要如何实现呢？我想我们需要类似include或者import这样功能的东西。</p><h3>如何使用1kbox实现页面模块化开发</h3><textarea class="code-html" edit=off >
 <!doctype html>
 <html>
 <head>
@@ -16,7 +16,7 @@
 <script src="..."></script>
 </head>
 <body>
-    <?$inc('header.html')?> <!--������header.html������-->
+    <?$inc('header.html')?> <!--将导入header.html的内容-->
     <div class="main">
         <?$inc('sidebar.html')?>
         <?$inc('content.html')?>
@@ -24,55 +24,55 @@
     <?$inc('footer.html')?>
 </body>
 </html>
-</textarea><h2>����JS���������������</h2><textarea class="code-html" edit=off >
+</textarea><h2>利用JS引擎快速生成数据</h2><textarea class="code-html" edit=off >
     <ol>
-        <? //���ｫ����3��li��������Ǵ����JS���
-            ['����','����','����'].forEach(function(value){
+        <? //这里将生成3个li，这里就是纯粹的JS语句
+            ['张三','王五','李六'].forEach(function(value){
                 $push('<li>'+ value +'</li>');
             });
         ?>
     </ol>
-    �°汾֧�ָ������﷨ =>
+    新版本支持更简洁的语法 =>
     <ol>
-        <?$push('<li>{0}</li>', ['����','����','����'])?>
+        <?$push('<li>{0}</li>', ['张三','王五','李六'])?>
     </ol>
-</textarea><h2>����Զ��ģ����������</h2><textarea class="code-js" edit=off >
+</textarea><h2>调用远程模板生成内容</h2><textarea class="code-js" edit=off >
 <?
     $name = 'zero';
     $message = 'hello world!';
     $push($zero('http://blog.1kjs.com/test/a.html')); 
-    //�����͵�����Զ��ģ�壬��Ȼģ���ڵ����ݿ�����ǰ�涨�壬Ҳ����ͨ���ⲿ��ȡ����
+    //这样就调用了远程模板，当然模板内的数据可以在前面定义，也可以通过外部获取数据
 ?>
-a.html����
+a.html内容
 {$name} say: {$message}
 
-��� => zero say: hello world!
+输出 => zero say: hello world!
 
-</textarea><h2>��������JSģ��ʵ������</h2><p>����һ��Զ��ģ�飺http://blog.1kjs.com/1kbox/modules/add.js��Ҳ������������ȡ����JS�ļ�������d:/1.js�������ļ���</p><textarea class="code-js" edit=off >
+</textarea><h2>调用任意JS模块实现运算</h2><p>比如一个远程模块：http://blog.1kjs.com/1kbox/modules/add.js，也可以是任意能取到的JS文件，比如d:/1.js（本地文件）</p><textarea class="code-js" edit=off >
 exports.add = function(a, b){
     return a + b;
 };
-</textarea><p>��ģ����ֱ�ӵ�������ģ��</p><p>test.jhtml</p><textarea class="code-js" edit=off >
+</textarea><p>在模板中直接调用其他模块</p><p>test.jhtml</p><textarea class="code-js" edit=off >
 <?
-   $push($require('http://blog.1kjs.com/1kbox/modules/add.js').add(1+2)); //����Զ��ģ��ʵ������
-   var otherModule = $require('modules/other.js');//���õ�ǰҳ������Ŀ¼����Ŀ¼modules�µ�other.js�ļ�
+   $push($require('http://blog.1kjs.com/1kbox/modules/add.js').add(1+2)); //调用远程模块实现运算
+   var otherModule = $require('modules/other.js');//调用当前页面所在目录的子目录modules下的other.js文件
 ?>
-���ｫ��ҳ�������3
-</textarea><h2>����ѹ���ϲ��ļ�</h2><textarea class="code-js" edit=off >
+这里将在页面中输出3
+</textarea><h2>快速压缩合并文件</h2><textarea class="code-js" edit=off >
 <?
     Response.setHeader('mimetype', 'text/plain');
     var zero = new Zero({
-        codepage: 936//�趨���ϲ����ļ�����
+        codepage: 936//设定待合并的文件编码
     });
     zero.push(Fs.readText('http://lib.1kjs.com/develop/1k.js'));
     zero.push(Fs.readText('http://lib.1kjs.com/develop/widget/highlight/highlight.js'));
     var mergeContent = zero.getContent();
     var packContent = Packer.pack(mergeContent);
-    $push(packContent);//��úϲ�����ѹ���õ��ļ�
-    //Fs.writetext('D:/m1.js', packContent); //��������ֱ�����ɺϲ�ѹ���õ��ļ�
-    Fs.writetext($mappath('m1.js'), packContent); //���ɵ���ǰҳ��ͬĿ¼��
+    $push(packContent);//获得合并并且压缩好的文件
+    //Fs.writetext('D:/m1.js', packContent); //甚至可以直接生成合并压缩好的文件
+    Fs.writetext($mappath('m1.js'), packContent); //生成到当前页面同目录下
 
-    //�°汾 =>
+    //新版本 =>
     $output('m1.js', 
         Packer.pack(
             $input('http://lib.1kjs.com/develop/1k.js')
@@ -80,8 +80,8 @@ exports.add = function(a, b){
         )
     );
 ?>
-</textarea><p>��ȻҲ����ͨ��������Ӽ򵥵ķ�ʽʵ�ֺϲ�ѹ����ʹ��ģ���$inc����</p><p>����������������һ����վ��JS��index.js</p><textarea class="code-js" edit=off >
-//����һ��index.js����������widget�µĺܶ�ģ�飬������index.js�ļ���ʱ��ͻ��Զ�ʵ�ֺϲ�
+</textarea><p>当然也可以通过另外更加简单的方式实现合并压缩，使用模板的$inc函数</p><p>比如曾经开发过的一个网站的JS：index.js</p><textarea class="code-js" edit=off >
+//比如一个index.js，他调用了widget下的很多模块，在生成index.js文件的时候就会自动实现合并
 <?
     $inc('widget/Jw_masklayer.js');
     $inc('widget/Jw_dialog.js');
@@ -91,13 +91,13 @@ exports.add = function(a, b){
     $inc('public/page.js');
 ?>
 function initPage(){
-    //��ʼ��ҳ��...
+    //初始化页面...
 }
-</textarea><p>�����Ľ����������6���ļ�������Ĵ����Զ��ϲ����������µ��ļ���</p><h2>ģ��ajax���ݽӿ�</h2><p>������Ϻ�̨���п�����ʱ�򣬵���˽ӿڻ�û�п����ã���ô���ǾͿ�����1kbox���Լ�ģ��ӿں����ݡ�</p><textarea class="code-js" edit=off >
+</textarea><p>这样的结果就是上面6个文件和下面的代码自动合并并且生成新的文件。</p><h2>模拟ajax数据接口</h2><p>假如配合后台进行开发的时候，当后端接口还没有开发好，那么我们就可以用1kbox来自己模拟接口和数据。</p><textarea class="code-js" edit=off >
 <?
 if(request.form('name') == 'admin'){ 
-    //����POST������nameֵΪadmin���������������
-    //��Ȼ������ʹ��$GET[...]ȡ��ͨ��get��ʽ���͵�����
+    //假如POST过来的name值为admin，则输出下列数据
+    //当然还可以使用$GET[...]取得通过get方式发送的数据
     $push(JSON.stringify({
         result: 0,
         data: [
@@ -112,10 +112,10 @@ if(request.form('name') == 'admin'){
     }));
 }
 ?>
-</textarea><h2>ģ�ⳤ����������</h2><p>ͨ��loopʵ�ַ�����������ͻ��������ݡ�</p><textarea class="code-js" edit=off >
+</textarea><h2>模拟长连接推数据</h2><p>通过loop实现服务器不断向客户端推数据。</p><textarea class="code-js" edit=off >
 <?
-response.bfsize(0); //���û���Ϊ0���Ա����ݼ�ʱ���
-loop(function(){ //ÿ��300ms��ͻ�����������
+response.bfsize(0); //设置缓存为0，以便内容及时输出
+loop(function(){ //每隔300ms向客户端推送数据
     response.write(+new Date+'<br/>');
 }, 300);
 ?>

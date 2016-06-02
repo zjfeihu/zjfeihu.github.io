@@ -1,53 +1,53 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>WEB++����֮����ģʽ</title>
+<title>WEB++开发之代理模式</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>WEB++����֮����ģʽ</h1>
-    <div class=content><h2>ǰ��</h2><p>WEB++����ϵͳ�У������˹۲���ģʽʵ��ģ���Ĳ��������ǵ����Ĺ۲���ģʽ�Ǵ�������ġ�</p><h2>��Ϣ�ķ��ͺͽ���</h2><p>�ڳ���Ĺ۲���ģʽ�У���Ϣ�ķ�������Ҳ����Ϣ���������壬��������</p><textarea class="code-js" edit=off >
+    <h1>WEB++开发之代理模式</h1>
+    <div class=content><h2>前言</h2><p>WEB++桌面系统中，采用了观察者模式实现模块间的操作，但是单纯的观察者模式是存在问题的。</p><h2>消息的发送和接收</h2><p>在常规的观察者模式中，消息的发送主体也是消息接听的主体，比如以下</p><textarea class="code-js" edit=off >
 
-����ʦ = { 
-    ������ҵ: function(���){
-        �������
+张老师 = { 
+    接收作业: function(结果){
+        处理结果
     }
 };
 
-����ʦ.fire('������ҵ', ��һ����, ��������);
+张老师.fire('布置作业', 第一道题, 第三道题);
 
-###С��ͬѧ��
+###小刚同学：
 
-С��ͬѧ = {
-    �����ҵ: function(��һ����, ��������){
-        if(��һ����̫��){
-            return ���Ӧ����Ȼ��������������
+小刚同学 = {
+    完成作业: function(第一道题, 第三道题){
+        if(第一道题太难){
+            return 随便应付，然后跳过第三道题
         }else{
-            return ���ɸ㶨2����
+            return 轻松搞定2道题
         }
     }
 };
 
-����ʦ.on('������ҵ', function(){
-    ����ʦ.������ҵ(С��ͬѧ.�����ҵ())
+张老师.on('布置作业', function(){
+    张老师.接收作业(小刚同学.完成作业())
 });
 
-###Сëͬѧ��
+###小毛同学：
 
-Сëͬѧ = {
-    �����ҵ: function(){
-        return �������߶�ʮһ��������������ҵ��
+小毛同学 = {
+    完成作业: function(){
+        return 不管三七二十一，认认真真做作业。
     }
 };
 
-����ʦ.on('������ҵ', function(){
-    ����ʦ.������ҵ(Сëͬѧ.�����ҵ())
+张老师.on('布置作业', function(){
+    张老师.接收作业(小毛同学.完成作业())
 });
 
-</textarea><p class="info">����ʦ��Ϊ��Ϣ�ķ����ߣ�Ҳ��Ϊ�����������壬���ǳ���Ĺ۲���ģʽ�����ǣ�����ʲô����ʦ������ʦҲҪ������ҵ�Ǹ���ô�죿</p><p>�����WEB++�и���Ӧ�ûᷢ����Ϣ����������չģ��������Ϣ������������</p><textarea class="code-js" edit=off >
+</textarea><p class="info">张老师作为消息的发起者，也作为被监听者主体，这是常规的观察者模式，但是，其他什么李老师，王老师也要布置作业那该怎么办？</p><p>这就像WEB++中各种应用会发起消息，而其他扩展模块会接收消息并处理，比如</p><textarea class="code-js" edit=off >
 
-//��������2��Ӧ�ã����Ӧ��ͼ�궼������չģ�鷢�ʹ�Ӧ�õ�ָ��
+//桌面中有2个应用，点击应用图标都会向扩展模块发送打开应用的指令
 app1 = new App('app1');
 app2 = new App('app2');
 
@@ -57,28 +57,28 @@ function App(){
     });
 }
 
-//��ô������չģ���Ƿ���Ҫ�����·�ʽһ����д�أ�
+//那么其他扩展模块是否需要像以下方式一个个写呢？
 app1.on('open', ...)
 app2.on('open', ...)
 
-</textarea><p class="info">��ȻΪÿ��Ӧ�������¼��������ǲ����ܵ����飬Ҳ�����첻���� ����ô�죿</p><h2>����ģʽ�������</h2><p class="info">��������ת�����������������գ��������������</p><textarea class="code-js" edit=off >
+</textarea><p class="info">显然为每个应用添加事件监听那是不可能的事情，也根本办不到， 那怎么办？</p><h2>代理模式解决问题</h2><p class="info">具名发送转代理，代理匿名接收，就这样完成任务</p><textarea class="code-js" edit=off >
 
 app1 = new App('app1');
 app2 = new App('app2');
 
 function App(){
     this.icon.click(function(){
-        this.fire('open'); //ʵ������
+        this.fire('open'); //实名发送
     });
 }
 
-App.prototype.fire = function(){ //ʵ��ת����
-    App.fire.apply(this, arguments); //ʹ�ô�������������Ϣ
+App.prototype.fire = function(){ //实名转代理
+    App.fire.apply(this, arguments); //使用代理匿名发送消息
 };
 
-//��չģ��ʹ�ô���������Ϣ���Ӷ�����Ҫʵ��һ����д�¼�����
+//扩展模块使用代理监听消息，从而不需要实名一个个写事件监听
 App.on('open', function(){
-    //thisָ������Ϣ�Ķ���
+    //this指向发起消息的对象
 })
 
 </textarea></div>

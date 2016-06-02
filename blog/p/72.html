@@ -1,18 +1,18 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>ÕÒµ½2¸ö×Ö·û´®ÏàÍ¬µÄ×î³¤×Ó×Ö·û´®</title>
+<title>æ‰¾åˆ°2ä¸ªå­—ç¬¦ä¸²ç›¸åŒçš„æœ€é•¿å­å­—ç¬¦ä¸²</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>ÕÒµ½2¸ö×Ö·û´®ÏàÍ¬µÄ×î³¤×Ó×Ö·û´®</h1>
-    <div class=content><h2>´úÂë</h2><textarea class="code-js">
+    <h1>æ‰¾åˆ°2ä¸ªå­—ç¬¦ä¸²ç›¸åŒçš„æœ€é•¿å­å­—ç¬¦ä¸²</h1>
+    <div class=content><h2>ä»£ç </h2><textarea class="code-js">
 alert(find('aabbccdd', 'aab1bcc3dd').join('\n'));
 alert(find('aaa', 'aaaa').join('\n'));
 
 function find(s1, s2){
-    if(s2.length > s1.length){ //È¡³¤µÄ×÷Îª±»²é×Ö·û´®
+    if(s2.length > s1.length){ //å–é•¿çš„ä½œä¸ºè¢«æŸ¥å­—ç¬¦ä¸²
         var 
         temp = s1;
         s1 = s2;
@@ -25,14 +25,14 @@ function find(s1, s2){
             var cStr = s2.substr(starIndex, cLen);
             if(s1.indexOf(cStr) != -1){
                 result.push(cStr);
-                continue; //¼ÙÈçÖ»ĞèÒª·µ»ØÒ»¶Î×î³¤µÄ£¬ÕâÀï¸Ä³Éreturn cStr
+                continue; //å‡å¦‚åªéœ€è¦è¿”å›ä¸€æ®µæœ€é•¿çš„ï¼Œè¿™é‡Œæ”¹æˆreturn cStr
             }
         }
         if(result.length){
-            return result; //¼ÙÈçĞèÒªÈ«²¿£¬ÕâÀï²»ÓÃ·µ»Ø
+            return result; //å‡å¦‚éœ€è¦å…¨éƒ¨ï¼Œè¿™é‡Œä¸ç”¨è¿”å›
         }
     }
     return result;
 }
-</textarea><h2>Ô­Àí</h2><ol><li>Éè¶¨±»²é×Ö·û´®</li><li>±éÀúÉú³É²éÑ¯×Ö·û´®</li><li>È¡²éÑ¯×Ö·û´®Óë±»²é×Ö·û´®±È½Ï</li></ol></div>
+</textarea><h2>åŸç†</h2><ol><li>è®¾å®šè¢«æŸ¥å­—ç¬¦ä¸²</li><li>éå†ç”ŸæˆæŸ¥è¯¢å­—ç¬¦ä¸²</li><li>å–æŸ¥è¯¢å­—ç¬¦ä¸²ä¸è¢«æŸ¥å­—ç¬¦ä¸²æ¯”è¾ƒ</li></ol></div>
 </div>

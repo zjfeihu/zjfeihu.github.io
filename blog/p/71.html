@@ -1,94 +1,94 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>ÕıÔòÊ¹ÓÃ±¸Íü</title>
+<title>æ­£åˆ™ä½¿ç”¨å¤‡å¿˜</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>ÕıÔòÊ¹ÓÃ±¸Íü</h1>
-    <div class=content><h2>Ç°ÑÔ</h2><p>²»³£ÓÃµÄÕıÔòÍùÍù±È½ÏÄ£ºıºÍ½¡Íü£¬²é¿´APIĞ§ÂÊ²»¸ß£¬´ËÎÄ±¸²é¡£</p><h2>Ò»Ğ©¸ÅÄî</h2><h3>·Ö×é</h3><textarea class="code-js">
+    <h1>æ­£åˆ™ä½¿ç”¨å¤‡å¿˜</h1>
+    <div class=content><h2>å‰è¨€</h2><p>ä¸å¸¸ç”¨çš„æ­£åˆ™å¾€å¾€æ¯”è¾ƒæ¨¡ç³Šå’Œå¥å¿˜ï¼ŒæŸ¥çœ‹APIæ•ˆç‡ä¸é«˜ï¼Œæ­¤æ–‡å¤‡æŸ¥ã€‚</p><h2>ä¸€äº›æ¦‚å¿µ</h2><h3>åˆ†ç»„</h3><textarea class="code-js">
 alert( '2012-12-12'.match( /(\d{4})-(\d\d)-(?:\d\d)/ ))
-</textarea><p class="info">²¶»ñ·Ö×é(\d{4})ºÍ(\d\d)£¬·Ç²¶»ñ·Ö×é(?:\d\d)£¬²¶»ñ·Ö×é»á±£´æÆ¥Åä½á¹ûÒÔ±¸Ê¹ÓÃ¡£</p><h3>·´ÏòÒıÓÃ</h3><textarea class="code-js">
+</textarea><p class="info">æ•è·åˆ†ç»„(\d{4})å’Œ(\d\d)ï¼Œéæ•è·åˆ†ç»„(?:\d\d)ï¼Œæ•è·åˆ†ç»„ä¼šä¿å­˜åŒ¹é…ç»“æœä»¥å¤‡ä½¿ç”¨ã€‚</p><h3>åå‘å¼•ç”¨</h3><textarea class="code-js">
 alert('2012-12-12'.match( /(\d{4})-(\d\d)-(?:\2)/ ))
 alert('2012-12-11'.match( /(\d{4})-(\d\d)-(?:\2)/ ))
 </textarea><textarea class="code-js">
-//Ê¹ÓÃ·´ÏòÒıÓÃÆ¥ÅäJS×Ö·û´®
+//ä½¿ç”¨åå‘å¼•ç”¨åŒ¹é…JSå­—ç¬¦ä¸²
 s = '"a\'b\\"c"d"e\'';
 alert([s, s.match( /('|")(?:\\\\|\\\n|\\\1|.)*?\1/)].join(' => '))
-</textarea><p class="info">·´ÏòÒıÓÃÖ¸Ïò²¶»ñ·Ö×éËù¶ÔÓ¦µÄ×Ö·û´®£¬ÏÂ±ê´Ó1¿ªÊ¼£¬ÏÂ±êË³ĞòÓÉ²¶»ñ·Ö×éµÄ¿ªÀ¨ºÅ¾ö¶¨</p><h3>Æ¥ÅäÏŞ¶¨</h3><textarea class="code-js">
+</textarea><p class="info">åå‘å¼•ç”¨æŒ‡å‘æ•è·åˆ†ç»„æ‰€å¯¹åº”çš„å­—ç¬¦ä¸²ï¼Œä¸‹æ ‡ä»1å¼€å§‹ï¼Œä¸‹æ ‡é¡ºåºç”±æ•è·åˆ†ç»„çš„å¼€æ‹¬å·å†³å®š</p><h3>åŒ¹é…é™å®š</h3><textarea class="code-js">
 arr = []
-arr.push('abcde'.match(/.*/)) //Ì°À·Ä£Ê½£¬¾¡Á¿¶àµÄÆ¥Åä£¬Ö±µ½²»Âú×ãÌõ¼ş
-arr.push('abcde'.match(/(?:.+?)/)) //¶èĞÔÄ£Ê½£¬¾¡Á¿ÉÙµÄÆ¥Åä
-arr.push('abcde'.match(/(?:.{1,3})/))//Ì°À·Ä£Ê½·¶Î§ÏŞ¶¨
+arr.push('abcde'.match(/.*/)) //è´ªå©ªæ¨¡å¼ï¼Œå°½é‡å¤šçš„åŒ¹é…ï¼Œç›´åˆ°ä¸æ»¡è¶³æ¡ä»¶
+arr.push('abcde'.match(/(?:.+?)/)) //æƒ°æ€§æ¨¡å¼ï¼Œå°½é‡å°‘çš„åŒ¹é…
+arr.push('abcde'.match(/(?:.{1,3})/))//è´ªå©ªæ¨¡å¼èŒƒå›´é™å®š
 alert(arr.join('\n'))
-</textarea><h3>µ¥´Ê±ß½ç</h3><textarea class="code-js">
+</textarea><h3>å•è¯è¾¹ç•Œ</h3><textarea class="code-js">
 s = 'key akey keya akeya';
 a = [];
-a.push(s.match(/key/g)) //È«²¿
-a.push(s.match(/\bkey\w*/g)) //key£¬keya
-a.push(s.match(/\w*key\b/g)) //key£¬akey
+a.push(s.match(/key/g)) //å…¨éƒ¨
+a.push(s.match(/\bkey\w*/g)) //keyï¼Œkeya
+a.push(s.match(/\w*key\b/g)) //keyï¼Œakey
 alert(a.join('\n'))
-</textarea><p class="info">µ¥´Ê±ß½ç»ù±¾ÉÏµÄÓÃ´¦ÎªÆ¥Åäµ¥´Ê£¨ÀàËÆ¹Ø¼ü×Ö£©µÄĞ§¹û</p><h3>¼ìË÷Ô¤²é</h3><textarea class="code-js">
+</textarea><p class="info">å•è¯è¾¹ç•ŒåŸºæœ¬ä¸Šçš„ç”¨å¤„ä¸ºåŒ¹é…å•è¯ï¼ˆç±»ä¼¼å…³é”®å­—ï¼‰çš„æ•ˆæœ</p><h3>æ£€ç´¢é¢„æŸ¥</h3><textarea class="code-js">
 alert([
     'a1b2c3'.match(/[a-z](?=\d)|\d(?!c)/g),
-    'a1ab22d3c'.match(/[a-z](?:\d)|\d[^c]/g) //·Ö×é»áÏûºÄ³¤¶È 
+    'a1ab22d3c'.match(/[a-z](?:\d)|\d[^c]/g) //åˆ†ç»„ä¼šæ¶ˆè€—é•¿åº¦ 
 ].join('\n'));
-</textarea><p class="info">Ô¤²é·Ö(?=)ÕıÏòÔ¤²éºÍ·´ÏòÔ¤²é(?!)£¬²»¹ıÖ»Ö§³ÖºóÖÃÔ¤²é <br> ±ÈÈç /^\w/ ÕâÖÖÊÇÎŞ·¨ÓÃ /(?=^)\w/ À´±íÊ¾µÄ£¬¶ø /\w(?=$)/ È´¿ÉÒÔ±íÊ¾ /\w$/</p><p class="info">Ô¤²éÊÇ²»ÏûºÄ×Ö·û´®²éÑ¯³¤¶ÈµÄ£¬¼´0¿í¶È¶ÏÑÔ</p><h2>³£ÓÃAPI</h2><h3>test</h3><p>¼ìË÷×Ö·û´®ÊÇ·ñ°üº¬Ö¸¶¨ÕıÔòÆ¥Åä</p><textarea class="code-js">
+</textarea><p class="info">é¢„æŸ¥åˆ†(?=)æ­£å‘é¢„æŸ¥å’Œåå‘é¢„æŸ¥(?!)ï¼Œä¸è¿‡åªæ”¯æŒåç½®é¢„æŸ¥ <br> æ¯”å¦‚ /^\w/ è¿™ç§æ˜¯æ— æ³•ç”¨ /(?=^)\w/ æ¥è¡¨ç¤ºçš„ï¼Œè€Œ /\w(?=$)/ å´å¯ä»¥è¡¨ç¤º /\w$/</p><p class="info">é¢„æŸ¥æ˜¯ä¸æ¶ˆè€—å­—ç¬¦ä¸²æŸ¥è¯¢é•¿åº¦çš„ï¼Œå³0å®½åº¦æ–­è¨€</p><h2>å¸¸ç”¨API</h2><h3>test</h3><p>æ£€ç´¢å­—ç¬¦ä¸²æ˜¯å¦åŒ…å«æŒ‡å®šæ­£åˆ™åŒ¹é…</p><textarea class="code-js">
 var 
 str = "a1b2",
-reg1 = /\d/g, //Ò»°ãÇé¿öÏÂ²»ÒªÊ¹ÓÃgÄ£Ê½
+reg1 = /\d/g, //ä¸€èˆ¬æƒ…å†µä¸‹ä¸è¦ä½¿ç”¨gæ¨¡å¼
 reg2 = /\d/,
 arr = [];
 for(var i = 0; i < 6; i++){
-    arr.push("result£º"+ reg1.test(str));
-    arr.push("lastIndex£º"+ reg1.lastIndex);
-    arr.push("result£º"+ reg2.test(str));
-    arr.push("lastIndex£º"+ reg2.lastIndex);
+    arr.push("resultï¼š"+ reg1.test(str));
+    arr.push("lastIndexï¼š"+ reg1.lastIndex);
+    arr.push("resultï¼š"+ reg2.test(str));
+    arr.push("lastIndexï¼š"+ reg2.lastIndex);
     arr.push("=========");
 }
 alert(arr.join('\n'));
 arr = [];
 var re = /\d/g;
-arr.push("test1£º"+re.test('12')); //=>true
-arr.push("test2£º"+re.test('1t')); //=>false ÒòÎª´Ót¿ªÊ¼¼ìË÷
+arr.push("test1ï¼š"+re.test('12')); //=>true
+arr.push("test2ï¼š"+re.test('1t')); //=>false å› ä¸ºä»tå¼€å§‹æ£€ç´¢
 alert(arr.join('\n'));
-</textarea><p class="info">´øgµÄtest£¬Ã¿´Î³É¹¦Æ¥ÅäÔò¸Ä±älastIndex£¬Ê§°ÜÔòlastIndexÖØÖÃÎª0£¬lastIndexÎªÏÂ´ÎÆ¥Åä¿ªÊ¼Î»ÖÃ</p><h3>match</h3><p>·µ»ØÖ¸¶¨ÕıÔòÆ¥ÅäµÄ½á¹û</p><textarea class="code-js">
+</textarea><p class="info">å¸¦gçš„testï¼Œæ¯æ¬¡æˆåŠŸåŒ¹é…åˆ™æ”¹å˜lastIndexï¼Œå¤±è´¥åˆ™lastIndexé‡ç½®ä¸º0ï¼ŒlastIndexä¸ºä¸‹æ¬¡åŒ¹é…å¼€å§‹ä½ç½®</p><h3>match</h3><p>è¿”å›æŒ‡å®šæ­£åˆ™åŒ¹é…çš„ç»“æœ</p><textarea class="code-js">
 var 
 str = "a1b2c3",
 reg1 = /\d/g,
 reg2 = /\d/,
-reg3 = /(\d)/g, //µÈĞ§ÓÚ/\d/g£¬ºöÂÔ×ÓÆ¥Åä
-reg4 = /(\d).(\d)/, //·µ»Ø/\d.\d/ÍêÕûÆ¥ÅäºÍ×ÓÆ¥Åä(\d)
+reg3 = /(\d)/g, //ç­‰æ•ˆäº/\d/gï¼Œå¿½ç•¥å­åŒ¹é…
+reg4 = /(\d).(\d)/, //è¿”å›/\d.\d/å®Œæ•´åŒ¹é…å’Œå­åŒ¹é…(\d)
 arr = [];
 
-arr.push('reg1.result£º'+str.match(reg1));
-arr.push('reg2.result£º'+str.match(reg2));
-arr.push('reg3.result£º'+str.match(reg3));
-arr.push('reg4.result£º'+str.match(reg4));
+arr.push('reg1.resultï¼š'+str.match(reg1));
+arr.push('reg2.resultï¼š'+str.match(reg2));
+arr.push('reg3.resultï¼š'+str.match(reg3));
+arr.push('reg4.resultï¼š'+str.match(reg4));
 alert(arr.join('\n'))
-</textarea><p class="info">²»´øgµÄ·µ»ØÍêÕûÆ¥Åä½á¹ûºÍ×ÓÆ¥Åä×é³ÉµÄÊı×é£¬´øgµÄ·µ»ØËùÓĞÆ¥Åä½á¹û£¬×ÓÆ¥ÅäºöÂÔ¡£</p><h3>exec</h3><p>·µ»ØÖ¸¶¨ÕıÔòÆ¥ÅäµÄ½á¹û</p><textarea class="code-js">
+</textarea><p class="info">ä¸å¸¦gçš„è¿”å›å®Œæ•´åŒ¹é…ç»“æœå’Œå­åŒ¹é…ç»„æˆçš„æ•°ç»„ï¼Œå¸¦gçš„è¿”å›æ‰€æœ‰åŒ¹é…ç»“æœï¼Œå­åŒ¹é…å¿½ç•¥ã€‚</p><h3>exec</h3><p>è¿”å›æŒ‡å®šæ­£åˆ™åŒ¹é…çš„ç»“æœ</p><textarea class="code-js">
 var 
 str = "a1b2c3",
 reg1 = /\d/g,
 reg2 = /\d/,
-reg3 = /(\d)/g, //½á¹ûµÈĞ§ÓÚmatch(/(\d)/)
-reg4 = /(\d).(\d)/, //·µ»Ø/\d.\d/ÍêÕûÆ¥ÅäºÍ×ÓÆ¥Åä(\d)
+reg3 = /(\d)/g, //ç»“æœç­‰æ•ˆäºmatch(/(\d)/)
+reg4 = /(\d).(\d)/, //è¿”å›/\d.\d/å®Œæ•´åŒ¹é…å’Œå­åŒ¹é…(\d)
 arr = [];
 
-arr.push('reg1.result£º'+reg1.exec(str));
-arr.push('reg2.result£º'+reg2.exec(str));
-arr.push('reg3.result£º'+reg3.exec(str));
-arr.push('reg4.result£º'+reg4.exec(str));
+arr.push('reg1.resultï¼š'+reg1.exec(str));
+arr.push('reg2.resultï¼š'+reg2.exec(str));
+arr.push('reg3.resultï¼š'+reg3.exec(str));
+arr.push('reg4.resultï¼š'+reg4.exec(str));
 alert(arr.join('\n'))
-</textarea><p class="info">execÊ¼ÖÕÖ»½øĞĞÒ»´Î¼ìË÷£¬gµÄĞ§¹ûÖ»»áÓ°ÏìindexºÍlastIndex¶ø²»Ó°ÏìÆ¥Åä½á¹û</p><p class="info">ÅÅ³ılastIndexÒòËØ£¬execÆ¥Åä½á¹ûÊ¼ÖÕÓë²»´øgµÄmatchÒ»ÖÂ</p><h3>search</h3><p>·µ»Ø¼ìË÷×Ö·û´®°üº¬Ö¸¶¨ÕıÔòÆ¥ÅäµÄÆğÊ¼Î»ÖÃ</p><textarea class="code-js">
+</textarea><p class="info">execå§‹ç»ˆåªè¿›è¡Œä¸€æ¬¡æ£€ç´¢ï¼Œgçš„æ•ˆæœåªä¼šå½±å“indexå’ŒlastIndexè€Œä¸å½±å“åŒ¹é…ç»“æœ</p><p class="info">æ’é™¤lastIndexå› ç´ ï¼ŒexecåŒ¹é…ç»“æœå§‹ç»ˆä¸ä¸å¸¦gçš„matchä¸€è‡´</p><h3>search</h3><p>è¿”å›æ£€ç´¢å­—ç¬¦ä¸²åŒ…å«æŒ‡å®šæ­£åˆ™åŒ¹é…çš„èµ·å§‹ä½ç½®</p><textarea class="code-js">
 alert([
     'abcd'.indexOf('c'),
     'abcd'.search('c'),
     'abcd'.search(/c/),
     'abcd'.search(/c(?!d)/)
 ].join('\n'))
-</textarea><p class="info">ÆäÊµ¾ÍindexOfµÄ¼ÓÇ¿°æ£¬²ÎÊı¿ÉÒÔ´«ÈëÕıÔò</p><h3>split</h3><p>½«×Ö·û´®°´ÕıÔòÆ¥Åä×÷Îª·Ö¸ô·û×ª»¯³ÉÊı×é</p><textarea class="code-js">
+</textarea><p class="info">å…¶å®å°±indexOfçš„åŠ å¼ºç‰ˆï¼Œå‚æ•°å¯ä»¥ä¼ å…¥æ­£åˆ™</p><h3>split</h3><p>å°†å­—ç¬¦ä¸²æŒ‰æ­£åˆ™åŒ¹é…ä½œä¸ºåˆ†éš”ç¬¦è½¬åŒ–æˆæ•°ç»„</p><textarea class="code-js">
 alert([
     'abcd'.split(''),
     'a,b.c#d'.split(/\W/),

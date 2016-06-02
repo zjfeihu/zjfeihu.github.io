@@ -23,8 +23,8 @@ Z = function(){
         };
         function extend(){
             function Class(args){
-                if(this instanceof Class){ //ÒÑ¾­ÊµÀı»¯£¬µ÷ÓÃinit
-                    if(this.init){ //×Ô¶¯newµÄÇé¿ö£¬ËùÓĞ²ÎÊı¶¼»á´æÔÚargs.____ÖĞ£¬·ñÔòÈ¡È«²¿²ÎÊı£¬×¢ÒâargsÖĞ²»ÄÜ´«µİargs.____
+                if(this instanceof Class){ //å·²ç»å®ä¾‹åŒ–ï¼Œè°ƒç”¨init
+                    if(this.init){ //è‡ªåŠ¨newçš„æƒ…å†µï¼Œæ‰€æœ‰å‚æ•°éƒ½ä¼šå­˜åœ¨args.____ä¸­ï¼Œå¦åˆ™å–å…¨éƒ¨å‚æ•°ï¼Œæ³¨æ„argsä¸­ä¸èƒ½ä¼ é€’args.____
                         this.init.apply(this, args && args.____ ? args.____ : arguments);
                     }
                 }else{
@@ -39,15 +39,15 @@ Z = function(){
                 var 
                 method,
                 superMethod,
-                superProp = new empty, //Í¨¹ı¿Õº¯ÊıÊµÏÖÖ»¼Ì³ĞÔ­ĞÍ
+                superProp = new empty, //é€šè¿‡ç©ºå‡½æ•°å®ç°åªç»§æ‰¿åŸå‹
                 i;
                 for(i in prop){
                     method = prop[i];
                     superMethod = superProp[i];
-                    superProp[i] = //ĞèÒªµ÷ÓÃ¸¸ÀàµÄ·½·¨£¬ÔòÊ¹ÓÃ±Õ°ü½øĞĞ°ü×°
+                    superProp[i] = //éœ€è¦è°ƒç”¨çˆ¶ç±»çš„æ–¹æ³•ï¼Œåˆ™ä½¿ç”¨é—­åŒ…è¿›è¡ŒåŒ…è£…
                     typeof method == 'function' 
                     && typeof superMethod == 'function'
-                    && /\._super\(/.test(method) //º¯ÊıÌå°üº¬._super(      
+                    && /\._super\(/.test(method) //å‡½æ•°ä½“åŒ…å«._super(      
                     ? pack(method, superMethod) : method;
                 }
                 if(source){
@@ -70,7 +70,7 @@ Z = function(){
                 }
             }.apply(this, arguments);
             
-            Class.extend = extend; //ÊµÏÖÁ´Ê½£¬Ö´ĞĞClass.extend()Ê±£¬this×Ô¶¯Ö¸ÏòClass
+            Class.extend = extend; //å®ç°é“¾å¼ï¼Œæ‰§è¡ŒClass.extend()æ—¶ï¼Œthisè‡ªåŠ¨æŒ‡å‘Class
             return Class;
         }
     }(),
@@ -129,10 +129,10 @@ Z = function(){
                     }
                     $append(box, '<li>'+text+'</li>');
                 }
-            }else if(document.body){ //³õÊ¼»¯consoleÈİÆ÷£¬²¢Êä³öÒÑ¾­´æÔÚµÄÊı¾İ
+            }else if(document.body){ //åˆå§‹åŒ–consoleå®¹å™¨ï¼Œå¹¶è¾“å‡ºå·²ç»å­˜åœ¨çš„æ•°æ®
                 clearInterval(timer);
                 var wrap = $element('<div id="Zlog">\
-                    <h3>µã»÷Òş²Ø¿ØÖÆÌ¨<span>Çå³ı</span></h3>\
+                    <h3>ç‚¹å‡»éšè—æ§åˆ¶å°<span>æ¸…é™¤</span></h3>\
                     <ol></ol>\
                 </div>');
                 box = $query('ol', wrap)[0];
@@ -200,7 +200,7 @@ Z = function(){
                     title: title,
                     text: text
                 });
-                var timer = setInterval(function(){ //¼ÙÈçÔÚbody¾ÍĞ÷ºóÃ»µ÷ÓÃlog£¬ÄÇÃ´¾ÍÈÃ¶¨Ê±Æ÷Ö÷¶¯´¥·¢
+                var timer = setInterval(function(){ //å‡å¦‚åœ¨bodyå°±ç»ªåæ²¡è°ƒç”¨logï¼Œé‚£ä¹ˆå°±è®©å®šæ—¶å™¨ä¸»åŠ¨è§¦å‘
                     if(document.body){
                         clearInterval(timer);
                         log();
@@ -248,11 +248,11 @@ Z = function(){
                     .replace(/\r/g, '')
                     //.replace(/\n/g, '@')
                     .replace(/^\s+$/gm, '')
-                    .replace(/^\s*/gm, function(match){ //ÕÒµ½ÔÚº¯ÊıÃ¿ĞĞÇ°ÃæµÄ×îĞ¡¿Õ°×
+                    .replace(/^\s*/gm, function(match){ //æ‰¾åˆ°åœ¨å‡½æ•°æ¯è¡Œå‰é¢çš„æœ€å°ç©ºç™½
                         len = Math.min(match.length, len);
                         return match
                     })
-                    .replace(/^\s+/mg, function(match){  //½«Ç°·½µÄ¿Õ°×ÒÆ³ıÒ»²¿·Ö
+                    .replace(/^\s+/mg, function(match){  //å°†å‰æ–¹çš„ç©ºç™½ç§»é™¤ä¸€éƒ¨åˆ†
                         return match.substr(len);
                     })
                     .replace(/^/mg, Array(level+1).join(PDSTR))
@@ -263,7 +263,7 @@ Z = function(){
         }
     }(),
 
-    $XHR = $win.XMLHttpRequest || function(){ //ie6ÏÂÊ¹ÓÃ±éÀúÀ´»ñµÃ×î¸ß°æ±¾µÄxmlhttp
+    $XHR = $win.XMLHttpRequest || function(){ //ie6ä¸‹ä½¿ç”¨éå†æ¥è·å¾—æœ€é«˜ç‰ˆæœ¬çš„xmlhttp
         var xhrProgid = [0, 'Microsoft.XMLHTTP', 'Msxml2.XMLHTTP', 'Msxml2.XMLHTTP.6.0'],
             i = 4,
             xhr;
@@ -411,13 +411,13 @@ Z = function(){
             this.elem = elem;
             this.time = 0;
             var config = {
-                before: 0,//ÍÏ¶¯Ç°
-                after: 0,//ÍÏ¶¯Íê³É
-                runing: 0,//ÍÏ¶¯ÖĞ
-                clone: 0,//ÊÇ·ñclone½Úµã
-                lockx: 0,//Ëø¶¨x·½Ïò
-                locky: 0,//Ëø¶¨y·½Ïò
-                range: -1//ÍÏ¶¯·¶Î§¿ØÖÆ
+                before: 0,//æ‹–åŠ¨å‰
+                after: 0,//æ‹–åŠ¨å®Œæˆ
+                runing: 0,//æ‹–åŠ¨ä¸­
+                clone: 0,//æ˜¯å¦cloneèŠ‚ç‚¹
+                lockx: 0,//é”å®šxæ–¹å‘
+                locky: 0,//é”å®šyæ–¹å‘
+                range: -1//æ‹–åŠ¨èŒƒå›´æ§åˆ¶
             };
             
             for(var ex in config){
@@ -460,7 +460,7 @@ Z = function(){
             this._offsetX = evt.clientX - box.offsetLeft + marginLeft;
             this._offsetY = evt.clientY - box.offsetTop + marginTop;
             this._before && this._before.call(this, evt);
-            if(this._range == -1){//ÏŞÖÆÔÚ´°¿ÚÄÚ
+            if(this._range == -1){//é™åˆ¶åœ¨çª—å£å†…
                 this._minX = 0;
                 this._minY = 0;
                 this._maxX = $de.clientWidth - box.offsetWidth - marginLeft - $cssnum(box, 'marginRight');
@@ -507,7 +507,7 @@ Z = function(){
         
         _draging: function(evt){
             
-            ///*½øĞĞ¹ıÂË
+            ///*è¿›è¡Œè¿‡æ»¤
             var now = +new Date;
             if(now - this.time > 15){
                 this.time = now;
@@ -567,7 +567,7 @@ Z = function(){
 
     function $cookie(name, value, option){
     	
-        if(typeof name == 'object'){ //ÅúÁ¿ÉèÖÃcookie
+        if(typeof name == 'object'){ //æ‰¹é‡è®¾ç½®cookie
     		
     		for(var e in name){
                 $cookie(e, name[e], value);
@@ -576,7 +576,7 @@ Z = function(){
         }else if(value !== undefined){
     		
             option = option || {};
-    		if(value === null){ //valueÎªnull,ÔòÉèÖÃcookieÎª¹ıÆÚ
+    		if(value === null){ //valueä¸ºnull,åˆ™è®¾ç½®cookieä¸ºè¿‡æœŸ
     			option.expires = -1;
     		}else if(typeof option == 'number'){
     			option = {expires: option};
@@ -586,7 +586,7 @@ Z = function(){
     		
     		if(option.expires){
     			var exp = new Date;
-    			exp.setTime(+exp + option.expires * 60 * 1000); //ÒÔ·ÖÖÓÎªµ¥Î»
+    			exp.setTime(+exp + option.expires * 60 * 1000); //ä»¥åˆ†é’Ÿä¸ºå•ä½
     			newvalue += "; expires=" + exp.toUTCString();
     		}
     		
@@ -625,7 +625,7 @@ Z = function(){
             element.removeAttribute(name);
         }else if(value != undefined){
     		
-            if(typeof name == 'object'){ //ÅúÁ¿ÉèÖÃÊôĞÔ
+            if(typeof name == 'object'){ //æ‰¹é‡è®¾ç½®å±æ€§
                 for(var attr in name){
                     $attr(element, attr, name[attr]);
                 }
@@ -633,7 +633,7 @@ Z = function(){
                 if(name == 'style'){
                     element.style.cssText = value;
                 }else{
-                    if(element[name] != undefined){//ÓÅÏÈÉèÖÃjsÊôĞÔ
+                    if(element[name] != undefined){//ä¼˜å…ˆè®¾ç½®jså±æ€§
                         element[name] = value;
                     }else{
                         element.setAttribute(name, value, 2);
@@ -649,7 +649,7 @@ Z = function(){
                 if(name == 'href' && element.nodeName == 'A'){
                     return element.getAttribute(name, 2);
                 }else{
-                    if(element[name] != undefined){//ÓÅÏÈ»ñÈ¡jsÊôĞÔ
+                    if(element[name] != undefined){//ä¼˜å…ˆè·å–jså±æ€§
                         return element[name];
                     }else{
                         var val = element.getAttribute(name);
@@ -668,12 +668,12 @@ Z = function(){
         var callbacks = [];
         callbacks.push(callback);
      
-        //ÏÂÃæÕâ¸öÅĞ¶ÏÊÇÎªÁË½â¾öDOMContentLoadedÖ®ºóÔÙµ÷ÓÃDOMReadyÎŞ·¨´¥·¢doneº¯ÊıµÄÎÊÌâ
+        //ä¸‹é¢è¿™ä¸ªåˆ¤æ–­æ˜¯ä¸ºäº†è§£å†³DOMContentLoadedä¹‹åå†è°ƒç”¨DOMReadyæ— æ³•è§¦å‘doneå‡½æ•°çš„é—®é¢˜
         if($doc.addEventListener && $doc.readyState == 'interactive' || $doc.readyState == 'complete'){
             return done();
         }
        
-        /*if(/complete|interactive/.test(document.readyState)){ //¼ûblog/p/84.html
+        /*if(/complete|interactive/.test(document.readyState)){ //è§blog/p/84.html
             return done();
         }*/
      
@@ -738,7 +738,7 @@ Z = function(){
 
     function $bind(element, type, fn, context){
     	
-        if(!element.__EVENTID__){ //²»´æÔÚµ±Ç°ÔªËØµÄÊÂ¼ş¶ÓÁĞ
+        if(!element.__EVENTID__){ //ä¸å­˜åœ¨å½“å‰å…ƒç´ çš„äº‹ä»¶é˜Ÿåˆ—
             $eventhook[element.__EVENTID__ = ++$guid] = [];
         }
     	
@@ -1032,7 +1032,7 @@ Z = function(){
             sWord,
             elems;
     		
-            if(sItems = rQuickExpr.exec(selector)){ //µ¥¼¶Ñ¡ÔñÆ÷£¬¿ìËÙÄ£Ê½
+            if(sItems = rQuickExpr.exec(selector)){ //å•çº§é€‰æ‹©å™¨ï¼Œå¿«é€Ÿæ¨¡å¼
     		
                 sType = sItems[1];
                 sWord = sItems[2];
@@ -1080,10 +1080,10 @@ Z = function(){
                         es.length ? elems = elems.concat(es) : elems.push(es);
                     });
                 }else{
-                    sItems = rAllExpr.exec(selector); //¶ş¼¶Ñ¡ÔñÆ÷
+                    sItems = rAllExpr.exec(selector); //äºŒçº§é€‰æ‹©å™¨
                     if(sItems){
                         var 
-                        contexts = query(sItems[1], context), //ÏÈÈ¡Ç°ÃæµÄ±í´ïÊ½×÷ÎªÏŞ¶¨
+                        contexts = query(sItems[1], context), //å…ˆå–å‰é¢çš„è¡¨è¾¾å¼ä½œä¸ºé™å®š
                         sChild = sItems[2];
                         if(contexts){
                             elems = [];
@@ -1095,7 +1095,7 @@ Z = function(){
                             return null;
                         }
                     }else{
-                        sItems = rChildExpr.exec(selector); //µ¥¼¶Ñ¡ÔñÆ÷£¬¸½´øÊôĞÔµÈ¶à×Ö¶Î
+                        sItems = rChildExpr.exec(selector); //å•çº§é€‰æ‹©å™¨ï¼Œé™„å¸¦å±æ€§ç­‰å¤šå­—æ®µ
                         if(sItems){
                             var 
                             tag = sItems[1] || '*',
@@ -1198,7 +1198,7 @@ Z = function(){
             if(element.className){
                 element.className = (' ' + element.className + ' ')
                     .replace(RegExp('\\s+(' + cls2 + ')(?=\\s+)'), cls)
-                    .replace(/^\s+|\s+$/g, '');//Çå³ıÍ·Î²¿Õ¸ñ;
+                    .replace(/^\s+|\s+$/g, '');//æ¸…é™¤å¤´å°¾ç©ºæ ¼;
             }
         }else if(cls){
             var _exp = cls.charAt(0),
@@ -1209,7 +1209,7 @@ Z = function(){
                 _cls = _cls.split(',');
                 switch(_exp){
                     case '+':
-                        if(ncls){//¼ÙÈç²»Îª¿Õ£¬ĞèÒªÅĞ¶ÏÊÇ·ñÒÑ¾­´æÔÚ
+                        if(ncls){//å‡å¦‚ä¸ä¸ºç©ºï¼Œéœ€è¦åˆ¤æ–­æ˜¯å¦å·²ç»å­˜åœ¨
                         
                             $each(_cls, function(val, i){
                                 if(!$hasclass(element, val)){
@@ -1223,8 +1223,8 @@ Z = function(){
                     case '-':
                         if(ncls){
                             element.className = (' ' + ncls + ' ')
-                                .replace(RegExp('\\s+(' + _cls.join('|') + ')(?=\\s+)', 'g'), '')//Ìæ»»´æÔÚµÄclassName
-                                .replace(/^\s+|\s+$/g, '');//Çå³ıÍ·Î²¿Õ¸ñ
+                                .replace(RegExp('\\s+(' + _cls.join('|') + ')(?=\\s+)', 'g'), '')//æ›¿æ¢å­˜åœ¨çš„className
+                                .replace(/^\s+|\s+$/g, '');//æ¸…é™¤å¤´å°¾ç©ºæ ¼
                         }
                         break;
                     case '~':
@@ -1359,10 +1359,10 @@ Z = function(){
             }
             
             if(opacity >= 1 || opacity == null){
-                // IE6-8ÉèÖÃalpha(opacity=100)»áÔì³ÉÎÄ×ÖÄ£ºı
+                // IE6-8è®¾ç½®alpha(opacity=100)ä¼šé€ æˆæ–‡å­—æ¨¡ç³Š
                 filterStr = filter.replace(/alpha[^\)]+\)/i, '');
             }else{
-                opacity = Math.round(opacity * 100);//±ØĞë×ª³ÉÕûÊı
+                opacity = Math.round(opacity * 100);//å¿…é¡»è½¬æˆæ•´æ•°
                 if(hasAlpha){
                     filterStr = filter.replace(/(opacity\D+)\d+/i, 'opacity='+ opacity);
                 }else{
@@ -1399,9 +1399,9 @@ Z = function(){
                 ? $opacity(element, value)
                 : (element.style[name = $fixStyleName(name)] = 
                     value < 0 && /width|height|padding|border/.test(name) 
-                        ? 0 //ĞŞÕı¸ºÖµ
+                        ? 0 //ä¿®æ­£è´Ÿå€¼
                         : value + (/width|height|left|top|right|bottom|margin|padding/.test(name) && /^[\-\d.]+$/.test(value) 
-                            ? 'px'  //Ôö¼ÓÊ¡ÂÔµÄpx
+                            ? 'px'  //å¢åŠ çœç•¥çš„px
                             : '')
                 );        
         }else if(typeof name == 'object'){
@@ -1409,7 +1409,7 @@ Z = function(){
                 $css(element, key, name[key]);
             }
         }else{
-            if(~name.indexOf(':')){ //´æÔÚ:,±ÈÈç'background:red'
+            if(~name.indexOf(':')){ //å­˜åœ¨:,æ¯”å¦‚'background:red'
                 $each(name.replace(/;$/, '').split(';'), function(cssText){      
                     cssText = cssText.split(':');
                     $css(element, cssText.shift(), cssText.join(':'));
@@ -1518,7 +1518,7 @@ Z = function(){
         headers = options.headers,
         key;
         xhr.open(options.type || 'get', options.url, options.async || true);
-        for(key in headers) { //ÉèÖÃ·¢ËÍµÄÍ·
+        for(key in headers) { //è®¾ç½®å‘é€çš„å¤´
             xhr.setRequestHeader(key, headers[key]);
         }
         xhr.onreadystatechange = function(){
@@ -1533,7 +1533,7 @@ Z = function(){
         xhr.send(options.data || null);
     }
 
-    function $post(url, callback, data){ //post¾­µä°æ·â×°
+    function $post(url, callback, data){ //postç»å…¸ç‰ˆå°è£…
         $ajax({
             url: url,
             type: 'post',
@@ -1542,13 +1542,13 @@ Z = function(){
                 callback(responseText);
             },
             responseType: 'responseText',
-            headers: { //post±ØĞë¸øhttpÍ·ÉèÖÃContent-Type
+            headers: { //postå¿…é¡»ç»™httpå¤´è®¾ç½®Content-Type
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         });
     }
 
-    function $get(url, callback, data){ //get¾­µä°æ·â×°
+    function $get(url, callback, data){ //getç»å…¸ç‰ˆå°è£…
         $ajax({
             url: url + (data ? '?'+ (typeof data == 'object' ? $param(data) : data) : ''),
             callback: function(responseText){
@@ -1637,7 +1637,7 @@ Z = function(){
     function $parsejson(str){
         try{
             str = $tirm(str);
-            if(!str.replace(/"(?:\\\\|\\\"|[^"])*"|[\s{}\[\]:\d.,-]+|true|false|null|undefined/g, '')){ //ËµÃ÷JSONÊı¾İ·ûºÏÒªÇó
+            if(!str.replace(/"(?:\\\\|\\\"|[^"])*"|[\s{}\[\]:\d.,-]+|true|false|null|undefined/g, '')){ //è¯´æ˜JSONæ•°æ®ç¬¦åˆè¦æ±‚
                 return Function('return ' + str)();
             }
         }catch(e){
@@ -1742,14 +1742,14 @@ Z = function(){
             drawId = $draw(function(){
                 
                 per = (+new Date - time0) / dur;
-                if(per >= 1){ //Íê³É½ø¶È£¬ÔòÇå³ıdraw
+                if(per >= 1){ //å®Œæˆè¿›åº¦ï¼Œåˆ™æ¸…é™¤draw
                     per = 1;
                     stop();
                 }else{
-                    per = ~~(easing(per) *10000)/10000; //¾«È·±£Áô4Î»Ğ¡Êı
+                    per = ~~(easing(per) *10000)/10000; //ç²¾ç¡®ä¿ç•™4ä½å°æ•°
                 }
                 
-                if(cache_per != per){ //ÓÉÓÚ¶¨Ê±Æ÷´æÔÚ¾«¶ÈÎÊÌâ£¬ËùÒÔÔÚÏÂÒ»Ö¡ÖĞperÎ´±Ø·¢Éú¸Ä±ä
+                if(cache_per != per){ //ç”±äºå®šæ—¶å™¨å­˜åœ¨ç²¾åº¦é—®é¢˜ï¼Œæ‰€ä»¥åœ¨ä¸‹ä¸€å¸§ä¸­peræœªå¿…å‘ç”Ÿæ”¹å˜
                     cache_per = per;
                     
                     var attr, i = 0;
@@ -1773,10 +1773,10 @@ Z = function(){
             var from = [];
             var by = [];
             var fixAttrs = {};
-            var value; //´«Èë²ÎÊı
-            var fromValue; //ÆğÊ¼Î»ÖÃ
-            var byValue; //¸Ä±äÁ¿
-            var isRelative; //ÊÇ·ñÊÇÏà¶Ô¸Ä±ä
+            var value; //ä¼ å…¥å‚æ•°
+            var fromValue; //èµ·å§‹ä½ç½®
+            var byValue; //æ”¹å˜é‡
+            var isRelative; //æ˜¯å¦æ˜¯ç›¸å¯¹æ”¹å˜
             
             for(var attr in attrsIn){
                 value = attrsIn[attr];
@@ -1822,11 +1822,11 @@ Z = function(){
     }
 
     function $draw(fn, hook){
-        var list = [], //º¯ÊıÁĞ±í
+        var list = [], //å‡½æ•°åˆ—è¡¨
             ids = {}, //hooks
-            tr, //¶¨Ê±Æ÷¾ä±ú
-            fpsClick = [], //Ö¡´òµã
-            info = { //¼à¿ØÊı¾İ
+            tr, //å®šæ—¶å™¨å¥æŸ„
+            fpsClick = [], //å¸§æ‰“ç‚¹
+            info = { //ç›‘æ§æ•°æ®
                 execTime: 0,
                 list: [],
                 fps: 0
@@ -1875,7 +1875,7 @@ Z = function(){
             function fns(){
     
                 for(var i = 0, lg = list.length; i < lg; i++){
-                    var item = list[i]; //ÓÉÓÚÔÚitem.fnÖĞ¿ÉÄÜ»áÖ´ĞĞclear²Ù×÷£¬ËùÒÔlist[i]¿ÉÄÜÒÑ¾­²»´æÔÚÁË
+                    var item = list[i]; //ç”±äºåœ¨item.fnä¸­å¯èƒ½ä¼šæ‰§è¡Œclearæ“ä½œï¼Œæ‰€ä»¥list[i]å¯èƒ½å·²ç»ä¸å­˜åœ¨äº†
                     item && item.fn();
                 }
                 
@@ -1885,13 +1885,13 @@ Z = function(){
                 fns();
                 var t1 = +new Date;
                 
-                //È¡15msÊÇÒòÎªieä¯ÀÀÆ÷16ms¾«¶ÈÎÊÌâ,»ù±¾ÉÏ´ïµ½60fps£¬²î²»¶àĞèÒª40fps+¶¯»­²ÅÄÜÁ÷³©
-                //t1 - t0 Îª³ÌĞòÖ´ĞĞÊ±¼ä£¬½øĞĞÏàÓ¦µÄĞŞÕı
+                //å–15msæ˜¯å› ä¸ºieæµè§ˆå™¨16msç²¾åº¦é—®é¢˜,åŸºæœ¬ä¸Šè¾¾åˆ°60fpsï¼Œå·®ä¸å¤šéœ€è¦40fps+åŠ¨ç”»æ‰èƒ½æµç•…
+                //t1 - t0 ä¸ºç¨‹åºæ‰§è¡Œæ—¶é—´ï¼Œè¿›è¡Œç›¸åº”çš„ä¿®æ­£
                 tr = setTimeout(run, Math.max(0, 15 - (t1 - t0)));                       
                 return;
                 var fpsItem, i = 0;
-                while(fpsItem = fpsClick[i++]){ //¸üĞÂÖ¡Êı
-                    if(t1 - fpsItem < 1000){ //Çå³ıÒÑ¾­¹ıÆÚµÄ´òµã
+                while(fpsItem = fpsClick[i++]){ //æ›´æ–°å¸§æ•°
+                    if(t1 - fpsItem < 1000){ //æ¸…é™¤å·²ç»è¿‡æœŸçš„æ‰“ç‚¹
                         break;
                     }
                     fpsClick.shift();
@@ -1960,7 +1960,7 @@ Z = function(){
     			
             case 'string':
     		
-                if(expression.indexOf('<') == 0){ //´´½¨DOM½Úµã
+                if(expression.indexOf('<') == 0){ //åˆ›å»ºDOMèŠ‚ç‚¹
                     return $z($element(expression));
                 }
     			
@@ -2007,7 +2007,7 @@ Z = function(){
     	
         if($iszelement(input))return input.e;
         
-        if(~input.indexOf('<')){ //¸ù¾İ<±êÊ¶·ûÅĞ¶Ï
+        if(~input.indexOf('<')){ //æ ¹æ®<æ ‡è¯†ç¬¦åˆ¤æ–­
     	
             var div = $doc.createElement('div');
             div.innerHTML = $tirm(input);
@@ -2019,7 +2019,7 @@ Z = function(){
     	
     }
 
-    function $eachcall(which, method){ //ÅúÁ¿µ÷ÓÃ
+    function $eachcall(which, method){ //æ‰¹é‡è°ƒç”¨
     
         var args = [].slice.call(arguments, 2);
     	

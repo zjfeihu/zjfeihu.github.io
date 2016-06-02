@@ -34,7 +34,7 @@ function foreach(type, callback){
     if(type == 'detail'){
         
         $each(data.detail, function(el){
-            if(el != -1){ //Çå³ı±»É¾³ıµÄ
+            if(el != -1){ //æ¸…é™¤è¢«åˆ é™¤çš„
                 arr.push(el);
             }
         });
@@ -106,14 +106,14 @@ function checkout(){
                 id = id[1];
                 mds[id] = 1;
                 if(!cache[id] || rebuild.detail || cache[id].lm != +fi.DateLastModified){
-                    data_detail[id] = parse_md(id); //ĞÂÔö»òÕßÒÑĞŞ¸Ä
+                    data_detail[id] = parse_md(id); //æ–°å¢æˆ–è€…å·²ä¿®æ”¹
                 }
             }
         });
         
         $each(cache, function(el, id){
             if(!mds[id]){
-                data_detail[id] = -1; //±»É¾³ı
+                data_detail[id] = -1; //è¢«åˆ é™¤
             }
         });
 
@@ -121,7 +121,7 @@ function checkout(){
             var path = datapath + id + '.md';
             var data = {id:id, category:id.match(/(\w+)$/)[1]};
             if(!$navhash[data.category]){
-                return system.error('data.mjs.parse_md', 'ÈÕÖ¾ÀàĞÍ²»´æÔÚ£¬ÎÄ¼ş£º'+id+'.md');
+                return system.error('data.mjs.parse_md', 'æ—¥å¿—ç±»å‹ä¸å­˜åœ¨ï¼Œæ–‡ä»¶ï¼š'+id+'.md');
             }
             
             //title ,tag1,tag2,...
@@ -129,9 +129,9 @@ function checkout(){
             //content.begin
             //...
             //content.end
-            data.content = $input(path).replace(/([^\n\r]+)\s+(?:,(\S+))?/, function(all, title, tags){ //»ñÈ¡±êÌâ
-                data.title = (title.indexOf('@') == 0 ? title.substr(1)+'£¨×ª£©' : title).replace(/</g, '&lt;'); //±êÌâ
-                data.tags = tags ? tags.split(',') : []; //±êÇ©Êı¾İ
+            data.content = $input(path, 936).replace(/([^\n\r]+)\s+(?:,(\S+))?/, function(all, title, tags){ //è·å–æ ‡é¢˜
+                data.title = (title.indexOf('@') == 0 ? title.substr(1)+'ï¼ˆè½¬ï¼‰' : title).replace(/</g, '&lt;'); //æ ‡é¢˜
+                data.tags = tags ? tags.split(',') : []; //æ ‡ç­¾æ•°æ®
                 return '';
             });
             
@@ -150,14 +150,14 @@ function checkout(){
         
         newcache = {};
         $each(cache, function(el, id){
-            if(!data.detail[id]){ //Î´ĞŞ¸ÄµÄ£¬Ö±½Ó¿½±´
+            if(!data.detail[id]){ //æœªä¿®æ”¹çš„ï¼Œç›´æ¥æ‹·è´
                 newcache[id] = cache[id];
             }
         });
         
         $each(data.detail, function(el, id){
             category[id.match(/(\w+)$/)[1]] = 1;
-            if(el != -1){ //ÒÑ¾­ĞŞ¸ÄµÄ£¬¸üĞÂ
+            if(el != -1){ //å·²ç»ä¿®æ”¹çš„ï¼Œæ›´æ–°
                 newcache[id] = {
                     id: id,
                     tt: el.title,
@@ -224,7 +224,7 @@ function checkout(){
             var path = $mappath(fi.path);
             if(fu.ischange(path)){
                 arr.push({name:fi.name, path:path});
-            }else if(/\.tjs$/.test(fi.name)){ //ĞèÒª·ÖÎöµ¼ÈëµÄÄ£¿é
+            }else if(/\.tjs$/.test(fi.name)){ //éœ€è¦åˆ†æå¯¼å…¥çš„æ¨¡å—
                 fu(zero.deps(path), function(){
                    arr.push({name:fi.name, path:path});
                 });

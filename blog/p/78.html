@@ -1,13 +1,13 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>Ã÷ÖÇµÄ·ÅÆútoString</title>
+<title>æ˜Žæ™ºçš„æ”¾å¼ƒtoString</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>Ã÷ÖÇµÄ·ÅÆútoString</h1>
-    <div class=content><h2>Ç°ÑÔ</h2><p>±àÐ´´úÂëµÄÊ±ºò£¬ÍùÍù»áÉæ¼°µ½Êý¾ÝÀàÐÍ×ª»»µÄ³¡¾°£¬±ÈÈç×ª×Ö·û´®£¬Í¨³£ÎÒÃÇ¶¼ÊÇÍ¨¹ý ¡º""+someobj¡»À´ÊµÏÖ£¬¶øÄ³´ÎÈ´ÄªÃûÆäÃîµÄÐ´³ÉÁË¡ºsomeobj.toString()¡»£¬½á¹û¾Í³öÏÖÁËbug¡£</p><h2>ÎªÊ²Ã´·ÅÆútoString</h2><ol><li>ÓÐ¸ü¼ò½àµÄÌæ´ú·½·¨</li><li>ËüµÄ×ª»¯Î´±Ø¹»°²È«</li></ol><h3>¿´ÒÔÏÂÑÝÊ¾</h3><textarea class="code-js">
+    <h1>æ˜Žæ™ºçš„æ”¾å¼ƒtoString</h1>
+    <div class=content><h2>å‰è¨€</h2><p>ç¼–å†™ä»£ç çš„æ—¶å€™ï¼Œå¾€å¾€ä¼šæ¶‰åŠåˆ°æ•°æ®ç±»åž‹è½¬æ¢çš„åœºæ™¯ï¼Œæ¯”å¦‚è½¬å­—ç¬¦ä¸²ï¼Œé€šå¸¸æˆ‘ä»¬éƒ½æ˜¯é€šè¿‡ ã€Ž""+someobjã€æ¥å®žçŽ°ï¼Œè€ŒæŸæ¬¡å´èŽ«åå…¶å¦™çš„å†™æˆäº†ã€Žsomeobj.toString()ã€ï¼Œç»“æžœå°±å‡ºçŽ°äº†bugã€‚</p><h2>ä¸ºä»€ä¹ˆæ”¾å¼ƒtoString</h2><ol><li>æœ‰æ›´ç®€æ´çš„æ›¿ä»£æ–¹æ³•</li><li>å®ƒçš„è½¬åŒ–æœªå¿…å¤Ÿå®‰å…¨</li></ol><h3>çœ‹ä»¥ä¸‹æ¼”ç¤º</h3><textarea class="code-js">
 arr = [1, [0], {}, function(){}, true, null, undefined];
 
 arr.forEach(function(el){
@@ -25,7 +25,7 @@ function theToStr1(obj){
 function theToStr2(obj){
     return obj+'';
 }
-</textarea><p class="info">ÔÚ×ª»»nullºÍundefinedµÄÊ±ºò¶¼»á³öÏÖ´íÎó£¬ÒòÎªÕâÁ©Ã»ÓÐtoString·½·¨£¬¶øÊ¹ÓÃ×Ö·û´®¼ÓÔòÕý³£¡£</p><h3>¸ü½üÒ»²½¹Û²ì</h3><textarea class="code-js">
+</textarea><p class="info">åœ¨è½¬æ¢nullå’Œundefinedçš„æ—¶å€™éƒ½ä¼šå‡ºçŽ°é”™è¯¯ï¼Œå› ä¸ºè¿™ä¿©æ²¡æœ‰toStringæ–¹æ³•ï¼Œè€Œä½¿ç”¨å­—ç¬¦ä¸²åŠ åˆ™æ­£å¸¸ã€‚</p><h3>æ›´è¿‘ä¸€æ­¥è§‚å¯Ÿ</h3><textarea class="code-js">
 function C1(){this.toString = null}
 
 function C2(){}
@@ -35,7 +35,7 @@ function C3(){}
 C3.toString = null
 
 i = 0
-arr = ['ÕýÈ·Ö´ÐÐµÄº¯Êý£º']
+arr = ['æ­£ç¡®æ‰§è¡Œçš„å‡½æ•°ï¼š']
 c1 = new C1
 c2 = new C2
 c3 = new C3
@@ -103,12 +103,12 @@ function tryIt(callback){
         arr.push(i)
     }catch(e){}
 }
-</textarea><h3>´ÓÒÔÉÏ²âÊÔ¿ÉÒÔ·¢ÏÖ</h3><ol><li>²»¹ÜÊÇÔ­ÐÍµÄ£¬»¹ÊÇ×Ô¼ºµÄtoString±»¸²¸Ç£¬×Ö·û´®¼ÓºÍtoStringÊµÏÖ×Ö·û´®×ª»¯¶¼³ö´í</li><li>ÔÚÌõ¼þ1µÄÇé¿öÏÂ£¬Number(c1)Ò²»á³ö´í£¬¹À¼Æµ÷ÓÃBoolean£¬RegExpµÈ¶¼»á³ö´í£¬µ«ÊÇÒ²ÓÐÒâÍâ</li></ol><h3>¸ü¶à×ª»¯²âÊÔ</h3><textarea class="code-js">
+</textarea><h3>ä»Žä»¥ä¸Šæµ‹è¯•å¯ä»¥å‘çŽ°</h3><ol><li>ä¸ç®¡æ˜¯åŽŸåž‹çš„ï¼Œè¿˜æ˜¯è‡ªå·±çš„toStringè¢«è¦†ç›–ï¼Œå­—ç¬¦ä¸²åŠ å’ŒtoStringå®žçŽ°å­—ç¬¦ä¸²è½¬åŒ–éƒ½å‡ºé”™</li><li>åœ¨æ¡ä»¶1çš„æƒ…å†µä¸‹ï¼ŒNumber(c1)ä¹Ÿä¼šå‡ºé”™ï¼Œä¼°è®¡è°ƒç”¨Booleanï¼ŒRegExpç­‰éƒ½ä¼šå‡ºé”™ï¼Œä½†æ˜¯ä¹Ÿæœ‰æ„å¤–</li></ol><h3>æ›´å¤šè½¬åŒ–æµ‹è¯•</h3><textarea class="code-js">
 obj = {toString: null}
-i = 0, arr = ['ÕýÈ·Ö´ÐÐµÄº¯Êý£º']
+i = 0, arr = ['æ­£ç¡®æ‰§è¡Œçš„å‡½æ•°ï¼š']
 tryIt(function(){String(obj)})
 tryIt(function(){Number(obj)})
-tryIt(function(){Boolean(obj)}) //ÕâÌõ¾ÓÈ»ÊÇÕýÈ·Ö´ÐÐ²¢·µ»Øtrue
+tryIt(function(){Boolean(obj)}) //è¿™æ¡å±…ç„¶æ˜¯æ­£ç¡®æ‰§è¡Œå¹¶è¿”å›žtrue
 tryIt(function(){RegExp(obj)})
 
 alert(arr.join('\n'))
@@ -120,5 +120,5 @@ function tryIt(callback){
         arr.push(i)
     }catch(e){}
 }
-</textarea><p class="info">×ª»»×Ö·û´®String(data) Óë (''+data)ÊÇµÈÐ§µÄ</p></div>
+</textarea><p class="info">è½¬æ¢å­—ç¬¦ä¸²String(data) ä¸Ž (''+data)æ˜¯ç­‰æ•ˆçš„</p></div>
 </div>

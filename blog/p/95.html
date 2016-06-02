@@ -1,13 +1,13 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>ie��li�Ĳ��ִ���</title>
+<title>ie下li的布局错误</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>ie��li�Ĳ��ִ���</h1>
-    <div class=content><h2>ǰ��</h2><p>��дtimeline�����ʱ����Ϊ��Ҫ����ie7�����ð�һ������li���ֵ���������</p><h2>demo</h2><textarea class="code-html">
+    <h1>ie下li的布局错误</h1>
+    <div class=content><h2>前言</h2><p>在写timeline组件的时候，因为需要兼容ie7，正好把一个关于li布局的问题解决掉</p><h2>demo</h2><textarea class="code-html">
 <!doctype html>
 <style>
 ul{border:1px solid #000;margin:8px 0;padding:0;*zoom:1}
@@ -17,17 +17,17 @@ li{border:1px solid #000; height:12px;}
 .li{border:1px solid #000; height:12px}
 </style>
 
-<ul> <!-- ie6�¸߶Ȳ����趨��12px ie7��li���ֿ�϶ -->
+<ul> <!-- ie6下高度不是设定的12px ie7下li出现空隙 -->
     <li> </li>
     <li> </li>
 </ul>
 
-<ul class=iefixed> <!-- ieͨ���趨���������϶ -->
+<ul class=iefixed> <!-- ie通过设定浮动清除空隙 -->
     <li> </li>
     <li> </li>
 </ul>
 
-<div class=ul>  <!-- divģʽ�£�ie6�趨line-height���� -->
+<div class=ul>  <!-- div模式下，ie6设定line-height即可 -->
     <div class=li> </div>
     <div class=li> </div>
 </div>

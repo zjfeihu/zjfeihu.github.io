@@ -1,33 +1,33 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>cssÈ¥³ıÁ´½ÓĞéÏß¿ò</title>
+<title>csså»é™¤é“¾æ¥è™šçº¿æ¡†</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>cssÈ¥³ıÁ´½ÓĞéÏß¿ò</h1>
-    <div class=content><h2>´úÂëÊµÏÖ</h2><textarea class="code-html">
+    <h1>csså»é™¤é“¾æ¥è™šçº¿æ¡†</h1>
+    <div class=content><h2>ä»£ç å®ç°</h2><textarea class="code-html">
 <!doctype html>
 <style>
 a:focus{outline:none}    
 </style>
-<a href="javascript:;">Ç°¶Ë¿ª·¢</a>
+<a href="javascript:;">å‰ç«¯å¼€å‘</a>
 <script>
 var isie = navigator.userAgent.toLowerCase().match(/msie ([\d.]+)/);
-if(isie &amp;&amp; parseInt(isie[1]) < 8){ //ÅĞ¶Ïä¯ÀÀÆ÷°æ±¾
+if(isie &amp;&amp; parseInt(isie[1]) < 8){ //åˆ¤æ–­æµè§ˆå™¨ç‰ˆæœ¬
     var a = document.getElementsByTagName('a');
     for(var i = 0; i < a.length; i++){
-        a[i].setAttribute('hideFocus', 1); //ÉèÖÃhideFocusÎªtrue
+        a[i].setAttribute('hideFocus', 1); //è®¾ç½®hideFocusä¸ºtrue
     }
 }
 </script>
-</textarea><p class="info">ÕâÀïµÄjs´úÂë±ØĞëÔÚdomready´¥·¢ºóÖ´ĞĞ£¬ºóÆÚÌí¼ÓµÄÁ´½ÓĞéÏß»¹»á´æÔÚ¡£</p><h2>ÊµÏÖÔ­Àí</h2><ul><li>Ê¹ÓÃcssÎ±Àà:foucs</li><li>ie6-7Ê¹ÓÃË½ÓĞÊôĞÔhidefocus</li></ul><h2>Ôã¸âµÄÊµÏÖ</h2><ul><li>ÀÄÓÃcss±í´ïÊ½</li><li>Ê¹ÓÃÊ§È¥½¹µãµÄ·½Ê½</li></ul><h3>Ê¾Àı´úÂë</h3><textarea class="code-html">
+</textarea><p class="info">è¿™é‡Œçš„jsä»£ç å¿…é¡»åœ¨domreadyè§¦å‘åæ‰§è¡Œï¼ŒåæœŸæ·»åŠ çš„é“¾æ¥è™šçº¿è¿˜ä¼šå­˜åœ¨ã€‚</p><h2>å®ç°åŸç†</h2><ul><li>ä½¿ç”¨cssä¼ªç±»:foucs</li><li>ie6-7ä½¿ç”¨ç§æœ‰å±æ€§hidefocus</li></ul><h2>ç³Ÿç³•çš„å®ç°</h2><ul><li>æ»¥ç”¨cssè¡¨è¾¾å¼</li><li>ä½¿ç”¨å¤±å»ç„¦ç‚¹çš„æ–¹å¼</li></ul><h3>ç¤ºä¾‹ä»£ç </h3><textarea class="code-html">
 <!doctype html>
 <style>
-a{blr:expression(this.onFocus=this.blur());}/*Ö§³ÖIE*/
+a{blr:expression(this.onFocus=this.blur());}/*æ”¯æŒIE*/
 </style>
-<a href="javascript:;">Ç°¶Ë¿ª·¢</a>
+<a href="javascript:;">å‰ç«¯å¼€å‘</a>
 <script>
 var a = document.getElementsByTagName('a');
 for(var i = 0; i < a.length; i++){
@@ -36,13 +36,13 @@ for(var i = 0; i < a.length; i++){
     };
 }
 </script>
-</textarea><p class="info">ÉÏÊö´úÂë´æÔÚĞÔÄÜÎÊÌâ£¬css±í´ïÊ½½«²»¶ÏµÄ±»´¥·¢¡£ </p><h2>Ò»¸öÍêÃÀµÄ·½°¸</h2><textarea class="code-html">
+</textarea><p class="info">ä¸Šè¿°ä»£ç å­˜åœ¨æ€§èƒ½é—®é¢˜ï¼Œcssè¡¨è¾¾å¼å°†ä¸æ–­çš„è¢«è§¦å‘ã€‚ </p><h2>ä¸€ä¸ªå®Œç¾çš„æ–¹æ¡ˆ</h2><textarea class="code-html">
 <!doctype html>
 <style>
 a:focus{outline:none;}
 a{*zoom:expression(this.style.zoom=1,this.hideFocus=true);}
 </style>
-<a href="javascript:;">Ç°¶Ë¿ª·¢</a>
-<button onclick="this.nextSibling.innerHTML+='<a href=javascript:;>ĞÂÌí¼ÓµÄÁ´½Ó</a><br>'">Ìí¼ÓĞÂÁ´½Ó</button><div></div>
-</textarea><p class="info">ÍêÃÀÈ¥³ıĞÂÌí¼ÓÁ´½ÓµÄĞéÏß¿ò£¬²¢ÇÒÍ¨¹ıÉèÖÃthis.style.zoom=1ÒÆ³ıcss±í´ïÊ½</p></div>
+<a href="javascript:;">å‰ç«¯å¼€å‘</a>
+<button onclick="this.nextSibling.innerHTML+='<a href=javascript:;>æ–°æ·»åŠ çš„é“¾æ¥</a><br>'">æ·»åŠ æ–°é“¾æ¥</button><div></div>
+</textarea><p class="info">å®Œç¾å»é™¤æ–°æ·»åŠ é“¾æ¥çš„è™šçº¿æ¡†ï¼Œå¹¶ä¸”é€šè¿‡è®¾ç½®this.style.zoom=1ç§»é™¤cssè¡¨è¾¾å¼</p></div>
 </div>

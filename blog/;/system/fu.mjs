@@ -1,4 +1,4 @@
-//ÎÄ¼þ¸üÐÂ¹ÜÀí
+//æ–‡ä»¶æ›´æ–°ç®¡ç†
 var cachepath = $mappath('fu.cache');
 var cachedata = loadcache();
 var checklist = {};
@@ -40,7 +40,7 @@ function loadcache(){
         return format($input(cachepath));
     }
 	
-    function format(text){ //½«key×ª»¯³ÉÂ·¾¶Ä£Ê½
+    function format(text){ //å°†keyè½¬åŒ–æˆè·¯å¾„æ¨¡å¼
         var data = {};
         text.split('\n').forEach(function(line){
             line = line.split(' => ');
@@ -72,7 +72,7 @@ function savecache(){
         return obj;
     }
     
-    function format(obj){ //½«keyµÄÂ·¾¶Ä£Ê½·­×ª»¯Îª#
+    function format(obj){ //å°†keyçš„è·¯å¾„æ¨¡å¼ç¿»è½¬åŒ–ä¸º#
         var arr = [];
         for(var key in obj){
             arr.push(key.replace($ROOTPATH, '#')+' => '+obj[key]);
@@ -90,7 +90,7 @@ function ischange(path){
         path = fs.path(path);
     }
     
-    if(!fs.isfile(path)){ //ÎÄ¼þ±»É¾³ý
+    if(!fs.isfile(path)){ //æ–‡ä»¶è¢«åˆ é™¤
         if(cachedata[path] == -1){
             return 0;
         }else{

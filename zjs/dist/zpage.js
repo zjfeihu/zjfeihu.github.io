@@ -1,4 +1,4 @@
-//zpage.js v1.01 ·ÖÒ³×é¼ş
+//zpage.js v1.01 åˆ†é¡µç»„ä»¶
 
 zpage = function(){
     
@@ -96,47 +96,47 @@ zpage = function(){
             offset = SIZE / 2,
             prev = '',
             next = '',
-            header = '', //Í·²¿µã
-            tailer = '', //Î²²¿µã
+            header = '', //å¤´éƒ¨ç‚¹
+            tailer = '', //å°¾éƒ¨ç‚¹
             body = '',
-            numSize = SIZE, //ÖĞ¼ä²¿·ÖÊı×Ö³¤¶È
-            num,//ÖĞ¼ä¿ªÊ¼Ò³Âë
+            numSize = SIZE, //ä¸­é—´éƒ¨åˆ†æ•°å­—é•¿åº¦
+            num,//ä¸­é—´å¼€å§‹é¡µç 
             i = 0;
             
             prev = current == 1 
-                ? '<span class="prev dis">ÉÏÒ»Ò³</span>'
-                : '<span class="prev" _idx_="-1">ÉÏÒ»Ò³</span>';
+                ? '<span class="prev dis">ä¸Šä¸€é¡µ</span>'
+                : '<span class="prev" _idx_="-1">ä¸Šä¸€é¡µ</span>';
             next = current == TOTAL
-                ? '<span class="next dis">ÏÂÒ»Ò³</span>'
-                : '<span class="next" _idx_="+1">ÏÂÒ»Ò³</span>';
+                ? '<span class="next dis">ä¸‹ä¸€é¡µ</span>'
+                : '<span class="next" _idx_="+1">ä¸‹ä¸€é¡µ</span>';
             
-            if(TOTAL > SIZE){ //ÓĞ×óÓÒµã
+            if(TOTAL > SIZE){ //æœ‰å·¦å³ç‚¹
                 
-                if(current > offset){ //ÓĞ×ódot
+                if(current > offset){ //æœ‰å·¦dot
                     header = '<span class="num" _idx_="1">1</span><span class="dot">...</span>';
                     numSize -= 2;
                 }
                 
-                if(TOTAL - current > offset-1){ //ÓĞÓÒdot
+                if(TOTAL - current > offset-1){ //æœ‰å³dot
                     tailer = '<span class="dot">...</span><span class="num" _idx_="'+TOTAL+'">'+TOTAL+'</span>';
                     numSize -= 2;
                 }     
                 
-            }else{ //numSizeÖ»ÄÜĞ¡ÓÚ×ÜÊı
+            }else{ //numSizeåªèƒ½å°äºæ€»æ•°
             
                 numSize = Math.min(numSize, TOTAL); 
                 
             }
             
-            num = //ÖĞ¼ä²¿·ÖÊı×Ö
+            num = //ä¸­é—´éƒ¨åˆ†æ•°å­—
             header && tailer
-                ? current - ~~(numSize/2)  //×óÓÒÓĞµã
+                ? current - ~~(numSize/2)  //å·¦å³æœ‰ç‚¹
                 : tailer
-                    ? 1  //Ö»ÓĞÎ²²¿ÓĞµã
-                    : TOTAL + 1 - numSize; //Ö»ÓĞÍ·²¿ÓĞµã
+                    ? 1  //åªæœ‰å°¾éƒ¨æœ‰ç‚¹
+                    : TOTAL + 1 - numSize; //åªæœ‰å¤´éƒ¨æœ‰ç‚¹
             
             while(numSize--){
-                body += num == current //µ±Ç°Ò³Ãæ
+                body += num == current //å½“å‰é¡µé¢
                     ? '<span class="num cur">'+ num +'</span>'
                     : '<span class="num" _idx_="'+num+'">'+ (num) +'</span>';
                 num++;

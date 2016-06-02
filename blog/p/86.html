@@ -1,16 +1,16 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-<title>��ע��ű�ʱ���ֵ�IE bug</title>
+<title>在注入脚本时发现的IE bug</title>
 <link href=../style/main.css rel=stylesheet>
 <script src=../style/main.js></script>
 <body>
 <div id=detail>
-    <h1>��ע��ű�ʱ���ֵ�IE bug</h1>
-    <div class=content><h2>ǰ��</h2><p>IE6��7��8�ܻ����һЩĪ����������ץ��Ĵ��󣬽��������йؽű�ע���߼���ʱ�������һ���������˳������ӡ�</p><h2>��������</h2><textarea class="code-html">
+    <h1>在注入脚本时发现的IE bug</h1>
+    <div class=content><h2>前言</h2><p>IE6，7，8总会出现一些莫名其妙让人抓狂的错误，今天在做有关脚本注入逻辑的时候就遇到一个，真让人超级鄙视。</p><h2>问题重现</h2><textarea class="code-html">
 <body id="box">
-<button onclick="addScript('box=1;alert(2)')">�޷�ִ��</button>
-<button onclick="addScript('alert(box)')">���Ե���ʲô</button>
+<button onclick="addScript('box=1;alert(2)')">无法执行</button>
+<button onclick="addScript('alert(box)')">试试弹出什么</button>
 </body>
 <script>
 function addScript(text){
@@ -20,13 +20,19 @@ function addScript(text){
     document.body.appendChild(script);
 }
 </script>
-</textarea><p class="info">���ָ�box��ֵ�ͻ������ ԭ������body��idͬ��������bug��ĺ��Ѷ�λ�������ҳ���У�id���Ƹ����޷��ƿ�</p><p class="info">ȫ�ֱ���box��ͨ��id�ķ�ʽ��ã����������������ô���ģ�����Ψ��IE�������ñ������¸�ֵ</p><h2>����д��</h2><p>Ϊ������IE������࣬������ȫ�ֱ���������Ҳ����ǰ�����var�ɣ�Ҫ���ں������棬��ʹ��window.��Ϊǰ׺</p><h3>��ȷִ�е�ʾ��</h3><p>undefined</p><textarea class="code-html">
+</textarea><p class="info">发现给box赋值就会出错， 原因是与body的id同名，此类bug真的好难定位，尤其大页面中，id名称根本无法掌控</p><p class="info">全局变量box是通过id的方式获得，各大浏览器都是这么做的，但是唯独IE不允许该变量重新赋值</p><h2>兼容写法</h2><p>为了满足IE这个另类，即便是全局变量，我们也在他前面加上var吧，要是在函数里面，就使用window.作为前缀</p><h3>正确执行的示例</h3><textarea class="code-html">
+<body id="box"></body>
+<script>
+var box = 1 //不能省略var
+alert(1)
+</script>
+</textarea><textarea class="code-html">
 <body id="box"></body>
 <script>
 !function(){
-    window.box = 1 //����ʡ��window.
+    window.box = 1 //不能省略window.
     alert(1)
 }()
 </script>
-</textarea><h2>����IEɵ����Ϣ</h2><p><a class="xlink" href="53.html">IE��id������bug</a><br/></p></div>
+</textarea><h2>更多IE傻叉信息</h2><p><a class="xlink" href="53.html">IE中id命名的bug</a><br/></p></div>
 </div>

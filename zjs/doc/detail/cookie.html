@@ -1,5 +1,5 @@
 <!doctype html>
-<meta charset=gbk>
+<meta charset=utf-8>
 <link href=../doc.css rel=stylesheet>
 <script src=../../dist/z.js></script>
 <body>
@@ -11,27 +11,27 @@
             <span class=file>define in : bom</span>
         </div>
         <div class=syntaxs-box>
-            <h4>�﷨</h3>
+            <h4>语法</h3>
             <ul>
                 
                 <li>
                     <p class=syntax> 
                         <span class=name>cookie( <em>key</em> )</span>
-                        <span class=desc>��ȡcookie��ֵ</span> 
+                        <span class=desc>获取cookie的值</span> 
                     </p>
                 </li>
                 
                 <li>
                     <p class=syntax> 
                         <span class=name>cookie( <em>key, value, option</em> )</span>
-                        <span class=desc>����cookie��ֵ����valueΪnullʱ����ɾ����Ӧ��cookie</span> 
+                        <span class=desc>设置cookie的值，当value为null时，则删除对应的cookie</span> 
                     </p>
                 </li>
                 
                 <li>
                     <p class=syntax> 
                         <span class=name>cookie( <em>data, option</em> )</span>
-                        <span class=desc>��������cookie��ֵ</span> 
+                        <span class=desc>批量设置cookie的值</span> 
                     </p>
                 </li>
                 
@@ -39,7 +39,7 @@
         </div>
         
             <div class=params-box>
-                <h4>����</h3>
+                <h4>参数</h3>
                 <ul>
                 
                     <li>
@@ -49,9 +49,9 @@
                         </p>
                         <p> 
                             
-                            <span class=flag-need>��ѡ</span>
+                            <span class=flag-need>必选</span>
                             
-                            <span class=desc>cookie������</span>
+                            <span class=desc>cookie的名称</span>
                         </p>
                     </li>
                 
@@ -62,9 +62,9 @@
                         </p>
                         <p> 
                             
-                            <span class=flag-need>��ѡ</span>
+                            <span class=flag-need>必选</span>
                             
-                            <span class=desc>cookie����ֵ</span>
+                            <span class=desc>cookie的新值</span>
                         </p>
                     </li>
                 
@@ -75,9 +75,9 @@
                         </p>
                         <p> 
                             
-                            <span class=flag-need>��ѡ</span>
+                            <span class=flag-need>必选</span>
                             
-                            <span class=desc>һ��cookie����ֵ</span>
+                            <span class=desc>一组cookie的新值</span>
                         </p>
                     </li>
                 
@@ -88,9 +88,9 @@
                         </p>
                         <p> 
                             
-                            <span class=flag>��ѡ</span>
+                            <span class=flag>可选</span>
                             
-                            <span class=desc>����cookie����Ч�ڵ���������</span>
+                            <span class=desc>设置cookie的有效期等其他属性</span>
                         </p>
                     </li>
                     
@@ -102,7 +102,7 @@
             <ul class=more-box>
             
                 <li>
-                    <h4>option˵��</h4>
+                    <h4>option说明</h4>
                     
                     
                     <table class=mytable>
@@ -110,11 +110,11 @@
                         <tr class=bg>
                             
                                 
-                                    <th>�ֶ�</th>
+                                    <th>字段</th>
                                 
                             
                                 
-                                    <th>˵��</th>
+                                    <th>说明</th>
                                 
                             
                         </tr>
@@ -126,7 +126,7 @@
                                 
                             
                                 
-                                    <td>cookie��Ч�ڣ�Ĭ��ֵ��ֱ��������ر�ʱʧЧ����λ�Ƿ���</td>
+                                    <td>cookie有效期，默认值是直到浏览器关闭时失效，单位是分钟</td>
                                 
                             
                         </tr>
@@ -138,7 +138,7 @@
                                 
                             
                                 
-                                    <td>cookie��·����Χ��Ĭ���Ǹ�Ŀ¼</td>
+                                    <td>cookie的路径范围，默认是根目录</td>
                                 
                             
                         </tr>
@@ -150,7 +150,7 @@
                                 
                             
                                 
-                                    <td>cookie��domainȨ�ޣ�Ĭ���ǵ�ǰdomain</td>
+                                    <td>cookie的domain权限，默认是当前domain</td>
                                 
                             
                         </tr>
@@ -164,9 +164,9 @@
         
         
         <div class=return-box>
-            <h4>����ֵ</h3>
+            <h4>返回值</h3>
             <p>
-                <span class=desc>cookie��ֵ</span>
+                <span class=desc>cookie的值</span>
                 <span class=type>[String,Null]</span>
             </p>    
         </div>
