@@ -1,0 +1,109 @@
+<!doctype html>
+<meta charset=gbk>
+<link href=../doc.css rel=stylesheet>
+<script src=../../dist/z.js></script>
+<body>
+<div class=doc>
+	
+        <div class=caption>
+            <h2>cls( )</h2>
+            <span class=isprototype>原型方法</span>
+            <span class=file>define in : dom.style</span>
+        </div>
+        <div class=syntaxs-box>
+            <h4>语法</h3>
+            <ul>
+                
+                <li>
+                    <p class=syntax> 
+                        <span class=name>cls( )</span>
+                        <span class=desc>获取className</span> 
+                    </p>
+                </li>
+                
+                <li>
+                    <p class=syntax> 
+                        <span class=name>cls( <em>cls1</em> )</span>
+                        <span class=desc>判断是否包含className</span> 
+                    </p>
+                </li>
+                
+                <li>
+                    <p class=syntax> 
+                        <span class=name>cls( <em>cls1, cls2</em> )</span>
+                        <span class=desc>替换cls1为cls2</span> 
+                    </p>
+                </li>
+                
+                <li>
+                    <p class=syntax> 
+                        <span class=name>cls( <em>expression</em> )</span>
+                        <span class=desc>操作className</span> 
+                    </p>
+                </li>
+                
+            </ul>
+        </div>
+        
+            <div class=params-box>
+                <h4>参数</h3>
+                <ul>
+                
+                    <li>
+                        <p> 
+                            <span class=name>cls1</span>
+                            <span class=type>[String]</span> 
+                        </p>
+                        <p> 
+                            
+                            <span class=flag-need>必选</span>
+                            
+                            <span class=desc>判断节点中是否含有cls1</span>
+                        </p>
+                    </li>
+                
+                    <li>
+                        <p> 
+                            <span class=name>cls2</span>
+                            <span class=type>[String]</span> 
+                        </p>
+                        <p> 
+                            
+                            <span class=flag-need>必选</span>
+                            
+                            <span class=desc>用于替换的className</span>
+                        </p>
+                    </li>
+                
+                    <li>
+                        <p> 
+                            <span class=name>expression</span>
+                            <span class=type>[String]</span> 
+                        </p>
+                        <p> 
+                            
+                            <span class=flag-need>必选</span>
+                            
+                            <span class=desc>第一个字符是+，-，~，=时表示操作className；+代表添加，-代表移除，~代表切换，=代表覆盖，多个cls用逗号隔开</span>
+                        </p>
+                    </li>
+                    
+                </ul>
+            </div>
+        
+        
+        
+        
+        
+        <div class=return-box>
+            <h4>返回值</h3>
+            <p>
+                <span class=desc>样式名，判断结果，Z对象本身</span>
+                <span class=type>[String,Boolean,Z]</span>
+            </p>    
+        </div>
+        
+    
+		
+</div>
+</body>

@@ -1,0 +1,40 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>css实现图片垂直居中</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>css实现图片垂直居中</h1>
+    <div class=content><h2>代码实现</h2><textarea class="code-html">
+<!doctype html>
+<style>
+.wrap{list-style:none;}
+.wrap li{width:100px;height:100px;border:1px solid #333;margin:20px;}
+.center{
+    text-align:center; /*设置水平居中*/
+
+    /*标准垂直居中的方法*/
+    display:table-cell;
+    vertical-align:middle;
+
+    /* 针对IE的Hack */
+    *display:block;
+    *font-size:87px;/*约为高度的0.873，100*0.873 约为87*/
+    *font-family:Arial;/*防止非utf-8引起的hack失效问题，如gbk编码*/
+}
+.img1,.img2{
+    display:inline-block;
+    background:#FFCC66;
+    vertical-align:middle; /*这个别忘记加*/
+}
+.img1{width:80px;height:80px;}
+.img2{width:64px;height:48px;}
+</style>
+<ul class="wrap">
+    <li class="center"><img class="img1"/></li>
+    <li class="center"><img class="img2"/></li>
+</ul>
+</textarea></div>
+</div>

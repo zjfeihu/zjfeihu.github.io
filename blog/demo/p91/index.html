@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="gbk"/>
+<title>模块加载器测试</title>
+<script src="../../style/z.js"></script>
+<script src="../../style/zwhl.js"></script>
+<script src="js/zloader.js" main="main"></script>
+</head>
+<body>
+<div id="consolebox"></div>
+
+<p>zloader模块加载器支持无id，无deps模块的定义，强烈推荐勿人为添加id和deps，以免增加模块维护难度和出错概率</p>
+
+<h2>添加入口</h2>
+<textarea class="code-html" edit=off>
+<script src="js/zloader.js" main="main"></script>
+</textarea>
+
+<h2>main.js 入口模块</h2>
+<textarea class="code-js" edit=off>
+define(function(){
+    var tr = setInterval(function(){
+        if(document.body){
+            clearInterval(tr);
+            require('m1').sayHello() //调用m1模块
+        }
+    }, 16);
+});
+</textarea>
+<h2>m1.js 以return方式返回接口</h2>
+<textarea class="code-js" edit=off>
+define(function(){
+    return{
+        sayHello: function(){
+            require('log')('I`m m1');
+            require('m2').sayHello();
+            require('m3').sayHello();
+        }
+    };
+});
+</textarea>
+<h2>m2.js 以module.exports方式返回接口</h2>
+<textarea class="code-js" edit=off>
+define(function(module){
+    module.exports = {
+        sayHello: function(){
+            require('log')('I`m m2');
+        }
+    };
+});
+</textarea>
+<h2>m3.js 以exports方式返回接口</h2>
+<textarea class="code-js" edit=off>
+define(function(module, exports){
+    exports.sayHello =  function(){
+        require('log')('I`m m3');
+    };
+});
+</textarea>
+<h2>log.js</h2>
+<textarea class="code-js" edit=off>
+define(function(){
+    return function(msg){
+        document.getElementById('consolebox').innerHTML += msg+'<br>';
+    }
+})
+</textarea>
+
+</body>
+</html>

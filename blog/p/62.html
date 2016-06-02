@@ -1,0 +1,68 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>js阻塞线程的研究</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>js阻塞线程的研究</h1>
+    <div class=content><h2>前言</h2><p>js的执行会阻塞UI渲染，而UI渲染同样会阻塞js执行，这就是js单线程存在的问题。</p><p>长时间的阻塞会导致界面假死，用户体验会极其糟糕，了解js线程对避免阻塞会有很多帮助。</p><h2>演示</h2><div id=time></div><p><img src="../imgs/loading.gif"> <button onclick="sleep(1000)">点我阻塞</button></p><script>
+function sleep(interval){
+    var t = +new Date;
+    while(+new Date - t < interval){}
+}
+setInterval(function(){
+    Z('#time').html(+new Date);
+}, 16);
+</script><h2>解决方案</h2><ol><li>分解js运算 （html5中可以使用web Worker另起线程来处理运算）</li><li>分解ui渲染</li></ol><h3>非阻塞模式渲染UI</h3><textarea class="code-html">
+<!DOCTYPE html>
+<div id=time></div>
+<img src="../imgs/loading.gif">
+<button onclick="render1()">阻塞模式</button>
+<button onclick="render2()">非阻塞模式</button>
+<ol id="box"></ol>
+<script>
+
+setInterval(function(){
+    $id('time').innerHTML = +new Date
+}, 60)
+
+var count = 30;
+
+function render1(){
+    $id('box').innerHTML = '开始渲染...';
+    setTimeout(function(){
+        for(var i = 0; i < count; i++){
+            sethtml();
+        }
+    }, 100);
+}
+
+function render2(){
+    $id('box').innerHTML = '开始渲染...';
+    var i = 0;
+    setTimeout(dofor, 100);
+    function dofor(){
+        var t = +new Date;
+        while(i < count){
+            i++;
+            sethtml();
+            if(+new Date - t > 16){ //超过16ms则释放当前js线程
+                setTimeout(dofor, 0); //重新加入线程等待执行
+                break;
+            }
+        }
+    }
+}
+
+function sethtml(){
+    var li = document.createElement('li');
+    li.innerHTML = Array(1024*50).join('#');
+    $id('box').appendChild(li);
+}
+
+function $id(a){return document.getElementById(a)}
+</script>
+</textarea></div>
+</div>

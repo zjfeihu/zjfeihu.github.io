@@ -1,0 +1,343 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>如何写好css</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>如何写好css</h1>
+    <div class=content><h2>前言</h2><p>不得不承认以前css写的很糟糕，没有规划，没有风格，想到哪写到哪，虽然效率很高，但是写出来的代码没有清晰的结构，修改起来很麻烦。</p><h2>糟糕的实现</h2><ol><li>代码结构混乱</li><li>代码风格多样</li><li>选择器冗余</li><li>多余的样式字段</li></ol><textarea class="code-css">
+html{overflow-y:scroll;}
+ul{padding:0;margin:0;}
+ul li{list-style:none;}
+a{text-decoration:none;}
+h3{margin:0;padding:0;}
+p{padding:0;margin:0;}
+body{font:12px/1.5 "Microsoft Yahei","微软雅黑",Helvetica,Tahoma,Arial,宋体,sans-serif;_background-attachment:fixed;}
+ol{padding-left:2em;}
+a:focus{outline:none;}
+a{*zoom:expression(this.style.zoom=1,this.hideFocus=true);}
+#wrapper{
+    margin:0 auto;
+    width:800px;
+}
+#index,
+#post{
+    margin:0 auto;
+    max-width:800px;
+    min-width:480px;
+    _width:800px;
+    text-shadow: 0 0 1px #ccc;
+}
+@media screen and (min-width: 1px) and (max-width: 1024px) {
+    #post{
+        margin-left:20px;
+    }
+}
+
+#index #main{border-radius:0 0 8px 8px;}
+#header{padding:8px 16px;border-bottom:6px solid #444;border-radius:8px 8px 0 0;background:#e8e8e8;}
+#header h1{margin-bottom:0;margin:0;font-size:36px;}
+#header h1 a{color:#333;}
+#header h3{color:#666;text-indent:6px;font-size:12px;}
+#main{font-size:16px;border-radius:8px;margin-bottom:16px;}
+#main.f1{font-size:12px;}
+#main.f2{font-size:14px;}
+#main.f3{font-size:16px;}
+#main.f4{font-size:18px;}
+#main.f5{font-size:20px;}
+#main{*zoom:1;margin:8px;}
+.clearfix:after,
+#main:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+
+body.dark{background:#3f3f3f;color:#ccc;}
+body.light{background:#fff;color:#333;}
+body.sepia{background:#f4ecd8 ;color:#333;}
+
+
+#nav{width:20%;float:left;text-align:right;margin-left:-40px;margin-top:46px;line-height:2;font-weight:bold;}
+
+#nav a{color:#333;font-size:18px;}
+#nav li li a{color:#333;padding:3px;font-weight:normal;}
+#nav li li a:hover{border-bottom:1px dotted red;}
+#list{width:80%;float:right;font-size:18px;line-height:3;}
+#list h3{text-align:center;font-size:18px;line-height:2;}
+#list li{position:relative;border-bottom:1px solid #ccc}
+#list a{color:#0063dc;padding:5px;transition:color 0.2s linear 0s, background-color 0.2s linear 0s, border-color 0.2s linear 0s;}
+#list a:visited{color:#666;}
+#list a:hover{font-weight:normal;border-bottom:1px dotted red;_border:0;}
+
+#list span{font-size:12px;margin-left:1em;}
+#list .none{text-align:center;color:red;}
+
+#main .post{line-height:1.8;}
+#main .title{margin:8px 0 12px;padding:0 20px;font-size:24px;text-align:center;}
+#main .post p{margin:0 0 1.6em;}
+#main .post h3{margin:8px 0px 8px 0px;}
+#main .post h4{margin:16px 0;padding:0;line-height:1;text-indent:0px;}
+#main .post h4:before{content:'※';padding-right: 2px;font-family:宋体;}
+#main .post h5{margin:16px 0;padding:0;line-height:1;font-weight:normal}
+#main .post pre{margin-bottom:1.6em}
+
+
+#main .post dl{margin:8px 0;padding:0;}
+#main .post dl dt{margin-left:2em;background:#ddd;padding:3px 8px;}
+#main .post dl dd{margin-left:3em;}
+#main .post ul{padding-left:1em;margin-bottom:1em;}
+#main .post ol{margin:0 0 8px;}
+#main .post ul li{list-style:square}
+
+#main .post .picbox{text-align:center;}
+#main .post .picbox img{display:block;margin:8px auto;}
+#main .post .picbox span{display:block;}
+
+#main .post .picbox2{text-align:center;}
+#main .post .picbox2 img{display:block;margin:8px auto;width:100%;}
+#main .post .picbox2 span{display:block;}
+
+#main .post .rimg{text-align:center;}
+#main .post .rimg img{display:block;margin:8px auto;max-width:100%;}
+#main .post .rimg em{display:block;font-style:normal;}
+#main .post .zimg{text-align:center;}
+#main .post .zimg img{display:block;margin:8px auto;}
+#main .post .zimg em{display:block;font-style:normal;}
+
+
+#main .post .xcode,
+#main .post .info,
+#main .post .xinfo{
+    background:#f8f8f8 ;
+    border-left:2px solid #4183c4;
+    padding:3px 8px;
+}
+#main .post .xcode{font:12px/2 monaco,Helvetica,Tahoma,Arial,宋体,sans-serif;}
+
+#main .post a{color:#3C78B5;text-decoration:none;}
+#main .post a:hover{color:#D30703;text-decoration:underline;}
+#main .post .coderes{font:12px/1.5 monaco,Helvetica,Tahoma,Arial,宋体,sans-serif;border:1px solid #3C78B5;padding:3px 8px;margin:8px 0;width:98%;background:#eee;resize:none;outline:none;}
+
+
+.hlcode ol li{font-size:12px;}
+
+
+#sidebar{
+    display:block;
+    overflow:hidden;
+    position:fixed;right:10px;top:100px;width:160px;border:1px solid #fff;border-radius:6px;background:#F4F4F4;color:#eee;
+    *top:100px;
+    _position:absolute;
+    _top:expression(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-32);
+
+
+}
+#sidebar ul{}
+#sidebar li,
+#sidebar a.back{
+    background:#333;
+    border-bottom: 1px solid #222222;
+    border-top: 1px solid #444444;
+    line-height: 1;
+    padding: 6px 3px;
+    text-indent: 4px;
+    cursor:pointer;
+}
+#sidebar li:hover{background:#222;color:#ffb500;}
+#sidebar li.focus{background:#ffb500;color:#fff;border-top:0;transition: all 1s ease;}
+#sidebar a.back{display:block;color:#fff;position:relative;text-indent:24px;font-weight:bold;font-size:14px;*zoom:expression(function(t){t.style.zoom=1;t.appendChild(document.createElement('i'));}(this));}
+#sidebar a.back:hover{background:#000;}
+#sidebar a.back i,
+#sidebar a.back:before{
+    background: url(img/square-icons.png) no-repeat scroll -60px 0;
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: 20px;
+    left:6px;
+    top: 3px;
+    display:block;
+    _background:none;
+    _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/css/img/back.png");
+
+}
+#main .post .mlink,
+#main .post .rlink,
+#main .post .xlink,
+#main .post .glink{/*google搜索链接*/
+    border-bottom:1px dashed;
+
+}
+#main .post .mlink:hover,
+#main .post .rlink:hover,
+#main .post .xlink:hover,
+#main .post .olink:hover,
+#main .post .glink:hover{
+    text-decoration: none;
+    border-color: #D30703;
+    cursor: alias;
+}
+.mlink em,
+.rlink em,
+.xlink em,
+.glink em{
+    font-style:normal;
+    _padding:0 4px;
+}
+.mlink:before,
+.rlink:before,
+.glink:before{
+    content:"『";
+}
+.mlink:after,
+.rlink:after,
+.glink:after{
+    content:"』";
+}
+
+.hl-view .view-default ol{
+    background:#eee url(../style/img/hl_default_bg.png)!important;
+}
+
+.hl-view ol{
+    font-size:14px!important;
+}
+
+@media screen and (max-width: 640px) {
+    #nav{
+        margin-left:-20px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    #post{
+        min-width:360px;
+        margin:0;
+        font-size: 
+    }
+    body{margin:0;padding:0;}
+    #index{
+        margin:0 auto;
+    }
+    #sidebar{display:none;}
+    #main .post{font-size:14px;line-height:1.5;}
+    .Zwhl-skin-default ol{
+      font-size:10px!important;
+    }
+    #main .title{
+      font-size:18px;
+    }
+    .Zwhl-skin-default ol{
+      padding-left:3em;
+    }
+    #list,
+    #nav a{font-size:14px;}
+
+
+}
+
+#toobar{position:fixed;left:0;top:0;border:1px solid #b5b5b5;border-width:0 1px 1px 0;background:#fbfbfb}
+#toobar li{border-bottom:1px solid #b5b5b5;}
+.read-toggle{font-size:20px;padding:8px;cursor:pointer;}
+.read-toggle:hover{color:#000;background:#ebebeb;}
+#toobar-cc{display:none;width:100px;position:fixed;top:0px;left:0px;border:1px solid #b5b5b5;}
+#toobar-cc button{padding:0;border:none;border-left:1px solid #b5b5b5;none;background:#fff;color:#333;height:48px;text-align:center;}
+
+#toobar-cc .font-size button{width:50%;border-bottom:1px solid #b5b5b5;font-size:18px;}
+#toobar-cc .style button{width:33%;}
+#toobar-cc .style .dark{background:#000;color:#fff;width:34%;}
+#toobar-cc .sepia{background:#f4ecd8;}
+</textarea><h2>重构优化</h2><ol><li>将代码按功能等特性分块</li><li>统一代码风格，选择器统一多行，属性单行，设定空格分隔符</li><li>去除多余的选择器</li><li>分离布局与样式</li><li>抽取一些独立的功能样式</li></ol><textarea class="code-css">
+/*reset*/
+html{overflow-y:scroll}
+body, ul, ol, h2, h3, h4, p{padding:0; margin:0}
+ul li{list-style:none}
+ol{padding-left:2em}
+a{text-decoration:none}
+a:focus{outline:none}
+
+/*layout*/
+#list, #page, #post{margin:0 auto; max-width:800px; min-width:480px}
+.nav{width:20%; float:left; margin:46px 0 0 -40px;}
+.list{width:80%; float:right;}
+.list li{position:relative}
+.list span{margin-left:1em}
+
+.title{margin:8px 0 12px;}
+.post h2,
+.post h3,
+.post h4{margin:16px 0}
+.post h3:before{padding-right:2px}
+.post p,
+.post pre{margin-bottom:20px}
+.info,
+.xcode{padding:3px 8px}
+.post ol{margin:0 0 16px}
+.post ul{padding-left:1em; margin-bottom:16px}
+
+
+
+/*style*/
+body{font:14px/1.5 "Microsoft Yahei", sans-serif; color:#333; text-shadow:0 0 1px #ccc;}
+
+.nav{text-align:right; line-height:2; font-weight:bold;}
+.nav a{color:#333; font-size:18px}
+.nav a:hover{border-bottom:1px dotted red}
+.list{font-size:18px; line-height:3}
+.list h3{text-align:center; font-size:18px; line-height:2}
+.list a{color:#0063dc; padding:5px}
+.list a:hover{border-bottom:1px dotted red;}
+.list li{border-bottom:1px solid #ccc}
+.list span{font-size:12px}
+
+.post{line-height:1.8}
+.title{font-size:24px; text-align:center}
+.post h3:before{content:'※'; font-family:宋体}
+.post h4{font-weight:normal}
+.post h2{font-size:1.2em}
+.post h3{font-size:1.1em}
+.post h4{font-size:1em}
+.info,
+.xcode{border-left:2px solid #4183c4; background:#f8f8f8; font-size:1em;}
+.xcode{font-family:monaco}
+.post a{color:#3C78B5; text-decoration:none}
+.post a:hover{color:#D30703; text-decoration:underline}
+.post ul li{list-style:square}
+
+/*link*/
+.mlink,
+.rlink,
+.xlink,
+.glink{border-bottom:1px dashed;}
+.mlink:hover,
+.rlink:hover,
+.xlink:hover,
+.olink:hover,
+.glink:hover{text-decoration:none!important; border-color:#D30703; cursor:alias}
+.mlink em,
+.rlink em,
+.xlink em,
+.glink em{font-style:normal; _padding:0 4px}
+.mlink:before,
+.rlink:before,
+.glink:before{content:"『"}
+.mlink:after,
+.rlink:after,
+.glink:after{content:"』"}
+
+/*img*/
+.img{text-align:center}
+.img img{display:block; margin:8px auto; max-width:100%}
+.img em{display:block; font-style:normal}
+
+/*fixed*/
+.view-default ol{padding-left:0!important; background:#eee url(../style/img/hl_default_bg.png)!important}
+.view-default li{list-style:none; border:none!important}
+
+
+/*hack*/
+body{_background-attachment:fixed}
+a{*zoom:expression(this.style.zoom=1,this.hideFocus=true)}
+.index, .post{_width:800px}
+</textarea><h2>想法</h2><p>写一行可以让选择器更有层次，而且一般情况下css属性不会太多，单行也可以很清楚</p><p>不提倡严格的书写顺序，css属性已经足够简单，不应该分分钟在大脑里检索书写顺序</p><p>关于布局和样式分离带来的问题，同一选择器对应的布局与样式是分布在不同区块的，同时修改会有不便，是否分离视具体情况设定</p><p>id或者class的选择很纠结，id够简洁，class更语义，目前优先选择使用class</p></div>
+</div>

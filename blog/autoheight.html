@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<link href="" rel="stylesheet"/>
+<script></script>
+</head>
+<body style=background:red>
+<button onclick="post()">changeheight</button>
+
+<div id=outlog></div>
+<div id=brs style="border:1px solid #000"></div>
+<script>
+var height = getHeight();
+var proxy = document.createElement('iframe');
+proxy.style.display = 'none';
+proxy.src = 'http://z.js/proxy.html#' + height;
+document.body.appendChild(proxy);
+
+
+function post(){
+    brs.innerHTML = Array((Math.random() * 50)|0 + 2).join('<br>')
+ 
+    if(height != getHeight()){
+        proxy.src = 'http://z.js/proxy.html#' + (height = getHeight());
+    }
+}
+
+
+function getHeight(){
+    return /MSIE\s*[\d.]+/i.test(navigator.appVersion)
+        ? document.documentElement.scrollHeight + 4
+        : document.documentElement.offsetHeight;
+}
+
+</script>
+</body>
+</html>

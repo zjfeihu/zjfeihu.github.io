@@ -1,0 +1,43 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>天坑arguments之变量引用？</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>天坑arguments之变量引用？</h1>
+    <div class=content><h2>前言</h2><p>js中不存在指针的概念，也很少会出现类似的特征，可万事无绝对，函数参数引用arguments就恶心的秀了一把。</p><h2>代码</h2><textarea class="code-js">
+fn(0); //输出[0]
+fn(0, 1); //输出[0, {info: 'the_data'}]
+fn2(); //arguments[0] 被覆盖
+
+function fn(input, data){
+    data = { info: 'the_data'}; //当data位置处有实参传入时，data就成了指向arguments[1]的指针？
+    console.info( arguments);
+}
+
+function fn2(data){
+    data = 1;
+    console.info(arguments);
+}
+</textarea><p class="info">变量的使用出现了指针的特征，真是“逆天”般的存在，貌似各大浏览器都这样。</p><h3>一个循环引用的例子</h3><textarea class="code-js">
+fn(0);
+function fn(data){
+    data = {};
+    data[0] = arguments[0];
+    data[1] = 1;
+    data[2] = 2;
+    console.info(data);
+}
+</textarea><h3>解决方案</h3><textarea class="code-js">
+fn(0);
+function fn(data2){
+    var data = {}; //不使用形参作为引用型变量容器
+    data[0] = arguments[0];
+    data[1] = 1;
+    data[2] = 2;
+    console.info(data);
+}
+</textarea></div>
+</div>

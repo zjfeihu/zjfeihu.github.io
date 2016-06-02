@@ -1,0 +1,87 @@
+<!doctype html>
+<meta charset=gbk>
+<link href=../doc.css rel=stylesheet>
+<script src=../../dist/z.js></script>
+<body>
+<div class=doc>
+	
+        <div class=caption>
+            <h2>rstr( )</h2>
+            
+            <span class=file>define in : string</span>
+        </div>
+        <div class=syntaxs-box>
+            <h4>语法</h3>
+            <ul>
+                
+                <li>
+                    <p class=syntax> 
+                        <span class=name>rstr( <em>input, data</em> )</span>
+                        <span class=desc>解析字符串，用data数据代替</span> 
+                    </p>
+                </li>
+                
+            </ul>
+        </div>
+        
+            <div class=params-box>
+                <h4>参数</h3>
+                <ul>
+                
+                    <li>
+                        <p> 
+                            <span class=name>input</span>
+                            <span class=type>[String|Function]</span> 
+                        </p>
+                        <p> 
+                            
+                            <span class=flag-need>必选</span>
+                            
+                            <span class=desc>输入字符串</span>
+                        </p>
+                    </li>
+                
+                    <li>
+                        <p> 
+                            <span class=name>data</span>
+                            <span class=type>[Hash]</span> 
+                        </p>
+                        <p> 
+                            
+                            <span class=flag-need>必选</span>
+                            
+                            <span class=desc>输入数据</span>
+                        </p>
+                    </li>
+                    
+                </ul>
+            </div>
+        
+        
+        
+            <ul class=more-box>
+            
+                <li>
+                    <h4>示例</h4>
+                    
+                    <p>Z.rstr('&lt;a href="{href}"&gt;{text}&lt;/a&gt;', {href:"#", text:"链接"}) =&gt; &lt;a href="#"&gt;链接&lt;/a&gt;Z.rstr(function(){/*&lt;a href="{%0}"&gt;{%1}&lt;/a&gt;* /}, "#", "链接") =&gt; &lt;a href="#"&gt;链接&lt;/a&gt;</p>
+                    
+                    
+                </li>
+            
+            </ul>
+        
+        
+        
+        <div class=return-box>
+            <h4>返回值</h3>
+            <p>
+                <span class=desc>结果</span>
+                <span class=type>[String]</span>
+            </p>    
+        </div>
+        
+    
+		
+</div>
+</body>

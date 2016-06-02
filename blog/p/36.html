@@ -1,0 +1,17 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>escape，encodeURI，encodeURIComponent的区别</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>escape，encodeURI，encodeURIComponent的区别</h1>
+    <div class=content><h2>区别</h2><ul><li>escape ES3中反对使用，固不做解释</li><li>encodeURI 不会编码 ~!*()'@#$&amp;=:/,;?+</li><li>encodeURIComponent 不会编码 ~!*()'</li></ul><h2>示例</h2><textarea class="code-js">
+url = 'http://www.test.cc/?id=123&amp;form=http://www.test.cc/#name=李四'
+alert([
+    encodeURI(url), 
+    encodeURIComponent(url)
+].join('\n'))
+</textarea><h2>相关说明</h2><p>encodeURI 和 encodeURIComponent都是ECMA-262标准中定义的函数,所有兼容这个标准的语言（如JavaScript, ActionScript）都会实现这两个函数。它们都是用来对URI （RFC-2396）字符串进行编码的全局函数，但是它们的处理方式和使用场景有所不同。为了解释它们的不同，我们首先需要理解RFC-2396中对于URI中的字符分类 </p><ul><li>保留字符（reserved characters）：这类字符是URI中的保留关键字符，它们用于分割URI中的各个部分。这些字符是：";" | "/" | "?" | ":" | "@" | "&amp;" | "=" | "+" | "$" | ","</li><li>Mark字符（mark characters）：这类字符在RFC-2396中特别定义，但是没有特别说明用途，可能是和别的RFC标准相关。 这些字符是："-" | "_" | "." | "!" | "~" | "*" | "'" | "(" | ")"</li><li>基本字符（alphanum characters）：这类字符是URI中的主体部分，它包括所有的大写字母、小写字母和数字 </li></ul><p>在介绍完上面三类字符串后，我们就非常容易来解释encodeURI和encodeURIComponent函数的不同之处了：</p><p>encodeURI: 该函数对传入字符串中的所有非（基本字符、Mark字符和保留字符）进行转义编码（escaping）。所有的需要转义的字符都按照UTF-8编码转化成为一个、两个或者三个字节的十六进制转义字符（％xx）。例如，字符空格" "转换成为"%20"。在这种编码模式下面，需要编码的ASCII字符用一个字节转义字符代替，在\u0080和\u007ff之间的字符用两个字节转义字符代替，其他16为Unicode字符用三个字节转义字符代替</p><p>encodeURIComponent: 该函数处理方式和encodeURI只有一个不同点，那就是对于保留字符同样做转义编码。例如，字符":"被转义字符"%3A"代替 </p></div>
+</div>

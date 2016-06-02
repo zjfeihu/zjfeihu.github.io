@@ -1,0 +1,7 @@
+<?
+//修正数据
+fs.foreach($mappath('user/md/'), function(fi){
+    $output(fi.path, $input(fi.path).replace(/^201\d{5}.$/m, '')); //清除时间
+});
+
+?>

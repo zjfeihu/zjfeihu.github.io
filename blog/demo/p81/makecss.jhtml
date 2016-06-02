@@ -1,0 +1,18 @@
+<?
+var data = [];
+var i = 5000;
+var i = 1000;
+while(--i){
+    data.push(Math.random());
+}
+
+var str = data.join('')
+
+//$output('t200.php', ['/*', str, str, '*/'].join('\n'))
+//$output('t300.php', ['/*', str, str, str, '*/'].join('\n'))
+$output('t400.js', ['/*', str, str, str, str, '*/'].join('\n'))
+$output('t600.php', ['/*', str, str, str, str, str, str, '*/'].join('\n'))
+
+
+
+?>

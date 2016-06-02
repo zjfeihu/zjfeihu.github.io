@@ -1,0 +1,28 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>脚本工具之遍历文件夹</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>脚本工具之遍历文件夹</h1>
+    <div class=content><h2>前言</h2><p>有时候我们需要对文件夹下的文件进行批量操作，比如重命名，替换指定内容，查找指定内容等，手动一个个改固然很麻烦，那么我们通过一些小脚本来简化工作。</p><h2>脚本</h2><textarea class="code-js" edit=off >
+function eachFiles(callback, path){
+    var fso = new ActiveXObject('Scripting.FileSystemObject');
+    var fi = fso.GetFolder(path || '.'); //当前目录
+    var fenum = new Enumerator(fi.files);
+    while(!fenum.atEnd()){
+        callback(fenum.item());
+        fenum.moveNext()
+    }
+}
+
+eachFiles(function(file){
+    WScript.echo(file.name);  
+    WScript.sleep(100);
+});
+WScript.stdout.writeline('press c to close!');
+while(WScript.stdin.readline() != 'c');
+</textarea><h2>API</h2><p>详见<a href="http://pan.baidu.com/s/1qWKamFq" target="_blank">Script56.chm</a></p></div>
+</div>

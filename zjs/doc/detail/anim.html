@@ -1,0 +1,423 @@
+<!doctype html>
+<meta charset=gbk>
+<link href=../doc.css rel=stylesheet>
+<script src=../../dist/z.js></script>
+<body>
+<div class=doc>
+	
+        <div class=caption>
+            <h2>anim( )</h2>
+            <span class=isprototype>原型方法</span>
+            <span class=file>define in : widget</span>
+        </div>
+        <div class=syntaxs-box>
+            <h4>语法</h3>
+            <ul>
+                
+                <li>
+                    <p class=syntax> 
+                        <span class=name>anim( <em>attrs, option</em> )</span>
+                        <span class=desc>创建动画对象</span> 
+                    </p>
+                </li>
+                
+            </ul>
+        </div>
+        
+            <div class=params-box>
+                <h4>参数</h3>
+                <ul>
+                
+                    <li>
+                        <p> 
+                            <span class=name>attrs</span>
+                            <span class=type>[Object]</span> 
+                        </p>
+                        <p> 
+                            
+                            <span class=flag-need>必选</span>
+                            
+                            <span class=desc>css属性和值</span>
+                        </p>
+                    </li>
+                
+                    <li>
+                        <p> 
+                            <span class=name>option</span>
+                            <span class=type>[Object]</span> 
+                        </p>
+                        <p> 
+                            
+                            <span class=flag>可选</span>
+                            
+                            <span class=desc>动画配置对象</span>
+                        </p>
+                    </li>
+                    
+                </ul>
+            </div>
+        
+        
+        
+            <ul class=more-box>
+            
+                <li>
+                    <h4>attrs配置参数</h4>
+                    
+                    <p>取值left,top,right,bottom,margin,padding,opacity等，不支持color，当属性前面带x,则表示相对运动，比如xleft:-10,表示left左移10px</p>
+                    
+                    
+                </li>
+            
+                <li>
+                    <h4>option配置参数</h4>
+                    
+                    
+                    <table class=mytable>
+                        
+                        <tr class=bg>
+                            
+                                
+                                    <th>key</th>
+                                
+                            
+                                
+                                    <th>类型</th>
+                                
+                            
+                                
+                                    <th>说明</th>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>dur</td>
+                                
+                            
+                                
+                                    <td>Integer</td>
+                                
+                            
+                                
+                                    <td>动画执行的时间，单位ms，默认800ms</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>easing</td>
+                                
+                            
+                                
+                                    <td>string</td>
+                                
+                            
+                                
+                                    <td>动画公式，默认Both</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>onbefore</td>
+                                
+                            
+                                
+                                    <td>function</td>
+                                
+                            
+                                
+                                    <td>动画开始时执行的回调函数</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>onplay</td>
+                                
+                            
+                                
+                                    <td>function</td>
+                                
+                            
+                                
+                                    <td>动画执行中的回调函数</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>ondone</td>
+                                
+                            
+                                
+                                    <td>function</td>
+                                
+                            
+                                
+                                    <td>动画执行完的回调函数</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>onstop</td>
+                                
+                            
+                                
+                                    <td>function</td>
+                                
+                            
+                                
+                                    <td>动画被手动终止的回调函数</td>
+                                
+                            
+                        </tr>
+                        
+                    </table>
+                    
+                </li>
+            
+                <li>
+                    <h4>easing公式</h4>
+                    
+                    
+                    <table class=mytable>
+                        
+                        <tr class=bg>
+                            
+                                
+                                    <th>值</th>
+                                
+                            
+                                
+                                    <th>描述</th>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>Linear</td>
+                                
+                            
+                                
+                                    <td>匀速</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>slowIn</td>
+                                
+                            
+                                
+                                    <td>缓慢渐入</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>slowOut</td>
+                                
+                            
+                                
+                                    <td>缓慢渐出</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>slowBoth</td>
+                                
+                            
+                                
+                                    <td>--</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>In</td>
+                                
+                            
+                                
+                                    <td>--</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>Out</td>
+                                
+                            
+                                
+                                    <td>--</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>Both</td>
+                                
+                            
+                                
+                                    <td>--</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>elasticIn</td>
+                                
+                            
+                                
+                                    <td>弹簧效果</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>elasticOut</td>
+                                
+                            
+                                
+                                    <td>--</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>elasticBoth</td>
+                                
+                            
+                                
+                                    <td>--</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>backIn</td>
+                                
+                            
+                                
+                                    <td>返回效果</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>backOut</td>
+                                
+                            
+                                
+                                    <td>--</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>backBoth</td>
+                                
+                            
+                                
+                                    <td>--</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>bounceIn</td>
+                                
+                            
+                                
+                                    <td>撞击效果</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>bounceOut</td>
+                                
+                            
+                                
+                                    <td>--</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>bounceBoth</td>
+                                
+                            
+                                
+                                    <td>--</td>
+                                
+                            
+                        </tr>
+                        
+                    </table>
+                    
+                </li>
+            
+            </ul>
+        
+        
+        
+        <div class=return-box>
+            <h4>返回值</h3>
+            <p>
+                <span class=desc>动画对象</span>
+                <span class=type>[Anim]</span>
+            </p>    
+        </div>
+        
+    
+		
+</div>
+</body>

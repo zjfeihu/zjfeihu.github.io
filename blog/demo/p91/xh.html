@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="gbk"/>
+<title>循环依赖</title>
+<script src="../../style/z.js"></script>
+<script src="../../style/zwhl.js"></script>
+<script src="js/zloader.js" main="xh"></script>
+</head>
+<body>
+<h2>consolebox</h2>
+<div id="consolebox" style="border: 1px solid #666; padding: 8px; background: #eee"></div>
+<p>Str 和 Res 模块存在循环依赖，Str初始化依赖Res模块，而Res模块的theSharp接口依赖Str的接口，但是这没关系，只要不是双双初始化依赖就不会陷入死循环</p>
+
+<h2>入口模块 xh.js</h2>
+<textarea class="code-js" edit=off>
+define(['Str', 'DOMReady'], function(){
+    require('DOMReady')(function(){
+        document.getElementById('consolebox').innerHTML = require('Str').trim(' aaa ');
+    });
+})
+</textarea>
+<h2>DOMReady.js</h2>
+<textarea class="code-js" edit=off>
+define(function(){
+    return function(fn){
+        var
+        tr = setInterval(function(){
+            if(document.body){
+                fn();
+                clearInterval(tr);
+            }
+        }, 15);
+    };
+})
+</textarea>
+<h2>Str.js</h2>
+<textarea class="code-js" edit=off>
+define(['Res'], function(){
+    var reg = require('Res').theRegExp();
+    return{
+        sharp: function(){
+            return '#';
+        },
+        trim: function(str){
+            var sharp = require('Res').theSharp();
+            return  sharp + str.replace(reg, '') + sharp;
+        }
+    }
+});
+</textarea>
+<h2>Res.js</h2>
+<textarea class="code-js" edit=off>
+define(['Str'], function(){
+    return{
+        theRegExp: function(){
+            return /^\s+|\s+$/g;
+        },
+        theSharp: function(){
+            return require('Str').sharp()
+        }
+    }
+});
+</textarea>
+</body>
+</html>

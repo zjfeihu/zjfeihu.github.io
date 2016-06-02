@@ -1,0 +1,57 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>了解脚本加载</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>了解脚本加载</h1>
+    <div class=content><h2>前言</h2><p>出于实用性和简单为上的目的，此次只讨论传统script标签引入和appendChild插入节点两种方式。</p><h2>script标签引入方式</h2><h3>特点</h3><ol><li>简单</li><li>顺序执行</li><li>阻塞DOM解析</li><li>IE6，IE7阻塞资源加载，firefox，IE8不阻塞css加载，chrome同时不阻塞img加载</li></ol><h2>appendChild插入节点方式</h2><h3>特点</h3><ol><li>加载完成则执行，不按顺序执行</li><li>不阻塞DOM解析</li><li>所有浏览器并发加载，不阻塞任何资源加载</li><li>可以通过JS代码自由控制何时加载何文件</li></ol><h2>对比</h2><p>从特点可知，标签方式优点在于使用简单，运行稳定性好，插入节点方式优点在于使用灵活，性能高效，控制性强，可缺点也很明显，就是不能按插入顺序执行，需要人为管理。</p><p class="info">在运行示例的时候发现HTTP请求，IE8下是10个并发，chrome下6个，firefox > 10个</p><h2>示例展示</h2><h3>html代码</h3><textarea class="code-html" edit=off >
+<script>
+body = document.createElement('body')
+document.documentElement.appendChild(body)
+function log(text){
+     body.innerHTML += text
+}
+function loadJs(src){
+    var s = document.createElement('script')
+    s.type = 'text/javascript'
+    s.src = src
+    document.documentElement.appendChild(s)
+}
+</script>
+
+<script src="s.js?id=01"></script>
+<div>DOM解析</div>
+<script src="s.js?id=02"></script>
+<script src="s.js?id=03&amp;t=3000"></script>
+<script src="s.js?id=04"></script>
+<link href="s.js?id=css" rel="stylesheet"/>
+<img src="s.js?id=img"/>
+<script src="s.js?id=js"></script>
+<script>
+log('</br>')
+loadJs('s.js?id=05')
+loadJs('s.js?id=06&amp;t=3000')
+loadJs('s.js?id=07')
+loadJs('s.js?id=08')
+loadJs('s.js?id=09')
+loadJs('s.js?id=10')
+loadJs('s.js?id=11')
+loadJs('s.js?id=12')
+loadJs('s.js?id=13')
+loadJs('s.js?id=14')
+loadJs('s.js?id=15')
+</script>
+<div>DOM解析</div>
+<script>alert('我是阻塞线程的')</script>
+</textarea><h3>s.js代码</h3><textarea class="code-js" edit=off >
+<?
+    $id = $GET['id']
+    $time = +new Date / 1000
+    Sys.wait($GET['t'] || 1000)
+?>
+log("id={$id}; Request= {$time}; Response="+(+new Date)/1000+"<br>")
+</textarea><h3>Firefox神奇的阻塞</h3><p class="img"><img src="../imgs/80-1.png"/><em>红色下划线标记的请求？</em></p><p class="info">这条请求真奇怪，Firefox的bug？请求已结在绿色下划线标记处发起，而这红色标记的请求是怎么来的？</p><p>具体测试请看 <a class="xlink" href="p/81.html">Firefox多出来的请求？</a><br/></p></div>
+</div>

@@ -1,0 +1,149 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>js惰性载入方式创建类</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>js惰性载入方式创建类</h1>
+    <div class=content><p>惰性加载方式和动态原型方式的类，API都是在实例化的时候绑定的，不过他们在实现上却不一样，惰性加载的方式相对更加干净，无需添加额外属性。</p><h2>最简单的惰性加载类</h2><textarea class="code-js" edit=off >
+function A(){
+    A = function(){};
+    //...各种类的初始化和API绑定
+    return new A;
+}
+new A; //加载类A，并且实现实例化
+new A; //实例化
+//当第一次执行new A的时候，类A将实现真正的加载，实现初始化和API绑定
+</textarea><h2>惰性加载类的实现</h2><ol><li>惰性加载</li><li>解决可变参数的传递问题</li></ol><p>所谓惰性加载类无非就是让类在被用到的时候才执行初始化和绑定相关API（不使用的情况下不会执行对应的代码），这样做能提高脚本的初始化速度和页面的加载速度，同时节约更多的CPU和内存来处理必要的操作。</p><p>在惰性加载的过程中，会出现参数传递的问题，见以下代码</p><h2>实例1的参数无法被传递</h2><textarea class="code-js">
+function A(){
+    A = function(){
+        this.data = [].slice.call(arguments, 0);
+    };
+    A.prototype = {
+        getdata: function(){
+            return this.data;
+        }
+    };
+    return new A();
+}
+var c1 = new A(1, 2);
+var c2 = new A(1, 2, 3);
+alert(c1.getdata()); //c1参数无法传递
+alert(c2.getdata());
+</textarea><h2>实例2的参数无法被传递</h2><textarea class="code-js">
+function A(){
+    A = function(args){
+        this.data = [].slice.call(args);
+    };
+    A.prototype = {
+        getdata: function(){
+            return this.data;
+        }
+    };
+    return new A(arguments);
+}
+var c1 = new A(1, 2);
+var c2 = new A(1, 2, 3);
+alert(c1.getdata());
+alert(c2.getdata()); //c2参数无法传递
+</textarea><h2>解决参数传递详解</h2><p class="info">因为参数的个数是可变的，所以不能具名形参，在上面2种方式中，都存在参数传递问题，为了解决这个问题，必须对他们进行适当的改造。</p><textarea class="code-js">
+function A(){
+    A = function(args){
+        B.apply(this, args); //通过调用apply的方式实现类的初始化，继承B类
+        A = B; //重写为B
+    };
+    function B(){ //构造函数
+        this.data = [].slice.call(arguments, 0);
+    }
+
+    A.prototype = B.prototype = {
+        constructor: B,
+        getdata: function(){
+            return this.data;
+        }
+    };
+
+    return new A(arguments);
+}
+var c1 = new A(1, 2);
+var c2 = new A(1, 2, 3);
+alert(c1.getdata());
+alert(c2.getdata());
+</textarea><p>至此，惰性加载的类已经完成了参数传递的任务，当然，我们可以对他进行一些修改，让他看的更加一元化一些。</p><textarea class="code-js">
+
+//取消内部类B，直接用constructor替代
+function A(){
+
+    A = function(args){
+        var constructor = this.constructor;
+        constructor.prototype = A.prototype;
+        constructor.apply(this, args);
+        A = constructor; //重写类的指向
+    };
+
+    A.prototype = {
+        constructor: function(){
+            this.data = [].slice.call(arguments, 0);
+        },
+        getdata: function(){
+            return this.data;
+        }
+    };
+
+    return new A(arguments);
+}
+var c1 = new A(1, 2);
+var c2 = new A(1, 2, 3);
+alert(c1.getdata());
+alert(c2.getdata());
+</textarea><h2>更多的扩展</h2><ol><li>省略关键字new</li><li>晚期绑定API</li><li>支持静态方法</li></ol><p class="info">因为惰性载入创建的类不管在使用上还是原理结构上都没什么差别，所以以上的一些特征跟常规创建类的方式基本一致。</p><textarea class="code-js">
+function A(){
+    A = function(args){
+        var constructor = this.constructor;
+        constructor.prototype = A.prototype;
+        constructor.apply(this, args);
+        //在重写A指针前面拷贝静态方法
+        for(args in A){
+            constructor[args] = A[args];
+        }
+
+        A = constructor; //重写类的指向
+    };
+
+    A.prototype = {
+        constructor: function(){
+            //判断当前对象是不是A的实例，略写new创建类的小技巧
+            if(!(this instanceof A)){
+                var a = new A;
+                A.apply(a, arguments);
+                return a;
+            }
+            this.data = [].slice.call(arguments, 0);
+        },
+        getdata: function(){
+            return this.data;
+        }
+    };
+
+    A.getName = function(){
+        return 'A';
+    };
+
+    return new A(arguments);
+}
+var c1 = new A(1, 2);
+var c2 = A(1, 2, 3);
+alert(c1.getdata());
+alert(c2.getdata());
+alert(c1 instanceof A);
+alert(c2 instanceof A);
+//晚期绑定API
+A.prototype.getdata2 = function(){
+    return this.getdata();
+};
+alert(c1.getdata2());
+alert(c2.getdata2());
+</textarea><h2>惰性加载类的应用场景</h2><ol><li>拥有大量接口和配置的类</li><li>被执行概率极低的类</li><li>需要实现运行监测的类</li></ol></div>
+</div>

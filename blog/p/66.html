@@ -1,0 +1,24 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>ie下document.write出现浏览器卡死bug</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>ie下document.write出现浏览器卡死bug</h1>
+    <div class=content><h2>前言</h2><p>我们知道，ie下一次性document.write出来的script执行顺序不一定是从上到下的，而为了实现保持执行顺序，就非得采用一些技巧，而这在ie下就碰钉了，就一坑字了得。</p><h2>代码</h2><textarea class="code-html">
+<iframe name="winbox"></iframe>
+<br>
+ie下准备任务管理器强制关闭吧。
+<button onclick="xopen()">xopen</button>
+<script>
+function xopen(){
+    var doc = window.open('', 'winbox');
+    doc.document.write('<script src="../style/z.js"><\/script>');
+    doc.document.write('<script>alert(111)<\/script>');
+    doc.document.close();
+}
+</script>
+</textarea><p class="info">ie下为了保持script执行顺序，需要分开document.write(&lt;script>...);</p><p class="info">ie下当通过多次document.write(&lt;script>...)标签请求外部js文件，浏览器就会卡死在哪里。</p></div>
+</div>

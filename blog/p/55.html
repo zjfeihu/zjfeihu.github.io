@@ -1,0 +1,28 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>css3 函数取值calc()</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>css3 函数取值calc()</h1>
+    <div class=content><h2>前言</h2><p>css3中用于计算数值的方法，IE9以下不支持。</p><h2>使用说明</h2><p>语法：calc(expression);</p><p>expression格式：</p><ul><li>使用“+”、“-”、“*” 和 “/”四则运算，“+，-”运算符前后必须带空格</li><li>可以混合使用百分比、px、em、rem、vw、vh等单位；</li></ul><h2>演示</h2><textarea class="code-html">
+<style>
+.box{width:calc(50vw); margin-top:calc(3% - 2*4px); border:calc(10%) solid #000; background:#ccc}
+.outer{width:100px; height:100px; border:1px solid #000; background:green}
+.inner{margin:5px; background:red;height:100px; height:calc(100% - 2*5px)}
+</style>
+<div class=box>box</div>
+<div class=outer onclick=resize(this)>
+    <div class=inner>inner</div>
+</div>
+<p>inner高度自适应于outer</p>
+<script>
+height = 100;
+function resize(box){
+    box.style.height = (height = height == 100 ? 150 : 100) +'px';
+}
+</script>
+</textarea><p class="info">50vw为视窗宽度的50%，10%为父容器宽度的10%，发现border不能使用百分比参与运算。</p></div>
+</div>

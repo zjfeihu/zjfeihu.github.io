@@ -1,0 +1,22 @@
+<?
+var keyword = decodeURIComponent($GET.keyword);
+var keywords = keyword.replace(/([\\\[\]|(){}^$*+?])/g,'\\$1').replace(/\s+/, '|');
+var reg_search = RegExp(keywords, 'i');
+
+var result = [];
+var cache = JSON.parse($input('cache/list.json'));
+
+
+fs.foreach($mappath('user/md/'), function(fi){
+    if(/\.md$/.test(fi.name) && reg_search.test($input(fi.path))){
+        var data = cache[fi.name.replace(/\.md/, '')];
+        result.push({
+            name: data.id.match(/\w+/)[0],
+            title: data.tt
+        });
+    }
+});
+
+$push(JSON.stringify(result));
+
+?>

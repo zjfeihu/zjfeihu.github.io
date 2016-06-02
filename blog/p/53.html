@@ -1,0 +1,21 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>ie中id命名的bug</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>ie中id命名的bug</h1>
+    <div class=content><h2>前言</h2><p>ie中特殊名称的节点id会覆盖全局变量导致的问题。</p><h2>演示</h2><textarea class="code-html">
+<div id="length">length</div>
+<div id="div1">div1</div>
+<div name="div2">div2</div>
+<script>
+var nodes = document.body.children;
+alert( nodes.length );
+alert( nodes.div1.innerHTML );
+alert( nodes.div2.innerHTML );
+</script>
+</textarea><p class="info">IE中nodes.length属性被覆盖，nodes.div2引用无效。</p></div>
+</div>

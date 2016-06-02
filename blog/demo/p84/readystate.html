@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<link href="" rel="stylesheet"/>
+<script src="../Console.js"></script>
+<script>
+window.onload = function(){
+    Console('onload  = '+document.readyState)
+};
+Console('before head = '+document.readyState)
+</script>
+</head>
+<body>
+<script>Console('after <body> = '+document.readyState)</script>
+<div>div</div>
+<script>Console('before iframe = '+document.readyState)</script>
+<iframe src="../../"></iframe>
+<script>
+Console('before </body> = '+document.readyState)
+setTimeout(function(){
+    Console('before </body> by delay 0ms = '+document.readyState)
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>DNS解析原理</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>DNS解析原理</h1>
+    <div class=content><h2>什么是DNS</h2><p>DNS是域名系统(Domain Name System)的缩写，是一种组织域层次结构的计算机和网络服务命名系统。当用户在应用程序中输入DNS名称时，DNS服务可以将此名称解析为与此名称相关的IP 地址，以便能够正确的获取资源。</p><p>通俗的说，就是用户是无法直接使用网址来获取资源的，因为网络地址是通过IP来映射的，而DNS就是负责把域名映射成IP的一个服务。</p><h2>DNS怎么工作</h2><h3>DNS的查询过程</h3><p>DNS查询可以分为本地查询，客户机到服务器查询，服务器递归查询。</p><p class="img"><img src="../imgs/4.1.gif"/><em>DNS查询过程</em></p><p class="info">假如无法查询到相关记录，则接着向后查询。</p><p>本地查询：主机文件（HOST文件配置信息），系统的DNS缓存。</p><p>客户机到服务器查询：查询首选DNS服务器的就地配置区域，服务器的缓存</p><p>服务器递归查询：递归查询其他DNS服务器</p><p class="info">通过浏览器浏览网页，先查询浏览器DNS缓存，不同浏览器缓存策略有所不同。</p><h3>递归解析的过程</h3><p>例如定位：host.example.microsoft.com，</p><p>首选服务器分析全名并确定对于顶级域com具有绝对控制权的服务器的位置。<br/>随后，对com DNS 服务器使用迭代查询，以获取microsoft.com服务器的参考信息。<br/>然后参考性应答从microsoft.com服务器传送到example.microsoft.com的 DNS 服务器。<br/>最后，与服务器 example.microsoft.com 联系上。</p><p>因为该服务器包括作为其配置区域一部分的查询名称，所以，它向启动递归的源服务器作出权威性的应答。当源服务器接收到表明已获得对请求查询的权威性应答的响应时，它将此应答转发给发出请求的客户机，这样，递归查询过程就完成了服务器递归查询。</p><p class="img"><img src="../imgs/4.2.gif"/><em>DNS查询过程</em></p><h2>前端开发DNS优化相关</h2><p>DNS预取，DNS个数控制。</p><pre class="xcode">
+&lt;meta http-equiv="x-dns-prefetch-control" content="on"&gt;
+&lt;link rel="dns-prefetch" href="http://www.spreadfirefox.com/"&gt;
+</pre></div>
+</div>

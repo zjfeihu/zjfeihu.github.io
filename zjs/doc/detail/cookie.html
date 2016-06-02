@@ -1,0 +1,177 @@
+<!doctype html>
+<meta charset=gbk>
+<link href=../doc.css rel=stylesheet>
+<script src=../../dist/z.js></script>
+<body>
+<div class=doc>
+	
+        <div class=caption>
+            <h2>cookie( )</h2>
+            
+            <span class=file>define in : bom</span>
+        </div>
+        <div class=syntaxs-box>
+            <h4>语法</h3>
+            <ul>
+                
+                <li>
+                    <p class=syntax> 
+                        <span class=name>cookie( <em>key</em> )</span>
+                        <span class=desc>获取cookie的值</span> 
+                    </p>
+                </li>
+                
+                <li>
+                    <p class=syntax> 
+                        <span class=name>cookie( <em>key, value, option</em> )</span>
+                        <span class=desc>设置cookie的值，当value为null时，则删除对应的cookie</span> 
+                    </p>
+                </li>
+                
+                <li>
+                    <p class=syntax> 
+                        <span class=name>cookie( <em>data, option</em> )</span>
+                        <span class=desc>批量设置cookie的值</span> 
+                    </p>
+                </li>
+                
+            </ul>
+        </div>
+        
+            <div class=params-box>
+                <h4>参数</h3>
+                <ul>
+                
+                    <li>
+                        <p> 
+                            <span class=name>key</span>
+                            <span class=type>[String]</span> 
+                        </p>
+                        <p> 
+                            
+                            <span class=flag-need>必选</span>
+                            
+                            <span class=desc>cookie的名称</span>
+                        </p>
+                    </li>
+                
+                    <li>
+                        <p> 
+                            <span class=name>value</span>
+                            <span class=type>[String]</span> 
+                        </p>
+                        <p> 
+                            
+                            <span class=flag-need>必选</span>
+                            
+                            <span class=desc>cookie的新值</span>
+                        </p>
+                    </li>
+                
+                    <li>
+                        <p> 
+                            <span class=name>data</span>
+                            <span class=type>[Hash]</span> 
+                        </p>
+                        <p> 
+                            
+                            <span class=flag-need>必选</span>
+                            
+                            <span class=desc>一组cookie的新值</span>
+                        </p>
+                    </li>
+                
+                    <li>
+                        <p> 
+                            <span class=name>option</span>
+                            <span class=type>[Hash]</span> 
+                        </p>
+                        <p> 
+                            
+                            <span class=flag>可选</span>
+                            
+                            <span class=desc>设置cookie的有效期等其他属性</span>
+                        </p>
+                    </li>
+                    
+                </ul>
+            </div>
+        
+        
+        
+            <ul class=more-box>
+            
+                <li>
+                    <h4>option说明</h4>
+                    
+                    
+                    <table class=mytable>
+                        
+                        <tr class=bg>
+                            
+                                
+                                    <th>字段</th>
+                                
+                            
+                                
+                                    <th>说明</th>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>expires</td>
+                                
+                            
+                                
+                                    <td>cookie有效期，默认值是直到浏览器关闭时失效，单位是分钟</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>path</td>
+                                
+                            
+                                
+                                    <td>cookie的路径范围，默认是根目录</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>domain</td>
+                                
+                            
+                                
+                                    <td>cookie的domain权限，默认是当前domain</td>
+                                
+                            
+                        </tr>
+                        
+                    </table>
+                    
+                </li>
+            
+            </ul>
+        
+        
+        
+        <div class=return-box>
+            <h4>返回值</h3>
+            <p>
+                <span class=desc>cookie的值</span>
+                <span class=type>[String,Null]</span>
+            </p>    
+        </div>
+        
+    
+		
+</div>
+</body>

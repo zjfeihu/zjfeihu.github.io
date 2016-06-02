@@ -1,0 +1,82 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>WEB++开发之观察者模式</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>WEB++开发之观察者模式</h1>
+    <div class=content><h2>前言</h2><p>WEB++桌面系统中，为了减少模块之间的耦合，采用了观察者模式大大减少模块之间的接口调用。</p><h2>模式应用说明</h2><p>WEB++是一个模块化方式开发的作品，模块分为主模块，扩展模块和基础模块，主模块的运行不依赖于扩展模块，扩展模块只会影响主模块的功能，简单的说就是去除扩展模块，系统照样运行，只是会失去扩展模块的功能而已。基础模块是不参与模块之间的逻辑而独立存在的特定功能的代码。</p><p>举个例子：</p><p>App作为主模块，Desktop作为扩展模块，假如没有引入Desktop模块，那么系统只会缺少桌面相关的功能，其他功能是没有影响的。</p><p>App作为主模块，Taskbar，Sidebar等作为扩展模块，他们之间的接口调用符合一个原则：扩展模块能调用主模块的接口，主模块不允许调用扩展模块的接口，主模块通过观察者模式，通过群发消息的方式通知扩展模块，扩展模块监听到消息根据情况执行响应。</p><h3>打开应用和应用获取焦点的示例</h3><textarea class="code-js" edit=off >
+App
+.on('opened', function(){ //打开应用后，在任务栏中添加该应用的按钮
+    Taskbar.add(this);
+})
+.on('focused', function(){ //应用窗口获得焦点，那么点亮当前应用在任务栏中的按钮
+    Taskbar.focus(this);
+})
+.on('closed', function(){ //关闭应用后，则移除按钮
+    Taskbar.remove(this);
+});
+
+</textarea><p class="info">通过上面这种方式，即便去除了Taskbar模块，系统运行不会出错，只是不会出现任务栏的各种功能而已。</p><h2>简易观察者模式代码实现</h2><textarea class="code-js" edit=off >
+//使用示例
+function App(){}
+Observer.extendTo(App); //给App模块使用观察者模式
+App.fire('open', arg1, args, ...); //群发消息
+App.on('open', function(arg1, arg2, ...){ //在扩展模块中使用来接收主模块的各种指令
+    //接收消息
+});
+
+//观察者模块
+function Observer(){
+
+    var queue = {};
+    var stop = false;
+
+    this.on = function(type, fn){
+        if(!queue[type]){
+            queue[type] = [fn];
+        }else{
+            queue[type].push(fn);
+        }
+        return this;
+    };
+
+    this.fire = function(type){
+        var args = [].slice.call(arguments, 1);
+        forEach(queue[type], function(fn){
+            fn.apply(this, args);
+            return stop;
+        }, this);
+        stop = false;
+        return this;
+    };
+
+    this.stopEvent = function(){
+        stop = true;
+    };
+
+}
+
+//扩展接口到指定模块
+Observer.extendTo = function(target){
+    var key, source = new Observer;
+    for(key in source){
+        target[key] = source[key];
+    }
+};
+
+function forEach(arr, fn, context){
+    if(arr &amp;&amp; arr.length){
+        var item, i = 0;
+        while(item = arr[i]){
+            if(fn.call(context, item, i++)){
+                break; 
+            }                    
+        }                
+    }
+}
+
+</textarea></div>
+</div>

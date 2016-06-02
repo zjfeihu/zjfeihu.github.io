@@ -1,0 +1,24 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>ie6-7margin占位bug</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>ie6-7margin占位bug</h1>
+    <div class=content><h2>前言</h2><p>无意中用到了a的margin，在ie6下发现margin留白可以被点击。</p><h2>代码</h2><textarea class="code-html">
+<!doctype html>
+<meta charset="utf-8"/>
+<style>
+li{border:1px solid #000}
+.margin{margin:50px; cursor:pointer; background:#ccc}
+</style>
+<ul>
+<li><a class=margin href=# > a标签无修正 </a></li>
+<li><a class=margin style="*zoom:1" href=# > a标签加zoom修正 </a></li>
+<li><span class=margin> span标签无修正 </span></li>
+</ul>
+<p>(ie6-7)浏览器:margin出来的空间包括在A的点击区域内</p>
+</textarea></div>
+</div>

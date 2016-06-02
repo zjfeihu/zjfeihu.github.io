@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<meta charset=gbk>
+<style>
+body{margin:0;padding:0;background:#fff;}
+#proxy{width:0;height:0;overflow:hidden;display:none;}
+#header{background:#000;color:#eee;padding:8px;}
+#page{display:block;width:99%;height:300px;border:1px solid #000;}
+</style>
+<div id="header">Iframe页面地址：http://blog.1kjs.com/demo/crossdomain/postmessage_a.html</div>
+<button id="btn">跨域改变背景</button>
+<iframe id="page" name="page" frameborder="0" src="http://cc1kjs.appsp0t.com/demo/crossdomain/postmessage_b.html"></iframe>
+<script src="crossX.js"></script>
+<script>
+
+crossX.client({
+	target: document.getElementById('page').contentWindow
+});
+crossX.ready(function(data){
+	if(data.cmd == 'changeColor'){
+		this.document.body.style.background = data.color;
+	}
+});
+var i = 0;
+document.getElementById('btn').onclick = function(){
+	crossX.sendTo('page',{cmd: 'changeColor', color:['green', '#ddd'][i++%2]});
+};
+</script>
+

@@ -1,0 +1,15 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>Web缓存基础简介</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>Web缓存基础简介</h1>
+    <div class=content><h2>前言</h2><p>正确设置浏览器缓存能大大提高WEB应用的性能。</p><h2>如何设置浏览器缓存</h2><ul><li>Expires</li><li>Cache-Control</li><li>Last-Modified</li><li>Etag</li></ul><p class="info">Expires属于HTTP1.0协议，使用Cache-Control代替</p><h5>我们可以设置请求响应头，比如：</h5><pre class="xcode">
+Cache-Control: max-age=600
+Last-Modified: Tue, 16 Apr 2012 06:18:54 GMT
+ETag: "4280832337"
+</pre><h3>Cache-Control: max-age=600</h3><p class="info">设置缓存时间为600秒，在10分钟内直接从缓存中读取数据，不会向服务器发送请求，使用F5访问缓存失效。</p><h3>Last-Modified: Tue, 16 Apr 2012 06:18:54 GMT</h3><p class="info">访问时向浏览器发送请求，服务器会根据If-Modified-Since和文件修改时间进行对比，假如值相等，则返回304状态，并且从缓存中读取数据，否则从服务器读取新数据。</p><h3>ETag: "4280832337"</h3><p class="info">同Last-Modified策略</p><h2>一些疑问</h2><ul><li>Cache-Control和Last-Modified区别</li><li>ETag和Last-Modified区别</li><li>Last-Modified为什么不能被替代</li><li>缓存的优先级</li></ul><h3>Cache-Control和Last-Modified区别</h3><p>Cache-Control在有效期内不会向服务器发送请求，而Last-Modified（同Etag）始终会向服务器发送请求，根据响应来决定是否从缓存中获取内容。</p><h3>ETag和Last-Modified区别</h3><p>Etag和Last-Modified缓存策略是一样的，区别在于Etag和Last-Modified对应的值不一样，Etag是服务端生成的能反应资源是否更改的一个标志，而Last-Modified只是资源的修改时间，而这个修改时间的精度是1秒，所以，假如一秒之内文件发生了更改就无法体现在Last-Modified上。</p><p>扩展阅读<a class="mlink" href="http://www.php-oa.com/2008/08/27/etag.html" target="_blank">HTTP参数中Etag的重要性</a><br/></p><h3>Last-Modified为什么不能被替代</h3><p>在很多场景下，文件的更新频率并不高『静态文件』，所以简单的使用Last-Modified就可以完成文件是否更新的判断，使得服务器快速正确的返回304响应。</p><h3>缓存的优先级</h3><p>缓存的优先级，Cache-Control > Etag > Last-Modified</p><h2>缓存的问题</h2><p>使用缓存，那么就会出现服务器资源更新了而客户端没有更新的情况，解决方法很多，常见的就是给资源地址加个时间戳。</p><h2>结语</h2><p>正确的设置缓存，可以大大提高应用的网络性能，从而提升用户体验和减少网络流量以此来减少成本。针对一些静态的资源，建议设置较长的缓存时间。</p><p>百度搜索<a class="glink" href="http://www.baidu.com/s?wd=浏览器缓存优化" target="_blank">浏览器缓存优化</a><br/>百度搜索<a class="glink" href="http://www.baidu.com/s?wd=html5数据缓存" target="_blank">html5数据缓存</a><br/>扩展阅读<a class="mlink" href="http://www.cnblogs.com/rubylouvre/archive/2012/05/24/2516606.html" target="_blank">Web缓存的作用与类型</a><br/>扩展阅读<a class="mlink" href="http://www.cnblogs.com/_franky/archive/2012/07/05/2577141.html" target="_blank">强制更新静态资源缓存</a><br/></p></div>
+</div>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<script>
+
+function Console(text){
+    if(Console.box){
+        if(text){
+            Console.box.innerHTML += '<br>'+text.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+        }
+    }else if(document.body){ //初始化console容器，并输出已经存在的数据
+        clearInterval(Console.timer);
+        Console.box = document.createElement('div');
+        document.body.appendChild(Console.box);
+        if(Console.data){
+            for(var i = 0; i < Console.data.length; i++){
+                Console(text);
+            }
+        }
+        Console(text);
+    }else{
+        if(!Console.data){
+            Console.data = [];
+        }
+        Console.data.push(text);
+        Console.timer = setInterval(function(){ //假如在body就绪后没调用Console，那么就让定时器主动触发
+            if(document.body){
+                clearInterval(Console.timer);
+                Console();
+            }
+        }, 15);
+    }
+}
+
+Console('in head');
+
+</script>
+</head>
+<body>
+<script>Console('before div');</script>
+<div>some html</div>
+<script>Console('after div');</script>
+</body>
+</html>

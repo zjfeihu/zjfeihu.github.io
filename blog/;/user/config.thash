@@ -1,0 +1,23 @@
+title 前端开发
+list
+    {i:2,id:1,text:API文档}
+    {i:3,id:2,text:布局样式}
+    {i:4,id:3,text:算法思路}
+    {i:5,id:4,text:代码优化}
+    {i:6,id:5,text:工具应用}
+    {i:7,id:6,text:电脑相关}
+    {i:8,id:7,text:HTTP相关}
+    {i:9,id:8,text:浏览器兼容}
+page
+    {i:1,id:index,text:首页}
+    {i:10,id:about,text:关于}
+checkout
+    system/tpl.mjs       *
+    system/data.mjs      *
+    system/extendmd.mjs  detail
+    user/config.thash    *
+    user/tpl/layout.html *
+    user/tpl/list.html   list
+    user/tpl/nav.html    list page
+    user/tpl/detail.html detail
+    

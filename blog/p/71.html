@@ -1,0 +1,98 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>正则使用备忘</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>正则使用备忘</h1>
+    <div class=content><h2>前言</h2><p>不常用的正则往往比较模糊和健忘，查看API效率不高，此文备查。</p><h2>一些概念</h2><h3>分组</h3><textarea class="code-js">
+alert( '2012-12-12'.match( /(\d{4})-(\d\d)-(?:\d\d)/ ))
+</textarea><p class="info">捕获分组(\d{4})和(\d\d)，非捕获分组(?:\d\d)，捕获分组会保存匹配结果以备使用。</p><h3>反向引用</h3><textarea class="code-js">
+alert('2012-12-12'.match( /(\d{4})-(\d\d)-(?:\2)/ ))
+alert('2012-12-11'.match( /(\d{4})-(\d\d)-(?:\2)/ ))
+</textarea><textarea class="code-js">
+//使用反向引用匹配JS字符串
+s = '"a\'b\\"c"d"e\'';
+alert([s, s.match( /('|")(?:\\\\|\\\n|\\\1|.)*?\1/)].join(' => '))
+</textarea><p class="info">反向引用指向捕获分组所对应的字符串，下标从1开始，下标顺序由捕获分组的开括号决定</p><h3>匹配限定</h3><textarea class="code-js">
+arr = []
+arr.push('abcde'.match(/.*/)) //贪婪模式，尽量多的匹配，直到不满足条件
+arr.push('abcde'.match(/(?:.+?)/)) //惰性模式，尽量少的匹配
+arr.push('abcde'.match(/(?:.{1,3})/))//贪婪模式范围限定
+alert(arr.join('\n'))
+</textarea><h3>单词边界</h3><textarea class="code-js">
+s = 'key akey keya akeya';
+a = [];
+a.push(s.match(/key/g)) //全部
+a.push(s.match(/\bkey\w*/g)) //key，keya
+a.push(s.match(/\w*key\b/g)) //key，akey
+alert(a.join('\n'))
+</textarea><p class="info">单词边界基本上的用处为匹配单词（类似关键字）的效果</p><h3>检索预查</h3><textarea class="code-js">
+alert([
+    'a1b2c3'.match(/[a-z](?=\d)|\d(?!c)/g),
+    'a1ab22d3c'.match(/[a-z](?:\d)|\d[^c]/g) //分组会消耗长度 
+].join('\n'));
+</textarea><p class="info">预查分(?=)正向预查和反向预查(?!)，不过只支持后置预查 <br> 比如 /^\w/ 这种是无法用 /(?=^)\w/ 来表示的，而 /\w(?=$)/ 却可以表示 /\w$/</p><p class="info">预查是不消耗字符串查询长度的，即0宽度断言</p><h2>常用API</h2><h3>test</h3><p>检索字符串是否包含指定正则匹配</p><textarea class="code-js">
+var 
+str = "a1b2",
+reg1 = /\d/g, //一般情况下不要使用g模式
+reg2 = /\d/,
+arr = [];
+for(var i = 0; i < 6; i++){
+    arr.push("result："+ reg1.test(str));
+    arr.push("lastIndex："+ reg1.lastIndex);
+    arr.push("result："+ reg2.test(str));
+    arr.push("lastIndex："+ reg2.lastIndex);
+    arr.push("=========");
+}
+alert(arr.join('\n'));
+arr = [];
+var re = /\d/g;
+arr.push("test1："+re.test('12')); //=>true
+arr.push("test2："+re.test('1t')); //=>false 因为从t开始检索
+alert(arr.join('\n'));
+</textarea><p class="info">带g的test，每次成功匹配则改变lastIndex，失败则lastIndex重置为0，lastIndex为下次匹配开始位置</p><h3>match</h3><p>返回指定正则匹配的结果</p><textarea class="code-js">
+var 
+str = "a1b2c3",
+reg1 = /\d/g,
+reg2 = /\d/,
+reg3 = /(\d)/g, //等效于/\d/g，忽略子匹配
+reg4 = /(\d).(\d)/, //返回/\d.\d/完整匹配和子匹配(\d)
+arr = [];
+
+arr.push('reg1.result：'+str.match(reg1));
+arr.push('reg2.result：'+str.match(reg2));
+arr.push('reg3.result：'+str.match(reg3));
+arr.push('reg4.result：'+str.match(reg4));
+alert(arr.join('\n'))
+</textarea><p class="info">不带g的返回完整匹配结果和子匹配组成的数组，带g的返回所有匹配结果，子匹配忽略。</p><h3>exec</h3><p>返回指定正则匹配的结果</p><textarea class="code-js">
+var 
+str = "a1b2c3",
+reg1 = /\d/g,
+reg2 = /\d/,
+reg3 = /(\d)/g, //结果等效于match(/(\d)/)
+reg4 = /(\d).(\d)/, //返回/\d.\d/完整匹配和子匹配(\d)
+arr = [];
+
+arr.push('reg1.result：'+reg1.exec(str));
+arr.push('reg2.result：'+reg2.exec(str));
+arr.push('reg3.result：'+reg3.exec(str));
+arr.push('reg4.result：'+reg4.exec(str));
+alert(arr.join('\n'))
+</textarea><p class="info">exec始终只进行一次检索，g的效果只会影响index和lastIndex而不影响匹配结果</p><p class="info">排除lastIndex因素，exec匹配结果始终与不带g的match一致</p><h3>search</h3><p>返回检索字符串包含指定正则匹配的起始位置</p><textarea class="code-js">
+alert([
+    'abcd'.indexOf('c'),
+    'abcd'.search('c'),
+    'abcd'.search(/c/),
+    'abcd'.search(/c(?!d)/)
+].join('\n'))
+</textarea><p class="info">其实就indexOf的加强版，参数可以传入正则</p><h3>split</h3><p>将字符串按正则匹配作为分隔符转化成数组</p><textarea class="code-js">
+alert([
+    'abcd'.split(''),
+    'a,b.c#d'.split(/\W/),
+    'abc'.split(/a|b/)
+].join('\n'))
+</textarea></div>
+</div>

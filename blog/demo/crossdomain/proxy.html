@@ -1,0 +1,10 @@
+<script src="http://s1.1kjs.com/1k.js"></script>
+<script>
+setInterval(callResize, 16);
+function callResize(){
+	var hash = $1k.query2Hash(location.hash.substr(1));
+	if(hash.cmd == 'autoheight'){
+		parent.parent.autoheight(parseInt(hash.height));
+	}
+}
+</script>

@@ -1,0 +1,54 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>IE下的Console</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>IE下的Console</h1>
+    <div class=content><h2>前言</h2><p>最近被IE的各种bug所烦，调试代码用alert会有很多不便，那么就自动动手写了一个实现，同时在某些场合下替代Firefox等浏览器的console.info</p><h2>代码</h2><textarea class="code-html">
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function Console(text){
+    if(Console.box){
+        if(text){
+            Console.box.innerHTML += '=> '+text.replace(/&amp;/g, '&amp;amp;').replace(/</g, '&amp;lt;')+'<br>';
+        }
+    }else if(document.body){ //初始化console容器，并输出已经存在的数据
+        clearInterval(Console.timer);
+        Console.box = document.createElement('div');
+        Console.box.style.cssText='position: fixed; top:8px; width: 600px; border: 1px solid #ccc; background: #eee; padding: 8px';
+        document.body.appendChild(Console.box);
+        if(Console.data){
+            for(var i = 0; i < Console.data.length; i++){
+                Console(Console.data[i]);
+            }
+        }
+        Console(text);
+    }else{
+        if(!Console.data){
+            Console.data = [];
+        }
+        Console.data.push(text);
+        Console.timer = setInterval(function(){ //假如在body就绪后没调用Console，那么就让定时器主动触发
+            if(document.body){
+                clearInterval(Console.timer);
+                Console();
+            }
+        }, 15);
+    }
+}
+Console('in head');
+</script>
+</head>
+<body>
+<script>Console('before div');</script>
+<div>some html</div>
+<script>Console('after div');</script>
+</body>
+</html>
+</textarea><p class="info">最简便的使用Console方法，代替alert，直接在页面顶部输出信息</p><p><a class="xlink" href="../demo/Console.js">Console.js</a><br/></p></div>
+</div>

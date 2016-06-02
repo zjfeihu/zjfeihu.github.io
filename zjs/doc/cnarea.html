@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<meta charset=gbk>
+<title>gbk编码组件</title>
+<script src=../dist/z.js></script>
+<script src=../dist/zwhl.js></script>
+<script src=../dist/cnarea.js></script>
+<div style="font-family: 微软雅黑; margin: 0 16px">
+    <h1>地区选择组件</h1>
+    
+    <h3>功能</h3>
+    <p>省，市，区3级地区联动选择</p>
+    
+    <h3>使用方法</h3>
+    <p>1. 在页面中引入cnarea.js <a href="../dist/cnarea.js" target="_blank">点击下载</a></p>
+    <p>2. 使用以下API</p>
+    <textarea class=code-js edit=off>
+        cnarea({
+            box: '#id',     //组件存放的容器
+            name: 'province,city,county',   //表单的name
+            value: '#,#,#',                 //初始值，省,市,县
+            onchange: function(value){      //值改变是触发
+                
+            }
+        });
+    </textarea>
+    
+    <h3>演示</h3>
+    <div id=testcnarea></div>
+    
+    <script>
+        cnarea({
+            box: '#testcnarea',     //组件存放的容器
+            name: 'province,city,county',   //表单的name
+            value: '#,#,#',                 //初始值，省,市,县
+            onchange: function(value){      //值改变是触发
+                alert(value);
+            }
+        });
+    </script>
+    
+    <h3>相关资料</h3>
+    <p>目前该组件能够完全处理GBK中的所有字符，共21886个，详细GBK相关请查看<a href="http://baike.baidu.com/view/931619.htm" target="_blank">百度百科</a></p>
+    
+    <h3>联系我</h3>
+    <p>zjfeihu#126.com</p>
+    
+    <h3>更新说明</h3>
+    <p>2011.9 发布</p>
+    <p>2016.5 修正无法解码小写gbk字符串</p>
+</div>

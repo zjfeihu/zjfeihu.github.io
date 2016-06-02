@@ -1,0 +1,18 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>了解回车字符</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>了解回车字符</h1>
+    <div class=content><h2>介绍</h2><p>换行符‘\n’和回车符‘\r’</p><p>换行符就是另起一行，回车符就是回到一行的开头，所以我们平时编写文件的回车符应该确切来说叫做回车换行符 </p><p>'\n' 10 换行（newline）'\r' 13 回车（return）</p><p>也可以表示为'\x0a'和'\x0d'.(16进制)</p><p>在windows系统下，回车换行符号是"\r\n".但是在Linux等系统下是没有"\r"符号的。</p><p>在windows系统下，没有回车键（\r）的时候用文本编辑器打开文件是没有换行效果的。</p><h2>问题</h2><p>在所有行的前面加上#号的需求，用正则实现批量替换</p><textarea class="code-js">
+var str1 = [1,2,3,4,5].join('\r\n');
+var str2 = [1,2,3,4,5].join('\n');
+alert(str1.replace(/^/mg, '#'));//处理带回车符的字符串，出现非我们想要的效果
+alert(str2.replace(/^/mg, '#'));
+alert(str1.replace(/^(?!\n)/mg, '#')); //正确的处理，进行过滤
+alert(str2.replace(/^(?!\n)/mg, '#'));
+</textarea><p class="info">正则/^/mg匹配行首和\r\n之间的位置，所以(?!\n)就可以过滤\r\n之间的匹配</p><p class="info">代码中实际上不应该存在\r，这完全是历史遗留问题。</p><h2>更多</h2><p>扩展阅读<a class="mlink" href="http://blog.csdn.net/xiaofei2010/article/details/8458605" target="_blank">C++中回车换行（\n\r）和换行(\r)的区别</a><br/></p></div>
+</div>

@@ -1,0 +1,81 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>PHP实现跨域获取JSONP</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>PHP实现跨域获取JSONP</h1>
+    <div class=content><p>每次写一些不怎么熟悉领域的代码，总得不断搜索各种API的使用方法，然后凑出代码，然后过段时间，然后忘记，这其实会导致下次还得重新搞，浪费时间，mark下会好很多。</p><h2>js使用例子</h2><textarea class="code-html">
+<script src="http://lib.1kjs.com/1k.js"></script>
+<body>
+<button id="btn">加载中...</button>
+<input style="width:300px;" id="url" value="http://www.126.com/"/>
+<div id="output"></div>
+<script>
+onload = function(){
+    Z = $1k;
+    Z('#btn').html('获取跨越数据');
+    Z('#btn').click(function(){
+        Z('#output').html('正在获取'+Z('#url').val()+'数据');
+        Z.jsonp3(Z('#url').val(), function(resp){
+            Z('#output').html(Z.encodeHTML(resp));
+        });
+    });
+}
+</script>
+</body>
+</textarea><h3>语法</h3><textarea class="code-js" edit=off >
+Z.jsonp3(url, callback, charset, timeout);
+//url 数据源地址，
+//callback回调函数（内传返回数据作为参数）
+//charset字符编码，utf-8或gbk
+//timeout超时时间，单位毫秒
+</textarea><h2>php代码</h2><textarea class="code-js" edit=off >
+if(isset($_GET['charset'])){ //人为指定编码
+    header('Content-Type: text/javascript;charset='.$_GET['charset']);
+}else{
+    header('Content-Type: text/javascript');
+}
+if($_GET['callback']){ //人为指定callback名称
+    $callback =  $_GET['callback'];
+}else{
+    $callback = 'callback';
+}
+
+$output = iget($_GET['url']); //获取远程数据
+$output = str_replace("\n", "\\n", $output);
+$output = str_replace("\r", "\\r", $output);
+$output = str_replace("'", "\\'", $output);
+
+echo "$callback('$output')"; //包装输出
+
+function iget($url){ // 模拟提交数据函数
+    $curl = curl_init(); // 启动一个CURL会话
+    curl_setopt($curl, CURLOPT_URL, $url); // 要访问的地址           
+    //curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0); // 对认证证书来源的检查
+    //curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 1); // 从证书中检查SSL加密算法是否存在
+    curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']); // 模拟用户使用的浏览器
+    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1); // 使用自动跳转
+    //curl_setopt($curl, CURLOPT_REFERER, $ref);
+    //curl_setopt($curl, CURLOPT_POST, 1); // 发送一个常规的Post请求
+    //curl_setopt($curl, CURLOPT_POSTFIELDS, $data); // Post提交的数据包
+    //curl_setopt($curl, CURLOPT_COOKIEFILE,$GLOBALS ['cookie_file']); // 读取上面所储存的Cookie信息
+    //curl_setopt($curl, CURLOPT_COOKIEJAR, $GLOBALS['cookie_file']); // 存放Cookie信息的文件名称
+
+    curl_setopt($curl, CURLOPT_HTTPHEADER,array('Accept-Encoding: gzip, deflate', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'));
+    //curl_setopt($curl, CURLOPT_HTTPHEADER,array('Accept-Encoding: gzip, deflate'));
+    curl_setopt($curl, CURLOPT_ENCODING, 'gzip,deflate');//这个是解释gzip内容.................
+    curl_setopt($curl, CURLOPT_TIMEOUT, 30); // 设置超时限制防止死循环
+    curl_setopt($curl, CURLOPT_HEADER, 0); // 显示返回的Header区域内容
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); // 获取的信息以文件流的形式返回
+    $tmpInfo = curl_exec($curl); // 执行操作
+    if (curl_errno($curl)) {
+       echo 'Errno'.curl_error($curl);
+    }
+    curl_close($curl); // 关键CURL会话
+    return $tmpInfo; // 返回数据
+}
+</textarea><p class="info">代码估计不咋的，随便凑出来的</p></div>
+</div>

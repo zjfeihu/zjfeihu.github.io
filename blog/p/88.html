@@ -1,0 +1,169 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>配置文件使用THASH代替JSON</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>配置文件使用THASH代替JSON</h1>
+    <div class=content><h2>前言</h2><p>配置文件在程序中很重要，也常常会涉及到人为查看和修改，所以简洁直观的配置文件让人看的爽心用的舒心，常见的配置文件格式有XML和JSON格式，而在JS中使用JSON是首选。</p><h2>其实JSON不适合做配置文件</h2><p>在JS中，JSON无疑是简洁的数据格式，不管是传输还是操作，都是极佳的格式，但是作为配置文件，它不一定很优秀。</p><h4>下面以一个服务器配置文件作为例子</h4><h3>JSON格式</h3><textarea class="code-js" edit=off >
+{
+    "ROOTPATH": "E:\\gitcafe\\sschen86\\",                          //起始根目录
+    "DIRINDEX": "index.html default.html index.jhtml index.php",    //首页名称
+    "HOSTS": [
+        {
+            "domain":       "www.1kjs.com",                         //域名
+            "path":         "D:\\all\\wwwroot\\www.1kjs.com\\war",  //根目录，默认等于起始根目录+域名
+            "codepage":     "65001",                                //编码，默认936即gbk
+            "script":       "html"                                  //需要模板引擎动态生成的文件格式
+        },
+        {
+            "domain":       "ebao.com",
+            "codepage":     "65001",
+            "script":       "html js css php"
+        },
+        {
+            "domain":       "blog.cc",
+            "path":         "blog",
+            "script":       "html js css php"
+        }
+    ]
+}
+</textarea><p class="info">JSON格式中带着各种引号，括号，字符必须转义，看着累赘，写着麻烦。</p><h3>THASH格式</h3><textarea class="code-js" edit=off >
+ROOTPATH                                                #起始根目录
+    E:\gitcafe\sschen86\
+DIRINDEX                                                #首页名称
+    "index.html default.html index.jhtml index.php"
+HOSTS
+    domain      www.1kjs.com                            #域名
+    path        D:\all\wwwroot\www.1kjs.com\war         #根目录，默认等于起始根目录+域名 
+    codepage    65001                                   #编码，默认936即gbk
+    script      html                                    #需要模板引擎动态生成的文件格式
+HOSTS
+    domain      ebao.com
+    codepage    65001
+    script      html js css php
+HOSTS
+    domain      blog.cc
+    path        blog
+    script      jhtml
+</textarea><p class="info">THASH格式简洁明了，没有多余的括号，而引号只有在值中间有空格时才需要，假如值与key在同一行，则引号也可以省略</p><h2>THASH格式说明</h2><h3>添加一个键值</h3><pre class="xcode">
+ROOTPATH index.html default.html    #格式1
+
+DIRINDEX                            #格式2
+    "index.html default.html"
+</pre><p class="info">当键和值同行，使用空白隔开，前面是键，后面是值；当键和值异行，则值前面必须留空白，并且带空格的值必须使用引号</p><h3>添加一个键值组</h3><pre class="xcode">
+KEY1
+    SUBKEY1 SUB_VALUE1
+    SUBKEY2 SUB_VALUE2
+    SUBKEY3 SUB_VALUE3
+</pre><p class="info">键值组的键和值在同一行，值无需引号</p><h3>添加多个键值组</h3><pre class="xcode">
+KEY1
+    SUBKEY1 SUB_VALUE1
+    SUBKEY2 SUB_VALUE2
+KEY1
+    SUBKEY1 SUB_VALUE1
+</pre><p class="info">起同名的键即可</p><h2>THASH是什么</h2><p>THASH就是 text hash 的简称，在JS中调用解析器THASH会解析成具有键值对形式的对象，键为字符串，值只能是（字符串，数组，HASH对象），数组中的元素必须是字符串或者HASH对象</p><h3>示例</h3><p><a class="olink" href="../demo/p88/thash.html" target="_blank">thash示例</a></p><h2>THASH解析器</h2><p><a class="olink" href="../demo/p88/thash.txt" target="_blank">thash.txt</a></p><textarea class="code-html">
+<script src="../style/z.js"></script>
+<script>
+Z.get('../demo/p88/thash.txt', function(resp){
+    document.body.innerHTML = Z.toJson(parse(resp));
+});
+
+function parse(text){
+    var isArr = {}; //数组类型的数据
+    var hash = {};
+    var key;
+    var val;
+    var subhash;
+
+    var lineNum = 0;
+    var lines = text.replace(/\r/g, '').replace(/(\s+|^)#.*/mg, '').split(/\n/);
+
+    readline();   
+    return hash;
+
+    function readline(){
+        if(lineNum == lines.length){ //最后一行
+            setValue();
+            return;
+        }
+        var thisLine = lines[lineNum++];
+
+        if(!/^\s*$/.test(thisLine)){ //过滤空行
+            if(/^\S+/.test(thisLine)){ //key行
+                setValue();
+                var key_val = thisLine.match(/(\S+)\s*(.*)/);
+                key = key_val[1];
+                val = key_val[2];
+                if(val.indexOf('[') == 0){
+                    readArr(val);
+                }
+            }else{ //数据行
+                thisLine =  thisLine.replace(/^\s+|\s+$/, '');
+                if(thisLine.indexOf('"') == 0){
+                    val = thisLine.match(/"(.*)"/);
+                    if(!val){
+                        throw { line: lineNum, msg: '引号未闭合' };
+                    }
+                    val = val[1];
+                }else if(thisLine.indexOf('[') == 0){
+                    readArr(thisLine);
+                }else{
+                    var key_val = thisLine.match(/(\S+)(\s*)(.*)/);
+                    if(key_val[2]){ //子hash
+                        if(!subhash){
+                            subhash = {};
+                        }
+                        subhash[key_val[1]] = key_val[3];
+                    }else{
+                        val = key_val[0];
+                    }
+                }
+            }
+        }
+        readline();
+    }
+
+    function setValue(){ //设置当前key的value
+        if(subhash){ //值是一个hash对象
+            val = subhash;
+        }
+
+        if(key in hash){ //存在同名键，转成数组
+            if(!isArr[key]){
+                isArr[key] = true;
+                if(hash[key]){
+                    hash[key] = [hash[key]]; //过滤空值
+                }else{
+                    hash[key] = [];
+                }
+            }
+            if(val){
+                hash[key].push(val);
+            }
+        }else{
+            if(key){ //过滤无键的值
+                hash[key] = val;
+            }
+        }
+        key = val = subhash = null;
+    }
+
+    function readArr(data){
+        val = data.match(/\[(.*)\]/);
+        if(!val){
+            throw { line: lineNum, msg: ']未闭合' };
+        }
+        if(val[1]){
+            val = val[1].replace(/^\s+|\s+$/g, '').split(/,\s*/)
+        }else{
+            val = [];
+        }
+    }  
+}
+</script>
+
+</textarea></div>
+</div>

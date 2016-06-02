@@ -1,0 +1,38 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>js中文Unicode编码</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>js中文Unicode编码</h1>
+    <div class=content><h2>前言</h2><p>编码中文可以解决乱码等问题。</p><h2>代码</h2><textarea class="code-js">
+str = encode('英文ABC');
+alert(str)
+alert(encode2('英文ABC'))
+alert(Function('return "'+str+'"')())
+function encode(text){
+    var charCodeArr = [];
+    for(var i = 0; i < text.length; i++){
+        charCodeArr.push(
+            text.charCodeAt(i) > 127 ?
+            '\\u'+text.charCodeAt(i).toString(16)
+            : text.charAt(i)
+        );
+    }
+    return charCodeArr.join('');
+}
+
+function encode2(text){ //正则方式
+    return text.replace(/[^\x00-\x7e]/g, function(str){
+        return '\\u' + str.charCodeAt(0).toString(16);
+    })
+}
+</textarea><h2>原理</h2><pre class="xcode">
+ .charCodeAt(i) 获取字符串位置i处的unicode10进制表示
+ .toString(16) 转成16进制字符串表示
+ /[^\x00-\x7e]/ 和 charCodeAt(i) &gt; 127 效果一样，过滤ascii字符
+ '\\u'+... js中Unicode编码的字符
+</pre><p class="info">其实ascii字符也可以用\\u...表示，比如\u0031=>1，\u0041=>A</p><h2>相反API</h2><p>String.fromCharCode(code) unicode转成中文</p></div>
+</div>

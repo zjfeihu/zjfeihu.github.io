@@ -1,0 +1,184 @@
+<!doctype html>
+<meta charset=gbk>
+<link href=../doc.css rel=stylesheet>
+<script src=../../dist/z.js></script>
+<body>
+<div class=doc>
+	
+        <div class=caption>
+            <h2>encodeURL( )</h2>
+            
+            <span class=file>define in : string</span>
+        </div>
+        <div class=syntaxs-box>
+            <h4>语法</h3>
+            <ul>
+                
+                <li>
+                    <p class=syntax> 
+                        <span class=name>encodeURL( <em>str</em> )</span>
+                        <span class=desc>编码特殊字符以便进行传输</span> 
+                    </p>
+                </li>
+                
+            </ul>
+        </div>
+        
+            <div class=params-box>
+                <h4>参数</h3>
+                <ul>
+                
+                    <li>
+                        <p> 
+                            <span class=name>str</span>
+                            <span class=type>[String]</span> 
+                        </p>
+                        <p> 
+                            
+                            <span class=flag-need>必选</span>
+                            
+                            <span class=desc>待编码的字符串</span>
+                        </p>
+                    </li>
+                    
+                </ul>
+            </div>
+        
+        
+        
+            <ul class=more-box>
+            
+                <li>
+                    <h4>可编码字符</h4>
+                    
+                    
+                    <table class=mytable>
+                        
+                        <tr class=bg>
+                            
+                                
+                                    <th>原始字符</th>
+                                
+                            
+                                
+                                    <th>编码字符</th>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>%</td>
+                                
+                            
+                                
+                                    <td>%25</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>空格</td>
+                                
+                            
+                                
+                                    <td>%20</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>#</td>
+                                
+                            
+                                
+                                    <td>%23</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>&amp;</td>
+                                
+                            
+                                
+                                    <td>%26</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>=</td>
+                                
+                            
+                                
+                                    <td>%3D</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>/</td>
+                                
+                            
+                                
+                                    <td>%2F</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>?</td>
+                                
+                            
+                                
+                                    <td>%3F</td>
+                                
+                            
+                        </tr>
+                        
+                        <tr class=>
+                            
+                                
+                                    <td>+</td>
+                                
+                            
+                                
+                                    <td>%2B</td>
+                                
+                            
+                        </tr>
+                        
+                    </table>
+                    
+                </li>
+            
+            </ul>
+        
+        
+        
+        <div class=return-box>
+            <h4>返回值</h3>
+            <p>
+                <span class=desc>编码后的字符串</span>
+                <span class=type>[String]</span>
+            </p>    
+        </div>
+        
+    
+		
+</div>
+</body>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>IE.DOMReady.test</title>
+
+<script>
+arr = []
+function info(msg){
+    msg = +new Date + ' => ' +msg;
+    if(window.console && 0){
+        //console.info(msg);
+    }else{
+        if(document.all['consolebox']){
+            if(arr.length){
+                document.all['consolebox'].innerHTML += arr.join('<br>')
+                arr.length = 0
+            }
+            document.all['consolebox'].innerHTML += '<br>'+ msg 
+        }else{
+            arr.push(msg)
+        }
+        
+    }
+}
+document.onreadystatechange = function(){
+    if(document.readyState == 'complete'){
+        info('complete');
+    }
+};
+
+window.onload = function(){
+    info('onload')
+}
+
+tr = setInterval(function(){
+    try{
+        document.documentElement.doScroll()
+        clearInterval(tr)
+        info('doScroll');
+    }catch(e){}
+}, 1)
+
+tr2 = setInterval(function(){
+    if(document.body){
+        clearInterval(tr2)
+        info('has body');
+        info(document.body.innerHTML.replace(/</g,'&lt;'));
+    }
+}, 1)
+
+</script>
+<div id=consolebox></div>
+<div style="width:480px;height:360px;overflow:hidden;border:1px solid #000">
+<iframe src="http://www.126.com/"></iframe>
+<img src="../../imgs/2012022009373182.png?t=1"/>
+<img src="../../imgs/2012022009373182.png?t=2"/>
+<img src="../../imgs/2012022009373182.png?t=3"/>
+<img src="../../imgs/2012022009373182.png?t=4"/>
+<img src="../../imgs/2012022009373182.png?t=5"/>
+<img src="../../imgs/2012022009373182.png?t=6"/>
+<img src="../../imgs/2012022009373182.png?t=7"/>
+<img src="../../imgs/2012022009373182.png?t=8"/>
+</div>
+<script>info('DOMReady')</script>
+
+
+</html>

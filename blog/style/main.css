@@ -1,0 +1,120 @@
+/*reset*/
+html{overflow-y:scroll}
+body, ul, ol, h2, h3, h4, p{padding:0; margin:0}
+ul li{list-style:none}
+ol{padding-left:2em}
+a{text-decoration:none}
+a:focus{outline:none}
+
+body{font:14px/1.5 "Microsoft Yahei", sans-serif; color:#333; text-shadow:0 0 1px #ddd;}
+
+#list, #detail, #page{margin:8px auto; max-width:800px;  min-width:300px}
+
+#list .nav{width:20%; float:left; margin:46px 0 0 -40px;}
+#list .nav a{color:#333; font-size:18px}
+#list .nav a:hover{border-bottom:1px dotted red}
+#list .list{width:80%; float:right;}
+#list .list li{position:relative}
+#list .list span{margin-left:1em}
+#list .nav{text-align:right; line-height:2; font-weight:bold;}
+#list .list{font-size:18px; line-height:3}
+#list .list h3{text-align:center; font-size:18px; line-height:2}
+#list .list a{color:#0063dc; padding:5px}
+#list .list a:hover{border-bottom:1px dotted red;}
+#list .list li{border-bottom:1px solid #ccc; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+#list .list span{font-size:12px}
+
+
+
+#detail{line-height:1.8}
+#detail h1{margin:8px 0 12px; font-size:24px; text-align:center}
+#detail h2{margin:16px 0; font-size:1.2em;}
+#detail h3{margin:16px 0; font-size:1em}
+#detail h3:before{padding-right:2px; content:'¡ù'; font-family:ËÎÌå}
+#detail h4{margin:16px 0; font-size:1em; font-weight:normal}
+#detail a{color:#3C78B5; text-decoration:none}
+#detail a:hover{color:#D30703; text-decoration:underline}
+#detail ol{margin:0 0 16px}
+#detail ul{padding-left:2em; margin-bottom:16px}
+#detail ul li{list-style:square}
+#detail p{margin-bottom:24px}
+#detail pre{margin-bottom:24px}
+
+
+@media screen and (max-width: 640px) {
+    #list .nav{
+        margin-left:-8px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    #detail{
+        min-width:360px;
+        margin:0;
+    }
+    body{margin:0;padding:0;}
+    #list{
+        margin:0 auto;
+    }
+    #detail .content{font-size:14px;line-height:1.5;padding:0 8px}
+    .view-default ol{
+      font-size:10px!important;
+    }
+    #detail .title{
+      font-size:18px;
+    }
+    .view-default ol{
+      padding-left:3em;
+    }
+    #list,
+    #list .nav a{font-size:14px;}
+   
+    
+}
+
+/*hignlight*/
+.view-default ol{padding-left:0!important; background:#eee url(../style/img/hl_default_bg.png)!important; border-radius:6px!important;}
+.view-default li{list-style:none; border:none!important}
+.code-js,
+.code-css,
+.code-html{width:98%; padding:8px; font-family:monaco,"Courier New",verdana,Helvetica; font-size:12px; background:#666; border:1px solid #333; color:#ccc; min-height:10em}
+
+
+.info,
+.xcode{padding:5px 12px}
+.info,
+.xcode{dis_border:1px solid #f0f0f0; border-left:2px solid #009a61; color:#333; background:#f6f6f6; font-size:14px;}
+.xcode{font-family:monaco}
+
+
+/*link*/
+.mlink,
+.rlink,
+.xlink,
+.glink{border-bottom:1px dashed;}
+.mlink:hover,
+.rlink:hover,
+.xlink:hover,
+.olink:hover,
+.glink:hover{text-decoration:none!important; border-color:#D30703; cursor:alias}
+.mlink em,
+.rlink em,
+.xlink em,
+.glink em{font-style:normal; _padding:0 4px}
+.mlink:before,
+.rlink:before,
+.glink:before{content:"¡º"}
+.mlink:after,
+.rlink:after,
+.glink:after{content:"¡»"}
+
+/*img*/
+.img{text-align:center}
+.img img{display:block; margin:8px auto; max-width:100%}
+.img em{display:block; font-style:normal}
+
+
+/*hack*/
+body{_background-attachment:fixed}
+a{*zoom:expression(this.style.zoom=1,this.hideFocus=true)}
+#list, #page, #detail{_width:800px}

@@ -1,0 +1,48 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>css去除链接虚线框</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>css去除链接虚线框</h1>
+    <div class=content><h2>代码实现</h2><textarea class="code-html">
+<!doctype html>
+<style>
+a:focus{outline:none}    
+</style>
+<a href="javascript:;">前端开发</a>
+<script>
+var isie = navigator.userAgent.toLowerCase().match(/msie ([\d.]+)/);
+if(isie &amp;&amp; parseInt(isie[1]) < 8){ //判断浏览器版本
+    var a = document.getElementsByTagName('a');
+    for(var i = 0; i < a.length; i++){
+        a[i].setAttribute('hideFocus', 1); //设置hideFocus为true
+    }
+}
+</script>
+</textarea><p class="info">这里的js代码必须在domready触发后执行，后期添加的链接虚线还会存在。</p><h2>实现原理</h2><ul><li>使用css伪类:foucs</li><li>ie6-7使用私有属性hidefocus</li></ul><h2>糟糕的实现</h2><ul><li>滥用css表达式</li><li>使用失去焦点的方式</li></ul><h3>示例代码</h3><textarea class="code-html">
+<!doctype html>
+<style>
+a{blr:expression(this.onFocus=this.blur());}/*支持IE*/
+</style>
+<a href="javascript:;">前端开发</a>
+<script>
+var a = document.getElementsByTagName('a');
+for(var i = 0; i < a.length; i++){
+    a[i].onfocus = function(){
+        this.blur();
+    };
+}
+</script>
+</textarea><p class="info">上述代码存在性能问题，css表达式将不断的被触发。 </p><h2>一个完美的方案</h2><textarea class="code-html">
+<!doctype html>
+<style>
+a:focus{outline:none;}
+a{*zoom:expression(this.style.zoom=1,this.hideFocus=true);}
+</style>
+<a href="javascript:;">前端开发</a>
+<button onclick="this.nextSibling.innerHTML+='<a href=javascript:;>新添加的链接</a><br>'">添加新链接</button><div></div>
+</textarea><p class="info">完美去除新添加链接的虚线框，并且通过设置this.style.zoom=1移除css表达式</p></div>
+</div>

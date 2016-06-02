@@ -1,0 +1,16 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>IE缓存之If-Modified-Since小聪明</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>IE缓存之If-Modified-Since小聪明</h1>
+    <div class=content><h2>前言</h2><p>在用IE浏览器测试页面的时候，发现所有静态资源无法触发304，而Firefox，chrome都正常，查看各种配置工具的缓存设置都正常，然后...</p><h2>发现问题</h2><p>我们知道，触发304必须是客户端的请求头If-Modified-Since和服务器响应的Last-Modified相等，而If-Modified-Since值等于初次请求服务器返回的Last-Modified，当服务器的Last-Modified没有变化，那么就返回304，否则更新资源和头信息If-Modified-Since。</p><p>详情请查看<a class="olink" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.19" target="_blank">HTTP协议文档</a></p><p>知道了触发304的条件，那么为什么偏偏IE下不能304响应呢，难道If-Modified-Since与Last-Modified的传递丢失了，还是？</p><p>直接进入服务器开发模式，在控制台输出请求头If-Modified-Since和响应头Last-Modified，然后呆住了。</p><p class="img"><img src="../imgs/83-1.png"/><em>非IE和IE下的头信息</em></p><p class="info">为什么一个是UTC结尾，一个是GMT结尾？</p><ol><li>服务器是在JScript环境下开发的，生成Last-Modified是调用的toGMTString() ，而这个方法在JScript下存在bug，返回的结果是UTC结尾而不是GMT</li><li>客户端IE浏览器又自作聪明的把UTC的响应头自动转化成GMT然后发回服务器</li></ol><textarea class="code-js">
+//尝试在JScript环境下执行，经测试IE8以下都存在问题
+alert((new Date).toGMTString())
+</textarea><p class="info">所以在非IE浏览器下都是UTC结尾的头，而在IE下则出现了UTC和GMT</p><h3>Firefox和IE8的请求响应头</h3><p class="img"><img src="../imgs/83-2.png"/><em>Firefox</em></p><p class="img"><img src="../imgs/83-3.png"/><em>IE8</em></p><p class="info">显然IE8自作聪明的对If-Modified-Since进行了转化</p><p>客户端环境和服务端环境的双重问题才导致了这个无法触发304的问题，不管是服务器，还是客户端，只要一处正常，都不会产生问题。</p><h2>修正</h2><p>服务端针对toGMTString()进行修正</p><textarea class="code-js" edit=off >
+(new Date).toGMTString().replace('UTC', 'GMT')
+</textarea><h3>正确结果</h3><p class="img"><img src="../imgs/83-4.png"/><em>修正之后服务器正确返回Last-Modified</em></p><p class="img"><img src="../imgs/83-5.png"/><em>修正之后IE正确触发304</em></p><h2>结语</h2><p>我们不要总是相信开发环境一定是正确的，不能自以为是的判断问题，否则就很容易绕很多弯路也不能解决问题。</p><p>解决问题要抓住关键点，从源头出发，认真细致的尝试和观察。</p></div>
+</div>

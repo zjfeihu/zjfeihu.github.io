@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+
+<script>
+
+if(!window.console || 1){
+    arr = [];
+    consolebox = 0;
+    console = {
+        info: function(msg){
+            if(consolebox){
+                consolebox.innerHTML+=msg.replace(/</g,'&lt;')+'<br>'
+            }else if(document.body){
+                consolebox = document.createElement('div')
+                document.body.insertBefore(consolebox, document.body.firstChild)
+                for(var i = 0; i < arr.length; i++){
+                    console.info(arr[i])
+                }
+                console.info(msg)
+            }else{
+                arr.push(msg)
+            }
+        }
+    }
+}
+
+function DOMReady(callback){
+    var callbacks = [];
+    callbacks.push(callback);
+    if(/complete|interactive/.test(document.readyState)){
+        return done();
+    }
+    
+    if(document.addEventListener){
+        document.addEventListener('DOMContentLoaded', function(){
+            done();
+        }, false);
+    }else{
+        var tr = setInterval(function(){
+            if(document.body){
+                clearInterval(tr);
+                done();
+            }
+        }, 1);
+    }
+    
+    function done(){
+        for(var i = 0; i < callbacks.length; i++){
+            
+            callbacks[i]();
+            
+        }
+        DOMReady = function(callback){
+            callback();
+        };
+    } 
+}
+
+</script>
+
+<script>
+
+DOMReady(function(){
+    //document.getElementById('a1').innerHTML = 'change by DOMReady before complete'
+})
+
+document.addEventListener && document.addEventListener('DOMContentLoaded', function(){
+    console.info('on DOMContentLoaded => '+document.readyState)
+}, false);
+
+document.onreadystatechange=function(){
+    console.info('onreadystatechange => '+document.readyState)
+}
+window.onload = function(){
+    console.info('onload  => '+document.ready.State)
+}
+console.info('before<body> => '+document.readyState)
+</script>
+</head>
+<body>
+<script>alert('document.readyState => '+document.readyState)</script>
+<div id="a1">text</div>
+<button onclick="DOMReady(function(){document.getElementById('a1').innerHTML='change by DOMReady after complete'})">call DOMReady after DOMContentLoaded</button>
+<iframe src="http://z.js/lab/all.zjs?mimetype=text/html&wait=5000"></iframe>
+<script>console.info('before</Body> =>'+document.readyState)</script>
+</body>
+</html>

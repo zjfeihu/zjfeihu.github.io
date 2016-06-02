@@ -1,0 +1,20 @@
+<div id=list>
+    <?$inc('nav.html')?>
+    <div class=list>
+        <h3>{$tpl.ptitle}</h3>
+        <ul>
+        <?
+            if($tpl.content.length == 0){
+                $push('<p style=text-align:center>‘›Œﬁ»’÷æ</p>');
+            }else{
+                $push(`
+                    <li>
+                        <a href="p/{id}.html" target="_blank">{tt}</a>
+                        <span>{ct}</span>
+                    </li>
+                `, $tpl.content);
+            }
+        ?>
+        </ul>
+    </div>
+</div>

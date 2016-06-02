@@ -1,0 +1,105 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>js跨域的各种解决方案及实现</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>js跨域的各种解决方案及实现</h1>
+    <div class=content><h2>iframe自适应高度</h2><h3>实现原理</h3><p>iframe内容页通过设置代理页的location.hash值传递高度，代理页调用顶层页设置iframe的高度。</p><h3>代码</h3><textarea class="code-html" edit=off >
+//顶层页
+<iframe id=iframe1 ></iframe>
+<script>
+function setheight(height){
+    document.getElementById('iframe1').style.height = height +'px';
+}
+</script>
+
+//内容页面
+<script>
+var proxy = document.createElement('iframe');
+var height = getheight();
+proxy.style.display = 'none';
+proxy.src = 'proxy.html#' + height;
+document.body.appendChild(proxy);
+setInterval(function(){ //使用定时器监控页面高度
+    if(height != getheight()){
+        height = getheight();
+        proxy.src = 'proxy.html#' + height;
+    }
+}, 100);
+function getheight(){ //ie下和其他浏览器获取页面高度的算法不一样
+    return /MSIE\s*[\d.]+/i.test(navigator.appVersion)
+        ? document.documentElement.scrollHeight + 4
+        : document.documentElement.offsetHeight;
+}
+</script>
+
+//代理页
+<script>
+var hash = location.hash;
+top.setheight(hash.substr(1)); //调用顶层页面接口
+setInterval(function(){
+    if(hash != location.hash){
+        hash = location.hash;
+        top.setheight(hash.substr(1));
+    }
+}, 100);
+</script>
+</textarea><p class="info">这里使用了2个定时器，主要是因为没有相关API可用，假如页面高度不是实时的，内容页面的定时器可以换成window.onload，而proxy中的定时器也有替代方案，就是每次设置proxy.src的时候，给他的url后面加上『?时间戳』，类似proxy.html?1381200606719#hashvalue</p><p>百度搜索<a class="glink" href="http://www.baidu.com/s?wd=iframe自适应高度" target="_blank">iframe自适应高度</a><br/></p><h2>跨子域ajax请求</h2><p>类似webqq中的一个应用例子，其桌面页是http://web2.qq.com/webqq.html，应用数据是通过http://cgi.web2.qq.com/...该接口通过ajax取得。</p><h3>实现原理</h3><ol><li>主页面web2.qq.com通过iframe载入代理页cgi.web2.qq.com/proxy.html</li><li>设置代理页的document.domain='web.qq.com'</li><li>通过代理页面向cgi接口发起ajax请求并返回数据</li><li>代理页将返回的数据传给主页面</li></ol><p class="info">核心原理是代理页面执行同域ajax请求和设置document.domain突破跨子域传值。</p><p>百度搜索<a class="glink" href="http://www.baidu.com/s?wd=跨子域ajax请求" target="_blank">跨子域ajax请求</a><br/></p><h2>传统跨域操作iframe</h2><h3>通用方案1</h3><ol><li>主页面a.cc/main.html传递数据给异域b.cc</li><li>通过iframe加载a.cc/proxy.setname.html并且将数据赋值给iframe.contentWindow.name</li><li>当a.cc/proxy.setname.html加载完毕时通过location定向到b.cc/proxy.onmessage.html</li><li>b.cc/proxy.onmessage.html读取window.name并且传递给b.cc域下的页面</li></ol><p class="info">原理是同域代理页设置window.name，然后重定向到异域代理页读取window.name并传递数据给异域主页面</p><h3>通用方案2</h3><textarea class="code-js" edit=off >
+//main页
+var isie = /msie/i.test(navigator.userAgent);
+var proxyIframe = document.createElement('iframe');
+document.documentElement.appendChild(proxyIframe);
+proxyIframe.style.display = 'none';
+if(!isie){
+    proxyIframe.onload = function(){
+        if(proxyIframe.src != 'about:blank'){
+            proxyIframe.src = 'about:blank';
+        }
+    };
+}
+function postmessage(data){
+    proxyIframe.contentWindow.name = data;
+    if(isie){
+        proxyIframe.contentWindow.location = 'http://a.cc/proxy.html';
+    }else{
+        proxyIframe.src = 'http://a.cc/proxy.html';
+    }
+}
+
+//代理页
+if(name){
+    top.frames['page'].onmessage(name);//通过调用目标页的接口传递数据
+    name = '';
+}
+</textarea><p class="info">代理页在about:blank域下设置window.name，然后重定向到异域代理页调用目标页接口完成数据传递</p><h3>ie专用跨域方案</h3><ol><li>ie下iframe中的页面可以设置top.name（不能读取top.name）</li><li>ie下主页面可以通过frames[framename].contentWindow.name设置异域页面的window.name（同样不能读取）</li></ol><p class="info">ie下利用跨域window.name可写不可读的特性实现数据传递</p><h3>postMessage发送和接收数据</h3><textarea class="code-js" edit=off >
+    target.postMessage(data, '*'); //向target目标窗口发送数据
+    window.addEventListener('message', function(e){ //通过window绑定监听事件
+        //通过e.data获取发送的数据
+    });
+</textarea><p class="info">这个方式唯一的缺点是ie6-7不支持</p><p>百度搜索<a class="glink" href="http://www.baidu.com/s?wd=postMessage" target="_blank">postMessage</a><br/></p><h2>JSONP无限制跨域数据交互</h2><h3>实现原理</h3><p>动态添加script标签的方式将数据传递给一个回调函数，提交的数据加在script.src请求地址后面</p><h3>代码示例</h3><textarea class="code-js" edit=off >
+function jsonp(apipath){
+    var script = document.createElement('script');
+    script.src = apipath;
+    document.body.appendChild(script);
+    if(script.readyState){
+        script.onreadystatechange = function(){
+            if(/loaded|complete/.test(script.readyState)){
+                clearscript();
+            }
+        };
+    }else{
+        script.onload = clearscript;
+    }
+    function clearscript(){
+        document.body.removeChild(script);
+    }
+}
+function callback(data){
+    //使用回调函数的参数传递数据
+}
+//返回的js代码应该是callback(data)
+</textarea><p>百度搜索<a class="glink" href="http://www.baidu.com/s?wd=JSONP" target="_blank">JSONP</a><br/></p><h2>AJXA新特性跨域</h2><p class="info">在一些新的浏览器当中ajax原生支持跨域，主要的知识点在于请求头的配置问题，其他的和原来的差不多。</p><p>扩展阅读<a class="mlink" href="http://newhtml.net/using-cors/" target="_blank">利用CORS实现跨域请求</a><br/>扩展阅读<a class="mlink" href="https://developer.mozilla.org/en-US/docs/HTTP/Access_control_CORS" target="_blank">mozilla CORS</a><br/>百度搜索<a class="glink" href="http://www.baidu.com/s?wd=ajax跨域 html5" target="_blank">ajax跨域 html5</a><br/></p><h2>服务器代理跨域</h2><p>通过服务器作为代理来获取其他域的数据到本地，这样就间接实现了跨域。</p><h2>通过flash代理跨域</h2><p>...</p><h2>结语</h2><p>从上面的实现上来看，其实跨域的方案还是蛮多的，而各种方案各有优势和特点，同时可以互相配合使用。</p></div>
+</div>

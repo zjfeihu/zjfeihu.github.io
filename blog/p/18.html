@@ -1,0 +1,114 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>js之ajax</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>js之ajax</h1>
+    <div class=content><h2>从API开始</h2><h3>创建AJAX对象</h3><textarea class="code-js" edit=off >
+new XMLHttpRequest(); //标准的创建方式
+new ActiveXObject("Microsoft.XMLHTTP"); //IE6使用该方式创建
+</textarea><h3>AJAX对象的方法</h3><ul><li>open(method, url, async) <em>打开一个AJAX请求</em></li><li>send(string) <em>发送AJAX请求和数据</em></li><li>setRequestHeader(headerKey,value) <em>设置AJAX请求头</em></li><li>getResponseHeader(headerKey) <em>获取AJAX响应头</em></li><li>getAllResponseHeaders() <em>获取响应的所有http头</em></li><li>abort() <em>放弃当前请求</em></li></ul><p class="info">async=true时为异步，abort()方法ie中XMLHTTP必须要大于3.0才能使用</p><p>扩展阅读<a class="mlink" href="http://msdn.microsoft.com/en-us/library/ie/ms535920(v=vs.85).aspx" target="_blank">IE的abort</a><br/></p><h3>AJAX对象的属性</h3><ul><li>responseText <em>字符串形式的响应数据</em></li><li>responseXML <em>XML形式的响应数据（返回的是DOM对象，可以使用标准DOM接口操作数据）</em></li><li>readyState <em>AJAX的状态</em></li><li>status <em>响应状态码</em></li></ul><pre class="xcode">
+readyState取值说明：
+    0: 请求未初始化
+    1: 服务器连接已建立
+    2: 请求已接收
+    3: 请求处理中
+    4: 请求已完成，且响应已就绪
+status取值说明：
+    0本地请求，200正常响应数据，404页面不存在
+</pre><h3>AJAX对象的事件</h3><ul>undefined</ul><h2>封装的代码实现</h2><textarea class="code-js" edit=off >
+function ajax(options){
+    var XHR = window.XMLHttpRequest || function(){ //ie6下使用遍历来获得最高版本的xmlhttp
+        var xhrProgid = [0, 'Microsoft.XMLHTTP', 'Msxml2.XMLHTTP', 'Msxml2.XMLHTTP.6.0'],
+            i = 4,
+            xhr;
+        while(--i){
+            try{
+                xhr = new ActiveXObject(xhrProgid[i]);
+                return function(){return xhr;};
+            }catch(e){}
+        }
+    }();
+    (ajax = function(options){ //惰性加载ajax函数
+        var xhr = new XHR(),
+            callback = options.callback;
+        xhr.open(options.type || 'get', options.url, options.async || true);
+        for (var key in options.headers) { //设置发送的头
+            xhr.setRequestHeader(key, options.headers[key]);
+        }
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4){
+                if(xhr.status == 200){
+                    callback &amp;&amp; callback(options.responseType ? xhr[options.responseType] : xhr);
+                }else{
+                    callback &amp;&amp; callback(null);
+                }
+            }
+        };
+        xhr.send(options.data || null);
+    })(options);
+
+}
+function post(url, callback, data){ //post经典版封装
+    ajax({
+        url: url,
+        type: 'post',
+        data: data,
+        callback: callback,
+        responseType: 'responseText',
+        headers: { //post必须给http头设置Content-Type
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    });
+}
+function get(url, callback, data){ //get经典版封装
+    ajax({
+        url: url + (data? '?'+data : ''),
+        type: 'get',
+        callback: callback,
+        responseType: 'responseText'
+    });
+}
+</textarea>扩展阅读<a class="mlink" href="http://msdn.microsoft.com/en-us/library/ms757837(v=vs.85).aspx" target="_blank">MSXML.XMLHTTP</a><br/><h2>封装完善</h2><ul><li>超时错误处理</li><li>数据自动转化处理</li><li>其他...</li></ul><p class="info">根据不同的需求，可能会存在很多不同的封装和逻辑实现。</p><h2>使用示例</h2><h3>ajax数据读取和脚本注入</h3><textarea class="code-html">
+<!doctype html>
+<script src="../style/z.js"></script>
+<ol id="data">
+    <li>数据...</li>
+</ol>
+<button id="getJson1">GET方式获取数据</button>
+<button id="getJson2">POST方式获取数据</button>
+<button id="evalScript">脚本注入</button>
+<script>
+var J = Z;
+J('#getJson1').click(function (){//GET数据获取，存在缓存
+    J.get('../demo/ajaxtest/json.js', function(resp){
+        if(resp){
+            J('#data').append('<li>'+ J.parseJson(resp).data +'</li>');
+        }
+    });
+});
+J('#getJson2').click(function (){
+    J.post('../demo/ajaxtest/json.js', function(resp){
+        if(resp){
+            J('#data').append('<li>'+ J.parseJson(resp).data +'</li>');
+        }
+    });
+});
+J('#evalScript').click(function(){
+    J.get('../demo/ajaxtest/evalscript.js', function(resp){
+        if(resp){
+            var 
+            head = document.getElementsByTagName('head')[0],
+            script = document.createElement('script');
+            script.text = resp; //这里不能用innerHTML，因为ie不支持
+            head.appendChild(script);
+            //head.removeChild(script);
+        }
+    });
+});
+</script>
+</textarea><p>ajax主要应用场景无刷的情况下实现与服务器数据交互，当然ajax还能做很多事情。</p><h2>写在最后</h2><ul><li>ajax缓存的利用和存在的问题</li><li>ajax存在跨越限制（替代方案JSONP，页面代理，新版本支持跨域方案）</li><li>注意ajax的使用场景（不要滥用ajax，否则会带来性能等问题）</li><li>未来ajax对二进制数据的传输支持</li></ul><p class="info">发现在ie6-8中，假如使用AJAX的get后在换post来请求同一url的话，请求将不会发起而直接从缓存中读取。</p><p>针对上面提到的一些问题，这里就不展开讨论了，有兴趣的朋友可以去网上查一查。</p><p>百度搜索<a class="glink" href="http://www.baidu.com/s?wd=ajax缓存" target="_blank">ajax缓存</a><br/>百度搜索<a class="glink" href="http://www.baidu.com/s?wd=ajax性能" target="_blank">ajax性能</a><br/>百度搜索<a class="glink" href="http://www.baidu.com/s?wd=ajax跨域" target="_blank">ajax跨域</a><br/>百度搜索<a class="glink" href="http://www.baidu.com/s?wd=ajax二进制" target="_blank">ajax二进制</a><br/></p></div>
+</div>

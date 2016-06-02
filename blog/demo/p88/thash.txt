@@ -1,0 +1,17 @@
+ROOTPATH                                                #起始根目录
+    E:\gitcafe\sschen86\
+DIRINDEX                                                #首页名称
+    "index.html default.html index.jhtml index.php"
+HOSTS
+    domain      www.1kjs.com                            #域名
+    path        D:\all\wwwroot\www.1kjs.com\war         #根目录，默认等于起始根目录+域名 
+    codepage    65001                                   #编码，默认936即gbk
+    script      html                                    #需要模板引擎动态生成的文件格式
+HOSTS
+    domain      ebao.com
+    codepage    65001
+    script      html js css php
+HOSTS
+    domain      blog.cc
+    path        blog
+    script      jhtml

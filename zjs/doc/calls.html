@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<meta charset=gbk>
+<title>流程控制组件</title>
+<script src=../dist/z.js></script>
+<script src=../dist/hl.js></script>
+<div style="font-family: 微软雅黑; margin: 0 16px">
+    <h1>流程控制组件</h1>
+    
+    <h3>功能</h3>
+    <p>管理异步代码的执行</p>
+    
+    <h3>特点</h3>
+    <p>语法简洁，控制灵活，功能强大。</p>
+    
+    <h3>使用方法</h3>
+    <p>1. 在页面中引入calls.js <a href="../dist/calls.js" target="_blank">点击下载</a></p>
+    <p>2. 使用以下API</p>
+    <textarea class=code-js edit=off>
+    calls.debug = 1; //开启调试瀑布图，也可以通过url添加参数debug=1开启
+    calls
+    .wait( //异步并行
+        function(resolve, reject, recive, go){
+            setTimeout(function(){
+                recive();//recive表示异步流程开始响应
+                sleep(1000);//假设代码执行了1000ms
+                resolve();//resolve表示异步流程完成响应
+            }, 1000);
+        },
+        function(resolve, reject, recive, go){
+            resolve();
+        }
+    )
+    .then(//同步
+        function(reject, go){
+        
+        }
+    )
+    .wait(//异步
+        function(resolve, reject, recive, go){
+            go('label'); //直接跳到lable处
+        }
+    )
+    .wait(function(){
+    
+    })
+    .then(function label(resolve, reject){ //上方go跳到此处
+        reject('error'); //直接跳往error流程
+    })
+    .then(function(){
+    
+    })
+    .error(function(err){ //处理reject传来的值
+        
+    });
+
+    </textarea>
+    
+    <h3>API</h3>
+    <ul>
+        <li>wait(callback1, callback2, ...) 添加异步并行流程</li>
+        <li>then(callback1, callback2, ...) 添加同步串行流程</li>
+        <li>error(callback) 处理reject传递的错误信息</li>
+    </ul>
+    
+    <p>callback说明</p>
+    <ul>
+        <li>异步回调callback(resolve, reject, recive, go)</li>
+        <li>同步回调callback(reject, go)</li>
+        <li>当callback是具名函数时，可以使用go('函数名')跳转</li>
+        <li>参数resolve 异步流程完成时调用</li>
+        <li>参数reject 直接跳到error流程处理错误</li>
+        <li>参数recive 异步流程从等待进入响应调用，主要用于调试瀑布图模式观察代码性能</li>
+        <li>参数go 流程跳转，直接跳过中间流程到目标流程</li>
+    </ul>
+    
+    <h3>联系我</h3>
+    <p>zjfeihu#126.com</p>
+    
+    <h3>测试用例</h3>
+    
+    <textarea class=code-html>
+    <!doctype html>
+    <script src=/dist/calls.js></script>
+    <script src=/dist/calls.timeline.js></script>
+    <script>
+    fn();
+    function fn(){
+        calls.debug = 1;
+        calls
+        .then(
+            function(){ ///then1
+                sleep(200);
+            },
+            function(){ ///then2
+                sleep(100);
+            }
+        )
+        .wait(
+            function(resolve, reject, recive){ ///wait1
+                setTimeout(function(){
+                    recive();
+                    sleep(222);
+                    resolve();
+                }, 200);
+            },
+            function(resolve, reject, recive){ ///wait2
+                setTimeout(function(){
+                    recive();
+                    sleep(222);
+                    resolve();
+                }, 100);
+            },
+            function(resolve, reject, recive){ ///wait3
+                setTimeout(function(){
+                    recive();
+                    sleep(222);
+                    resolve();
+                }, 100);
+            }
+        )
+        .wait(function(resolve, reject, recive){ ///wait4
+            sleep(100);
+            setTimeout(function(){
+                recive();
+                sleep(50);
+                resolve();
+            }, 100);
+        })
+        .wait(function wait5(resolve, reject, recive, go){ ///wait5
+            setTimeout(function(){
+                recive();
+                sleep(100);
+                if(Math.random() > 0.6){
+                    go('then3');
+                }else{
+                    resolve();
+                }
+            }, 100);
+        })
+        .wait(function(resolve, reject, recive, go){ ///wait6
+            setTimeout(function(){
+                go('wait5')
+            }, 100);
+            
+        })
+        .then(function then3(reject){ ///then3
+            reject('end');
+        })
+        .error(function(err){
+            
+        });
+    }    
+        
+    function sleep(ms){
+        var t = +new Date;
+        while(new Date - t < ms){}
+    }  
+    </script>
+    </textarea>
+    
+    <h3>更新说明</h3>
+    <p>2012.8 正式发布流程控制组件</p>
+    <p>2016.2 重构代码，修正部分bug</p>
+</div>

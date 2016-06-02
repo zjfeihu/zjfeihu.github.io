@@ -1,0 +1,21 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>css实现全站变灰白色</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>css实现全站变灰白色</h1>
+    <div class=content><h2>代码</h2><textarea class="code-css">
+body{
+    -webkit-filter: grayscale(100%); /* webkit */
+    -moz-filter: grayscale(100%); /*firefox*/
+    -ms-filter: grayscale(100%); /*ie9*/
+    -o-filter: grayscale(100%); /*opera*/
+    filter: grayscale(100%);
+    filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1); 
+    filter:gray; /*ie9- */
+}
+</textarea></div>
+</div>

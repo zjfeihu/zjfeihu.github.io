@@ -1,0 +1,33 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>浏览器中各种容器大小属性</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>浏览器中各种容器大小属性</h1>
+    <div class=content><h2>前言</h2><p>在很多场景中需要获取浏览器中容器的尺寸，但是涉及尺寸的属性很多，往往会让人很迷糊</p><h2>理解offsetHeight,clientHeight,scrollHeight</h2><p><a class="olink" href="../demo/p94/" target="_blank">各种height的换算演示</a></p><h3>总结得出的换算公式</h3><pre class="xcode">
+offsetHeight = height + padding + border
+clientHeight = height + padding - bottomScroll（底部滚动条所占空间）
+scrollHeight = Math.max( height + padding, inner.offsetHeight )
+</pre><p class="info">在使用outer.scrollHeight的场景中，规避使用inner.margin和outer.padding</p><h2>页面可视高度和实际高度</h2><p><a class="olink" href="../demo/p94/page.html" target="_blank">页面高度演示</a></p><h3>总结得出换算公式</h3><textarea class="code-js" edit=off >
+pageHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight) //页面实际高度
+viewportHeight = window.innerHeight || document.documentElement.clientHeight //可视区域高度
+</textarea><p class="info">ie下不支持window.innerHeight，webkit系下使用body.scrollHeight获取实际高度</p><h2>获取scrollSize</h2><textarea class="code-html">
+<body>
+<script>
+alert(getScrollSize());
+function getScrollSize(){
+    var div = document.createElement('div');
+    div.cssText = 'position:absolute; top:-99px; width:66px; height:66px';
+    document.body.appendChild(div);
+    var width = div.clientWidth;
+    div.style.overflow = 'scroll';
+    width -= div.clientWidth;
+    document.body.removeChild(div);
+    return width;
+}
+</script>
+</textarea></div>
+</div>

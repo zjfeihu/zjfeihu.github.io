@@ -1,0 +1,13 @@
+<script src="co.js"></script>
+<script>
+crossX.ready(function(data){
+	switch(data.cmd){
+		case 'changeColor':
+			this.document.body.style.background = data.color;
+			break;
+		case 'addLi':
+			this.document.getElementById('oltest').innerHTML += '<li>'+ data.content +'</li>';
+			break;
+	}
+});
+</script>

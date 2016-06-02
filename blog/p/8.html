@@ -1,0 +1,41 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>js中常见的易错场景</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>js中常见的易错场景</h1>
+    <div class=content><h2>一些怪异的解释</h2><ol><li>对象属性包含关键字</li><li>对象结尾出现逗号</li><li>replace的问题</li></ol><h3>对象属性包含关键字</h3><p>执行以下代码，IE下报错了。</p><textarea class="code-js">
+var obj = { default: 'abc' };
+alert(obj.default);
+</textarea><p class="info">在IE下会出现错误，具体原因？解决方法是关键字属性使用引号括起来。</p><h3>对象结尾出现逗号</h3><textarea class="code-js">
+var obj = { 'default': 'abc', };
+alert(obj['default']);
+</textarea><p class="info">IE下报错了，具体原因？解决方法是去除末尾的逗号。</p><h3>replace的问题</h3><textarea class="code-js">
+var str = '价格:$price'; 
+alert([
+    str.replace(/\$price/, '$_99'), //出现异常
+    str.replace(/\$price/, '$+99'), //出现异常
+    str.replace(/\$price/, '$99'), //正常
+    str.replace('$price', '$+99') //正常
+].join('\n'));
+</textarea><p class="info">IE下返回『价格:价格:$price99』，而不是『价格:$_99』。这个问题产生的原因是IE会把『$_』匹配成『价格:$price』，『$+』匹配成『$price』。</p><p class="info">在使用replace替换字符串的过程中，请注意替换的内容中是否包含匹配变量『$1-9』,使用$$方式转义$字符串。</p><h2>一些易错的场景</h2><ol><li>获取月份</li><li>局部变量泄漏</li><li>浮点运算精度问题</li><li>typeof误用</li><li>parseInt非10进制转换</li></ol><h3>获取月份</h3><textarea class="code-js">
+var date = new Date();
+alert(date.getMonth());
+</textarea><p class="info">获取当前月份必须+1，因为获取到的月份是从0开始的。</p><h3>局部变量泄漏</h3><textarea class="code-js">
+function fn(){
+    var a = b = 12;
+}
+fn();
+alert(typeof a +'\n'+ typeof b); 
+</textarea><p class="info">有时一不小心就写出上面var a=b=1的代码，殊不知b已经成全局变量了。</p><h3>浮点运算精度问题</h3><textarea class="code-js">
+alert(8.20 + 5.10); //13.299999999999999
+</textarea><p class="info">JS浮点运算会出现精度问题，所以很容易造成一些难以排查的逻辑问题。</p><h3>typeof误用</h3><textarea class="code-js">
+alert(typeof NaN); //number
+</textarea><p class="info">其中还包括Infinity，-Infinity，null等，容易造成疏忽。</p><h3>parseInt非10进制转换</h3><textarea class="code-js">
+alert(parseInt('077')); //ie8：63，其他：77
+alert(parseInt('078')); //ie8：7，其他：78
+</textarea><p class="info">在ie8浏览器中测试，出现了非预期的结果，ie8针对0开头的字符串使用8进制进行转换，而非10进制。</p></div>
+</div>

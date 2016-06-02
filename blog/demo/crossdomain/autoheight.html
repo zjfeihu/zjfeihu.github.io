@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>自适应高度</title>
+<style>
+html{overflow:hidden;}
+body{marin:0;padding:0;background:#ccc;}
+#proxy{width:0;height:0;overflow:hidden;display:none;}
+#header{background:#000;color:#eee;padding:8px;}
+</style>
+<script src="http://s1.1kjs.com/1k.js"></script>
+</head>
+<body>
+<div id="header">Iframe页面地址：http://cc1kjs.appsp0t.com/demo/crossdomain/autoheight.html</div>
+<button id="add">增加高度</button>
+<button id="rmv">减少高度</button>
+<ol id="tbox"></ol>
+
+<script>
+!function(win, doc){
+	var body = doc.body,
+		proxy,
+		proxySrc,
+		docHeight,
+		offsetHeight;
+	init();
+	function init(){
+		if(proxy)return;
+		docHeight = Math.max(doc.documentElement.scrollHeight, body.scrollHeight);
+		var htmlHeight = doc.getElementsByTagName('html')[0].offsetHeight;
+		docHeight = htmlHeight || docHeight;
+		proxy = doc.createElement('iframe');
+		proxy.id = 'proxy';
+		proxySrc = 'http://blog.1kjs.com/demo/crossdomain/proxy.html#cmd=autoheight&height=';
+		offsetHeight = docHeight - body.offsetHeight;
+		proxy.src = proxySrc + docHeight;
+		body.appendChild(proxy);
+		setInterval(listenerResize, 16);
+	}
+	function listenerResize(){
+		var _docHeight = body.offsetHeight + offsetHeight;
+		if(_docHeight != docHeight){
+			docHeight = _docHeight;
+			proxy.src = proxySrc + docHeight;
+		}
+	}
+	var tbox = $('tbox');
+	$('add').onclick = function(){
+		var li = doc.createElement('li');
+		li.innerHTML = '###';
+		tbox.appendChild(li);
+	};
+	$('rmv').onclick = function(){
+		var lis = tbox.children;
+		if(lis.length){
+			tbox.removeChild(lis[lis.length - 1]);
+		}
+	};
+	function $(id){
+		return doc.getElementById(id);
+	}
+}(window, document);
+
+
+
+</script>
+</body>
+</html>

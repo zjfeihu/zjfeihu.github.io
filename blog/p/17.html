@@ -1,0 +1,88 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>css实现类消息提示层</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>css实现类消息提示层</h1>
+    <div class=content><h2>不带边框</h2><textarea class="code-html">
+<!doctype html>
+<style>
+body{background:#ccc;}
+.msgbox{
+    position:absolute;
+    left:100px;
+    top:100px;
+    padding:8px 16px;
+    border-radius:6px;
+    background:#333;
+    color:#eee;
+    font-size:12px;
+}
+.msgbox i,
+.msgbox:after{
+    content:"";
+    position:absolute;
+    bottom:-20px;
+    left:50%;
+    margin-left:-10px;
+    width:0px;
+    height:0;
+    overflow:hidden;
+    border:10px solid transparent;
+    _border-color:white;
+    _filter:chroma(color=white);
+    border-top-color:#333;
+}
+.msgbox{*zoom:expression(function(t){t.style.zoom=1;t.appendChild(document.createElement('i'))}(this));}
+</style>
+<div class="msgbox">消息提示框</div>
+</textarea><h3>原理：</h3><ol><li>ie伪类affter支持</li><li>透明边框模拟小三角</li></ol><h2>带边框</h2><textarea class="code-html">
+<!doctype html>
+<style>
+body{background:#ccc;}
+.msgbox{
+    position:absolute;
+    left:100px;
+    top:100px;
+    padding:8px 16px;
+    border-radius:6px;
+    background:#333;
+    color:#eee;
+    font-size:12px;
+    box-shadow:0 0 6px #333;
+    border:2px solid #fff;
+}
+.msgbox i{
+    content:"";
+    position:absolute;
+    bottom:-8px;
+    left:50%;
+    margin-left:-10px;
+    width:10px;
+    height:10px;
+    overflow:hidden;
+    border:2px solid #fff;
+    background:#333;
+    border-width:0 2px 2px 0;
+    -webkit-transform:rotate(45deg);
+    transform:rotate(45deg);
+    bottom:-6px\9;
+    *bottom:-10px;
+}
+
+.msgbox i{
+    filter: progid:DXImageTransform.Microsoft.Matrix(
+        M11=0.7071067811865475,
+        M12=-0.7071067811865477,
+        M21=0.7071067811865477,
+        M22=0.7071067811865475,
+        SizingMethod='auto expand'
+    );
+}
+</style>
+<div class="msgbox">弹出消息<i></i></div>
+</textarea><h3>原理</h3><ol><li>背景模拟实现正方形</li><li>使用旋转滤镜实现正方形转化成三角</li></ol></div>
+</div>

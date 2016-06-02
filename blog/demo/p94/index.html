@@ -1,0 +1,88 @@
+<!doctype html>
+
+<style>
+.center{margin:30px auto; width: 600px; text-align:center}
+#outerBox{margin:20px auto;width:100px; border:0 solid red; overflow:scroll}
+#innerBox{background:#eee; border:0px solid #000;}
+
+#innerBox.border{border-width:10px}
+#innerBox.padding{padding:10px}
+#innerBox.margin{margin:10px}
+#innerBox.scroll{overflow-x:scroll;}
+
+#outerBox.border{border-width:10px}
+#outerBox.padding{padding:10px}
+</style>
+
+<div class=center>
+    <div id=btns>
+        <button btn=inner.border>inner.border</button>
+        <button btn=inner.padding>inner.padding</button>
+        <button btn=inner.margin>inner.margin</button>
+        <button btn=inner.scroll>inner.scroll</button>
+        <br>
+        <button btn=outer.border>outer.border</button>
+        <button btn=outer.padding>outer.padding</button>
+    </div>
+    <div id=outerBox style="height:100px">
+        <div id=innerBox style="height:200px"> </div>
+    </div>
+    
+    <ul style="text-align:left">
+        <li>offsetHeight = height + padding + border</li>
+        <li>clientHeight = height + padding - bottomScroll（底部滚动条所占空间）</li>
+       
+        <li>
+scrollHeight = Math.max( 
+    height + padding, 
+    inner.offsetHeight + inner.margin + outer.padding - outer.paddingTop
+) 
+</li>
+    <li>计算scrollHeight公式以firefox为基准，具体其他量的影响参照下方2条说明</li>
+        <li>IE,firefox下 outer.scrollHeight不受outer.paddingBottom影响</li>
+        <li>IE下 outer.scrollHeight不受inner.marginBottom影响</li>
+        <li>为保持各浏览器一致，应该规避inner.margin和outer.padding，可以设置透明边框实现留白的效果</li>
+    </ul>
+    
+</div>
+
+
+
+
+<script src="../../style/z.js"></script>
+<script>
+var log = Z.log;
+var outerBox = Z('#outerBox');
+var innerBox = Z('#innerBox');
+showLog();
+Z('#btns').click(function(e){
+    var target = Z(e.target);
+    switch(target.attr('btn')){
+        case 'inner.border': innerBox.cls('~border');break;
+        case 'inner.padding': innerBox.cls('~padding');break;
+        case 'inner.margin': innerBox.cls('~margin');break;
+        case 'inner.scroll': innerBox.cls('~scroll');break;
+    
+        case 'outer.border': outerBox.cls('~border');break;
+        case 'outer.padding': outerBox.cls('~padding');break;
+    }
+    showLog();
+});
+
+
+function showLog(){
+    log.clear();
+    log('outerBox.offsetHeight', outerBox.e.offsetHeight)
+    log('outerBox.style.height', outerBox.e.style.height)
+    log('outerBox.clientHeight', outerBox.e.clientHeight)
+    log('outerBox.scrollHeight', outerBox.e.scrollHeight)
+    
+    log('   ')
+    
+    log('innerBox.offsetHeight', innerBox.e.offsetHeight)
+    log('innerBox.style.height', innerBox.e.style.height)
+    log('innerBox.clientHeight', innerBox.e.clientHeight)
+    log('innerBox.scrollHeight', innerBox.e.scrollHeight)
+ 
+}
+</script>

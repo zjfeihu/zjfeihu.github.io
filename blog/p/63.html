@@ -1,0 +1,77 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>web Worker</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>web Worker</h1>
+    <div class=content><h2>前言</h2><p>js单线程存在阻塞导致页面假死或者卡的问题，新的API web Worker常常可以解决这些问题。</p><h2>API</h2><ul><li>worker = new Worker('x.js') 创建</li><li>worker.postMessage('message') 发送信息</li><li>worker.onmessage = function(e){ e.data } 接收信息</li><li>worker.terminate() 终止worker</li></ul><h2>演示</h2><h3>计算斐波那契数列</h3><p class="info">斐波纳契数列定义：F（0）=0，F（1）=1，F（n）=F(n-1)+F(n-2)（n≥2，n∈N*）</p><textarea class="code-html">
+<!doctype html>
+<img src="../imgs/loading.gif" />
+<button onclick="s1()">阻塞模式</button>
+<button onclick="s2()">非阻塞模式</button>
+<div id="text"></div>
+<script>
+n = 40;
+function s1(){
+    $id('text').innerHTML = '正在计算...';
+    setTimeout(function(){
+        $id('text').innerHTML = fi(n);
+    }, 100)
+}
+
+function s2(){
+    $id('text').innerHTML = '正在计算...';
+    var worker = new Worker('../demo/fibonacci.js')
+    worker.postMessage(n);
+    worker.onmessage = function(e){
+        $id('text').innerHTML = e.data;
+    }
+}
+
+function $id(i){return document.getElementById(i)}
+
+function fi(n) {
+    return n < 2 ? n : fi(n - 1) + fi(n - 2);
+}
+
+</script>
+</textarea><h3>fibonacci.js</h3><textarea class="code-js" edit=off >
+function fi(n) {
+    return n < 2 ? n : fi(n - 1) + fi(n - 2);
+}
+onmessage = function(e){ //接收信息
+    postMessage(fi(+e.data)); //发送响应
+};
+</textarea><h3>演示2</h3><textarea class="code-js">
+arr = [];
+i = 0;
+worker = new Worker('../demo/webworker.test/f1.js')
+worker.postMessage({index:++i});
+worker.postMessage({index:++i});
+worker.postMessage({index:++i});
+worker.onmessage = function(e){
+    arr.push(e.data);
+}
+
+worker2 = new Worker('../demo/webworker.test/f1.js') //重新初始化f1.js的执行环境
+worker2.postMessage({index:++i});
+worker2.onmessage = function(e){
+    arr.push(e.data);
+}
+
+setTimeout(function(){
+    alert(JSON.stringify(arr, null, 4));
+},500)
+</textarea><h3>webworker.test/f1.js</h3><textarea class="code-js" edit=off >
+i = 0; //这个变量会保持
+onmessage = function(e){
+    postMessage({
+        input: e.data.index,
+        output: ++i
+    });
+};
+</textarea><h2>注意点</h2><ol><li>低版本的ie不支持</li><li>不能跨域调用js，即new Worker中的js文件必须同域 </li><li>worker内的代码不能使用DOM API</li><li>异步编程带来的问题</li><li>加载的js文件也会存在缓存</li></ol></div>
+</div>

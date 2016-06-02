@@ -1,0 +1,93 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>动态原型创建类的陷阱</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>动态原型创建类的陷阱</h1>
+    <div class=content><h2>错误的类声明</h2><textarea class="code-js">
+function Car(){
+    if(!Car._hasprototype){
+        Car._hasprototype = true;
+        Car.prototype = {
+            method: function(){ }
+        };
+    }
+}
+
+var car1 = new Car();
+var car2 = new Car();
+alert(typeof car1.method); //undefined
+alert(typeof car2.method); //function
+</textarea><h2>正确的类声明1</h2><textarea class="code-js">
+function Car(){
+    if(!Car._hasprototype){
+        Car._hasprototype = true;
+        Car.prototype.method = function(){};
+    }
+}
+
+var car1 = new Car();
+var car2 = new Car();
+alert(typeof car1.method); //function
+alert(typeof car2.method); //function
+</textarea><h2>正确的类声明2</h2><textarea class="code-js">
+function Car(){
+
+}
+Car.prototype = {
+    method: function(){}
+};
+
+var car1 = new Car();
+var car2 = new Car();
+alert(typeof car1.method); //function
+alert(typeof car2.method); //function
+</textarea><h2>探索</h2><p>为什么会写出方法1？</p><p>为什么方法1不能用？</p><p>在使用原型方式创建类的过程中，因为原型方法或者属性很多，经常会这么写</p><textarea class="code-js" edit=off >
+Class.prototype = {
+    method1: .,
+    method2: .,
+    ...
+};
+</textarea><p>我们在进一步探索下代码</p><textarea class="code-js">
+function Car(){
+    //创建this，指定this的数据源，即Car.prototype的引用
+
+    if(!Car._hasprototype){
+        Car._hasprototype = true;
+        Car.prototype = { //重新设置Car.prototype，创建新的引用B
+            method: function(){}
+        };
+
+    }
+    console.info(this);
+}
+
+Car.prototype.attr = 'test';
+
+var car1 = new Car(); //第一次Car.prototype 指向 A，this从A中读取
+var car2 = new Car(); //第二次Car.prototype 指向 B，this从B中读取
+
+//因为Car.prototype是引用类型的，所以直接给prototype赋值就会改变引用地址
+//而通过Car.prototype.method = function(){}设置的话，就会直接改变A，从而达到类能正确的获取原型方法
+</textarea><p class="info">通过上面代码可以得出，new 创建对象，首先会初始化this（明确this指向那个prototype），然后再执行构造函数中的语句，其次，prototype是采用晚期绑定的，也就是说后期对prototype的更改都会体现在this中，因为prototype是引用类型，对象在创建的时候就明确了this指向对应的prototype</p><textarea class="code-js">
+function Car(){
+
+}
+var car1 = new Car();
+Car.prototype.a = 1; //直接改变prototype中的值则直接体现在当前的this中
+alert(car1.a); //1
+Car.prototype = {a:2}; //改变prototype引用，无法体现在当前的this中
+alert(car1.a); //1 ,因为car1的this在初始化的时候就明确指向了第一次的{a:1}，固改变引用是无法产生效果的
+
+var car2 = new Car(); //此处创建的对象this已经重新指向第二次的{a:2}，固值已经改变
+alert(car2.a); //2
+</textarea><h2>类似场景</h2><textarea class="code-js">
+b = a = {i:1};
+a.x = a = {i:2};
+alert(typeof a.x); //undefined
+alert(typeof b.x); //object
+</textarea><p class="info">上述对a.x进行赋值，但是后来a的引用发生了改变，所以后面读取a.x会是undefined</p></div>
+</div>

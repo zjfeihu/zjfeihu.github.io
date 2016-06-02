@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="gbk"/>
+<title>THASH格式化</title>
+</head>
+<body>
+<textarea id="inputTHASH" style="width: 80%; height: 300px; display: block;">
+page
+    {id:index,text:首页,i:0}
+    {id:about,text:关于,i:10}
+list
+    {id:1,text:工具,i:1}
+list
+    id 10
+test
+test
+    id 12
+
+</textarea>
+<button onclick="makeJson(1)">输出标准JSON</button>
+<button onclick="makeJson(0)">输出调试JSON</button>
+<pre id="outputJSON" style="border: 1px solid #ccc; background: #eee; padding: 6px">
+    
+</pre>
+<script>
+function makeJson(jsonModel){
+    id('outputJSON').innerHTML = serialize(parseTHash(id('inputTHASH').value), jsonModel)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;');
+}
+
+function parseTHash(input){
+    var output = {};
+    var lines = input.replace(/\r/g, '').replace(/(\s+|^);;;.*/mg, ' ').split(/\n/);
+    var lineIndex = 0;
+    var item;
+    var isarr = {};
+    var KEY, VALUE, SUBVALUE;
+    
+    while(item = getItem()){
+        var value;
+        if(item.key){
+            setkey(item.key);
+        }
+        if(item.value){
+            pushvalue(item.value);
+        }
+        if(item.subvalue){
+            pushsubvalue(item.subvalue);
+        }
+    }
+
+    return output;
+    
+    function getItem(){
+        if(lineIndex == lines.length){
+            setkey();//结束了，设置存在的subvalue
+            return;
+        }
+        var lineText = lines[lineIndex++];
+        if(/^\s+$/.test(lineText)){
+            return {};
+        }
+        if(/^\S+/.test(lineText)){
+            var kv = lineText.match(/(\S+)\s*(\S*)/);
+            if(kv[2]){
+                return {key:kv[1], value:kv[2]};
+            }else{
+                return {key:kv[1]};
+            }
+        }else{
+            lineText =  lineText.replace(/^\s+|\s+$/g, '');
+            if(
+                /^"/.test(lineText) && !/"$/.test(lineText) || 
+                /^\[/.test(lineText) && !/\]$/.test(lineText) || 
+                /^\{/.test(lineText) && !/\}$/.test(lineText) ||
+                0
+            ){
+                throw {message:'符号未闭合', line:lineIndex};
+            }
+            if(/^"/.test(lineText)){
+                return {value:lineText.slice(1, -1)};
+            }
+            if(/^\{/.test(lineText)){
+                var value = {};
+                lineText.slice(1, -1).replace(/([^:,\s]+)\s*:\s*([^,\s]+)/g, function(all, key, val){
+                    value[key] = val;
+                });
+                return {value:value};
+            }
+            if(/^\[/.test(lineText)){
+                if(/\[\s*\]/.test(lineText)){
+                    return {value:[]};
+                }
+                return {value:lineText.slice(1, -1).split(/\s*,\s*/)}
+            }
+            if(/\s+/.test(lineText)){
+                lineText = lineText.match(/(\S+)\s+(.+)/);
+                return {subvalue:{key:lineText[1], value:lineText[2]}};
+            }else{
+                return {value:lineText};
+            }
+        }
+    }
+
+    function setkey(key){
+        if(SUBVALUE){
+            pushvalue(SUBVALUE);
+            SUBVALUE = null;
+        }
+        if(KEY == key){
+            if(!isarr[KEY]){
+                isarr[KEY] = 1;
+                output[KEY] = output[KEY] ? [output[KEY]] : [];
+            }
+        }else{
+            KEY = key;
+        }
+    }
+    function pushvalue(value){
+        if(KEY in output){
+            if(!isarr[KEY]){
+                isarr[KEY] = 1;
+                output[KEY] = output[KEY] ? [output[KEY]] : [];
+            }
+            output[KEY].push(value);
+        }else{
+            output[KEY] = value;
+        }
+    }
+    function pushsubvalue(subvalue){
+        if(!SUBVALUE){
+            SUBVALUE = {};
+        }
+        SUBVALUE[subvalue.key] = subvalue.value;
+    }
+}
+
+
+function id(id){
+    return document.getElementById(id);
+}
+function serialize(obj, jsonModel){
+    return serialize(obj, 0);
+    function serialize(obj, level){
+        var PADDING_STRING = '    ';
+        var type = typeof obj;
+        if(type == 'object'){
+            level++;
+            var paddingBlank = Array(level+1).join(PADDING_STRING);
+            if(obj === null){
+                return 'null';
+            }else if({}.toString.call(obj) == '[object Array]'){
+                var arr = [];
+                
+                if(jsonModel){
+                    for(var i = 0; i < obj.length; i++){
+                        arr.push(paddingBlank + serialize(obj[i], level));
+                    }
+                }else{
+                    for(var i = 0; i < obj.length; i++){
+                        arr.push(paddingBlank+i+' => '+serialize(obj[i], level));
+                    }
+                }
+                
+                if(arr.length){
+                    return  '[\n'+arr.join(',\n')+'\n'+paddingBlank.substr(PADDING_STRING.length)+']';
+                }else{
+                    return'[ ]';
+                }
+            }else{
+                
+                var arr = [];
+                if(jsonModel){
+                    for(var key in obj){
+                        arr.push(paddingBlank+'"'+key+'": '+serialize(obj[key], level));
+                    }
+                }else{
+                    for(var key in obj){
+                        arr.push(paddingBlank+key+' => '+serialize(obj[key], level));
+                    }
+                }
+                
+                
+                if(arr.length){
+                    return  '{\n'+arr.join(',\n')+'\n'+paddingBlank.substr(PADDING_STRING.length)+'}';
+                }else{
+                    return'{ }';
+                }
+                
+            }
+        
+        }else if(type == 'string'){
+            return '"'+obj.toString().replace(/\\/g, '\\\\').replace(/"/g, '\\"')+'"';
+        }else if(type == 'function'){
+            if(jsonModel){
+                return '[object Function]';
+            }
+            
+            var len = 40;
+            
+            return (Array(len).join(' ') + obj)
+                .replace(/\r/g, '')
+                .replace(/^\s+$/gm, '')
+                .replace(/^\s*/gm, function(match){ //找到在函数每行前面的最小空白
+                    len = Math.min(match.length, len);
+                    return match
+                })
+                .replace(/^\s+/mg, function(match){  //将前方的空白移除一部分
+                    return match.substr(len);
+                })
+                .replace(/^/mg, Array(level+1).join(PADDING_STRING))
+                .replace(RegExp('^(\\s|'+PADDING_STRING+')+'), '');
+        }else{
+            return ''+obj;
+        }
+    }
+}
+</script>
+</body>
+</html>

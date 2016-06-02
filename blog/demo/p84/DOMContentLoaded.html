@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title></title>
+<link href="" rel="stylesheet"/>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+    console.info(+new Date)
+    console.info(document.body.innerHTML)
+}, false)
+window.onload = function(){
+    console.info('onload')
+}
+</script>
+</head>
+<body>
+<h1>test DOMContentLoaded</h1>
+<div id="box1"></div>
+<script>
+document.all['box1'].innerHTML = '<p>11</p><p>22</p>'
+</script>
+<iframe src="http://www.126.com/"></iframe>
+
+<img src="http://z.js/lab/all.zjs?mimetype=image/png&wait=1000"/>
+<img src="http://z.js/lab/all.zjs?mimetype=image/png&wait=2000"/>
+<img src="http://z.js/lab/all.zjs?mimetype=image/png&wait=3000"/>
+<img src="http://z.js/lab/all.zjs?mimetype=image/png&wait=4000"/>
+<script>
+console.info(+new Date);
+console.info(document.body.innerHTML)
+setTimeout(function(){
+
+    console.info(document.readyState)
+}, 100)
+</script>
+</body>
+</html>

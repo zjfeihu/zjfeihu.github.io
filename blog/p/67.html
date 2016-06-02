@@ -1,0 +1,24 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>firefox下函数声明bug？</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>firefox下函数声明bug？</h1>
+    <div class=content><h2>前言</h2><p>Firefox下函数声明还是表达式？</p><h2>代码</h2><textarea class="code-js">
+arr = []
+if(1){
+    arr.push(typeof f1)
+    function f1(){}//Firefox不是函数声明,而是表达式？
+    arr.push(typeof f1)
+}
+if(0){
+    function f2(){}
+}
+arr.push(typeof f1)
+arr.push(typeof f2)
+alert(arr.join('\n'))
+</textarea><p class="info">其他浏览器下全是function，Firefox38下第1,4为undefied，其他为function。</p></div>
+</div>

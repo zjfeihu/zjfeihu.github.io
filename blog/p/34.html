@@ -1,0 +1,47 @@
+<!doctype html>
+<meta charset=gbk>
+<meta name=viewport content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>js实现键盘按键绑定</title>
+<link href=../style/main.css rel=stylesheet>
+<script src=../style/main.js></script>
+<body>
+<div id=detail>
+    <h1>js实现键盘按键绑定</h1>
+    <div class=content><h2>常规按键绑定</h2><textarea class="code-html">
+<script>
+document.onkeypress = function(e){
+    e = e || event;
+    var keycode = e.which || e.keyCode;
+
+    alert('当前keycode是'+keycode);
+
+    //只要根据keyCode对应键盘上的按键就可以绑定相关操作了
+    switch(keycode){
+        case 97: return alert('当前按下了a');
+        case 65: return alert('当前按下了A');
+    }
+
+    //如果要使用组合键，则可以利用event.ctrlKey，event.shiftKey，event.altKey的返回值来判断是否按下
+    if(e.ctrlKey){
+        alert('按下了ctrl');
+    }
+
+};
+</script>
+</textarea><h2>特殊功能键的绑定</h2><p class="info">针对Tab，F5等类似的功能键，需要做额外的处理</p><textarea class="code-html">
+<script>
+//这里换成onkeydown是因为在ie中必须在此事件中阻止默认事件才会发挥作用
+document.onkeydown = function(e){
+    e = e || event;
+    var keycode = e.which || e.keyCode;
+    alert('当前keycode是'+keycode);
+    if(e.preventDefault){
+        e.preventDefault();
+    }else{
+        e.returnValue = false;
+        e.keyCode = 0; //ie中必须重写keyCode，否则还会触发功能键
+    }
+};
+</script>
+</textarea><h2>附上Keycode对照表</h2><h3>字母和数字键的键码值(keyCode)</h3><p class="info">小写的字母的keycode是大写字母的keycode+32</p><table border="0" cellpadding="1" cellspacing="1" width="100%" bgcolor="#999999"><tbody><tr align="center" bgcolor="#FFFFFF"><td colspan="8"><strong>字母和数字键的键码值(keyCode)</strong></td></tr><tr align="center" bgcolor="#DDDDDD"><td>按键</td><td>键码</td><td>按键</td><td>键码</td><td>按键</td><td>键码</td><td>按键</td><td>键码</td></tr><tr align="center" bgcolor="#FFFFFF"><td>A/a</td><td>65/97</td><td>J</td><td>74</td><td>S</td><td>83</td><td>1</td><td>49</td></tr><tr align="center" bgcolor="#FFFFFF"><td>B</td><td>66</td><td>K</td><td>75</td><td>T</td><td>84</td><td>2</td><td>50</td></tr><tr align="center" bgcolor="#FFFFFF"><td>C</td><td>67</td><td>L</td><td>76</td><td>U</td><td>85</td><td>3</td><td>51</td></tr><tr align="center" bgcolor="#FFFFFF"><td>D</td><td>68</td><td>M</td><td>77</td><td>V</td><td>86</td><td>4</td><td>52</td></tr><tr align="center" bgcolor="#FFFFFF"><td>E</td><td>69</td><td>N</td><td>78</td><td>W</td><td>87</td><td>5</td><td>53</td></tr><tr align="center" bgcolor="#FFFFFF"><td>F</td><td>70</td><td>O</td><td>79</td><td>X</td><td>88</td><td>6</td><td>54</td></tr><tr align="center" bgcolor="#FFFFFF"><td>G</td><td>71</td><td>P</td><td>80</td><td>Y</td><td>89</td><td>7</td><td>55</td></tr><tr align="center" bgcolor="#FFFFFF"><td>H</td><td>72</td><td>Q</td><td>81</td><td>Z</td><td>90</td><td>8</td><td>56</td></tr><tr align="center" bgcolor="#FFFFFF"><td>I</td><td>73</td><td>R</td><td>82</td><td>0</td><td>48</td><td>9</td><td>57</td></tr></tbody></table><p><br/></p></div>
+</div>
