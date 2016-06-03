@@ -165,7 +165,7 @@ function calls(id){
         
         try{
             
-            fn = fn.fn || fn
+            fn = fn.fn || fn;
             
             if(async){
                 
