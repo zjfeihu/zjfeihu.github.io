@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="gbk"/>
-<title>THASH¸ñÊ½»¯</title>
+<meta charset=utf-8>
+<title>THASHæ ¼å¼åŒ–</title>
 </head>
 <body>
 <textarea id="inputTHASH" style="width: 80%; height: 300px; display: block;">
 page
-    {id:index,text:Ê×Ò³,i:0}
-    {id:about,text:¹ØÓÚ,i:10}
+    {id:index,text:é¦–é¡µ,i:0}
+    {id:about,text:å…³äº,i:10}
 list
-    {id:1,text:¹¤¾ß,i:1}
+    {id:1,text:å·¥å…·,i:1}
 list
     id 10
 test
@@ -18,8 +18,8 @@ test
     id 12
 
 </textarea>
-<button onclick="makeJson(1)">Êä³ö±ê×¼JSON</button>
-<button onclick="makeJson(0)">Êä³öµ÷ÊÔJSON</button>
+<button onclick="makeJson(1)">è¾“å‡ºæ ‡å‡†JSON</button>
+<button onclick="makeJson(0)">è¾“å‡ºè°ƒè¯•JSON</button>
 <pre id="outputJSON" style="border: 1px solid #ccc; background: #eee; padding: 6px">
     
 </pre>
@@ -55,7 +55,7 @@ function parseTHash(input){
     
     function getItem(){
         if(lineIndex == lines.length){
-            setkey();//½áÊøÁË£¬ÉèÖÃ´æÔÚµÄsubvalue
+            setkey();//ç»“æŸäº†ï¼Œè®¾ç½®å­˜åœ¨çš„subvalue
             return;
         }
         var lineText = lines[lineIndex++];
@@ -77,7 +77,7 @@ function parseTHash(input){
                 /^\{/.test(lineText) && !/\}$/.test(lineText) ||
                 0
             ){
-                throw {message:'·ûºÅÎ´±ÕºÏ', line:lineIndex};
+                throw {message:'ç¬¦å·æœªé—­åˆ', line:lineIndex};
             }
             if(/^"/.test(lineText)){
                 return {value:lineText.slice(1, -1)};
@@ -203,11 +203,11 @@ function serialize(obj, jsonModel){
             return (Array(len).join(' ') + obj)
                 .replace(/\r/g, '')
                 .replace(/^\s+$/gm, '')
-                .replace(/^\s*/gm, function(match){ //ÕÒµ½ÔÚº¯ÊıÃ¿ĞĞÇ°ÃæµÄ×îĞ¡¿Õ°×
+                .replace(/^\s*/gm, function(match){ //æ‰¾åˆ°åœ¨å‡½æ•°æ¯è¡Œå‰é¢çš„æœ€å°ç©ºç™½
                     len = Math.min(match.length, len);
                     return match
                 })
-                .replace(/^\s+/mg, function(match){  //½«Ç°·½µÄ¿Õ°×ÒÆ³ıÒ»²¿·Ö
+                .replace(/^\s+/mg, function(match){  //å°†å‰æ–¹çš„ç©ºç™½ç§»é™¤ä¸€éƒ¨åˆ†
                     return match.substr(len);
                 })
                 .replace(/^/mg, Array(level+1).join(PADDING_STRING))

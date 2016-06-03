@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="gbk"/>
-<title>模块加载器测试</title>
+<meta charset=utf-8>
+<title>妯″潡鍔犺浇鍣ㄦ祴璇�</title>
 <script src="../../style/z.js"></script>
 <script src="../../style/zwhl.js"></script>
 <script src="js/zloader.js" main="main"></script>
@@ -10,25 +10,25 @@
 <body>
 <div id="consolebox"></div>
 
-<p>zloader模块加载器支持无id，无deps模块的定义，强烈推荐勿人为添加id和deps，以免增加模块维护难度和出错概率</p>
+<p>zloader妯″潡鍔犺浇鍣ㄦ敮鎸佹棤id锛屾棤deps妯″潡鐨勫畾涔夛紝寮虹儓鎺ㄨ崘鍕夸汉涓烘坊鍔爄d鍜宒eps锛屼互鍏嶅鍔犳ā鍧楃淮鎶ら毦搴﹀拰鍑洪敊姒傜巼</p>
 
-<h2>添加入口</h2>
+<h2>娣诲姞鍏ュ彛</h2>
 <textarea class="code-html" edit=off>
 <script src="js/zloader.js" main="main"></script>
 </textarea>
 
-<h2>main.js 入口模块</h2>
+<h2>main.js 鍏ュ彛妯″潡</h2>
 <textarea class="code-js" edit=off>
 define(function(){
     var tr = setInterval(function(){
         if(document.body){
             clearInterval(tr);
-            require('m1').sayHello() //调用m1模块
+            require('m1').sayHello() //璋冪敤m1妯″潡
         }
     }, 16);
 });
 </textarea>
-<h2>m1.js 以return方式返回接口</h2>
+<h2>m1.js 浠eturn鏂瑰紡杩斿洖鎺ュ彛</h2>
 <textarea class="code-js" edit=off>
 define(function(){
     return{
@@ -40,7 +40,7 @@ define(function(){
     };
 });
 </textarea>
-<h2>m2.js 以module.exports方式返回接口</h2>
+<h2>m2.js 浠odule.exports鏂瑰紡杩斿洖鎺ュ彛</h2>
 <textarea class="code-js" edit=off>
 define(function(module){
     module.exports = {
@@ -50,7 +50,7 @@ define(function(module){
     };
 });
 </textarea>
-<h2>m3.js 以exports方式返回接口</h2>
+<h2>m3.js 浠xports鏂瑰紡杩斿洖鎺ュ彛</h2>
 <textarea class="code-js" edit=off>
 define(function(module, exports){
     exports.sayHello =  function(){

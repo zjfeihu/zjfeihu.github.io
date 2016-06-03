@@ -10,7 +10,7 @@ function Console(text){
         if(text){
             Console.box.innerHTML += '<br>'+text.replace(/&/g, '&amp;').replace(/</g, '&lt;');
         }
-    }else if(document.body){ //³õÊ¼»¯consoleÈÝÆ÷£¬²¢Êä³öÒÑ¾­´æÔÚµÄÊý¾Ý
+    }else if(document.body){ //åˆå§‹åŒ–consoleå®¹å™¨ï¼Œå¹¶è¾“å‡ºå·²ç»å­˜åœ¨çš„æ•°æ®
         clearInterval(Console.timer);
         Console.box = document.createElement('div');
         document.body.appendChild(Console.box);
@@ -25,7 +25,7 @@ function Console(text){
             Console.data = [];
         }
         Console.data.push(text);
-        Console.timer = setInterval(function(){ //¼ÙÈçÔÚbody¾ÍÐ÷ºóÃ»µ÷ÓÃConsole£¬ÄÇÃ´¾ÍÈÃ¶¨Ê±Æ÷Ö÷¶¯´¥·¢
+        Console.timer = setInterval(function(){ //å‡å¦‚åœ¨bodyå°±ç»ªåŽæ²¡è°ƒç”¨Consoleï¼Œé‚£ä¹ˆå°±è®©å®šæ—¶å™¨ä¸»åŠ¨è§¦å‘
             if(document.body){
                 clearInterval(Console.timer);
                 Console();

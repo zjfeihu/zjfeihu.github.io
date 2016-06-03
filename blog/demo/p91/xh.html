@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="gbk"/>
-<title>循环依赖</title>
+<meta charset=utf-8>
+<title>寰幆渚濊禆</title>
 <script src="../../style/z.js"></script>
 <script src="../../style/zwhl.js"></script>
 <script src="js/zloader.js" main="xh"></script>
@@ -10,9 +10,9 @@
 <body>
 <h2>consolebox</h2>
 <div id="consolebox" style="border: 1px solid #666; padding: 8px; background: #eee"></div>
-<p>Str 和 Res 模块存在循环依赖，Str初始化依赖Res模块，而Res模块的theSharp接口依赖Str的接口，但是这没关系，只要不是双双初始化依赖就不会陷入死循环</p>
+<p>Str 鍜� Res 妯″潡瀛樺湪寰幆渚濊禆锛孲tr鍒濆鍖栦緷璧朢es妯″潡锛岃�孯es妯″潡鐨則heSharp鎺ュ彛渚濊禆Str鐨勬帴鍙ｏ紝浣嗘槸杩欐病鍏崇郴锛屽彧瑕佷笉鏄弻鍙屽垵濮嬪寲渚濊禆灏变笉浼氶櫡鍏ユ寰幆</p>
 
-<h2>入口模块 xh.js</h2>
+<h2>鍏ュ彛妯″潡 xh.js</h2>
 <textarea class="code-js" edit=off>
 define(['Str', 'DOMReady'], function(){
     require('DOMReady')(function(){
