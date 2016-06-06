@@ -48,7 +48,7 @@ Z(function(){ //增加阅读模式工具栏
                 if(s){
                     s = Math.min(5, ++s);
                 }else{
-                    s = 4;
+                    s = 3;
                 }
                 
                 Z('#detail').cls('=f'+s);
