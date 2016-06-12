@@ -1,5 +1,5 @@
 define(function(module){
-    //zwin.js v0.11 
+    //zwin.js v0.11 窗口类
 
     module.exports = function(){
         
@@ -14,19 +14,19 @@ define(function(module){
             top: 10,
             width: 800,
             height: 400,
-            resizable: true, //ǷɸıС
-            minimizeable: true, //ǷС
-            dragable: true, //Ƿɸ϶
-            container: null, //ڵĸ
-            onClose: null, //رջص
-            onMaximize: null, //󻯻ص
-            onMinimize: null, //Сص
-            onFocus: null, //ڻýص
-            onOpen: null, //ڴ򿪻ص
+            resizable: true, //是否可改变大小
+            minimizeable: true, //是否可最小化
+            dragable: true, //是否可改拖动
+            container: null, //窗口的父容器
+            onClose: null, //关闭回调
+            onMaximize: null, //最大化回调
+            onMinimize: null, //最小化回调
+            onFocus: null, //窗口获得焦点回调
+            onOpen: null, //窗口打开回调
             end: null
         },
         zIndex = 9999,
-        activeWin, //Ĵ
+        activeWin, //活动的窗口
         end;
         
         var hasstyle;
@@ -197,7 +197,7 @@ define(function(module){
                     
                     rElem.on('mousedown', function(evt){
                         
-                        evt.preventDefault(); //chrome½ֹıѡ
+                        evt.preventDefault(); //chrome下禁止文本选择
                         that.focus();
                         
                         clientX = evt.clientX;
@@ -297,7 +297,7 @@ define(function(module){
                             
                             if(offsetTop < 0 || offsetTop > docHeight - 26){
                                 top = rootElem.top() - offsetTop;
-                                if(offsetTop > 0){ //ײ
+                                if(offsetTop > 0){ //超出界面底部
                                     top += docHeight - 26;
                                 }
                                 rootElem.top(top);
